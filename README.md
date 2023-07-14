@@ -1,6 +1,6 @@
 # LinkUp-Frontend
 
-LinkUp frontend client for El Proyecte Grande project.
+Frontend client for El Proyecte Grande - LinkUp.
 
 ## installation
 
@@ -23,6 +23,31 @@ pip install
 - [tailwindcss](https://tailwindcss.com/)
 
 ## usage
+
+### templates
+
+When creating new files you can use predefined templates through IntelliSense. While using the template, you can use tab to jump over to predefined locations that need your attention.
+| Type of file | prefix |
+|----------------------|--------|
+| Functional component | fcomp |
+| Class component | ccomp |
+| Testing | rtest |
+
+Functional and class components will automatically use the name of the file. Remember to start it with an uppercase letter!
+
+Test files will need input for the import name.
+
+### imports
+
+To import a file you can use a shortened syntax:
+
+```javascript
+import FooComponent from "@components/foo";
+```
+
+Each folder in the `./src` directory has this shortened syntax (`@assets`, `@hooks`, `@layouts`, `@middleware`, `@pages`, `@utils`) with the addition of the `scripts` folder (`@scripts`)
+
+### scripts
 
 Start server
 
