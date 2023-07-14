@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "allowJs": true,
+    "types": ["vitest/globals"],
+    "paths": {
+      "@features/*": ["./src/features/*"],
+      "@components/*": ["./src/components/*"],
+      "@middleware/*": ["./src/middleware/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@scripts/*": ["./scripts/*"]
+    },
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false,
+    "noImplicitOverride": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "include": [
+    "./src/**/*.{js,ts,jsx,tsx,html,css}",
+    "./tests/**/*.{js,ts,jsx,tsx,html,css}",
+    "./scripts/**/*.{js,ts,jsx,tsx,html,css}",
+    "./public/**/*.{js,ts,jsx,tsx,html,css}",
+    "./index.html"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
