@@ -1,6 +1,6 @@
+import IconComponent from '@components/navbar/badge/icon/Icon.tsx';
+import TextComponent from '@components/navbar/badge/text/Text.tsx';
 import React from 'react';
-import IconComponent from '../badge/icon/Icon.tsx';
-import TextComponent from '../badge/text/Text.tsx';
 
 interface BadgeProps {
 	text: string;
