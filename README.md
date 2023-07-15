@@ -7,7 +7,7 @@ Frontend client for El Proyecte Grande - LinkUp.
 Clone the repository and run from the main folder:
 
 ```bash
-pip install
+npm install
 ```
 
 ## used libraries
@@ -15,7 +15,7 @@ pip install
 - [react-aria](https://react-spectrum.adobe.com/react-aria/)
 - [react-query](https://tanstack.com/query/v3/)
 - [filepond](https://pqina.nl/filepond/)
-- [framer-motion](https://www.framer.com/?utm_source=motion-readme)
+- [framer-motion](https://www.framer.com/motion/)
 - [react-dnd](https://react-dnd.github.io/react-dnd/about) (with html5 and touch backends)
 - [swiper](https://swiperjs.com/react)
 - testing ([jsdom](https://github.com/jsdom/jsdom#readme), [jest-dom](https://github.com/testing-library/jest-dom#readme), [react testing library](https://github.com/testing-library/react-testing-library#readme), [vitest](https://vitest.dev/))
@@ -42,7 +42,7 @@ Test files will need input for the import name.
 To import a file you can use a shortened syntax:
 
 ```javascript
-import FooComponent from "@components/foo";
+import FooComponent from '@components/Foo.tsx';
 ```
 
 Each folder in the `./src` directory has this shortened syntax (`@assets`, `@hooks`, `@layouts`, `@middleware`, `@pages`, `@utils`) with the addition of the `scripts` folder (`@scripts`)

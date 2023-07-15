@@ -1,3 +1,6 @@
 {
-    "cSpell.ignoreWords": ["clientapp"]
+    "cSpell.ignoreWords": [
+        "clientapp"
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }
