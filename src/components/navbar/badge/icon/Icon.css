@@ -1,0 +1,4 @@
+.navbar__badge-icon {
+	filter: invert(20%) sepia(64%) saturate(2659%) hue-rotate(132deg)
+		brightness(53%) contrast(86%);
+}
