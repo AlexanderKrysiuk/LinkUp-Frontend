@@ -63,7 +63,7 @@ module.exports = {
 		],
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/strict-boolean-expressions': [
-			0,
+			2,
 			{
 				allowString: false,
 				allowNumber: false,
