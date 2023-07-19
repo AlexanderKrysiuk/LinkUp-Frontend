@@ -1,6 +1,16 @@
 {
-    "cSpell.ignoreWords": [
-        "clientapp"
-    ],
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+	"cSpell.ignoreWords": [
+		"callees",
+		"clientapp",
+		"clsx",
+		"linebreak",
+		"necolas"
+	],
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"cSpell.words": [
+		"classname",
+		"FOUC"
+	],
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true
 }

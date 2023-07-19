@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
 		"target": "ESNext",
-		"baseUrl": ".",
 		"useDefineForClassFields": true,
 		"lib": [
 			"ESNext",
@@ -9,6 +8,7 @@
 			"DOM.Iterable"
 		],
 		"module": "ESNext",
+		"rootDir": ".",
 		"skipLibCheck": true,
 		"outDir": "dist",
 		"removeComments": true,
@@ -22,28 +22,28 @@
 				"./src/*"
 			],
 			"@components/*": [
-				"src/components/*"
+				"./src/components/*"
 			],
 			"@hooks/*": [
-				"src/hooks/*"
+				"./src/hooks/*"
 			],
 			"@layouts/*": [
-				"src/layouts/*"
+				"./src/layouts/*"
 			],
 			"@middleware/*": [
-				"src/middleware/*"
+				"./src/middleware/*"
 			],
 			"@pages/*": [
-				"src/pages/*"
+				"./src/pages/*"
 			],
 			"@utils/*": [
-				"src/utils/*"
+				"./src/utils/*"
 			],
 			"@assets/*": [
-				"src/assets/*"
+				"./src/assets/*"
 			],
 			"@scripts/*": [
-				"scripts/*"
+				"./scripts/*"
 			],
 		},
 		/* Bundler mode */
@@ -63,13 +63,14 @@
 		"noPropertyAccessFromIndexSignature": true,
 		"noUncheckedIndexedAccess": true,
 		"allowSyntheticDefaultImports": true,
-		"allowImportingTsExtensions": true
+		"allowImportingTsExtensions": true,
 	},
 	"include": [
-		"./src/**/*"
+		"./src/**/*",
+		"./scripts/**/*",
 	],
 	"exclude": [
-		"node_modules"
+		"node_modules",
 	],
 	"references": [
 		{

@@ -1,0 +1,6 @@
+*.cjs
+*.json
+**/*.cjs
+**/*.json
+lib/
+vite.config.ts

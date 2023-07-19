@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface TextProps {
-	text: string;
+	text?: string;
 }
 
 const TextComponent = ({ text }: TextProps): JSX.Element => {
