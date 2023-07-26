@@ -1,8 +1,11 @@
 import React from 'react';
+import './RegistrationForm.css';
 
 export default function RegistrationForm() {
 	return (
-		<form onSubmit={() => alert('OK!')}>
+		<form
+			className='RegistrationForm'
+			onSubmit={() => alert('OK!')}>
 			<label>Username</label>
 			<input type='text' />
 			<label>E-mail</label>

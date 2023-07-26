@@ -1,6 +1,6 @@
 // import BadgeComponent from '@components/navbar/badge/Badge.tsx';
 // import ButtonComponent from '@components/navbar/button/Button.tsx';
-import RegistrationForm from '@components/navbar/registrationForm/RegistrationForm.tsx';
+import RegistrationForm from '@components/registrationForm/RegistrationForm.tsx';
 import useScript from '@hooks/useScript.tsx';
 
 import React from 'react';
