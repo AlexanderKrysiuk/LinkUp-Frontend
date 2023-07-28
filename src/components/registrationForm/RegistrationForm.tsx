@@ -43,10 +43,7 @@ export default function RegistrationForm() {
 	}, [isValid]);
 
 	//
-	const [serverError, setServerError] = useState({
-		status: null,
-		message: '',
-	});
+	const [serverError, setServerError] = useState();
 
 	const submitForm = async (data: any) => {
 		try {
@@ -59,12 +56,12 @@ export default function RegistrationForm() {
 				},
 			);
 			if (!response.ok) {
-				const errors = await response.json();
-				//console.log(errors, response);
-				handleError(response.status);
-				//setServerError(errors.message || 'An error occured');
+				// const errors = await response.json();
+				// handleError(response.status);
+				const { messageText } = await response.json();
+				const errorType = response.status;
+				setServerError({ status: errorType, message: messageText });
 			} else {
-				setServerError({ status: null, message: '' });
 				prompt('Thank you for registration!');
 			}
 		} catch (err) {
@@ -73,25 +70,25 @@ export default function RegistrationForm() {
 		}
 	};
 
-	const handleError = (error: any) => {
-		let messageText = '';
-		switch (error) {
-			case 400:
-				messageText = 'Bad request';
-				break;
-			case 401:
-				messageText = 'Unauthorized';
-				break;
-			case 409:
-				messageText = 'Conflict';
-				break;
-			case 500:
-				messageText = 'Internal server error';
-				break;
-		}
-		setServerError({ status: error, message: messageText });
-		prompt(`Error ${serverError.status} : ${serverError.message}`);
-	};
+	// const handleError = (error: any) => {
+	// 	let messageText = '';
+	// 	switch (error) {
+	// 		case 400:
+	// 			messageText = 'Bad request';
+	// 			break;
+	// 		case 401:
+	// 			messageText = 'Unauthorized';
+	// 			break;
+	// 		case 409:
+	// 			messageText = 'Conflict';
+	// 			break;
+	// 		case 500:
+	// 			messageText = 'Internal server error';
+	// 			break;
+	// 	}
+	// 	setServerError({ status: error, message: messageText });
+	// 	prompt(`Error ${serverError.status} : ${serverError.message}`);
+	// };
 
 	const validatePasswordConfirmation = () => {
 		const confirmedPasswordValue = getValues('confirmedPassword');
@@ -109,9 +106,11 @@ export default function RegistrationForm() {
 	return (
 		<form
 			className='RegistrationForm'
-			onSubmit={handleSubmit(submitForm, handleError)}>
+			onSubmit={handleSubmit(submitForm)}>
 			{serverError && (
-				<p className='errorMessage'>{serverError.message}</p>
+				<p className='errorMessage'>
+					Error {serverError.status}: {serverError.message}
+				</p>
 			)}
 			<div>
 				<label>Username:</label>
