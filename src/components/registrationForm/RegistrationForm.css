@@ -1,4 +1,61 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
 .RegistrationForm {
-	font-size: 12 px;
-	color: green;
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	margin: 0 auto;
+	padding: 30px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-align: left;
+}
+
+.RegistrationForm div {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+}
+
+.RegistrationForm label {
+	font-weight: 500;
+	color: darkblue;
+	width: 70%;
+}
+
+.RegistrationForm input {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	width: 70%;
+}
+
+.RegistrationForm p {
+	float: left;
+	color: grey;
+	font-size: 10px;
+	margin-top: 5px;
+	font-style: italic;
+}
+
+.RegistrationForm button {
+	padding: 8px 15px;
+	background-color: lightskyblue;
+	color: whitesmoke;
+	font-weight: 700;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 30%;
+	align-self: center;
+}
+
+.RegistrationForm button:hover {
+	background-color: #0056b3;
 }
