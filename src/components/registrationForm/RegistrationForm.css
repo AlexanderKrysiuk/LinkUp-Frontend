@@ -9,7 +9,7 @@ body {
 .RegistrationForm {
 	display: flex;
 	flex-direction: column;
-	width: 70%;
+	width: 400px;
 	margin: 0 auto;
 	padding: 30px;
 	border: 1px solid #ccc;
