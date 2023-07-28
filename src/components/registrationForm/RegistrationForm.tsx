@@ -43,7 +43,10 @@ export default function RegistrationForm() {
 	}, [isValid]);
 
 	//
-	const [serverError, setServerError] = useState(null);
+	const [serverError, setServerError] = useState({
+		status: null,
+		message: '',
+	});
 
 	const submitForm = async (data: any) => {
 		try {
@@ -57,23 +60,37 @@ export default function RegistrationForm() {
 			);
 			if (!response.ok) {
 				const errors = await response.json();
-				console.log(errors, response);
-				//handleError(response.status);
+				//console.log(errors, response);
+				handleError(response.status);
 				//setServerError(errors.message || 'An error occured');
 			} else {
-				setServerError(null);
+				setServerError({ status: null, message: '' });
 				prompt('Thank you for registration!');
 			}
 		} catch (err) {
-			//setServerError({ status: err.status(?), message: 'An error occurred while processing your request.'});
-			handleError(err);
+			//handleError(err);
 			console.log(err);
 		}
 	};
 
 	const handleError = (error: any) => {
-		//logic
-		console.log(error);
+		let messageText = '';
+		switch (error) {
+			case 400:
+				messageText = 'Bad request';
+				break;
+			case 401:
+				messageText = 'Unauthorized';
+				break;
+			case 409:
+				messageText = 'Conflict';
+				break;
+			case 500:
+				messageText = 'Internal server error';
+				break;
+		}
+		setServerError({ status: error, message: messageText });
+		prompt(`Error ${serverError.status} : ${serverError.message}`);
 	};
 
 	const validatePasswordConfirmation = () => {
@@ -81,10 +98,7 @@ export default function RegistrationForm() {
 		const passwordValue = getValues('password');
 
 		if (confirmedPasswordValue !== passwordValue) {
-			setError('confirmedPassword', {
-				type: 'manual',
-				message: 'Passwords must match.',
-			});
+			setError('confirmedPassword', { message: 'Passwords must match.' });
 			setConfirmedPasswordValid(false);
 		} else {
 			clearErrors('confirmedPassword');
@@ -96,7 +110,9 @@ export default function RegistrationForm() {
 		<form
 			className='RegistrationForm'
 			onSubmit={handleSubmit(submitForm, handleError)}>
-			{serverError && <div className='error-message'>{serverError}</div>}
+			{serverError && (
+				<p className='errorMessage'>{serverError.message}</p>
+			)}
 			<div>
 				<label>Username:</label>
 				<input
