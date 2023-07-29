@@ -27,16 +27,6 @@ export default function RegistrationForm() {
 	const [isConfirmedPasswordValid, setConfirmedPasswordValid] =
 		useState(false);
 
-	const enableSubmitForm = () => {
-		return (
-			isFormValid &&
-			isLoginValid &&
-			isEmailValid &&
-			isPasswordValid &&
-			isConfirmedPasswordValid
-		);
-	};
-
 	useEffect(() => {
 		setFormValid(isValid);
 	}, [isValid]);
@@ -190,11 +180,7 @@ export default function RegistrationForm() {
 
 			<button
 				type='submit'
-				disabled={!isFormValid || !enableSubmitForm()}
-				onMouseOver={(e) => {
-					(e.target as HTMLButtonElement).disabled =
-						!enableSubmitForm;
-				}}>
+				disabled={!isFormValid}>
 				Submit
 			</button>
 		</form>
