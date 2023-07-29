@@ -15,6 +15,7 @@ body {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	text-align: left;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .RegistrationForm div {
@@ -42,6 +43,7 @@ body {
 	font-size: 10px;
 	margin-top: 5px;
 	font-style: italic;
+	margin: 2px 0px 2px 0px;
 }
 
 .RegistrationForm button {
