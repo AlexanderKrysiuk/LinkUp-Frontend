@@ -12,7 +12,7 @@ export default function RegistrationForm() {
 		clearErrors,
 	} = useForm({
 		defaultValues: {
-			username: '',
+			login: '',
 			email: '',
 			password: '',
 			confirmedPassword: '',
@@ -21,7 +21,7 @@ export default function RegistrationForm() {
 	});
 
 	const [isFormValid, setFormValid] = useState(false);
-	const [isUsernameValid, setUsernameValid] = useState(false);
+	const [isLoginValid, setLoginValid] = useState(false);
 	const [isEmailValid, setEmailValid] = useState(false);
 	const [isPasswordValid, setPasswordValid] = useState(false);
 	const [isConfirmedPasswordValid, setConfirmedPasswordValid] =
@@ -30,20 +30,18 @@ export default function RegistrationForm() {
 	const enableSubmitForm = () => {
 		return (
 			isFormValid &&
-			isUsernameValid &&
+			isLoginValid &&
 			isEmailValid &&
 			isPasswordValid &&
 			isConfirmedPasswordValid
 		);
 	};
 
-	// Update form validity on every change
 	useEffect(() => {
 		setFormValid(isValid);
 	}, [isValid]);
 
-	//
-	const [serverError, setServerError] = useState();
+	const [serverError, setServerError] = useState<string | null>();
 
 	const submitForm = async (data: any) => {
 		try {
@@ -55,40 +53,33 @@ export default function RegistrationForm() {
 					body: JSON.stringify(data),
 				},
 			);
+			// TODO: handle error handling xD
 			if (!response.ok) {
-				// const errors = await response.json();
-				// handleError(response.status);
-				const { messageText } = await response.json();
-				const errorType = response.status;
-				setServerError({ status: errorType, message: messageText });
+				switch (response.status) {
+					case 400:
+						setServerError(`${response.status}: Bad request.`);
+						console.log(serverError);
+						break;
+					case 401:
+						setServerError(`${response.status}: Unauthorized.`);
+						console.log(serverError);
+
+						break;
+					case 409:
+						setServerError(`${response.status}: Conflict.`);
+						console.log(serverError);
+						break;
+				}
 			} else {
-				prompt('Thank you for registration!');
+				console.log(response.status);
+				alert('Thank you for registration!');
+				setServerError(null);
 			}
 		} catch (err) {
-			//handleError(err);
-			console.log(err);
+			console.log(typeof err, err);
+			setServerError(`${err}`);
 		}
 	};
-
-	// const handleError = (error: any) => {
-	// 	let messageText = '';
-	// 	switch (error) {
-	// 		case 400:
-	// 			messageText = 'Bad request';
-	// 			break;
-	// 		case 401:
-	// 			messageText = 'Unauthorized';
-	// 			break;
-	// 		case 409:
-	// 			messageText = 'Conflict';
-	// 			break;
-	// 		case 500:
-	// 			messageText = 'Internal server error';
-	// 			break;
-	// 	}
-	// 	setServerError({ status: error, message: messageText });
-	// 	prompt(`Error ${serverError.status} : ${serverError.message}`);
-	// };
 
 	const validatePasswordConfirmation = () => {
 		const confirmedPasswordValue = getValues('confirmedPassword');
@@ -109,7 +100,7 @@ export default function RegistrationForm() {
 			onSubmit={handleSubmit(submitForm)}>
 			{serverError && (
 				<p className='errorMessage'>
-					Error {serverError.status}: {serverError.message}
+					Registration failed due to error {serverError}
 				</p>
 			)}
 			<div>
@@ -117,14 +108,14 @@ export default function RegistrationForm() {
 				<input
 					type='text'
 					id='username'
-					{...register('username', { required: true, minLength: 3 })}
+					{...register('login', { required: true, minLength: 3 })}
 					onBlur={() => {
-						if (!errors.username) {
-							setUsernameValid(true);
+						if (!errors.login) {
+							setLoginValid(true);
 						}
 					}}
 				/>
-				{errors.username && (
+				{errors.login && (
 					<p className='validationPrompt'>
 						Username must be at least 3 characters long.
 					</p>
