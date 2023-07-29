@@ -48,25 +48,24 @@ export default function RegistrationForm() {
 				switch (response.status) {
 					case 400:
 						setServerError(`${response.status}: Bad request.`);
-						console.log(serverError);
+						//console.log(serverError);
 						break;
 					case 401:
 						setServerError(`${response.status}: Unauthorized.`);
-						console.log(serverError);
-
+						//console.log(serverError);
 						break;
 					case 409:
 						setServerError(`${response.status}: Conflict.`);
-						console.log(serverError);
+						//console.log(serverError);
 						break;
 				}
 			} else {
-				console.log(response.status);
+				//console.log(response.status);
 				alert('Thank you for registration!');
 				setServerError(null);
 			}
 		} catch (err) {
-			console.log(typeof err, err);
+			//console.log(typeof err, err);
 			setServerError(`${err}`);
 		}
 	};
@@ -98,7 +97,10 @@ export default function RegistrationForm() {
 				<input
 					type='text'
 					id='username'
-					{...register('login', { required: true, minLength: 3 })}
+					{...register('login', {
+						required: true,
+						pattern: /^[a-zA-Z0-9]{1}[\w\d]{2,}$/,
+					})}
 					onBlur={() => {
 						if (!errors.login) {
 							setLoginValid(true);
@@ -118,7 +120,8 @@ export default function RegistrationForm() {
 					id='email'
 					{...register('email', {
 						required: true,
-						pattern: /^\S+@\S+$/i,
+						pattern:
+							/^[a-zA-Z0-9]+([.\-_]?[a-zA-Z0-9])*@[a-zA-Z0-9]+(-?[a-zA-Z0-9])*\.[a-zA-Z]{2,}$/,
 					})}
 					onBlur={() => {
 						if (!errors.email) {
@@ -139,8 +142,7 @@ export default function RegistrationForm() {
 					id='password'
 					{...register('password', {
 						required: true,
-						minLength: 8,
-						pattern: /^(?=.*[A-Z])(?=.*\d)/,
+						pattern: /^(?=.*\d)(?=.*[A-Z])(?=.*[\W_]).{8,}$/,
 					})}
 					onBlur={() => {
 						if (!errors.password) {
