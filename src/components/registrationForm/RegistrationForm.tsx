@@ -42,31 +42,59 @@ export default function RegistrationForm() {
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(data),
 				},
-			);
+			)
+				.then((res) => {
+					if (res.ok) {
+						alert("You're registered!");
+						setServerError(null);
+					} else {
+						return res.json();
+					}
+				})
+				.then((data) => {
+					switch (data.code) {
+						case 400:
+							setServerError(
+								`${data.message} [${data.code} Bad request]`,
+							);
+							break;
+						case 401:
+							setServerError(
+								`${data.message} [${data.code} Unauthorized]`,
+							);
+							break;
+						case 409:
+							setServerError(
+								`${data.message} [${data.code} Conflict]`,
+							);
+							break;
+					}
+				});
+
 			// TODO: handle error handling xD
-			if (!response.ok) {
-				switch (response.status) {
-					case 400:
-						setServerError(`${response.status}: Bad request.`);
-						//console.log(serverError);
-						break;
-					case 401:
-						setServerError(`${response.status}: Unauthorized.`);
-						//console.log(serverError);
-						break;
-					case 409:
-						setServerError(`${response.status}: Conflict.`);
-						//console.log(serverError);
-						break;
-				}
-			} else {
-				//console.log(response.status);
-				alert('Thank you for registration!');
-				setServerError(null);
-			}
+
+			// if (!response.ok) {
+			// 	switch (response.status) {
+			// 		case 400:
+			// 			setServerError(`${response.status}: Bad request.`);
+			// 			//console.log(serverError);
+			// 			break;
+			// 		case 401:
+			// 			setServerError(`${response.status}: Unauthorized.`);
+			// 			//console.log(serverError);
+			// 			break;
+			// 		case 409:
+			// 			setServerError(`${response.status}: Data in use.`);
+			// 			//console.log(serverError);
+			// 			break;
+			// 	}
+			// } else {
+			// 	//console.log(response.status);
+			// 	alert('Thank you for registration!');
+			// 	setServerError(null);
+			// }
 		} catch (err) {
-			//console.log(typeof err, err);
-			setServerError(`${err}`);
+			//setServerError(`${err}`);
 		}
 	};
 
