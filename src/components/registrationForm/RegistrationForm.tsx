@@ -117,7 +117,7 @@ export default function RegistrationForm() {
 			onSubmit={handleSubmit(submitForm)}>
 			{serverError && (
 				<p className='errorMessage'>
-					Registration failed due to error {serverError}
+					Registration failed due to error: {serverError}
 				</p>
 			)}
 			<div>
