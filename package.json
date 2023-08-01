@@ -29,6 +29,7 @@
 		"react-dnd-html5-backend": "^16.0.1",
 		"react-dnd-touch-backend": "^16.0.1",
 		"react-dom": "^18.2.0",
+		"react-hook-form": "^7.45.2",
 		"style-loader": "^3.3.3",
 		"swiper": "^10.0.4"
 	},
@@ -67,6 +68,7 @@
 		"tailwindcss": "^3.3.3",
 		"typescript": "^5.1.6",
 		"vite": "^4.4.0",
-		"vitest": "^0.33.0"
+		"vitest": "^0.33.0",
+		"zod": "^3.21.4"
 	}
 }

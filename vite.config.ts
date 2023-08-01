@@ -15,6 +15,15 @@ export default defineConfig({
 		css: true,
 		setupFiles: './test/setup.ts',
 	},
+	build: {
+		rollupOptions: {
+			output: {
+				entryFileNames: `assets/[name].js`,
+				chunkFileNames: `assets/[name].js`,
+				assetFileNames: `assets/[name].[ext]`,
+			},
+		},
+	},
 	resolve: {
 		alias: [
 			{

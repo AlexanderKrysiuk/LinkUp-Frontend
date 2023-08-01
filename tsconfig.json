@@ -43,7 +43,7 @@
 				"./src/assets/*"
 			],
 			"@scripts/*": [
-				"./scripts/*"
+				"./src/scripts/*"
 			],
 		},
 		/* Bundler mode */
@@ -67,7 +67,7 @@
 	},
 	"include": [
 		"./src/**/*",
-		"./scripts/**/*",
+		"src/scripts/**/*",
 	],
 	"exclude": [
 		"node_modules",
