@@ -5,7 +5,9 @@ interface IconProps {
 	source?: string;
 }
 
-const IconComponent = ({ source = undefined }: IconProps): JSX.Element => {
+const ButtonIconComponent = ({
+	source = undefined,
+}: IconProps): JSX.Element => {
 	return (
 		<img
 			src={source}
@@ -13,4 +15,4 @@ const IconComponent = ({ source = undefined }: IconProps): JSX.Element => {
 		/>
 	);
 };
-export default IconComponent;
+export default ButtonIconComponent;

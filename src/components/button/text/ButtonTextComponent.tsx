@@ -4,8 +4,8 @@ interface TextProps {
 	text?: string;
 }
 
-const TextComponent = ({ text }: TextProps): JSX.Element => {
+const ButtonTextComponent = ({ text }: TextProps): JSX.Element => {
 	return <p className='navbar__badge-text my-auto'>{text}</p>;
 };
 
-export default TextComponent;
+export default ButtonTextComponent;

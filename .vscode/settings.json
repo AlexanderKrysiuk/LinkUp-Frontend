@@ -4,6 +4,7 @@
 		"clientapp",
 		"clsx",
 		"linebreak",
+		"navmenu",
 		"necolas"
 	],
 	"typescript.tsdk": "node_modules\\typescript\\lib",
