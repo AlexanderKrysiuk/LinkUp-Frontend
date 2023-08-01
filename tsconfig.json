@@ -14,7 +14,11 @@
 		"removeComments": true,
 		"allowJs": true,
 		"types": [
-			"vitest/globals"
+			"vitest/globals",
+			"vite/client",
+			"vite-plugin-svgr/client",
+			"@types/react",
+			"jest"
 		],
 		"paths": {
 			"*": [
@@ -44,6 +48,9 @@
 			],
 			"@scripts/*": [
 				"./src/scripts/*"
+			],
+			"@icons/*": [
+				"./src/assets/icons/*"
 			],
 		},
 		/* Bundler mode */

@@ -1,17 +1,17 @@
 import React from 'react';
-
-type Item = {
-	routeName: string;
-	routeIcon: string | null;
-	routeAction: (() => void) | null;
-};
+import { NavMenuItem } from '../Types.ts';
 
 type NavbarIconButtonProps = {
-	item: Item;
+	item: NavMenuItem;
 };
 
 const NavbarIconButtonComponent = ({ item }: NavbarIconButtonProps) => {
-	return <li className='navbar__menu-button'>{item.routeName}</li>;
+	return (
+		<li className='navbar__menu-button'>
+			<item.routeIcon />
+			<span>{item.routeName}</span>
+		</li>
+	);
 };
 
 export default NavbarIconButtonComponent;

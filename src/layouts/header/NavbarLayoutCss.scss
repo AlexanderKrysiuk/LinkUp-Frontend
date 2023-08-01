@@ -21,9 +21,11 @@
 		width: 100%;
 		display: flex;
 		flex-direction: row;
-		justify-content: end;
+		justify-content: flex-end;
 		align-items: center;
 		&-button {
+			display: flex;
+			flex-direction: column;
 			margin: 1rem;
 			cursor: pointer;
 			padding: 0.25rem 0.5rem;
