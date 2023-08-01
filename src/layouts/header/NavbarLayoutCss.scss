@@ -17,4 +17,21 @@
 		padding: 1rem 2rem;
 		text-align: center;
 	}
+	&__menu {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
+		align-items: center;
+		&-button {
+			margin: 1rem;
+			cursor: pointer;
+			padding: 0.25rem 0.5rem;
+			border: 1px solid black;
+			border-radius: 0.5rem;
+			&:hover {
+				background-color: pink;
+			}
+		}
+	}
 }

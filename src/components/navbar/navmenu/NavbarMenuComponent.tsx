@@ -1,5 +1,5 @@
-import ButtonComponent from '@components/button/ButtonComponent.tsx';
 import React from 'react';
+import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.tsx';
 
 const routes = [
 	{ routeName: 'blah1', routeIcon: null, routeAction: null },
@@ -8,14 +8,16 @@ const routes = [
 ];
 const NavbarMenuComponent = () => {
 	return (
-		<>
-			<ul>
-				{routes.map((item, index) => {
-					return <li key={index}>{item.routeName}</li>;
-				})}
-			</ul>
-			<ButtonComponent text='Test' />
-		</>
+		<ul className='navbar__menu'>
+			{routes.map((item, index) => {
+				return (
+					<NavbarIconButtonComponent
+						key={index}
+						item={item}
+					/>
+				);
+			})}
+		</ul>
 	);
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import './LogoCss.css';
 
-const LogoComponent = () => {
+const NavbarLogoComponent = () => {
 	return (
 		<svg
 			className='navbar__logo'
@@ -12,4 +11,4 @@ const LogoComponent = () => {
 	);
 };
 
-export default LogoComponent;
+export default NavbarLogoComponent;

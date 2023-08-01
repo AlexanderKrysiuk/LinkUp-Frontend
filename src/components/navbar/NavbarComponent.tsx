@@ -1,11 +1,11 @@
 import React from 'react';
-import LogoComponent from './logo/LogoComponent.tsx';
+import NavbarLogoComponent from './logo/NavbarLogoComponent.tsx';
 import NavbarMenuComponent from './navmenu/NavbarMenuComponent.tsx';
 
 const NavbarComponent = () => {
 	return (
 		<nav className='navbar__container'>
-			<LogoComponent />
+			<NavbarLogoComponent />
 			<NavbarMenuComponent />
 		</nav>
 	);
