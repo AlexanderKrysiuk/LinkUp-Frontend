@@ -1,0 +1,6 @@
+nav {
+	height: 200px;
+	display: flex;
+	position: sticky;
+	justify-content: space-between;
+}
