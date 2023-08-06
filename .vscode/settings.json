@@ -5,8 +5,11 @@
 		"clsx",
 		"iconbutton",
 		"linebreak",
+		"mjsx",
+		"mtsx",
 		"navmenu",
-		"necolas"
+		"necolas",
+		"serviceworker"
 	],
 	"typescript.tsdk": "node_modules\\typescript\\lib",
 	"cSpell.words": [
