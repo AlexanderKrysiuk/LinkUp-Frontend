@@ -6,8 +6,11 @@ type NavbarIconButtonProps = {
 };
 
 const NavbarIconButtonComponent = ({ item }: NavbarIconButtonProps) => {
+	const handler = item.routeAction;
 	return (
-		<li className='navbar__menu-button'>
+		<li
+			className='navbar__menu-button'
+			onClick={handler}>
 			<item.routeIcon />
 			<span>{item.routeName}</span>
 		</li>

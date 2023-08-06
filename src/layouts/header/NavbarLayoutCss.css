@@ -31,10 +31,15 @@
   flex-direction: column;
   margin: 1rem;
   cursor: pointer;
+  fill: white;
   padding: 0.25rem 0.5rem;
   border: 1px solid black;
   border-radius: 0.5rem;
 }
 .navbar__menu-button:hover {
   background-color: pink;
+}
+.navbar__menu-button svg {
+  height: 2rem;
+  width: auto;
 }/*# sourceMappingURL=NavbarLayoutCss.css.map */
