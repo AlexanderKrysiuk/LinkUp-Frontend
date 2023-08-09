@@ -1,5 +1,3 @@
-import FooterLayout from '@layouts/footer/FooterLayout';
-import NavbarLayout from '@layouts/header/NavbarLayout';
 import MainLayout from '@layouts/main/MainLayout';
 
 import React from 'react';
@@ -7,9 +5,8 @@ import React from 'react';
 const HomePage = () => {
 	return (
 		<>
-			<NavbarLayout />
+			<h1>Home</h1>
 			<MainLayout />
-			<FooterLayout />
 		</>
 	);
 };

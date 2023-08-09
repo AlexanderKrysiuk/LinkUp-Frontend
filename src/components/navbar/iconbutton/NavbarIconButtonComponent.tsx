@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { NavMenuItem } from '../Types.ts';
 
 type NavbarIconButtonProps = {
@@ -7,10 +9,12 @@ type NavbarIconButtonProps = {
 
 const NavbarIconButtonComponent = ({ item }: NavbarIconButtonProps) => {
 	return (
-		<li className='navbar__menu-button'>
-			<item.routeIcon />
-			<span>{item.routeName}</span>
-		</li>
+		<Link to={item.routeName === 'Home' ? '/' : `/${item.routeName}`}>
+			<li className='navbar__menu-button'>
+				<item.routeIcon />
+				<span>{item.routeName}</span>
+			</li>
+		</Link>
 	);
 };
 
