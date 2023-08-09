@@ -4,7 +4,9 @@ import './NavbarLayoutCss.css';
 
 const NavbarLayout = () => {
 	return (
-		<header className='navbar'>
+		<header
+			id='navbar'
+			className='navbar'>
 			<NavbarComponent />
 		</header>
 	);
