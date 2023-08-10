@@ -1,17 +1,17 @@
-import ModalComponent from '@components/ModalComponent.tsx';
-
 import ButtonComponent from '@components/button/ButtonComponent.tsx';
 
 import MainLayout from '@layouts/main/MainLayout';
 
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+
+import { ModalContext } from '../App.tsx';
 
 // { children }: { children: React.ReactNode })
 
 const HomePage = () => {
-	const [showModal, setShowModal] = useState(false);
+	const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
 	const toggleModal = () => {
-		setShowModal((prevShowModal) => !prevShowModal);
+		setIsModalOpen(!isModalOpen);
 	};
 	return (
 		<>
@@ -19,7 +19,6 @@ const HomePage = () => {
 			<button onClick={() => toggleModal()}>
 				<ButtonComponent text='toggle modal' />
 			</button>
-			{showModal && <ModalComponent />}
 			<MainLayout />
 		</>
 	);
