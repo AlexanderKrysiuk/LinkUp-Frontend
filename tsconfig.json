@@ -52,6 +52,9 @@
 			"@icons/*": [
 				"./src/assets/icons/*"
 			],
+			"@contexts/*": [
+				"./src/contexts/*"
+			],
 		},
 		/* Bundler mode */
 		"moduleResolution": "node",

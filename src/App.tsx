@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React from 'react';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
@@ -12,29 +12,12 @@ import HomePage from '@pages/HomePage.tsx';
 
 import ProfilePage from '@pages/ProfilePage.tsx';
 
+import { Modal } from '@contexts/ModalContext.tsx';
+
 import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
 
-type ModalContextType = {
-	isModalOpen: boolean;
-	setIsModalOpen: (value: boolean) => void;
-};
-
-export const ModalContext = createContext<ModalContextType>({
-	isModalOpen: false,
-	setIsModalOpen: () => {},
-});
-
-export function ModalProvider({ children }: { children: React.ReactNode }) {
-	const [isModalOpen, setIsModalOpen] = useState(false);
-
-	return (
-		<ModalContext.Provider value={{ isModalOpen, setIsModalOpen }}>
-			{children}
-		</ModalContext.Provider>
-	);
-}
 export function App() {
 	return (
 		<>
@@ -61,8 +44,4 @@ export function App() {
 			<FooterLayout />
 		</>
 	);
-}
-export function Modal() {
-	const { isModalOpen } = useContext(ModalContext);
-	return isModalOpen ? <div id='modal'>BackdropComponent</div> : null;
 }

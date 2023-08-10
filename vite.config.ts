@@ -65,6 +65,10 @@ export default defineConfig({
 				find: '@icons',
 				replacement: resolve(__dirname, './src/assets/icons/'),
 			},
+			{
+				find: '@contexts',
+				replacement: resolve(__dirname, './src/contexts/'),
+			},
 		],
 	},
 });

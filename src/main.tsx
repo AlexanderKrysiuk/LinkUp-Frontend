@@ -2,7 +2,9 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom/client';
 
-import { App, ModalProvider } from './App.tsx';
+import { App } from './App.tsx';
+
+import { ModalProvider } from '@contexts/ModalContext.tsx';
 
 import { BrowserRouter } from 'react-router-dom';
 
