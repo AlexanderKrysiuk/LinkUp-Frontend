@@ -59,7 +59,7 @@ export default defineConfig({
 			},
 			{
 				find: '@scripts',
-				replacement: resolve(__dirname, './scripts/'),
+				replacement: resolve(__dirname, './src/scripts/'),
 			},
 			{
 				find: '@icons',
