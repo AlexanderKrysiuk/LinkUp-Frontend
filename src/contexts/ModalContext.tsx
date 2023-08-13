@@ -1,5 +1,8 @@
 import ModalComponent from '@components/ModalComponent.tsx';
 import { useIsModalOpen } from '@hooks/ModalHooks.tsx';
+
+import { AnimatePresence } from 'framer-motion';
+
 import React, { createContext, useState } from 'react';
 
 export const ModalContext = createContext({
@@ -25,5 +28,9 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
 
 export const Modal = () => {
 	const { isModalOpen } = useIsModalOpen();
-	return isModalOpen ? <ModalComponent /> : null;
+	return (
+		<AnimatePresence>
+			{isModalOpen ? <ModalComponent isVisible={true} /> : null}
+		</AnimatePresence>
+	);
 };
