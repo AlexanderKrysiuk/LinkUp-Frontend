@@ -12,7 +12,7 @@ import HomePage from '@pages/HomePage.tsx';
 
 import ProfilePage from '@pages/ProfilePage.tsx';
 
-import { Modal } from '@contexts/ModalContext.tsx';
+import { Backdrop } from '@contexts/BackdropContext';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ import './App.css';
 export function App() {
 	return (
 		<>
-			<Modal />
+			<Backdrop />
 			<NavbarLayout />
 			<Routes>
 				<Route

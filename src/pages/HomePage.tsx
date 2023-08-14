@@ -4,16 +4,16 @@ import MainLayout from '@layouts/main/MainLayout';
 
 import React from 'react';
 
-import { useModalToggle } from '@hooks/ModalHooks.tsx';
+import { useBackdropToggle } from '@hooks/BackdropHooks';
 
 const HomePage = () => {
-	const { toggleModal } = useModalToggle();
+	const { toggleBackdrop } = useBackdropToggle();
 
 	return (
 		<>
 			<h1>Home</h1>
-			<button onClick={toggleModal}>
-				<ButtonComponent text='toggle modal' />
+			<button onClick={toggleBackdrop}>
+				<ButtonComponent text='toggle Backdrop' />
 			</button>
 			<MainLayout />
 		</>
