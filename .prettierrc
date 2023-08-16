@@ -1,0 +1,29 @@
+{
+	"editorconfig": true,
+	"organizeImportsSkipDestructiveCodeActions": true,
+	"bracketSpacing": true,
+	"arrowParens": "always",
+	"htmlWhitespaceSensitivity": "css",
+	"jsxSingleQuote": true,
+	"singleAttributePerLine": true,
+	"singleQuote": true,
+	"tabWidth": 4,
+	"useTabs": true,
+	"endOfLine": "crlf",
+	"bracketSameLine": true,
+	"trailingComma": "all",
+	"plugins": [
+		"prettier-plugin-organize-imports",
+		"prettier-plugin-tailwindcss"
+	],
+	"pluginSearchDirs": false,
+	"overrides": [
+		{
+			"files": "*.md",
+			"options": {
+				"useTabs": false,
+				"tabWidth": 2
+			}
+		}
+	]
+}

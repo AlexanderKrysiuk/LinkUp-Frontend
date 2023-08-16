@@ -1,3 +1,24 @@
 {
-    "cSpell.ignoreWords": ["clientapp"]
+	"cSpell.ignoreWords": [
+		"callees",
+		"clientapp",
+		"clsx",
+		"iconbutton",
+		"linebreak",
+		"mjsx",
+		"mtsx",
+		"navmenu",
+		"necolas",
+		"serviceworker"
+	],
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"cSpell.words": [
+		"classname",
+		"FOUC"
+	],
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"cSpell.enableFiletypes": [
+		"!json"
+	]
 }
