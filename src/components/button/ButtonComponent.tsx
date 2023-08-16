@@ -10,7 +10,7 @@ interface BadgeProps {
 
 const ButtonComponent = ({ text, source }: BadgeProps): JSX.Element => {
 	return (
-		<div className='nav__link-badge mx-2 my-auto flex h-10 w-fit gap-2 rounded-lg bg-green-700 px-2 text-white shadow-md transition-all duration-500 ease-in-out hover:bg-green-500 hover:shadow-inner'>
+		<div className='nav__link-badge'>
 			{source && <ButtonIconComponent source={source} />}
 			{text && <ButtonTextComponent text={text} />}
 		</div>

@@ -11,7 +11,7 @@ const ButtonIconComponent = ({
 	return (
 		<img
 			src={source}
-			className='navbar__badge-icon my-auto h-5/6 w-auto invert hover:shadow-lg'
+			className='navbar__badge-icon'
 		/>
 	);
 };
