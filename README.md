@@ -22,7 +22,7 @@ npm install
 - [postcss](https://postcss.org/)
 - [tailwindcss](https://tailwindcss.com/) (utility css library)
 - [react-hook-form](https://react-hook-form.com/) (simpler forms)
-- [zod](https://zod.dev/) (type validation for forms)
+- [zod](https://zod.dev/) (type validation)
 
 ## usage
 

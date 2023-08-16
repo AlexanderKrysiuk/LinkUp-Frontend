@@ -1,0 +1,44 @@
+.navbar {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	height: fit-content;
+	&__logo {
+		width: 100px;
+		height: 100px;
+		fill: white;
+	}
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		height: 100%;
+		background-color: darkgreen;
+		color: white;
+		padding: 1rem 2rem;
+		text-align: center;
+	}
+	&__menu {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+		&-button {
+			display: flex;
+			flex-direction: column;
+			margin: 1rem;
+			cursor: pointer;
+			fill: white;
+			padding: 0.25rem 0.5rem;
+			border: 1px solid black;
+			border-radius: 0.5rem;
+			&:hover {
+				background-color: pink;
+			}
+			svg {
+				height: 2rem;
+				width: auto;
+			}
+		}
+	}
+}
