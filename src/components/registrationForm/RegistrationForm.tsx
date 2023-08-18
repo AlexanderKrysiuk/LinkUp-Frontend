@@ -19,9 +19,15 @@ export default function RegistrationForm() {
 			userType: z.string(),
 			firstName: z
 				.string()
+				.regex(/^[A-Z][a-zA-Z]*$/, {
+					message: 'First name should begin with a capital letter',
+				})
 				.min(2, { message: 'Must be at least 2 characters long' }),
 			lastName: z
 				.string()
+				.regex(/^[A-Z][a-zA-Z]*$/, {
+					message: 'Last name should begin with a capital letter',
+				})
 				.min(2, { message: 'Must be at least 2 characters long' }),
 			email: z
 				.string()
@@ -38,6 +44,7 @@ export default function RegistrationForm() {
 				}),
 			confirmedPassword: z.string(),
 		})
+		.required()
 		.refine((data) => data.password === data.confirmedPassword, {
 			message: 'Passwords do not match.',
 			path: ['confirmedPassword'],
