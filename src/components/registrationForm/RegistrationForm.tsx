@@ -1,9 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import errorHandler from '@utils/errorHandler';
+import apiHandler from '@utils/fetchApi';
 import FormData from '@utils/registrationFormData';
 import newUser from '@utils/registrationFormSchema';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './RegistrationForm.css';
+
+var errorMessage = '';
 
 export default function RegistrationForm() {
 	const {
@@ -14,61 +18,42 @@ export default function RegistrationForm() {
 		resolver: zodResolver(newUser),
 	});
 
-	const submitForm = (data: FormData) => {
-		const formData = {
-			fullName: `${data.firstName} ${data.lastName}`,
+	const submitForm = async (data: FormData) => {
+		const newUser = {
+			name: `${data.firstName} ${data.lastName}`,
 			email: data.email,
 			password: data.password,
-			userType: data.userType,
 		};
 
-		console.log(formData);
-		// try {
-		// 	const response = await fetch(
-		// 		'https://localhost:7238/api/users/signup',
-		// 		{
-		// 			method: 'POST',
-		// 			headers: { 'Content-Type': 'application/json' },
-		// 			body: JSON.stringify(data),
-		// 		},
-		// 	)
-		// 		.then((res) => {
-		// 			if (res.ok) {
-		// 				alert("You're registered!");
-		// 				setServerError(null);
-		// 			} else {
-		// 				return res.json();
-		// 			}
-		// 		})
-		// 		.then((data) => {
-		// 			switch (data.code) {
-		// 				case 400:
-		// 					setServerError(
-		// 						`${data.message} [${data.code} Bad request]`,
-		// 					);
-		// 					break;
-		// 				case 401:
-		// 					setServerError(
-		// 						`${data.message} [${data.code} Unauthorized]`,
-		// 					);
-		// 					break;
-		// 				case 409:
-		// 					setServerError(
-		// 						`${data.message} [${data.code} Conflict]`,
-		// 					);
-		// 					break;
-		// 			}
-		// 		});
-		// } catch (err) {
-		// 	//TODO: check error after registration: TypeError
-		// 	//setServerError(`${err}`);
-		// }
+		const apiUrl =
+			data.userType === 'Client'
+				? 'http://localhost:5223/api/Clients'
+				: 'http://localhost:5223/api/Contractors';
+
+		try {
+			const response = await apiHandler.apiPost(apiUrl, newUser);
+			if (response.ok) {
+				//TODO => redirect?
+			} else {
+				//return response.json();
+				//console.log(`Error ${response.status}: ${response.statusText}`);
+				errorMessage = `Error ${response.status}: ${response.statusText}`;
+			}
+		} catch (error) {
+			console.error('Error submitting form:', error);
+			errorMessage = errorHandler.handleFetchError(error);
+		}
 	};
 
 	return (
 		<form
 			className='registration-form'
 			onSubmit={handleSubmit(submitForm)}>
+			{errorMessage && (
+				<span className='registration-form__error-message'>
+					{errorMessage}
+				</span>
+			)}
 			<div className='form-element'>
 				<label className='form-element__label'>Account:</label>
 				<select
