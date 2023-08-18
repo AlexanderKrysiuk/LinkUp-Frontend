@@ -6,7 +6,7 @@ body {
 	margin: 0;
 }
 
-.RegistrationForm {
+.registration-form {
 	display: flex;
 	flex-direction: column;
 	width: 400px;
@@ -18,26 +18,27 @@ body {
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.RegistrationForm div {
+.form-element {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 15px;
 }
 
-.RegistrationForm label {
+.form-element__label {
 	font-weight: 500;
 	color: darkblue;
 	width: 70%;
 }
 
-.RegistrationForm input {
+.form-element__input {
 	padding: 5px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	width: 70%;
 }
 
-.RegistrationForm p {
+.registration-form__error-message,
+.form-element__validation-prompt {
 	float: left;
 	color: grey;
 	font-size: 10px;
@@ -46,18 +47,22 @@ body {
 	margin: 2px 0px 2px 0px;
 }
 
-.RegistrationForm button {
+.registration-form__submit-button {
 	padding: 8px 15px;
-	background-color: lightskyblue;
-	color: whitesmoke;
+	color: darkblue;
 	font-weight: 700;
-	border: none;
+	border: darkblue solid 2px;
 	border-radius: 5px;
 	cursor: pointer;
 	width: 30%;
 	align-self: center;
+	transition:
+		background-color 0.3s,
+		color 0.3s;
 }
 
-.RegistrationForm button:hover {
+.registration-form__submit-button:hover {
 	background-color: #0056b3;
+	color: whitesmoke;
+	border: none;
 }

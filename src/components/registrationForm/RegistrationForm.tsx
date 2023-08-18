@@ -70,30 +70,8 @@ export default function RegistrationForm() {
 							break;
 					}
 				});
-
-			// TODO: handle error handling xD
-
-			// if (!response.ok) {
-			// 	switch (response.status) {
-			// 		case 400:
-			// 			setServerError(`${response.status}: Bad request.`);
-			// 			//console.log(serverError);
-			// 			break;
-			// 		case 401:
-			// 			setServerError(`${response.status}: Unauthorized.`);
-			// 			//console.log(serverError);
-			// 			break;
-			// 		case 409:
-			// 			setServerError(`${response.status}: Data in use.`);
-			// 			//console.log(serverError);
-			// 			break;
-			// 	}
-			// } else {
-			// 	//console.log(response.status);
-			// 	alert('Thank you for registration!');
-			// 	setServerError(null);
-			// }
 		} catch (err) {
+			//TODO: check error after registration: TypeError
 			//setServerError(`${err}`);
 		}
 	};
@@ -113,16 +91,17 @@ export default function RegistrationForm() {
 
 	return (
 		<form
-			className='RegistrationForm'
+			className='registration-form'
 			onSubmit={handleSubmit(submitForm)}>
 			{serverError && (
-				<p className='errorMessage'>
+				<p className='registration-form__error-message'>
 					Registration failed due to error: {serverError}
 				</p>
 			)}
-			<div>
-				<label>Username:</label>
+			<div className='form-element'>
+				<label className='form-element__label'>Username:</label>
 				<input
+					className='form-element__input'
 					type='text'
 					id='username'
 					{...register('login', {
@@ -136,14 +115,15 @@ export default function RegistrationForm() {
 					}}
 				/>
 				{errors.login && (
-					<p className='validationPrompt'>
+					<p className='form-element__validation-prompt'>
 						Username must be at least 3 characters long.
 					</p>
 				)}
 			</div>
-			<div>
-				<label>Email:</label>
+			<div className='form-element'>
+				<label className='form-element__label'>Email:</label>
 				<input
+					className='form-element__input'
 					type='email'
 					id='email'
 					{...register('email', {
@@ -158,14 +138,15 @@ export default function RegistrationForm() {
 					}}
 				/>
 				{errors.email && (
-					<p className='validationPrompt'>
+					<p className='form-element__validation-prompt'>
 						Email must be a valid email address.
 					</p>
 				)}
 			</div>
-			<div>
-				<label>Password:</label>
+			<div className='form-element'>
+				<label className='form-element__label'>Password:</label>
 				<input
+					className='form-element__input'
 					type='password'
 					id='password'
 					{...register('password', {
@@ -179,16 +160,17 @@ export default function RegistrationForm() {
 					}}
 				/>
 				{errors.password && (
-					<p className='validationPrompt'>
+					<p className='form-element__validation-prompt'>
 						Password must be at least 8 characters long and contain
 						at least one uppercase letter, one special character,
 						and one digit.
 					</p>
 				)}
 			</div>
-			<div>
-				<label>Confirm Password:</label>
+			<div className='form-element'>
+				<label className='form-element__label'>Confirm Password:</label>
 				<input
+					className='form-element__input'
 					type='password'
 					id='confirmedPassword'
 					{...register('confirmedPassword', { required: true })}
@@ -204,11 +186,14 @@ export default function RegistrationForm() {
 					}}
 				/>
 				{errors.confirmedPassword && (
-					<p className='validationPrompt'>Passwords must match.</p>
+					<p className='form-element__validation-prompt'>
+						Passwords must match.
+					</p>
 				)}
 			</div>
 
 			<button
+				className='registration-form__submit-button'
 				type='submit'
 				disabled={!isFormValid}>
 				Submit
