@@ -31,7 +31,8 @@
 		"react-dom": "^18.2.0",
 		"react-hook-form": "^7.45.2",
 		"style-loader": "^3.3.3",
-		"swiper": "^10.0.4"
+		"swiper": "^10.0.4",
+		"zod": "^3.22.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.22.9",
