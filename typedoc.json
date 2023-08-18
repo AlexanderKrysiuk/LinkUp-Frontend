@@ -1,0 +1,83 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	"name": "LinkUp Web Application",
+	"basePath": "./",
+	"entryPoints": [
+		"./src"
+	],
+	"out": "./docs",
+	"readme": "./README.md",
+	"watch": true,
+	"preserveWatchOutput": true,
+	"navigation": {
+		"includeCategories": true,
+		"includeGroups": true
+	},
+	"commentStyle": "block",
+	"jsDocCompatibility": true,
+	"requiredToBeDocumented": [
+		"Project",
+		"Module",
+		"Namespace",
+		"Enum",
+		"EnumMember",
+		"Variable",
+		"Function",
+		"Class",
+		"Interface",
+		"Constructor",
+		"Property",
+		"Method",
+		"CallSignature",
+		"IndexSignature",
+		"ConstructorSignature",
+		"Parameter",
+		"TypeLiteral",
+		"TypeParameter",
+		"Accessor",
+		"GetSignature",
+		"SetSignature",
+		"ObjectLiteral",
+		"TypeAlias",
+		"Reference",
+	],
+	"validation": {
+		"notDocumented": true,
+		"invalidLink": true,
+		"notExported": true
+	},
+	"treatValidationWarningsAsErrors": true,
+	"treatWarningsAsErrors": true,
+	"externalSymbolLinkMappings": {
+		"@types/react": {
+			"Component": "https://reactjs.org/docs/react-component.html"
+		},
+		"react": {
+			"Component": "https://reactjs.org/docs/react-component.html"
+		}
+	},
+	"exclude": [
+		"./node_modules/**",
+		"./test/**",
+		"./src/vite-env.d.ts"
+	],
+	"entryPointStrategy": "expand",
+	"searchInComments": true,
+	"emit": "both",
+	"exportFunctions": true,
+	"plugin": [
+		"typedoc-theme-hierarchy",
+		"typedoc-plugin-export-functions",
+		"typedoc-plugin-missing-exports",
+		"typedoc-plugin-coverage",
+		"typedoc-plugin-zod",
+		"typedoc-plugin-extras",
+		"typedoc-plugin-rename-defaults",
+		"typedoc-plugin-mdn-links"
+	],
+	"theme": "hierarchy",
+	"footerTypedocVersion": true,
+	"footerLastModified": true,
+	"coverageLabel": "Docs",
+	"logLevel": "Info"
+}
