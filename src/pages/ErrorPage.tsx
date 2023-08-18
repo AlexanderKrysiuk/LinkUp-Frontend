@@ -1,7 +1,21 @@
 import React from 'react';
 import { useRouteError } from 'react-router-dom';
 
-const ErrorPage = () => {
+/**
+ * Page component for displaying error messages.
+ *
+ * This component is responsible for rendering error messages when unexpected errors occur
+ * during routing. It utilizes the `useRouteError` hook from React Router DOM to retrieve
+ * error information and displays a user-friendly error message.
+ *
+ * @component
+ * @returns {JSX.Element} - The rendered error page with an error message.
+ * @example
+ * ```tsx
+ * <ErrorPage />
+ * ```
+ */
+const ErrorPage = (): JSX.Element => {
 	const error: any = useRouteError();
 	console.error(error);
 	return (
