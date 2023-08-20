@@ -1,9 +1,0 @@
-{
-	"version": 3,
-	"sources": [
-		"../FooterLayoutCss.scss"
-	],
-	"names": [],
-	"mappings": "AAAA,QACC,qBAAA,CACA,UAAA,CACA,YAAA,CACA,iBAAA,CAEA,wBACC,YAAA,CACA,qBAAA,CACA,kBAAA,CAEA,qCACC,kBAAA,CACA,cAAA,CACA,gBAAA,CAGD,sCACC,eAAA,CAEA,wCACC,UAAA,CACA,oBAAA,CACA,aAAA,CAEA,8CACC,yBAAA,CAKH,uCACC,eAAA,CAEA,oDACC,cAAA,CACA,aAAA,CACA,UAAA,CAEA,0DACC,UAAA",
-	"file": "FooterLayoutCss.min.css"
-}
