@@ -1,5 +1,6 @@
 import React from 'react';
 //import FooterComponent from '@components/footer/FooterComponent.tsx';
+import './FooterLayoutCss.min.css';
 
 const FooterLayout = () => {
 	return (
