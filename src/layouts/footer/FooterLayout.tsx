@@ -1,7 +1,14 @@
 import React from 'react';
+//import FooterComponent from '@components/footer/FooterComponent.tsx';
 
 const FooterLayout = () => {
-	return <footer>Footer Layout</footer>;
+	return (
+		<footer
+			id='footer'
+			className='footer'>
+			{/* <FooterComponent /> */}Footer Layout
+		</footer>
+	);
 };
 
 export default FooterLayout;
