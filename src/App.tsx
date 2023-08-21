@@ -18,6 +18,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
 
+import MockPage from '@pages/MockPage.tsx';
+
 export function App() {
 	return (
 		<>
@@ -39,6 +41,10 @@ export function App() {
 				<Route
 					path='*'
 					element={<ErrorPage />}
+				/>
+				<Route
+					path='/Mock'
+					element={<MockPage />}
 				/>
 			</Routes>
 			<FooterLayout />
