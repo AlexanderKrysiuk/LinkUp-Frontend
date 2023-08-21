@@ -1,19 +1,16 @@
-import {
-	PolicyItem,
-	PolicySection as references,
-} from '@components/footer/ReferenceLinks.ts';
+import { PolicySection as references } from '@components/footer/ReferenceLinks.ts';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const PolicyComponent = () => {
 	return (
 		<div className='footer__policy'>
-			{references.map((item: PolicyItem, index: number) => {
+			{references.map((item, index) => {
 				return (
 					<div
 						className='footer__link'
 						key={index}>
-						<Link to={`${item.path}`}>{`${item.title}`}</Link>
+						<NavLink to={`${item.path}`}>{`${item.title}`}</NavLink>
 					</div>
 				);
 			})}
