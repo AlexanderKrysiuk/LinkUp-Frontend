@@ -1,44 +1,96 @@
+$primary-color: #fff;
+$link-color: white;
+$link-hover-color: pink;
+
 .footer {
-	background-color: #333;
-	color: rgb(167, 149, 152);
+	background-color: #006400;
+	font-family: Arial, Helvetica, sans-serif;
+	color: $primary-color;
 	padding: 20px;
 	text-align: center;
 
-	.footer-content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+	.footer__container {
+		width: fit-content;
+		margin: 0 auto;
 
-		.footer-logo {
-			margin-bottom: 10px;
-			font-size: 24px;
-			font-weight: bold;
-		}
+		.footer__reference-section,
+		.footer__policy {
+			display: flex;
+			margin-top: 20px;
 
-		.footer-links {
-			margin-top: 10px;
-
-			a {
-				color: #fff;
+			.footer__link {
+				color: $link-color;
 				text-decoration: none;
-				margin: 0 10px;
+				margin-bottom: 5px;
+				cursor: pointer;
 
 				&:hover {
-					text-decoration: underline;
+					text-decoration: none;
+					color: $link-hover-color;
 				}
 			}
 		}
 
-		.footer-social {
-			margin-top: 20px;
+		.footer__reference-section {
+			justify-content: space-between;
+			text-align: left;
 
-			.social-icon {
-				font-size: 20px;
+			&-category {
+				flex: 1;
+				float: left;
+
+				&-title {
+					font-weight: bold;
+					font-size: 14px;
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		.footer__policy {
+			display: flex;
+			justify-content: center;
+			margin-top: 10px;
+
+			.footer__link {
+				color: $link-color;
+				text-decoration: none;
 				margin: 0 10px;
-				color: #fff;
+				cursor: pointer;
 
 				&:hover {
-					color: #ff9900;
+					text-decoration: none;
+					color: $link-hover-color;
+				}
+			}
+		}
+
+		.footer__copyright-notice {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
+			padding-bottom: 10px;
+
+			&_text {
+				flex: auto;
+				align-items: center;
+				margin: 0 20px;
+				font-style: italic;
+				font-size: 12px;
+
+				&_copyright-message {
+					display: inline-block;
+					width: fit-content;
+				}
+			}
+
+			&-split-line {
+				flex: 1;
+
+				hr {
+					border: none;
+					border-top: 1px solid $primary-color;
 				}
 			}
 		}
