@@ -10,10 +10,10 @@ const PolicyComponent = () => {
 		<div className='footer__policy'>
 			{references.map((item: PolicyItem, index: number) => {
 				return (
-					<div className='footer__link'>
-						<Link
-							to={`${item.path}`}
-							key={index}>{`${item.title}`}</Link>
+					<div
+						className='footer__link'
+						key={index}>
+						<Link to={`${item.path}`}>{`${item.title}`}</Link>
 					</div>
 				);
 			})}
