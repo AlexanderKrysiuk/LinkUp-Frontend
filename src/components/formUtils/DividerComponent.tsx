@@ -1,5 +1,5 @@
-import SplitLine from '@components/divider/SplitLine';
-import SplitText from '@components/divider/SplitText';
+import SplitLine from '@components/formUtils/SplitLine';
+import SplitText from '@components/formUtils/SplitText';
 import React from 'react';
 type textProp = {
 	message: string;
