@@ -23,24 +23,26 @@ export function App() {
 		<>
 			<Backdrop />
 			<NavbarLayout />
-			<Routes>
-				<Route
-					path='/'
-					element={<HomePage />}
-				/>
-				<Route
-					path='/Contact'
-					element={<ContactPage />}
-				/>
-				<Route
-					path='/Profile'
-					element={<ProfilePage />}
-				/>
-				<Route
-					path='*'
-					element={<ErrorPage />}
-				/>
-			</Routes>
+			<main className='main'>
+				<Routes>
+					<Route
+						path='/'
+						element={<HomePage />}
+					/>
+					<Route
+						path='/Contact'
+						element={<ContactPage />}
+					/>
+					<Route
+						path='/Profile'
+						element={<ProfilePage />}
+					/>
+					<Route
+						path='*'
+						element={<ErrorPage />}
+					/>
+				</Routes>
+			</main>
 			<FooterLayout />
 		</>
 	);
