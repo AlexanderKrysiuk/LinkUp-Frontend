@@ -7,8 +7,6 @@
 	],
 	"out": "./docs",
 	"readme": "./README.md",
-	"watch": true,
-	"preserveWatchOutput": true,
 	"navigation": {
 		"includeCategories": true,
 		"includeGroups": true

@@ -12,59 +12,69 @@
 <div class="col-content">
 <div class="tsd-page-title">
 <h2>LinkUp Web Application</h2></div>
-<div class="tsd-panel tsd-typography"><a id="md:linkup-frontend" class="tsd-anchor"></a><h1><a href="#md:linkup-frontend">LinkUp-Frontend</a></h1><p>Frontend client for El Proyecte Grande - LinkUp.</p>
-<a id="md:installation" class="tsd-anchor"></a><h2><a href="#md:installation">installation</a></h2><p>Clone the repository and run from the main folder:</p>
+<div class="tsd-panel tsd-typography"><a id="md:linkup-frontend" class="tsd-anchor"></a><h1><a href="#md:linkup-frontend">LinkUp-Frontend</a></h1><p>Welcome to the LinkUp Frontend repository, the client application for El Proyecte Grande - LinkUp.</p>
+<a id="md:installation" class="tsd-anchor"></a><h2><a href="#md:installation">Installation</a></h2><p>To get started, clone the repository and install the required dependencies by running the following command from the main folder:</p>
 <pre><code class="language-bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span>
 </code><button>Copy</button></pre>
-<a id="md:used-libraries" class="tsd-anchor"></a><h2><a href="#md:used-libraries">used libraries</a></h2><ul>
-<li><a href="https://react-spectrum.adobe.com/react-aria/">react-aria</a> (accessibility hooks)</li>
-<li><a href="https://tanstack.com/query/v3/">react-query</a> (state management and queries)</li>
-<li><a href="https://pqina.nl/filepond/">filepond</a> (file upload library)</li>
-<li><a href="https://www.framer.com/motion/">framer-motion</a> (animations)</li>
-<li><a href="https://react-dnd.github.io/react-dnd/about">react-dnd</a> (with html5 and touch backends)</li>
-<li><a href="https://swiperjs.com/element">swiper</a> (mobile first swiping)</li>
-<li>testing (<a href="https://github.com/jsdom/jsdom#readme">jsdom</a>, <a href="https://github.com/testing-library/jest-dom#readme">jest-dom</a>, <a href="https://github.com/testing-library/react-testing-library#readme">react testing library</a>, <a href="https://vitest.dev/">vitest</a>)</li>
-<li><a href="https://postcss.org/">postcss</a></li>
-<li><a href="https://tailwindcss.com/">tailwindcss</a> (utility css library)</li>
-<li><a href="https://react-hook-form.com/">react-hook-form</a> (simpler forms)</li>
-<li><a href="https://zod.dev/">zod</a> (type validation)</li>
+<a id="md:used-libraries" class="tsd-anchor"></a><h2><a href="#md:used-libraries">Used Libraries</a></h2><p>The LinkUp Frontend utilizes various libraries to enhance its functionality and user experience:</p>
+<ul>
+<li><a href="https://react-spectrum.adobe.com/react-aria/">react-aria</a>: Accessibility hooks for enhanced user accessibility.</li>
+<li><a href="https://tanstack.com/query/v3/">react-query</a>: State management and queries for efficient data handling.</li>
+<li><a href="https://pqina.nl/filepond/">filepond</a>: A file upload library for seamless file uploads.</li>
+<li><a href="https://www.framer.com/motion/">framer-motion</a>: An animation library for creating engaging animations.</li>
+<li><a href="https://react-dnd.github.io/react-dnd/about">react-dnd</a>: HTML5 and touch backend support for drag-and-drop interactions.</li>
+<li><a href="https://swiperjs.com/element">swiper</a>: Mobile-first swiping library for intuitive touch interactions.</li>
+<li>Testing:<ul>
+<li><a href="https://github.com/jsdom/jsdom#readme">jsdom</a></li>
+<li><a href="https://github.com/testing-library/jest-dom#readme">jest-dom</a></li>
+<li><a href="https://github.com/testing-library/react-testing-library#readme">react testing library</a></li>
+<li><a href="https://vitest.dev/">vitest</a></li>
 </ul>
-<a id="md:usage" class="tsd-anchor"></a><h2><a href="#md:usage">usage</a></h2><a id="md:templates" class="tsd-anchor"></a><h3><a href="#md:templates">templates</a></h3><p>When creating new files you can use predefined templates through IntelliSense. While using the template, you can use tab to jump over to predefined locations that need your attention.</p>
-<table>
-<thead>
-<tr>
-<th>Type of file</th>
-<th>prefix</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Functional component</td>
-<td>fcomp</td>
-</tr>
-<tr>
-<td>Class component</td>
-<td>ccomp</td>
-</tr>
-<tr>
-<td>Testing</td>
-<td>rtest</td>
-</tr>
-</tbody></table>
-<p>Functional and class components will automatically use the name of the file. Remember to start it with an uppercase letter!</p>
-<p>Test files will need input for the import name.</p>
-<a id="md:imports" class="tsd-anchor"></a><h3><a href="#md:imports">imports</a></h3><p>To import a file you can use a shortened syntax:</p>
+</li>
+<li><a href="https://postcss.org/">postcss</a>: A CSS tool that transforms styles with JavaScript plugins.</li>
+<li><a href="https://react-hook-form.com/">react-hook-form</a>: A library for simplifying form handling in React applications.</li>
+<li><a href="https://zod.dev/">zod</a>: A type validation library for safer and more reliable code.</li>
+<li><a href="https://github.com/underfin/vite-plugin-svgr">vite-plugin-svgr</a>: A Vite plugin that allows importing SVG files as React components.</li>
+</ul>
+<a id="md:usage" class="tsd-anchor"></a><h2><a href="#md:usage">Usage</a></h2><a id="md:templates" class="tsd-anchor"></a><h3><a href="#md:templates">Templates</a></h3><p>When creating new files, you can use predefined templates with IntelliSense. While using the template, you can use the <code>Tab</code> key to navigate to predefined locations that need your attention. Here are the available templates and their prefixes:</p>
+<ul>
+<li>Functional component: <code>fcomp</code></li>
+<li>Class component: <code>ccomp</code></li>
+<li>Testing: <code>rtest</code></li>
+</ul>
+<p>Functional and class components will automatically use the name of the file, so ensure that the name starts with an uppercase letter. Test files will require input for the import name.</p>
+<a id="md:imports" class="tsd-anchor"></a><h3><a href="#md:imports">Imports</a></h3><p>To import files, you can use the following shortened syntax:</p>
 <pre><code class="language-javascript"><span class="hl-3">import</span><span class="hl-1"> </span><span class="hl-4">FooComponent</span><span class="hl-1"> </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&#39;@components/Foo.tsx&#39;</span><span class="hl-1">;</span>
 </code><button>Copy</button></pre>
-<p>Each folder in the <code>./src</code> directory has this shortened syntax (<code>@assets</code>, <code>@hooks</code>, <code>@layouts</code>, <code>@middleware</code>, <code>@pages</code>, <code>@utils</code>) with the addition of the <code>scripts</code> folder (<code>@scripts</code>)</p>
-<a id="md:scripts" class="tsd-anchor"></a><h3><a href="#md:scripts">scripts</a></h3><p>Start server</p>
+<p>This shortened syntax is available for each folder in the <code>./src</code> directory, including <code>@assets</code>, <code>@hooks</code>, <code>@layouts</code>, <code>@middleware</code>, <code>@pages</code>, <code>@utils</code>, and the addition of the <code>scripts</code> folder as <code>@scripts</code>.</p>
+<a id="md:available-scripts" class="tsd-anchor"></a><h3><a href="#md:available-scripts">Available Scripts</a></h3><p>You can use the following scripts to manage and run the LinkUp Frontend application:</p>
+<a id="md:start-development-server" class="tsd-anchor"></a><h4><a href="#md:start-development-server">Start Development Server</a></h4><p>Start the development server to run your application locally. This allows you to make changes and see them in real-time as you develop.</p>
 <pre><code class="language-bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">dev</span>
 </code><button>Copy</button></pre>
-<p>Build project for deployment</p>
-<pre><code class="language-bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">build</span>
+<a id="md:build-for-deployment" class="tsd-anchor"></a><h4><a href="#md:build-for-deployment">Build for Deployment</a></h4><p>Build the project for deployment to create optimized and production-ready assets. This is essential before deploying your application to a server or hosting platform.</p>
+<pre><code class="language-bash"><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">build</span>
 </code><button>Copy</button></pre>
-<p>Run tests</p>
-<pre><code class="language-bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">test</span>
+<a id="md:run-tests" class="tsd-anchor"></a><h4><a href="#md:run-tests">Run Tests</a></h4><p>Run tests to ensure the stability and correctness of your code. This is crucial for maintaining the quality of your application.</p>
+<pre><code class="language-bash"><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">test</span>
 </code><button>Copy</button></pre>
+<a id="md:usage-of-vite-plugin-svgr" class="tsd-anchor"></a><h3><a href="#md:usage-of-vite-plugin-svgr">Usage of vite-plugin-svgr</a></h3><p>The LinkUp Frontend uses the <code>vite-plugin-svgr</code> plugin to seamlessly import SVG files as React components. This allows you to treat SVG files as native React components, making it easy to customize and interact with them in your application.</p>
+<p>you can import SVG files as React components in your code:</p>
+<pre><code class="language-javascript"><span class="hl-5">/// </span><span class="hl-6">&lt;</span><span class="hl-7">reference</span><span class="hl-5"> </span><span class="hl-8">types</span><span class="hl-1">=</span><span class="hl-2">&quot;vite-plugin-svgr/client&quot;</span><span class="hl-5"> </span><span class="hl-6">/&gt;</span><br/><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">ReactComponent</span><span class="hl-1"> </span><span class="hl-3">as</span><span class="hl-1"> </span><span class="hl-4">Logo</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&#39;@assets/logo.svg&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-9">const</span><span class="hl-1"> </span><span class="hl-0">MyComponent</span><span class="hl-1"> = () </span><span class="hl-9">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-3">return</span><span class="hl-1"> </span><span class="hl-6">&lt;</span><span class="hl-10">Logo</span><span class="hl-1"> </span><span class="hl-6">/&gt;</span><span class="hl-1">;</span><br/><span class="hl-1">};</span>
+</code><button>Copy</button></pre>
+<p>The ReactComponent import allows you to use the SVG as a React component.</p>
+<a id="md:generating-documentation" class="tsd-anchor"></a><h3><a href="#md:generating-documentation">Generating Documentation</a></h3><p>We have set up the documentation generation process using Typedoc. This allows us to create clear and comprehensive documentation for our codebase. Follow the steps below to generate the documentation:</p>
+<ol>
+<li><p>To generate the documentation, use the following CLI command:</p>
+<pre><code class="language-bash"><span class="hl-0">npx</span><span class="hl-1"> </span><span class="hl-2">typedoc</span>
+</code><button>Copy</button></pre>
+<p>This command will analyze your codebase and generate documentation based on the provided type annotations, comments, and module structures.</p>
+</li>
+<li><p>After the process is complete, you can find the generated documentation in the <code>docs</code> folder. Open the <code>index.html</code> file in a web browser to view the documentation.</p>
+</li>
+</ol>
+<p>The generated documentation will provide insights into the various modules, functions, types, and interfaces used in your codebase. This will greatly assist developers and contributors in understanding the code and its usage.</p>
+<a id="md:final-notes" class="tsd-anchor"></a><h2><a href="#md:final-notes">Final Notes</a></h2><p>Feel free to update the documentation as your codebase evolves to ensure that it remains accurate and helpful for anyone working on the LinkUp Frontend.</p>
+<p>Feel free to adjust and expand the content as needed to provide the most relevant information for users and contributors of your LinkUp Frontend repository.</p>
 </div></div>
 <div class="col-sidebar">
 <div class="page-menu">
@@ -90,14 +100,22 @@
 <li><a href="#md:linkup-frontend"><span>Link<wbr/>Up-<wbr/>Frontend</span></a></li>
 <li>
 <ul>
-<li><a href="#md:installation"><span>installation</span></a></li>
-<li><a href="#md:used-libraries"><span>used libraries</span></a></li>
-<li><a href="#md:usage"><span>usage</span></a></li>
+<li><a href="#md:installation"><span>Installation</span></a></li>
+<li><a href="#md:used-libraries"><span>Used <wbr/>Libraries</span></a></li>
+<li><a href="#md:usage"><span>Usage</span></a></li>
 <li>
 <ul>
-<li><a href="#md:templates"><span>templates</span></a></li>
-<li><a href="#md:imports"><span>imports</span></a></li>
-<li><a href="#md:scripts"><span>scripts</span></a></li></ul></li></ul></li></ul></li></ul></div></details></div>
+<li><a href="#md:templates"><span>Templates</span></a></li>
+<li><a href="#md:imports"><span>Imports</span></a></li>
+<li><a href="#md:available-scripts"><span>Available <wbr/>Scripts</span></a></li>
+<li>
+<ul>
+<li><a href="#md:start-development-server"><span>Start <wbr/>Development <wbr/>Server</span></a></li>
+<li><a href="#md:build-for-deployment"><span>Build for <wbr/>Deployment</span></a></li>
+<li><a href="#md:run-tests"><span>Run <wbr/>Tests</span></a></li></ul></li>
+<li><a href="#md:usage-of-vite-plugin-svgr"><span>Usage of vite-<wbr/>plugin-<wbr/>svgr</span></a></li>
+<li><a href="#md:generating-documentation"><span>Generating <wbr/>Documentation</span></a></li></ul></li>
+<li><a href="#md:final-notes"><span>Final <wbr/>Notes</span></a></li></ul></li></ul></li></ul></div></details></div>
 <div class="site-menu">
 <div class="tree">
 <div class="tree-config"><button class="tree-config__button tree-config__button--expand js-tree-expand" title="Expand All"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 490.72 490.72" fill="currentColor"><path d="M480.027,288.027H10.693c-5.867,0-10.667,4.8-10.667,10.667c0,5.867,4.8,10.667,10.667,10.667h213.333v144.96l-45.76-45.76c-4.267-4.053-10.987-3.947-15.04,0.213c-3.947,4.16-3.947,10.667,0,14.827l64,64c4.16,4.16,10.88,4.16,15.04,0l64-64c4.053-4.267,3.947-10.987-0.213-15.04c-4.16-3.947-10.667-3.947-14.827,0l-45.867,45.76V309.36h234.667c5.867,0,10.667-4.8,10.667-10.667C490.693,292.827,485.893,288.027,480.027,288.027z"></path><path d="M10.693,224.027h469.333c5.867,0,10.667-4.8,10.667-10.667c0-5.867-4.8-10.667-10.667-10.667H245.36V36.4l45.76,45.76c4.267,4.053,10.987,3.947,15.04-0.213c3.947-4.16,3.947-10.667,0-14.827l-64-64c-4.16-4.16-10.88-4.16-15.04,0l-64,64c-4.053,4.267-3.947,10.987,0.213,15.04c4.16,3.947,10.667,3.947,14.827,0l45.867-45.76v166.293H10.693c-5.867,0-10.667,4.8-10.667,10.667C0.027,219.227,4.827,224.027,10.693,224.027z"></path></svg></button><button class="tree-config__button tree-config__button--collapse js-tree-collapse" title="Collapse All"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"></path></svg></button><button class="tree-config__button tree-config__button--target js-tree-target" title="Scroll to current file"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M13 4.069V2h-2v2.069A8.008 8.008 0 0 0 4.069 11H2v2h2.069A8.007 8.007 0 0 0 11 19.931V22h2v-2.069A8.007 8.007 0 0 0 19.931 13H22v-2h-2.069A8.008 8.008 0 0 0 13 4.069zM12 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"></path></svg></button></div>
@@ -139,6 +157,71 @@
 <li><a class="category__link js-category-link category__link--ts" href="modules/src_components_button_ButtonComponent.html" data-id="/modules/src_components_button_ButtonComponent.html">ButtonComponent.tsx</a>
 <ul>
 <li><a class="category__link js-category-link" href="functions/src_components_button_ButtonComponent.ButtonComponent.html" data-id="/functions/src_components_button_ButtonComponent.ButtonComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>ButtonComponent</a></li></ul></li></ul></li>
+<li><span class="js-category-title category__title" data-id="root-src-components-footer">
+<div class="category__folder" data-id="root-src-components-footer"></div>footer</span>
+<ul class="js-category-list category" data-id="root-src-components-footer">
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_Copyright.html" data-id="/modules/src_components_footer_Copyright.html">Copyright.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_footer_Copyright.Copyright.html" data-id="/functions/src_components_footer_Copyright.Copyright.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>Copyright</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_CopyrightComponent.html" data-id="/modules/src_components_footer_CopyrightComponent.html">CopyrightComponent.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_footer_CopyrightComponent.CopyrightComponent.html" data-id="/functions/src_components_footer_CopyrightComponent.CopyrightComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>CopyrightComponent</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_FooterComponent.html" data-id="/modules/src_components_footer_FooterComponent.html">FooterComponent.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_footer_FooterComponent.FooterComponent.html" data-id="/functions/src_components_footer_FooterComponent.FooterComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>FooterComponent</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_PolicyComponent.html" data-id="/modules/src_components_footer_PolicyComponent.html">PolicyComponent.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_footer_PolicyComponent.PolicyComponent.html" data-id="/functions/src_components_footer_PolicyComponent.PolicyComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>PolicyComponent</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_RefGroup.html" data-id="/modules/src_components_footer_RefGroup.html">RefGroup.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_footer_RefGroup.RefGroup.html" data-id="/functions/src_components_footer_RefGroup.RefGroup.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>RefGroup</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_RefGroupTitle.html" data-id="/modules/src_components_footer_RefGroupTitle.html">RefGroupTitle.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_footer_RefGroupTitle.RefGroupTitle.html" data-id="/functions/src_components_footer_RefGroupTitle.RefGroupTitle.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>RefGroupTitle</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_RefSection.html" data-id="/modules/src_components_footer_RefSection.html">RefSection.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_footer_RefSection.RefSection.html" data-id="/functions/src_components_footer_RefSection.RefSection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>RefSection</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_ReferenceLinks.html" data-id="/modules/src_components_footer_ReferenceLinks.html">ReferenceLinks.ts</a>
+<ul>
+<li><a class="category__link js-category-link" href="types/src_components_footer_ReferenceLinks.PolicyItem.html" data-id="/types/src_components_footer_ReferenceLinks.PolicyItem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg>PolicyItem</a></li>
+<li><a class="category__link js-category-link" href="types/src_components_footer_ReferenceLinks.Reference.html" data-id="/types/src_components_footer_ReferenceLinks.Reference.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg>Reference</a></li>
+<li><a class="category__link js-category-link" href="types/src_components_footer_ReferenceLinks.ReferenceItem.html" data-id="/types/src_components_footer_ReferenceLinks.ReferenceItem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg>ReferenceItem</a></li>
+<li><a class="category__link js-category-link" href="variables/src_components_footer_ReferenceLinks.PolicySection.html" data-id="/variables/src_components_footer_ReferenceLinks.PolicySection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg>PolicySection</a></li>
+<li><a class="category__link js-category-link" href="variables/src_components_footer_ReferenceLinks.ReferenceLinks.html" data-id="/variables/src_components_footer_ReferenceLinks.ReferenceLinks.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg>ReferenceLinks</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_footer_SplitLine.html" data-id="/modules/src_components_footer_SplitLine.html">SplitLine.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_footer_SplitLine.SplitLine.html" data-id="/functions/src_components_footer_SplitLine.SplitLine.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>SplitLine</a></li></ul></li></ul></li>
+<li><span class="js-category-title category__title" data-id="root-src-components-formUtils">
+<div class="category__folder" data-id="root-src-components-formUtils"></div>formUtils</span>
+<ul class="js-category-list category" data-id="root-src-components-formUtils">
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_formUtils_ButtonComponent.html" data-id="/modules/src_components_formUtils_ButtonComponent.html">ButtonComponent.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="modules/src_components_formUtils_ButtonComponent._internal_.html" data-id="/modules/src_components_formUtils_ButtonComponent._internal_.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>&lt;internal&gt;</a></li>
+<li><a class="category__link js-category-link" href="functions/src_components_formUtils_ButtonComponent.ButtonComponent.html" data-id="/functions/src_components_formUtils_ButtonComponent.ButtonComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>ButtonComponent</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_formUtils_DividerComponent.html" data-id="/modules/src_components_formUtils_DividerComponent.html">DividerComponent.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="modules/src_components_formUtils_DividerComponent._internal_.html" data-id="/modules/src_components_formUtils_DividerComponent._internal_.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>&lt;internal&gt;</a></li>
+<li><a class="category__link js-category-link" href="functions/src_components_formUtils_DividerComponent.DividerComponent.html" data-id="/functions/src_components_formUtils_DividerComponent.DividerComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>DividerComponent</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_formUtils_FormRedirect.html" data-id="/modules/src_components_formUtils_FormRedirect.html">FormRedirect.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="modules/src_components_formUtils_FormRedirect._internal_.html" data-id="/modules/src_components_formUtils_FormRedirect._internal_.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>&lt;internal&gt;</a></li>
+<li><a class="category__link js-category-link" href="functions/src_components_formUtils_FormRedirect.FormRedirect.html" data-id="/functions/src_components_formUtils_FormRedirect.FormRedirect.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>FormRedirect</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_formUtils_SplitLine.html" data-id="/modules/src_components_formUtils_SplitLine.html">SplitLine.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_formUtils_SplitLine.SplitLine.html" data-id="/functions/src_components_formUtils_SplitLine.SplitLine.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>SplitLine</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_formUtils_SplitText.html" data-id="/modules/src_components_formUtils_SplitText.html">SplitText.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="modules/src_components_formUtils_SplitText._internal_.html" data-id="/modules/src_components_formUtils_SplitText._internal_.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>&lt;internal&gt;</a></li>
+<li><a class="category__link js-category-link" href="functions/src_components_formUtils_SplitText.SplitText.html" data-id="/functions/src_components_formUtils_SplitText.SplitText.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>SplitText</a></li></ul></li></ul></li>
+<li><span class="js-category-title category__title" data-id="root-src-components-loginForm">
+<div class="category__folder" data-id="root-src-components-loginForm"></div>loginForm</span>
+<ul class="js-category-list category" data-id="root-src-components-loginForm">
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_loginForm_LoginComponent.html" data-id="/modules/src_components_loginForm_LoginComponent.html">LoginComponent.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_loginForm_LoginComponent.LoginComponent.html" data-id="/functions/src_components_loginForm_LoginComponent.LoginComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>LoginComponent</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_loginForm_LoginForm.html" data-id="/modules/src_components_loginForm_LoginForm.html">LoginForm.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_loginForm_LoginForm.LoginForm.html" data-id="/functions/src_components_loginForm_LoginForm.LoginForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>LoginForm</a></li></ul></li></ul></li>
 <li><span class="js-category-title category__title" data-id="root-src-components-navbar">
 <div class="category__folder" data-id="root-src-components-navbar"></div>navbar</span>
 <ul class="js-category-list category" data-id="root-src-components-navbar">
@@ -165,10 +248,19 @@
 <li><a class="category__link js-category-link" href="variables/src_components_navbar_NavMenuItems.routes.html" data-id="/variables/src_components_navbar_NavMenuItems.routes.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg>routes</a></li></ul></li>
 <li><a class="category__link js-category-link category__link--ts" href="modules/src_components_navbar_NavbarComponent.html" data-id="/modules/src_components_navbar_NavbarComponent.html">NavbarComponent.tsx</a>
 <ul>
-<li><a class="category__link js-category-link" href="functions/src_components_navbar_NavbarComponent.NavbarLayout.html" data-id="/functions/src_components_navbar_NavbarComponent.NavbarLayout.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>NavbarLayout</a></li></ul></li>
+<li><a class="category__link js-category-link" href="functions/src_components_navbar_NavbarComponent.NavbarComponent.html" data-id="/functions/src_components_navbar_NavbarComponent.NavbarComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>NavbarComponent</a></li></ul></li>
 <li><a class="category__link js-category-link category__link--ts" href="modules/src_components_navbar_Types.html" data-id="/modules/src_components_navbar_Types.html">Types.ts</a>
 <ul>
-<li><a class="category__link js-category-link" href="types/src_components_navbar_Types.NavMenuItem.html" data-id="/types/src_components_navbar_Types.NavMenuItem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg>NavMenuItem</a></li></ul></li></ul></li>
+<li><a class="category__link js-category-link" href="types/src_components_navbar_Types.NavMenuItem.html" data-id="/types/src_components_navbar_Types.NavMenuItem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg>NavMenuItem</a></li></ul></li></ul></li>
+<li><span class="js-category-title category__title" data-id="root-src-components-registrationForm">
+<div class="category__folder" data-id="root-src-components-registrationForm"></div>registrationForm</span>
+<ul class="js-category-list category" data-id="root-src-components-registrationForm">
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_registrationForm_RegistrationComponent.html" data-id="/modules/src_components_registrationForm_RegistrationComponent.html">RegistrationComponent.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_registrationForm_RegistrationComponent.RegistrationComponent.html" data-id="/functions/src_components_registrationForm_RegistrationComponent.RegistrationComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>RegistrationComponent</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_components_registrationForm_RegistrationForm.html" data-id="/modules/src_components_registrationForm_RegistrationForm.html">RegistrationForm.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_components_registrationForm_RegistrationForm.RegistrationForm.html" data-id="/functions/src_components_registrationForm_RegistrationForm.RegistrationForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>RegistrationForm</a></li></ul></li></ul></li>
 <li><a class="category__link js-category-link category__link--ts" href="modules/src_components_BackdropComponent.html" data-id="/modules/src_components_BackdropComponent.html">BackdropComponent.tsx</a>
 <ul>
 <li><a class="category__link js-category-link" href="modules/src_components_BackdropComponent._internal_.html" data-id="/modules/src_components_BackdropComponent._internal_.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>&lt;internal&gt;</a></li>
@@ -218,9 +310,29 @@
 <li><a class="category__link js-category-link category__link--ts" href="modules/src_pages_HomePage.html" data-id="/modules/src_pages_HomePage.html">HomePage.tsx</a>
 <ul>
 <li><a class="category__link js-category-link" href="functions/src_pages_HomePage.HomePage.html" data-id="/functions/src_pages_HomePage.HomePage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>HomePage</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_pages_MockPage.html" data-id="/modules/src_pages_MockPage.html">MockPage.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="functions/src_pages_MockPage.MockPageComponent.html" data-id="/functions/src_pages_MockPage.MockPageComponent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>MockPageComponent</a></li></ul></li>
 <li><a class="category__link js-category-link category__link--ts" href="modules/src_pages_ProfilePage.html" data-id="/modules/src_pages_ProfilePage.html">ProfilePage.tsx</a>
 <ul>
 <li><a class="category__link js-category-link" href="functions/src_pages_ProfilePage.ProfilePage.html" data-id="/functions/src_pages_ProfilePage.ProfilePage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>ProfilePage</a></li></ul></li></ul></li>
+<li><span class="js-category-title category__title" data-id="root-src-utils">
+<div class="category__folder" data-id="root-src-utils"></div>utils</span>
+<ul class="js-category-list category" data-id="root-src-utils">
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_utils_errorHandler.html" data-id="/modules/src_utils_errorHandler.html">errorHandler.ts</a>
+<ul>
+<li><a class="category__link js-category-link" href="variables/src_utils_errorHandler.errorHandler.html" data-id="/variables/src_utils_errorHandler.errorHandler.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg>errorHandler</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_utils_fetchApi.html" data-id="/modules/src_utils_fetchApi.html">fetchApi.ts</a>
+<ul>
+<li><a class="category__link js-category-link" href="variables/src_utils_fetchApi.apiHandler.html" data-id="/variables/src_utils_fetchApi.apiHandler.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg>apiHandler</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_utils_formData.html" data-id="/modules/src_utils_formData.html">formData.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="types/src_utils_formData.LoginData.html" data-id="/types/src_utils_formData.LoginData.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg>LoginData</a></li>
+<li><a class="category__link js-category-link" href="types/src_utils_formData.RegistrationData.html" data-id="/types/src_utils_formData.RegistrationData.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg>RegistrationData</a></li></ul></li>
+<li><a class="category__link js-category-link category__link--ts" href="modules/src_utils_formSchemas.html" data-id="/modules/src_utils_formSchemas.html">formSchemas.tsx</a>
+<ul>
+<li><a class="category__link js-category-link" href="variables/src_utils_formSchemas.newUser.html" data-id="/variables/src_utils_formSchemas.newUser.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg>newUser</a></li>
+<li><a class="category__link js-category-link" href="variables/src_utils_formSchemas.user.html" data-id="/variables/src_utils_formSchemas.user.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg>user</a></li></ul></li></ul></li>
 <li><a class="category__link js-category-link category__link--ts" href="modules/App.html" data-id="/modules/App.html">App.tsx</a>
 <ul>
 <li><a class="category__link js-category-link" href="functions/App.App.html" data-id="/functions/App.App.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>App</a></li></ul></li>
@@ -231,7 +343,7 @@
 <p style="line-height: 28px;">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a> v0.24.8<br>
             <span id="generation-date"></span>
             <script>
-                window.GENERATION_DATE = 1692400808954;
+                window.GENERATION_DATE = 1692820889509;
 
                 (() => {
                     
