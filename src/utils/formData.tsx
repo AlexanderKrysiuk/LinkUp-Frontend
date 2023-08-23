@@ -1,4 +1,4 @@
-type FormData = {
+export type RegistrationData = {
 	userType: string;
 	firstName: string;
 	lastName: string;
@@ -7,4 +7,7 @@ type FormData = {
 	confirmedPassword: string;
 };
 
-export default FormData;
+export type LoginData = {
+	email: string;
+	password: string;
+};
