@@ -1,14 +1,28 @@
+import NavbarComponent from '@components/navbar/NavbarComponent.tsx';
 import React from 'react';
-import NavbarLogoComponent from './logo/NavbarLogoComponent.tsx';
-import NavbarMenuComponent from './navmenu/NavbarMenuComponent.tsx';
+import './NavbarLayoutCss.css';
 
-const NavbarComponent = () => {
+/**
+ * Layout component for the navigation bar.
+ *
+ * This component represents the navigation bar layout. It includes the `NavbarComponent`
+ * component responsible for rendering the logo and navigation menu.
+ *
+ * @component
+ * @returns {JSX.Element} - The rendered navigation bar layout.
+ * @example
+ * ```tsx
+ * <NavbarLayout />
+ * ```
+ */
+const NavbarLayout = (): JSX.Element => {
 	return (
-		<nav className='navbar__container'>
-			<NavbarLogoComponent />
-			<NavbarMenuComponent />
-		</nav>
+		<header
+			id='navbar'
+			className='navbar'>
+			<NavbarComponent />
+		</header>
 	);
 };
 
-export default NavbarComponent;
+export default NavbarLayout;
