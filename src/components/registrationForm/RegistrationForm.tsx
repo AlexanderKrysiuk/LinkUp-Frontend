@@ -155,30 +155,6 @@ export default function RegistrationForm() {
 					Submit
 				</button>
 			</form>
-			<div className='divider'>
-				<div className='divider__divider-line'>
-					<hr></hr>
-				</div>
-				<div className='divider__divider-text'>OR</div>
-				<div className='divider__divider-line'>
-					<hr></hr>
-				</div>
-			</div>
-			<div className='outer-registration'>
-				<button className='outer-registration__button'>
-					Sign up with Google
-				</button>
-			</div>
-			<div className='login'>
-				<p className='login__reference-text'>
-					Already have an account?
-					<a
-						href=''
-						className='login__reference-link'>
-						Log in
-					</a>
-				</p>
-			</div>
 		</>
 	);
 }
