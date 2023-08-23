@@ -9,6 +9,16 @@
  */
 
 import { Backdrop } from '@contexts/BackdropContext';
+
+import useScript from '@hooks/useScript.tsx';
+
+import React from 'react';
+
+import '@layouts/FormLayout.css';
+
+//import LoginComponent from '@components/loginForm/LoginComponent';
+import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
+
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
 import ContactPage from '@pages/ContactPage.tsx';
@@ -34,6 +44,9 @@ import './App.css';
 export function App() {
 	return (
 		<>
+			{/* <RegistrationComponent /> */}
+			{/* <LoginComponent /> */}
+        
 			{/* Display the backdrop */}
 			<Backdrop />
 
