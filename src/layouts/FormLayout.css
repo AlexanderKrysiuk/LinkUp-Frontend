@@ -4,18 +4,21 @@ body {
 	align-items: center;
 	height: 100vh;
 	margin: 0;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.form-component {
+	border: 1px solid darkblue;
+	border-radius: 5px;
+	padding: 15px 30px;
 }
 
 .form {
 	display: flex;
 	flex-direction: column;
 	width: 400px;
-	margin: 20px auto;
-	padding: 30px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+	padding: 10px;
 	text-align: left;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .form-element {
@@ -47,22 +50,32 @@ body {
 	margin: 2px 0px 2px 0px;
 }
 
-.form__submit-button {
+.form__submit-button,
+.google-button {
 	padding: 8px 15px;
 	color: darkblue;
 	font-weight: 700;
 	border: darkblue solid 2px;
 	border-radius: 5px;
 	cursor: pointer;
-	width: 30%;
+	width: fit-content;
 	align-self: center;
 	transition:
 		background-color 0.3s,
 		color 0.3s;
 }
 
-.registration-form__submit-button:hover {
+.form__submit-button:hover,
+.google-button:hover {
 	background-color: #0056b3;
 	color: whitesmoke;
 	border: none;
+}
+
+.divider {
+	margin: 20px auto;
+}
+
+.form-redirect {
+	margin: 10px auto;
 }
