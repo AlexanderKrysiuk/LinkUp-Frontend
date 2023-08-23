@@ -5,7 +5,7 @@ import React from 'react';
 //import FormRedirect from '@components/formUtils/FormRedirect';
 import '@layouts/FormLayout.css';
 
-export default function RegistrationnComponent() {
+export default function RegistrationComponent() {
 	return (
 		<div className='form-component'>
 			<RegistrationForm />
