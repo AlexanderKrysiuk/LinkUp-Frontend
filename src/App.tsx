@@ -10,14 +10,12 @@
 
 import { Backdrop } from '@contexts/BackdropContext';
 
-import useScript from '@hooks/useScript.tsx';
-
 import React from 'react';
 
 import '@layouts/FormLayout.css';
 
 //import LoginComponent from '@components/loginForm/LoginComponent';
-import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
+//import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
@@ -25,9 +23,10 @@ import ContactPage from '@pages/ContactPage.tsx';
 import ErrorPage from '@pages/ErrorPage.tsx';
 import HomePage from '@pages/HomePage.tsx';
 import ProfilePage from '@pages/ProfilePage.tsx';
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+
+import MockPage from '@pages/MockPage.tsx';
 
 /**
  * The root component of the application.
@@ -46,7 +45,7 @@ export function App() {
 		<>
 			{/* <RegistrationComponent /> */}
 			{/* <LoginComponent /> */}
-        
+
 			{/* Display the backdrop */}
 			<Backdrop />
 
@@ -77,6 +76,10 @@ export function App() {
 				<Route
 					path='*'
 					element={<ErrorPage />}
+				/>
+				<Route
+					path='/Mock'
+					element={<MockPage />}
 				/>
 			</Routes>
 

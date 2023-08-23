@@ -1,4 +1,6 @@
+import FooterComponent from '@components/footer/FooterComponent.tsx';
 import React from 'react';
+import './FooterLayoutCss.css';
 
 /**
  * Component for rendering the footer layout.
@@ -13,7 +15,11 @@ import React from 'react';
  * ```
  */
 const FooterLayout = (): JSX.Element => {
-	return <footer>FooterLayout</footer>;
+	return <footer
+	id='footer'
+	className='footer'>
+	<FooterComponent />
+</footer>;
 };
 
 export default FooterLayout;
