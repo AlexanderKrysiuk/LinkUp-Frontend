@@ -82,21 +82,6 @@ export default function LoginForm() {
 					Submit
 				</button>
 			</form>
-			<div className='outer-login'>
-				<button className='outer-login__button'>
-					Sign in with Google
-				</button>
-			</div>
-			<div className='registration'>
-				<p className='registration__reference-text'>
-					New user?
-					<a
-						href=''
-						className='registration__reference-link'>
-						Register
-					</a>
-				</p>
-			</div>
 		</>
 	);
 }
