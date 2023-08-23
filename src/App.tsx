@@ -1,4 +1,12 @@
+
+import useScript from '@hooks/useScript.tsx';
+
 import React from 'react';
+
+import '@layouts/FormLayout.css';
+
+//import LoginComponent from '@components/loginForm/LoginComponent';
+import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
@@ -21,6 +29,8 @@ import './App.css';
 export function App() {
 	return (
 		<>
+			{/* <RegistrationComponent /> */}
+			{/* <LoginComponent /> */}
 			<Backdrop />
 			<NavbarLayout />
 			<Routes>

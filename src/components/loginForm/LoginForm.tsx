@@ -1,0 +1,87 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import errorHandler from '@utils/errorHandler';
+import apiHandler from '@utils/fetchApi';
+import { LoginData } from '@utils/formData';
+import { user } from '@utils/formSchemas';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+
+var errorMessage = '';
+
+export default function LoginForm() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<LoginData>({
+		resolver: zodResolver(user),
+	});
+
+	const submitForm = async (data: LoginData) => {
+		const userLoginData = {
+			email: data.email,
+			password: data.password,
+		};
+
+		const apiUrl = 'http://localhost:5223/api/login';
+
+		try {
+			const response = await apiHandler.apiPost(apiUrl, userLoginData);
+			if (response.ok) {
+				//TODO => redirect to home/profile
+			} else {
+				//return response.json();
+				//console.log(`Error ${response.status}: ${response.statusText}`);
+				errorMessage = `Error ${response.status}: ${response.statusText}`;
+			}
+		} catch (error) {
+			console.error('Error submitting form:', error);
+			errorMessage = errorHandler.handleFetchError(error);
+		}
+	};
+
+	return (
+		<>
+			<form
+				className='form'
+				onSubmit={handleSubmit(submitForm)}>
+				{errorMessage && (
+					<span className='form__error-message'>{errorMessage}</span>
+				)}
+				<div className='form-element'>
+					<label className='form-element__label'>Email:</label>
+					<input
+						className='form-element__input'
+						type='email'
+						id='email'
+						{...register('email')}
+					/>
+					{errors.email && (
+						<span className='form-element__validation-prompt'>
+							{errors.email.message}
+						</span>
+					)}
+				</div>
+				<div className='form-element'>
+					<label className='form-element__label'>Password:</label>
+					<input
+						className='form-element__input'
+						type='password'
+						id='password'
+						{...register('password')}
+					/>
+					{errors.password && (
+						<span className='form-element__validation-prompt'>
+							{errors.password.message}
+						</span>
+					)}
+				</div>
+				<button
+					className='form__submit-button'
+					type='submit'>
+					Submit
+				</button>
+			</form>
+		</>
+	);
+}
