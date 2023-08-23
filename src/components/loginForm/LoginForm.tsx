@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import '@layouts/FormLayout.css';
 import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
 import { LoginData } from '@utils/formData';
@@ -83,15 +82,6 @@ export default function LoginForm() {
 					Submit
 				</button>
 			</form>
-			<div className='divider'>
-				<div className='divider__divider-line'>
-					<hr></hr>
-				</div>
-				<div className='divider__divider-text'>OR</div>
-				<div className='divider__divider-line'>
-					<hr></hr>
-				</div>
-			</div>
 			<div className='outer-login'>
 				<button className='outer-login__button'>
 					Sign in with Google
