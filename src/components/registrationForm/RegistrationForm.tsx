@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-import errorHandler from '@utils/errorHandler';
+//import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
 import { RegistrationData } from '@utils/formData';
 import { newUser } from '@utils/formSchemas';
@@ -38,10 +38,11 @@ export default function RegistrationForm() {
 				//return response.json();
 				//console.log(`Error ${response.status}: ${response.statusText}`);
 				errorMessage = `Error ${response.status}: ${response.statusText}`;
+				console.error(errorMessage);
 			}
 		} catch (error) {
 			console.error('Error submitting form:', error);
-			errorMessage = errorHandler.handleFetchError(error);
+			//errorMessage = errorHandler.handleFetchError(error);
 		}
 	};
 
