@@ -1,4 +1,9 @@
 /** @type {import('eslint').Linter.Config} */
+
+const react = require('eslint-plugin-react');
+const reactRecommended = require('eslint-plugin-react/configs/recommended');
+const globals = require('globals');
+
 module.exports = {
 	root: true,
 	env: {
@@ -6,7 +11,15 @@ module.exports = {
 		es2021: true,
 		node: true,
 	},
-
+	files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+	...reactRecommended,
+	languageOptions: {
+		...reactRecommended.languageOptions,
+		globals: {
+			...globals.serviceworker,
+			...globals.browser,
+		},
+	},
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/eslint-recommended',
@@ -14,16 +27,16 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		'plugin:react-hooks/recommended',
 		'plugin:tailwindcss/recommended',
-		'plugin:react/recommended',
 		'plugin:import/typescript',
 		'prettier',
 	],
+	reactRecommended,
 	overrides: [
 		{
 			env: {
 				node: true,
 			},
-			files: ['.eslintrc.{js,cjs}', '*.ts', '*.tsx', '*.js'],
+			files: ['.eslint.config.js', '*.ts', '*.tsx', '*.js'],
 			parserOptions: {
 				sourceType: 'script',
 			},
@@ -33,16 +46,19 @@ module.exports = {
 			parser: '@typescript-eslint/parser',
 		},
 	],
-	parser: '@typescript-eslint/parser',
-	parserOptions: {
-		ecmaVersion: 'latest',
-		sourceType: 'module',
-		project: ['./tsconfig.json'],
-		createDefaultProgram: true,
-		tsconfigRootDir: __dirname,
-		ecmaFeatures: {
-			jsx: true,
+	languageOptions: {
+		parser: '@typescript-eslint/parser',
+		parserOptions: {
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+			project: ['./tsconfig.json'],
+			createDefaultProgram: true,
+			tsconfigRootDir: __dirname,
+			ecmaFeatures: {
+				jsx: true,
+			},
 		},
+		globals: { ...globals.browser },
 	},
 	plugins: [
 		'react',
@@ -69,6 +85,8 @@ module.exports = {
 				allowNumber: false,
 			},
 		],
+		'react/jsx-uses-react': 'error',
+		'react/jsx-uses-vars': 'error',
 	},
 	settings: {
 		'import/parsers': {

@@ -12,15 +12,17 @@ npm install
 
 ## used libraries
 
-- [react-aria](https://react-spectrum.adobe.com/react-aria/)
-- [react-query](https://tanstack.com/query/v3/)
-- [filepond](https://pqina.nl/filepond/)
-- [framer-motion](https://www.framer.com/motion/)
+- [react-aria](https://react-spectrum.adobe.com/react-aria/) (accessibility hooks)
+- [react-query](https://tanstack.com/query/v3/) (state management and queries)
+- [filepond](https://pqina.nl/filepond/) (file upload library)
+- [framer-motion](https://www.framer.com/motion/) (animations)
 - [react-dnd](https://react-dnd.github.io/react-dnd/about) (with html5 and touch backends)
-- [swiper](https://swiperjs.com/react)
+- [swiper](https://swiperjs.com/element) (mobile first swiping)
 - testing ([jsdom](https://github.com/jsdom/jsdom#readme), [jest-dom](https://github.com/testing-library/jest-dom#readme), [react testing library](https://github.com/testing-library/react-testing-library#readme), [vitest](https://vitest.dev/))
 - [postcss](https://postcss.org/)
-- [tailwindcss](https://tailwindcss.com/)
+- [tailwindcss](https://tailwindcss.com/) (utility css library)
+- [react-hook-form](https://react-hook-form.com/) (simpler forms)
+- [zod](https://zod.dev/) (type validation)
 
 ## usage
 

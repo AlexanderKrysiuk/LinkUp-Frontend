@@ -14,7 +14,11 @@
 		"removeComments": true,
 		"allowJs": true,
 		"types": [
-			"vitest/globals"
+			"vitest/globals",
+			"vite/client",
+			"vite-plugin-svgr/client",
+			"@types/react",
+			"jest"
 		],
 		"paths": {
 			"*": [
@@ -43,7 +47,13 @@
 				"./src/assets/*"
 			],
 			"@scripts/*": [
-				"./scripts/*"
+				"./src/scripts/*"
+			],
+			"@icons/*": [
+				"./src/assets/icons/*"
+			],
+			"@contexts/*": [
+				"./src/contexts/*"
 			],
 		},
 		/* Bundler mode */
@@ -67,7 +77,7 @@
 	},
 	"include": [
 		"./src/**/*",
-		"./scripts/**/*",
+		"src/scripts/**/*",
 	],
 	"exclude": [
 		"node_modules",
