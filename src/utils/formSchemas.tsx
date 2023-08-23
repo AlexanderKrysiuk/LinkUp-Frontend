@@ -1,7 +1,7 @@
+import { LoginData, RegistrationData } from '@utils/formData';
 import { ZodType, z } from 'zod';
-import FormData from './registrationFormData';
 
-const newUser: ZodType<FormData> = z
+export const newUser: ZodType<RegistrationData> = z
 	.object({
 		userType: z.string(),
 		firstName: z
@@ -35,4 +35,18 @@ const newUser: ZodType<FormData> = z
 		path: ['confirmedPassword'],
 	});
 
-export default newUser;
+export const user: ZodType<LoginData> = z
+	.object({
+		email: z
+			.string()
+			.email()
+			.regex(
+				/^[a-zA-Z0-9]+([.\-_]?[a-zA-Z0-9])*@[a-zA-Z0-9]+(-?[a-zA-Z0-9])*\.[a-zA-Z]{2,}$/,
+				{ message: 'Invalid email address' },
+			),
+		password: z.string().regex(/^(?=.*\d)(?=.*[A-Z])(?=.*[\W_]).{8,}$/, {
+			message:
+				'Password must be at least 8 characters long and contain at least one uppercase letter, one special character, and one digit.',
+		}),
+	})
+	.required();
