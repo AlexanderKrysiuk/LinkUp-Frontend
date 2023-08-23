@@ -29,7 +29,7 @@ export default function LoginForm() {
 		try {
 			const response = await apiHandler.apiPost(apiUrl, userLoginData);
 			if (response.ok) {
-				//TODO => redirect?
+				//TODO => redirect to home/profile
 			} else {
 				//return response.json();
 				//console.log(`Error ${response.status}: ${response.statusText}`);
@@ -44,12 +44,10 @@ export default function LoginForm() {
 	return (
 		<>
 			<form
-				className='login-form'
+				className='form'
 				onSubmit={handleSubmit(submitForm)}>
 				{errorMessage && (
-					<span className='login-form__error-message'>
-						{errorMessage}
-					</span>
+					<span className='form__error-message'>{errorMessage}</span>
 				)}
 				<div className='form-element'>
 					<label className='form-element__label'>Email:</label>
@@ -80,7 +78,7 @@ export default function LoginForm() {
 					)}
 				</div>
 				<button
-					className='login-form__submit-button'
+					className='form__submit-button'
 					type='submit'>
 					Submit
 				</button>

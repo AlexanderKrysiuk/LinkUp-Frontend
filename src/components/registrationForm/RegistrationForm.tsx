@@ -1,11 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import '@layouts/FormLayout.css';
 import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
-import FormData from '@utils/registrationFormData';
-import newUser from '@utils/registrationFormSchema';
+import { RegistrationData } from '@utils/formData';
+import { newUser } from '@utils/formSchemas';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import './RegistrationForm.css';
 
 var errorMessage = '';
 
@@ -14,11 +14,11 @@ export default function RegistrationForm() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormData>({
+	} = useForm<RegistrationData>({
 		resolver: zodResolver(newUser),
 	});
 
-	const submitForm = async (data: FormData) => {
+	const submitForm = async (data: RegistrationData) => {
 		const newUser = {
 			name: `${data.firstName} ${data.lastName}`,
 			email: data.email,
@@ -33,7 +33,7 @@ export default function RegistrationForm() {
 		try {
 			const response = await apiHandler.apiPost(apiUrl, newUser);
 			if (response.ok) {
-				//TODO => redirect?
+				//TODO => redirect to home/profile
 			} else {
 				//return response.json();
 				//console.log(`Error ${response.status}: ${response.statusText}`);
@@ -48,12 +48,10 @@ export default function RegistrationForm() {
 	return (
 		<>
 			<form
-				className='registration-form'
+				className='form'
 				onSubmit={handleSubmit(submitForm)}>
 				{errorMessage && (
-					<span className='registration-form__error-message'>
-						{errorMessage}
-					</span>
+					<span className='form__error-message'>{errorMessage}</span>
 				)}
 				<div className='form-element'>
 					<label className='form-element__label'>Account:</label>
@@ -152,7 +150,7 @@ export default function RegistrationForm() {
 				</div>
 
 				<button
-					className='registration-form__submit-button'
+					className='form__submit-button'
 					type='submit'>
 					Submit
 				</button>
@@ -166,10 +164,14 @@ export default function RegistrationForm() {
 					<hr></hr>
 				</div>
 			</div>
-			{/* <div className='outer-registration'><button className='outer-registration__button'>Sign up with Google</button></div> */}
+			<div className='outer-registration'>
+				<button className='outer-registration__button'>
+					Sign up with Google
+				</button>
+			</div>
 			<div className='login'>
 				<p className='login__reference-text'>
-					Already have an account?{' '}
+					Already have an account?
 					<a
 						href=''
 						className='login__reference-link'>

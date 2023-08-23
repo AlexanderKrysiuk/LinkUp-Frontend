@@ -6,11 +6,11 @@ body {
 	margin: 0;
 }
 
-.registration-form {
+.form {
 	display: flex;
 	flex-direction: column;
 	width: 400px;
-	margin: 0 auto;
+	margin: 20px auto;
 	padding: 30px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -37,7 +37,7 @@ body {
 	width: 70%;
 }
 
-.registration-form__error-message,
+.form__error-message,
 .form-element__validation-prompt {
 	float: left;
 	color: grey;
@@ -47,7 +47,7 @@ body {
 	margin: 2px 0px 2px 0px;
 }
 
-.registration-form__submit-button {
+.form__submit-button {
 	padding: 8px 15px;
 	color: darkblue;
 	font-weight: 700;
