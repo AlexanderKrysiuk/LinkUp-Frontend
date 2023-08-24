@@ -23,17 +23,16 @@ export default function RegistrationForm() {
 			name: `${data.firstName} ${data.lastName}`,
 			email: data.email,
 			password: data.password,
+			userType: +data.userType,
 		};
 
-		const apiUrl =
-			data.userType === 'Client'
-				? 'http://localhost:5223/api/Clients'
-				: 'http://localhost:5223/api/Contractors';
+		const apiUrl = 'http://localhost:5223/api/Users';
 
 		try {
 			const response = await apiHandler.apiPost(apiUrl, newUser);
 			if (response.ok) {
 				//TODO => redirect to home/profile
+				console.log(response);
 			} else {
 				//return response.json();
 				//console.log(`Error ${response.status}: ${response.statusText}`);
@@ -62,12 +61,12 @@ export default function RegistrationForm() {
 						{...register('userType')}>
 						<option
 							className='form-element__select-option'
-							value='Client'>
+							value={0}>
 							Client
 						</option>
 						<option
 							className='form-element__select-option'
-							value='Contractor'>
+							value={1}>
 							Contractor
 						</option>
 					</select>
