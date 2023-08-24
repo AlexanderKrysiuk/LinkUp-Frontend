@@ -14,7 +14,7 @@ import NavbarMenuComponent from './navmenu/NavbarMenuComponent.tsx';
  * <NavbarComponent />
  * ```
  */
-const NavbarComponent = () => {
+const NavbarComponent = (): JSX.Element => {
 	return (
 		<nav className='navbar__container'>
 			{/* Render logo component */}

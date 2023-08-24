@@ -1,11 +1,11 @@
-body {
+/* body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 	margin: 0;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+} */
 
 .form-component {
 	border: 1px solid darkblue;

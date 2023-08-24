@@ -14,8 +14,8 @@ import React from 'react';
 
 import '@layouts/FormLayout.css';
 
-//import LoginComponent from '@components/loginForm/LoginComponent';
-//import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
+// import LoginComponent from '@components/loginForm/LoginComponent';
+import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
@@ -43,7 +43,7 @@ import MockPage from '@pages/MockPage.tsx';
 export function App() {
 	return (
 		<>
-			{/* <RegistrationComponent /> */}
+			<RegistrationComponent />
 			{/* <LoginComponent /> */}
 
 			{/* Display the backdrop */}
