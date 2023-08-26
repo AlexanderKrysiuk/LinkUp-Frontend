@@ -1,9 +1,7 @@
 .main {
 	position: relative;
-	top: 0;
-	left: 0;
 	padding: 1rem 2rem;
-	height: auto;
+	height: 100svh;
 	width: 100vw;
 	background:
 		radial-gradient(
