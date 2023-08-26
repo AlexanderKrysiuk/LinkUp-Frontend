@@ -7,10 +7,11 @@ $link-hover-color: pink;
 	color: $primary-color;
 	padding: 20px;
 	text-align: center;
+	position: relative;
 
 	.footer__container {
 		width: fit-content;
-		margin: 0 auto;
+		margin: 0 0;
 
 		.footer__reference-section,
 		.footer__policy {
@@ -87,11 +88,14 @@ $link-hover-color: pink;
 			}
 
 			&-split-line {
-				flex: 1;
+				//flex: 1;
+				width: auto;
+				position: relative;
 
 				hr {
 					border: none;
 					border-top: 1px solid $primary-color;
+					width: 100%;
 				}
 			}
 		}
