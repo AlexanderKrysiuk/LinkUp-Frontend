@@ -20,5 +20,6 @@
 		),
 		center/cover scroll no-repeat
 			url('./assets/backgrounds/y0gffe4w64k31.jpg');
-	clip-path: polygon(0 0, 100% 100%, 0 100%);
+	mask: linear-gradient(#000);
+	mask-repeat: no-repeat;
 }
