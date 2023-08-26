@@ -1,0 +1,17 @@
+.time-slot {
+	border: 0.1rem solid green;
+	border-radius: 0.2rem;
+	background: goldenrod;
+	width: 20rem;
+	padding: 1rem 1rem;
+	align-content: space-between;
+	margin: 0.2rem auto;
+
+	&__header {
+		color: whitesmoke;
+	}
+
+	&__prop {
+		color: whitesmoke;
+	}
+}

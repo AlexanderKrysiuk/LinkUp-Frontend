@@ -11,3 +11,10 @@ export type LoginData = {
 	email: string;
 	password: string;
 };
+
+export interface TimeSlotData {
+	date: string;
+	time: string;
+	place: string;
+	title: string;
+}

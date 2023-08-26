@@ -1,4 +1,4 @@
-import { LoginData, RegistrationData } from '@utils/formData';
+import { LoginData, RegistrationData, TimeSlotData } from '@utils/formData';
 import { ZodType, z } from 'zod';
 
 export const newUser: ZodType<RegistrationData> = z
@@ -48,5 +48,14 @@ export const user: ZodType<LoginData> = z
 			message:
 				'Password must be at least 8 characters long and contain at least one uppercase letter, one special character, and one digit.',
 		}),
+	})
+	.required();
+
+export const timeSlot: ZodType<TimeSlotData> = z
+	.object({
+		date: z.string(),
+		time: z.string(),
+		place: z.string(),
+		title: z.string(),
 	})
 	.required();
