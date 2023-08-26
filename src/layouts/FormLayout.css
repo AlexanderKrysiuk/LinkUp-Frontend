@@ -53,7 +53,7 @@
 .form__error-message,
 .form-element__validation-prompt {
 	float: left;
-	color: grey;
+	color: black;
 	font-size: 10px;
 	margin-top: 5px;
 	font-style: italic;

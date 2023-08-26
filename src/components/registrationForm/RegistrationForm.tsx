@@ -1,15 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-//import errorHandler from '@utils/errorHandler';
+import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
 import { RegistrationData } from '@utils/formData';
 import { newUser } from '@utils/formSchemas';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 var errorMessage = '';
 
 export default function RegistrationForm() {
+	const navigate = useNavigate();
+
 	const {
 		register,
 		handleSubmit,
@@ -31,17 +34,14 @@ export default function RegistrationForm() {
 		try {
 			const response = await apiHandler.apiPost(apiUrl, userToRegister);
 			if (response.ok) {
-				//TODO => redirect to home/profile
-				console.log(response);
+				navigate('Home', { replace: true }); //TODO: not working properly
 			} else {
-				//return response.json();
-				//console.log(`Error ${response.status}: ${response.statusText}`);
-				errorMessage = `Error ${response.status}: ${response.statusText}`;
-				console.error(errorMessage);
+				//errorMessage = errorHandler.handleFetchError(error);
+				errorMessage = `Account with given e-mail has been registered.`;
+				console.error(response.status, response.statusText);
 			}
 		} catch (error) {
-			console.error('Error submitting form:', error);
-			//errorMessage = errorHandler.handleFetchError(error);
+			errorMessage = errorHandler.handleFetchError(error);
 		}
 	};
 
