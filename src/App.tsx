@@ -71,6 +71,20 @@ export function App() {
 						path='*'
 						element={<ErrorPage />}
 					/>
+					<Route
+						path='/Mock'
+						element={<MockPage />}
+					/>
+					{/* Route for registration */}
+					<Route
+						path='/Register'
+						element={<Register />}
+					/>
+					{/* Route for login */}
+					<Route
+						path='/Login'
+						element={<Login />}
+					/>
 				</Routes>
 			</main>
 			<FooterLayout />
