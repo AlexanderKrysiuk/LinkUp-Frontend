@@ -1,0 +1,98 @@
+/* body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+} */
+
+.form-component {
+	border: 1px solid darkblue;
+	border-radius: 5px;
+	padding: 15px 30px;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	margin: 0;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	/* padding: 0.5rem; */
+	text-align: left;
+	margin: auto;
+}
+
+.form-element {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+	align-items: center;
+}
+
+.form-element__label {
+	font-weight: 500;
+	color: darkblue;
+	width: 70%;
+}
+
+.form-element__input {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	width: 70%;
+}
+
+.form__error-message,
+.form-element__validation-prompt {
+	float: left;
+	color: grey;
+	font-size: 10px;
+	margin-top: 5px;
+	font-style: italic;
+	margin: 2px 0px 2px 0px;
+}
+
+.form__submit-button,
+.google-button {
+	padding: 8px 15px;
+	color: darkblue;
+	font-weight: 700;
+	border: darkblue solid 2px;
+	border-radius: 5px;
+	cursor: pointer;
+	width: fit-content;
+	align-self: center;
+	transition:
+		background-color 0.3s,
+		color 0.3s;
+}
+
+.form__submit-button:hover,
+.google-button:hover {
+	background-color: #0056b3;
+	color: whitesmoke;
+	border: none;
+}
+
+.divider {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0.5rem;
+}
+
+.form-redirect {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0.5rem;
+}

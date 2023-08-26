@@ -28,6 +28,7 @@ module.exports = {
 		'plugin:react-hooks/recommended',
 		'plugin:tailwindcss/recommended',
 		'plugin:import/typescript',
+		'eslint-plugin-tsdoc',
 		'prettier',
 	],
 	reactRecommended,
@@ -68,6 +69,7 @@ module.exports = {
 		'prettier',
 	],
 	rules: {
+		'tsdoc/syntax': 'warn',
 		indent: ['error', 'tab'],
 		// linebreakStyle: ['error', 'windows'],
 		linebreakStyle: 0,
