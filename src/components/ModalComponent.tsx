@@ -13,7 +13,7 @@ import React from 'react';
  * ```
  */
 const ModalComponent = (): JSX.Element => {
-	return <div>ModalComponent</div>;
+	return <div>Modal Component</div>;
 };
 
 export default ModalComponent;

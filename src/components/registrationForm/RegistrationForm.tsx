@@ -19,7 +19,7 @@ export default function RegistrationForm() {
 	});
 
 	const submitForm = async (data: RegistrationData) => {
-		const newUser = {
+		const userToRegister = {
 			name: `${data.firstName} ${data.lastName}`,
 			email: data.email,
 			password: data.password,
@@ -29,7 +29,7 @@ export default function RegistrationForm() {
 		const apiUrl = 'http://localhost:5223/api/Users';
 
 		try {
-			const response = await apiHandler.apiPost(apiUrl, newUser);
+			const response = await apiHandler.apiPost(apiUrl, userToRegister);
 			if (response.ok) {
 				//TODO => redirect to home/profile
 				console.log(response);

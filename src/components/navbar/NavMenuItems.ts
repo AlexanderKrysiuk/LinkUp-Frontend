@@ -12,6 +12,7 @@ import { NavMenuItem } from './Types.ts';
  *
  * @type {NavMenuItem[]}
  */
+
 const routes: NavMenuItem[] = [
 	{
 		routeName: 'Home',
@@ -29,7 +30,12 @@ const routes: NavMenuItem[] = [
 		routeAction: null,
 	},
 	{
-		routeName: 'Login/Register',
+		routeName: 'Register',
+		routeIcon: User,
+		routeAction: null,
+	},
+	{
+		routeName: 'Login',
 		routeIcon: User,
 		routeAction: null,
 	},

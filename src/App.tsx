@@ -15,7 +15,7 @@ import React from 'react';
 import '@layouts/FormLayout.css';
 
 // import LoginComponent from '@components/loginForm/LoginComponent';
-import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
+//import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
@@ -26,7 +26,9 @@ import ProfilePage from '@pages/ProfilePage.tsx';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
+import Login from '@pages/Login';
 import MockPage from '@pages/MockPage.tsx';
+import Register from '@pages/Register.tsx';
 
 /**
  * The root component of the application.
@@ -43,7 +45,7 @@ import MockPage from '@pages/MockPage.tsx';
 export function App() {
 	return (
 		<>
-			<RegistrationComponent />
+			{/* <RegistrationComponent /> */}
 			{/* <LoginComponent /> */}
 
 			{/* Display the backdrop */}
@@ -80,6 +82,15 @@ export function App() {
 				<Route
 					path='/Mock'
 					element={<MockPage />}
+				/>
+				{/* Route for registration */}
+				<Route
+					path='/Register'
+					element={<Register />}
+				/>
+				<Route
+					path='/Login'
+					element={<Login />}
 				/>
 			</Routes>
 
