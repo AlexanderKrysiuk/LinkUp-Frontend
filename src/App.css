@@ -2,7 +2,8 @@
 	position: relative;
 	top: 0;
 	left: 0;
-	height: 75svh;
+	padding: 1rem 2rem;
+	height: auto;
 	width: 100vw;
 	background:
 		radial-gradient(
