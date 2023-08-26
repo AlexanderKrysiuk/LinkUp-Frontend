@@ -26,7 +26,7 @@ export default function RegistrationForm() {
 			userType: +data.userType,
 		};
 
-		const apiUrl = 'http://localhost:5223/api/Users';
+		const apiUrl = 'https://localhost:7099/api/Users';
 
 		try {
 			const response = await apiHandler.apiPost(apiUrl, userToRegister);
