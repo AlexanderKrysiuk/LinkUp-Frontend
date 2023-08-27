@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ContentComponent = () => {
-	return <div>ContentComponent</div>;
+	return <div className='profile__content'>ContentComponent</div>;
 };
 
 export default ContentComponent;
