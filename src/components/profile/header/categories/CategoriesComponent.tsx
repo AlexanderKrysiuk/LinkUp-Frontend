@@ -3,9 +3,11 @@ import React from 'react';
 
 const CategoriesComponent = () => {
 	return (
-		<div>
-			<PillComponent text='asdasd' />
-		</div>
+		<ul className='profile__header_categories'>
+			<li>
+				<PillComponent text='asdasd' />
+			</li>
+		</ul>
 	);
 };
 

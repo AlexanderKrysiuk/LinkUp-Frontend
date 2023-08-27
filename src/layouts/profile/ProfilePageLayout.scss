@@ -18,6 +18,13 @@
 		align-items: flex-start;
 		justify-content: space-between;
 		background-color: pink;
+		&_categories {
+			width: 100%;
+			background-color: yellow;
+			padding: 0;
+			text-align: left;
+			list-style-type: none;
+		}
 	}
 	&__sidebar {
 		grid-area: 2 / 1 / 6 / 2;

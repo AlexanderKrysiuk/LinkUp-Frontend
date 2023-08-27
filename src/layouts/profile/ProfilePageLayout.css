@@ -17,6 +17,13 @@
   justify-content: space-between;
   background-color: pink;
 }
+.profile__header_categories {
+  width: 100%;
+  background-color: yellow;
+  padding: 0;
+  text-align: left;
+  list-style-type: none;
+}
 .profile__sidebar {
   grid-area: 2/1/6/2;
   flex-direction: column;
