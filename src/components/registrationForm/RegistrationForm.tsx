@@ -29,12 +29,12 @@ export default function RegistrationForm() {
 			userType: +data.userType,
 		};
 
-		const apiUrl = 'https://localhost:5223/api/Users';
+		const apiUrl = 'https://localhost:7099/api/Users';
 
 		try {
 			const response = await apiHandler.apiPost(apiUrl, userToRegister);
 			if (response.ok) {
-				navigate('Home', { replace: true }); //TODO: not working properly
+				navigate('/', { replace: true }); //TODO: not working properly
 			} else {
 				//errorMessage = errorHandler.handleFetchError(error);
 				errorMessage = `E-mail in use. Register with another e-mail address or sign in.`;
