@@ -23,7 +23,7 @@ export default function LoginForm() {
 			password: data.password,
 		};
 
-		const apiUrl = 'http://localhost:5223/api/login';
+		const apiUrl = 'https://localhost:5223/api/login';
 
 		try {
 			const response = await apiHandler.apiPost(apiUrl, userLoginData);
