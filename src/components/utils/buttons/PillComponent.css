@@ -1,0 +1,12 @@
+.pill-button {
+  border: 2px solid transparent;
+  border-radius: 3rem;
+  background-color: brown;
+  padding: 0.25rem 0.5rem;
+  color: white;
+  transition: all 0.5s;
+}
+.pill-button:hover {
+  border: 2px solid black;
+  filter: brightness(150%);
+}/*# sourceMappingURL=PillComponent.css.map */
