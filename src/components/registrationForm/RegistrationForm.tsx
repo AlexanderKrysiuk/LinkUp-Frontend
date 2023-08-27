@@ -37,7 +37,7 @@ export default function RegistrationForm() {
 				navigate('Home', { replace: true }); //TODO: not working properly
 			} else {
 				//errorMessage = errorHandler.handleFetchError(error);
-				errorMessage = `Account with given e-mail has been registered.`;
+				errorMessage = `E-mail in use. Register with another e-mail address or sign in.`;
 				console.error(response.status, response.statusText);
 			}
 		} catch (error) {
