@@ -5,7 +5,7 @@ import { TimeSlotData } from '@utils/formData';
 import { timeSlot } from '@utils/formSchemas';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Button from './Button';
+import Button from './buttons/Button';
 
 const NewTimeSlotForm: React.FC = () => {
 	const { register } = useForm<TimeSlotData>({
