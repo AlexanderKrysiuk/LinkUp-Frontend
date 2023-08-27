@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SidebarComponent = () => {
-	return <div>SidebarComponent</div>;
+	return <div className='profile__sidebar'>SidebarComponent</div>;
 };
 
 export default SidebarComponent;

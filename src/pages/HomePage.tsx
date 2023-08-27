@@ -1,5 +1,4 @@
 import ButtonComponent from '@components/button/ButtonComponent.tsx';
-import MainLayout from '@layouts/main/MainLayout';
 
 import { useBackdropToggle } from '@hooks/BackdropHooks';
 import React from 'react';

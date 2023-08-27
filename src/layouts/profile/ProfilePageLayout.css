@@ -1,0 +1,33 @@
+.profile {
+  border: 3px solid red;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 1fr 4fr;
+  height: 100%;
+}
+.profile__header, .profile__sidebar, .profile__content {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+}
+.profile__header {
+  grid-area: 1/1/2/6;
+  background-color: pink;
+}
+.profile__sidebar {
+  grid-area: 2/1/6/2;
+  background-color: greenyellow;
+}
+.profile__content {
+  grid-area: 2/2/6/6;
+  background-color: aqua;
+}
+
+@media (width < 600px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+  }
+}/*# sourceMappingURL=ProfilePageLayout.css.map */
