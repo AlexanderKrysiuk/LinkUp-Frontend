@@ -4,6 +4,7 @@ import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
 import { RegistrationData } from '@utils/formData';
 import { newUser } from '@utils/formSchemas';
+import { REGISTER_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +30,7 @@ export default function RegistrationForm() {
 			role: data.userType,
 		};
 
-		const apiUrl = 'https://localhost:7099/api/Users';
+		const apiUrl = REGISTER_URL;
 
 		try {
 			const response = await apiHandler.apiPost(apiUrl, userToRegister);
