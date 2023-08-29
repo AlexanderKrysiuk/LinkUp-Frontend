@@ -1,14 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import errorHandler from '@utils/errorHandler';
+//import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
 import { LoginData } from '@utils/formData';
 import { user } from '@utils/formSchemas';
+import { LOGIN_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 var errorMessage = '';
 
 export default function LoginForm() {
+	const navigate = useNavigate();
+
 	const {
 		register,
 		handleSubmit,
@@ -17,26 +21,25 @@ export default function LoginForm() {
 		resolver: zodResolver(user),
 	});
 
-	const submitForm = async (data: LoginData) => {
+	const login = async (data: LoginData) => {
 		const userLoginData = {
 			email: data.email,
 			password: data.password,
 		};
 
-		const apiUrl = 'https://localhost:5223/api/login';
+		const apiUrl = LOGIN_URL;
 
 		try {
-			const response = await apiHandler.apiPost(apiUrl, userLoginData);
+			const response = await apiHandler.apiOptions(apiUrl, userLoginData);
 			if (response.ok) {
-				//TODO => redirect to home/profile
+				navigate('/', { replace: true });
 			} else {
-				//return response.json();
-				//console.log(`Error ${response.status}: ${response.statusText}`);
+				//handle statuses
 				errorMessage = `Error ${response.status}: ${response.statusText}`;
 			}
 		} catch (error) {
+			//handle errors -> errorhandler.ts
 			console.error('Error submitting form:', error);
-			errorMessage = errorHandler.handleFetchError(error);
 		}
 	};
 
@@ -44,7 +47,7 @@ export default function LoginForm() {
 		<>
 			<form
 				className='form'
-				onSubmit={handleSubmit(submitForm)}>
+				onSubmit={handleSubmit(login)}>
 				{errorMessage && (
 					<span className='form__error-message'>{errorMessage}</span>
 				)}

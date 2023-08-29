@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-import errorHandler from '@utils/errorHandler';
+//import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
 import { RegistrationData } from '@utils/formData';
 import { newUser } from '@utils/formSchemas';
@@ -33,16 +33,20 @@ export default function RegistrationForm() {
 		const apiUrl = REGISTER_URL;
 
 		try {
-			const response = await apiHandler.apiPost(apiUrl, userToRegister);
+			const response = await apiHandler.apiOptions(
+				apiUrl,
+				userToRegister,
+			);
 			if (response.ok) {
 				navigate('/', { replace: true });
 			} else {
-				//errorMessage = errorHandler.handleFetchError(error);
+				//handle statuses
 				errorMessage = `E-mail in use. Register with another e-mail address or sign in.`;
 				console.error(response.status, response.statusText);
 			}
 		} catch (error) {
-			errorMessage = errorHandler.handleFetchError(error);
+			//handle errors -> errorhandler.ts
+			console.error('Error submitting form:', error);
 		}
 	};
 
