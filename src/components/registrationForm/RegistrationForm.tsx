@@ -23,10 +23,10 @@ export default function RegistrationForm() {
 
 	const submitForm = async (data: RegistrationData) => {
 		const userToRegister = {
-			name: `${data.firstName} ${data.lastName}`,
+			username: `${data.firstName} ${data.lastName}`,
 			email: data.email,
 			password: data.password,
-			userType: +data.userType,
+			role: data.userType,
 		};
 
 		const apiUrl = 'https://localhost:7099/api/Users';
@@ -34,7 +34,7 @@ export default function RegistrationForm() {
 		try {
 			const response = await apiHandler.apiPost(apiUrl, userToRegister);
 			if (response.ok) {
-				navigate('/', { replace: true }); //TODO: not working properly
+				navigate('/', { replace: true });
 			} else {
 				//errorMessage = errorHandler.handleFetchError(error);
 				errorMessage = `E-mail in use. Register with another e-mail address or sign in.`;
@@ -61,12 +61,12 @@ export default function RegistrationForm() {
 						{...register('userType')}>
 						<option
 							className='form-element__select-option'
-							value={0}>
+							value='Client'>
 							Client
 						</option>
 						<option
 							className='form-element__select-option'
-							value={1}>
+							value='Contractor'>
 							Contractor
 						</option>
 					</select>
