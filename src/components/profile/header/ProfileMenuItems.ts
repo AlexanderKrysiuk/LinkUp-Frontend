@@ -1,14 +1,15 @@
-type ProfileMenuItem = {
+export type ProfileMenuItem = {
 	routeName: string;
-	subMenu: submenuItem[];
+	subMenu: SubmenuItem[];
 };
-type submenuItem = {
+
+export type SubmenuItem = {
 	routeName: string;
 };
 
 const routes: ProfileMenuItem[] = [
 	{
-		routeName: 'basdsad1',
+		routeName: 'overview',
 		subMenu: [{ routeName: 'asd1' }, { routeName: 'qwe1' }],
 	},
 	{

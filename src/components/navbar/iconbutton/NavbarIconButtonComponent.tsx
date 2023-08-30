@@ -31,9 +31,22 @@ const NavbarIconButtonComponent = ({
 }: {
 	item: NavMenuItem;
 }): JSX.Element => {
-	if (item.routeName !== 'Login/Register' && item.routeName !== 'Logout') {
+	if (item.routeName === 'profile') {
 		return (
-			<Link to={item.routeName === 'Home' ? '/' : `/${item.routeName}`}>
+			<Link to={`${item.routeName}/overview`}>
+				<li className='navbar__menu-button'>
+					<item.routeIcon />
+					<span>{`${item.routeName}`}</span>
+				</li>
+			</Link>
+		);
+	} else if (
+		item.routeName !== 'login' &&
+		item.routeName !== 'register' &&
+		item.routeName !== 'logout'
+	) {
+		return (
+			<Link to={item.routeName === 'home' ? '/' : `/${item.routeName}`}>
 				<li className='navbar__menu-button'>
 					<item.routeIcon />
 					<span>{item.routeName}</span>
@@ -42,10 +55,12 @@ const NavbarIconButtonComponent = ({
 		);
 	} else {
 		return (
-			<li className='navbar__menu-button'>
-				<item.routeIcon />
-				<span>{item.routeName}</span>
-			</li>
+			<Link to={item.routeName}>
+				<li className='navbar__menu-button'>
+					<item.routeIcon />
+					<span>{item.routeName}</span>
+				</li>
+			</Link>
 		);
 	}
 };

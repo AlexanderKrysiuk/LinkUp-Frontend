@@ -11,18 +11,21 @@
 }
 .profile__header {
   grid-area: 1/1/2/6;
+  padding: 0;
   min-height: 200px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   background-color: pink;
 }
+.profile__header_user-details {
+  padding: 1rem;
+}
 .profile__header_categories {
   width: 100%;
   background-color: yellow;
-  padding: 0;
+  padding: 1rem;
   text-align: left;
-  list-style-type: none;
 }
 .profile__sidebar {
   grid-area: 2/1/6/2;
