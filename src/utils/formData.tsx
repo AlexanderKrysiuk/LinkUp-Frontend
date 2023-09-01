@@ -14,6 +14,7 @@ export type LoginData = {
 
 export interface NewMeetingData {
 	date: string;
-	duration: number,
+	duration: number;
+	participants: number;
 	description: string;
 }

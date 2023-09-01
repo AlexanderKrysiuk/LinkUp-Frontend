@@ -15,6 +15,7 @@ const NewTimeSlotForm: React.FC = () => {
 	const [formData, setFormData] = useState<NewMeetingData>({
 		date: '',
 		duration: 30,
+		participants: 1,
 		description: '',
 	});
 
@@ -38,6 +39,7 @@ const NewTimeSlotForm: React.FC = () => {
 		setFormData({
 			date: '',
 			duration: 30,
+			participants: 1,
 			description: '',
 		});
 	};
@@ -77,6 +79,18 @@ const NewTimeSlotForm: React.FC = () => {
 							step='30'
 							min='30'
 							value={formData.duration}
+							onChange={handleInputChange}
+						/>
+					</div>
+					<div className='form-element'>
+						<label className='form-element__label'>Max participants:</label>
+						<input
+							className='form-element__input'
+							{...register('participants')}
+							type='number'
+							name='participants'
+							min='1'
+							value={formData.participants}
 							onChange={handleInputChange}
 						/>
 					</div>

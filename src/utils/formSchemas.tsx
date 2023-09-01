@@ -55,6 +55,7 @@ export const newMeeting: ZodType<NewMeetingData> = z
 	.object({
 		date: z.string(),
 		duration: z.number().int(),
+		participants: z.number().int(),
 		description: z.string(),
 	})
 	.required();
