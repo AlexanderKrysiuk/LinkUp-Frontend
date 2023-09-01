@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import apiHandler from '@utils/fetchApi';
 import { LoginData } from '@utils/formData';
 import { user } from '@utils/formSchemas';
-import { LOGIN_URL } from '@utils/links';
+import { API_LOGIN_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +27,7 @@ export default function LoginForm() {
 			password: data.password,
 		};
 
-		const apiUrl = LOGIN_URL;
+		const apiUrl = API_LOGIN_URL;
 
 		try {
 			const response = await apiHandler.apiOptions(apiUrl, userLoginData);

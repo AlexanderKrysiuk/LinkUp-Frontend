@@ -2,7 +2,7 @@ import ButtonComponent from '@components/formUtils/ButtonComponent';
 import DividerComponent from '@components/formUtils/DividerComponent';
 import RegistrationForm from '@components/registrationForm/RegistrationForm';
 import React from 'react';
-//import FormRedirect from '@components/formUtils/FormRedirect';
+import FormRedirect from '@components/formUtils/FormRedirect';
 import '@layouts/FormLayout.css';
 
 export default function RegistrationComponent() {
@@ -11,10 +11,10 @@ export default function RegistrationComponent() {
 			<RegistrationForm />
 			<DividerComponent message='OR' />
 			<ButtonComponent text='Sign up' />
-			{/* <FormRedirect
+			<FormRedirect
 				statement='Already have an account? '
 				linkText='Sign in'
-			/> */}
+			/>
 		</div>
 	);
 }

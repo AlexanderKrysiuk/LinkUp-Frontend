@@ -4,7 +4,7 @@ import '@layouts/FormLayout.css';
 import apiHandler from '@utils/fetchApi';
 import { RegistrationData } from '@utils/formData';
 import { newUser } from '@utils/formSchemas';
-import { REGISTER_URL } from '@utils/links';
+import { API_REGISTER_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +30,7 @@ export default function RegistrationForm() {
 			role: data.userType,
 		};
 
-		const apiUrl = REGISTER_URL;
+		const apiUrl = API_REGISTER_URL;
 
 		try {
 			const response = await apiHandler.apiOptions(
