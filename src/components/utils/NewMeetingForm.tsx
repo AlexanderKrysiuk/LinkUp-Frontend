@@ -1,25 +1,24 @@
-import TimeSlot from '@components/utils/TimeSlot';
+import Meeting from '@components/utils/Meeting.tsx';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-import { TimeSlotData } from '@utils/formData';
-import { timeSlot } from '@utils/formSchemas';
+import { NewMeetingData } from '@utils/formData';
+import { newMeeting } from '@utils/formSchemas';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from './buttons/Button';
 
 const NewTimeSlotForm: React.FC = () => {
-	const { register } = useForm<TimeSlotData>({
-		resolver: zodResolver(timeSlot),
+	const { register } = useForm<NewMeetingData>({
+		resolver: zodResolver(newMeeting),
 	});
 
-	const [formData, setFormData] = useState<TimeSlotData>({
+	const [formData, setFormData] = useState<NewMeetingData>({
 		date: '',
-		time: '',
-		place: 'Online',
-		title: '',
+		duration: 30,
+		description: '',
 	});
 
-	const [submittedData, setSubmittedData] = useState<TimeSlotData[]>([]);
+	const [submittedData, setSubmittedData] = useState<NewMeetingData[]>([]);
 	const [showForm, setShowForm] = useState(false);
 
 	const handleInputChange = (
@@ -38,11 +37,12 @@ const NewTimeSlotForm: React.FC = () => {
 		setShowForm(false);
 		setFormData({
 			date: '',
-			time: '',
-			place: '',
-			title: '',
+			duration: 30,
+			description: '',
 		});
 	};
+
+	var currentDate = new Date().toISOString().split('T')[0];
 
 	return (
 		<div>
@@ -60,62 +60,50 @@ const NewTimeSlotForm: React.FC = () => {
 						<input
 							className='form-element__input'
 							{...register('date')}
-							type='date'
+							type="date"
 							name='date'
+							min={currentDate}
 							value={formData.date}
 							onChange={handleInputChange}
 						/>
 					</div>
 					<div className='form-element'>
-						<label className='form-element__label'>Time:</label>
+						<label className='form-element__label'>Duration (min):</label>
 						<input
 							className='form-element__input'
-							{...register('time')}
-							type='time'
-							name='time'
-							step='3600'
-							value={formData.time}
+							{...register('duration')}
+							type='number'
+							name='duration'
+							step='30'
+							min='30'
+							value={formData.duration}
 							onChange={handleInputChange}
 						/>
 					</div>
 					<div className='form-element'>
-						<label className='form-element__label'>Place:</label>
-						<select
-							className='form-element__input'
-							{...register('place')}
-							name='place'
-							value={formData.place}
-							onChange={handleInputChange}>
-							<option value='Online'>Online</option>
-							<option value='Stationary'>Stationary</option>
-						</select>
-					</div>
-					<div className='form-element'>
-						<label className='form-element__label'>Title:</label>
+						<label className='form-element__label'>Description:</label>
 						<input
 							className='form-element__input'
-							{...register('title')}
+							{...register('description')}
 							type='text'
-							name='title'
-							value={formData.title}
+							name='description'
+							value={formData.description}
 							onChange={handleInputChange}
 						/>
 					</div>
 					<button
 						className='action-button'
 						type='submit'>
-						Submit
+						OK
 					</button>
 				</form>
 			) : (
 				<div>
 					{submittedData.map((data, index) => (
-						<TimeSlot
+						<Meeting
 							key={index}
 							date={data.date}
-							time={data.time}
-							place={data.place}
-							title={data.title}
+							description={data.description}
 						/>
 					))}
 				</div>

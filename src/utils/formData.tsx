@@ -12,9 +12,8 @@ export type LoginData = {
 	password: string;
 };
 
-export interface TimeSlotData {
+export interface NewMeetingData {
 	date: string;
-	time: string;
-	place: string;
-	title: string;
+	duration: number,
+	description: string;
 }

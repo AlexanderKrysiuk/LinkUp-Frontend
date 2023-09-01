@@ -1,4 +1,4 @@
-import { LoginData, RegistrationData, TimeSlotData } from '@utils/formData';
+import { LoginData, RegistrationData, NewMeetingData } from '@utils/formData';
 import { ZodType, z } from 'zod';
 
 export const newUser: ZodType<RegistrationData> = z
@@ -51,11 +51,10 @@ export const user: ZodType<LoginData> = z
 	})
 	.required();
 
-export const timeSlot: ZodType<TimeSlotData> = z
+export const newMeeting: ZodType<NewMeetingData> = z
 	.object({
 		date: z.string(),
-		time: z.string(),
-		place: z.string(),
-		title: z.string(),
+		duration: z.number().int(),
+		description: z.string(),
 	})
 	.required();

@@ -1,11 +1,11 @@
 //import Button from '@components/utils/Button';
-import NewTimeSlotForm from '@components/utils/NewTimeSlotForm';
+import NewMeetingForm from '@components/utils/NewMeetingForm';
 import React from 'react';
 
 const MockPageComponent = () => {
 	return (
 		<div>
-			<NewTimeSlotForm />
+			<NewMeetingForm />
 			{/* <Button text='+ Add meeting slot' /> */}
 		</div>
 	);
