@@ -75,6 +75,14 @@ pre {
 
 a {
 	background-color: transparent;
+	text-decoration: none;
+}
+
+ul {
+	padding: 0;
+}
+li {
+	list-style-type: none;
 }
 
 /**

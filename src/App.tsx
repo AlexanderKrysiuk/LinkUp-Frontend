@@ -18,16 +18,25 @@ import '@layouts/FormLayout.css';
 //import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
+
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
+
 import ContactPage from '@pages/ContactPage.tsx';
+
 import ErrorPage from '@pages/ErrorPage.tsx';
+
 import HomePage from '@pages/HomePage.tsx';
+
 import ProfilePage from '@pages/ProfilePage.tsx';
+
 import { Route, Routes } from 'react-router-dom';
+
 import './App.css';
 
 import Login from '@pages/Login';
+
 import MockPage from '@pages/MockPage.tsx';
+
 import Register from '@pages/Register.tsx';
 
 /**
@@ -42,7 +51,7 @@ import Register from '@pages/Register.tsx';
  * <App />
  * ```
  */
-export function App() {
+export function App(): JSX.Element {
 	return (
 		<>
 			{/* <RegistrationComponent /> */}
@@ -60,11 +69,11 @@ export function App() {
 						element={<HomePage />}
 					/>
 					<Route
-						path='/Contact'
+						path='/contact'
 						element={<ContactPage />}
 					/>
 					<Route
-						path='/Profile'
+						path='/profile/overview/*'
 						element={<ProfilePage />}
 					/>
 					<Route
@@ -72,17 +81,17 @@ export function App() {
 						element={<ErrorPage />}
 					/>
 					<Route
-						path='/Mock'
+						path='/mock'
 						element={<MockPage />}
 					/>
 					{/* Route for registration */}
 					<Route
-						path='/Register'
+						path='/register'
 						element={<Register />}
 					/>
 					{/* Route for login */}
 					<Route
-						path='/Login'
+						path='/login'
 						element={<Login />}
 					/>
 				</Routes>

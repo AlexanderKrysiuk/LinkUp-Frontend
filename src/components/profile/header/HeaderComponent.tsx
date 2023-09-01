@@ -1,9 +1,29 @@
 import React from 'react';
-import UserDetailsComponent from './userdetails/UserDetailsComponent.tsx';
 import CategoriesComponent from './categories/CategoriesComponent.tsx';
 
-const HeaderComponent = () => {
-	return <div className='profile__header'><UserDetailsComponent/><CategoriesComponent/></div>;
+import UserDetailsComponent from './userdetails/UserDetailsComponent.tsx';
+
+interface HeaderComponentProps {
+	selectedCategory: string;
+	onCategoryClick: (category: string) => void;
+}
+
+const HeaderComponent = ({
+	selectedCategory,
+	onCategoryClick,
+}: HeaderComponentProps): JSX.Element => {
+	return (
+		<div className='profile__header'>
+			{/* User details component */}
+			<UserDetailsComponent />
+
+			{/* Categories navigation */}
+			<CategoriesComponent
+				selectedCategory={selectedCategory}
+				onCategoryClick={onCategoryClick}
+			/>
+		</div>
+	);
 };
 
 export default HeaderComponent;
