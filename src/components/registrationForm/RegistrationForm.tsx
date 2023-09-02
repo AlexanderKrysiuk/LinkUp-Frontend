@@ -3,7 +3,7 @@ import '@layouts/FormLayout.css';
 //import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
 import { RegistrationData } from '@utils/formData';
-import { newUser } from '@utils/formSchemas';
+import { newUserSchema } from '@utils/formSchemas';
 import { API_REGISTER_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -19,7 +19,7 @@ export default function RegistrationForm() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<RegistrationData>({
-		resolver: zodResolver(newUser),
+		resolver: zodResolver(newUserSchema),
 	});
 
 	const submitForm = async (data: RegistrationData) => {

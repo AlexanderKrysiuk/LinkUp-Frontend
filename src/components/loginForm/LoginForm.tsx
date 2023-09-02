@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 //import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
 import { LoginData } from '@utils/formData';
-import { user } from '@utils/formSchemas';
+import { userSchema } from '@utils/formSchemas';
 import { API_LOGIN_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -18,7 +18,7 @@ export default function LoginForm() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<LoginData>({
-		resolver: zodResolver(user),
+		resolver: zodResolver(userSchema),
 	});
 
 	const login = async (data: LoginData) => {
