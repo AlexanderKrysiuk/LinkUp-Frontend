@@ -51,17 +51,10 @@ export const userSchema: ZodType<LoginData> = z
 	})
 	.required();
 
-const datetimeSchema: ZodType<string> = z.string().refine(
-	(value) => {
-		const datetimePattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
-		return datetimePattern.test(value);
-	},
-	{ message: 'Invalid datetime-local format' },
-);
-
 export const newMeetingSchema: ZodType<NewMeetingData> = z
 	.object({
-		datetime: z.string(),
+		date: z.string(),
+		time: z.string(),
 		duration: z.string(),
 		participants: z.string(),
 		description: z.string().nullable(),

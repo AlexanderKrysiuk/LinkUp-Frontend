@@ -13,7 +13,8 @@ export type LoginData = {
 };
 
 export interface NewMeetingData {
-	datetime: string;
+	date: string;
+	time: string;
 	duration: string;
 	participants: string;
 	description: string | null;
