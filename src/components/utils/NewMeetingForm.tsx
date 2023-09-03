@@ -4,12 +4,16 @@ import '@layouts/FormLayout.css';
 import apiHandler from '@utils/fetchApi';
 import { NewMeetingData } from '@utils/formData';
 import { newMeetingSchema } from '@utils/formSchemas';
-import React from 'react';
+import { API_MEETINGS_URL } from '@utils/links';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 var errorMessage = '';
 
 function NewMeetingForm() {
+	const [minTime, setMinTime] = useState<string>();
+	const [isTimeInvalid, setIsTimeInvalid] = useState<boolean>();
+
 	const {
 		register,
 		handleSubmit,
@@ -18,33 +22,16 @@ function NewMeetingForm() {
 		resolver: zodResolver(newMeetingSchema),
 	});
 
-	const currentDateTime: Date = new Date();
-	// const currentHour: number = parseInt(
-	// 	currentDateTime.toISOString().slice(11, 13),
-	// );
-	// const currentMinutes: number = parseInt(
-	// 	currentDateTime.toISOString().slice(14, 16),
-	// );
-
-	// const validateTime = (e: React.ChangeEvent<HTMLInputElement>) => {
-	// 	const selectedTime = e.target.value.slice(11, 16);
-	// 	const selectedHour: number = parseInt(selectedTime.slice(0, 2));
-	// 	const selectedMinutes: number = parseInt(selectedTime.slice(3, 5));
-
-	// 	if(selectedHour< currentHour || (selectedHour==currentHour && selectedMinutes< currentMinutes))
-	// 	{var dateError: string = "The time has passed."}
-	// };
-
 	const addMeeting = async (data: NewMeetingData) => {
 		const newMeetingData = {
-			datetime: data.datetime,
+			datetime: data.date + 'T' + data.time + ':00',
 			duration: +data.duration,
 			participants: +data.participants,
 			description: data.description,
 		};
 
-		const apiUrl = '';
-		console.log(newMeetingData);
+		const apiUrl = API_MEETINGS_URL;
+
 		try {
 			const response = await apiHandler.apiPost(apiUrl, newMeetingData);
 			if (response.ok) {
@@ -60,6 +47,45 @@ function NewMeetingForm() {
 		}
 	};
 
+	const currentDateTime: Date = new Date();
+
+	const setMinTimeReference = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const selectedDate: string = e.target.value;
+		const selectedDay: number = parseInt(selectedDate.slice(8, 10));
+		const currentDay: number = currentDateTime.getDate();
+
+		const timeCheck: string =
+			selectedDay === currentDay
+				? `${currentDateTime.toTimeString().slice(0, 5)}`
+				: '00:00';
+		setMinTime(timeCheck);
+	};
+
+	const validateTime = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const selectedTime: string = e.target.value;
+		console.log(selectedTime);
+		const [selectedHour, selectedMinutes] = selectedTime
+			.split(':')
+			.map(Number);
+		const [currentHour, currentMinutes] = currentDateTime
+			.toTimeString()
+			.slice(0, 5)
+			.split(':')
+			.map(Number);
+
+		if (
+			new Date(0, 0, 0, selectedHour, selectedMinutes) <=
+			new Date(0, 0, 0, currentHour, currentMinutes)
+		) {
+			setIsTimeInvalid(true);
+		} else {
+			setIsTimeInvalid(false);
+		}
+	};
+	const timeErr: string = `You need to choose time not earlier than ${currentDateTime
+		.toTimeString()
+		.slice(0, 5)}`;
+
 	return (
 		<form
 			className='form-component'
@@ -68,15 +94,36 @@ function NewMeetingForm() {
 				<label className='form-element__label'>Date:</label>
 				<input
 					className='form-element__input'
-					{...register('datetime')}
-					type='datetime-local'
+					{...register('date')}
+					type='date'
 					id='date'
-					min={currentDateTime.toISOString().slice(0, 16)}
-					//onChange={validateTime}
+					min={currentDateTime.toISOString().slice(0, 10)}
+					onChange={setMinTimeReference}
 				/>
-				{errors.datetime && (
+				{errors.date && (
 					<span className='form-element__validation-prompt'>
-						{errors.datetime.message}
+						{errors.date.message}
+					</span>
+				)}
+			</div>
+			<div className='form-element'>
+				<label className='form-element__label'>Time:</label>
+				<input
+					className='form-element__input'
+					{...register('time')}
+					type='time'
+					id='time'
+					min={minTime}
+					onChange={validateTime}
+				/>
+				{errors.time && (
+					<span className='form-element__validation-prompt'>
+						{errors.time.message}
+					</span>
+				)}
+				{isTimeInvalid && (
+					<span className='form-element__validation-prompt'>
+						{timeErr}
 					</span>
 				)}
 			</div>
