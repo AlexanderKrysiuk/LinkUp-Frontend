@@ -1,15 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-//import errorHandler from '@utils/errorHandler';
-import apiHandler from '@utils/fetchApi';
 import { RegistrationData } from '@utils/formData';
+import { submitFormData } from '@utils/formHandler';
 import { newUserSchema } from '@utils/formSchemas';
 import { API_REGISTER_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-var errorMessage = '';
+var errorMessage: string | number | undefined;
 
 export default function RegistrationForm() {
 	const navigate = useNavigate();
@@ -32,21 +31,17 @@ export default function RegistrationForm() {
 
 		const apiUrl = API_REGISTER_URL;
 
-		try {
-			const response = await apiHandler.apiOptions(
-				apiUrl,
-				userToRegister,
-			);
-			if (response.ok) {
-				navigate('/', { replace: true });
-			} else {
-				//handle statuses
-				errorMessage = `E-mail in use. Register with another e-mail address or sign in.`;
-				console.error(response.status, response.statusText);
-			}
-		} catch (error) {
-			//handle errors -> errorhandler.ts
-			console.error('Error submitting form:', error);
+		const { success, error } = await submitFormData(
+			apiUrl,
+			userToRegister,
+			'options',
+		);
+
+		if (success) {
+			navigate('/', { replace: true });
+		} else {
+			// Obsługa błędów
+			errorMessage = error;
 		}
 	};
 

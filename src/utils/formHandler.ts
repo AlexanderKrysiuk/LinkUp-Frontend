@@ -1,18 +1,30 @@
+//import errorHandler from '@utils/errorHandler';
 import apiHandler from '@utils/fetchApi';
-import { useNavigate } from 'react-router-dom';
 
-export async function submitUserForm(url: string, payload: any) {
-	const navigate = useNavigate();
+export async function submitFormData(
+	url: string,
+	payload: any,
+	method: string,
+) {
 	try {
-		const response = await apiHandler.apiOptions(url, payload);
+		const response =
+			method === 'options'
+				? await apiHandler.apiOptions(url, payload)
+				: await apiHandler.apiPost(url, payload);
 		if (response.ok) {
-			navigate('/', { replace: true });
+			return { success: true, data: response };
 		} else {
-			console.log('User is not authorized.');
-			//handle statuses
+			return {
+				success: false,
+				error: response.status,
+			};
 		}
 	} catch (error) {
-		//handle errors -> errorhandler.ts
 		console.error('Error submitting form:', error);
+		//handle error -> errorHandler.ts ?
+		return {
+			success: false,
+			error: 'An error occurred while submitting the form.',
+		};
 	}
 }

@@ -1,14 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-//import errorHandler from '@utils/errorHandler';
-import apiHandler from '@utils/fetchApi';
 import { NewMeetingData } from '@utils/formData';
+import { submitFormData } from '@utils/formHandler';
 import { newMeetingSchema } from '@utils/formSchemas';
 import { API_MEETINGS_URL } from '@utils/links';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-var errorMessage = '';
+var errorMessage: string | number | undefined;
 
 function NewMeetingForm() {
 	const [minTime, setMinTime] = useState<string>();
@@ -31,18 +30,17 @@ function NewMeetingForm() {
 
 		const apiUrl = API_MEETINGS_URL;
 
-		try {
-			const response = await apiHandler.apiPost(apiUrl, newMeetingData);
-			if (response.ok) {
-				//do smth
-				console.log('submitted', response);
-			} else {
-				//handle statuses
-				errorMessage = `Error ${response.status}: ${response.statusText}`;
-			}
-		} catch (error) {
-			//handle errors -> errorhandler.ts
-			console.error('Error submitting form:', error);
+		const { success, error } = await submitFormData(
+			apiUrl,
+			newMeetingData,
+			'post',
+		);
+
+		if (success) {
+			// TODO: what's next?
+		} else {
+			// Obsługa błędów
+			errorMessage = error;
 		}
 	};
 

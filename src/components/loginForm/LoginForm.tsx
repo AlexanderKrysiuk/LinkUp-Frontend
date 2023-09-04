@@ -1,14 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-//import errorHandler from '@utils/errorHandler';
-import apiHandler from '@utils/fetchApi';
 import { LoginData } from '@utils/formData';
+import { submitFormData } from '@utils/formHandler';
 import { userSchema } from '@utils/formSchemas';
 import { API_LOGIN_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-var errorMessage = '';
+var errorMessage: string | number | undefined;
 
 export default function LoginForm() {
 	const navigate = useNavigate();
@@ -29,17 +28,17 @@ export default function LoginForm() {
 
 		const apiUrl = API_LOGIN_URL;
 
-		try {
-			const response = await apiHandler.apiOptions(apiUrl, userLoginData);
-			if (response.ok) {
-				navigate('/', { replace: true });
-			} else {
-				//handle statuses
-				errorMessage = `Error ${response.status}: ${response.statusText}`;
-			}
-		} catch (error) {
-			//handle errors -> errorhandler.ts
-			console.error('Error submitting form:', error);
+		const { success, error } = await submitFormData(
+			apiUrl,
+			userLoginData,
+			'options',
+		);
+
+		if (success) {
+			navigate('/', { replace: true });
+		} else {
+			// Obsługa błędów
+			errorMessage = error;
 		}
 	};
 
