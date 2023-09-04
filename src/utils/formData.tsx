@@ -17,4 +17,5 @@ export interface NewMeetingData {
 	time: string;
 	duration: string;
 	participants: string;
+	description: string | null;
 }
