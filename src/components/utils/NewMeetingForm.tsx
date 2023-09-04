@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
 import { NewMeetingData } from '@utils/formData';
 import { submitFormData } from '@utils/formHandler';
+import { calculateMinTime, validateDayTime } from '@utils/formHelperFunctions';
 import { newMeetingSchema } from '@utils/formSchemas';
 import { API_MEETINGS_URL } from '@utils/links';
 import React, { useState } from 'react';
@@ -10,8 +11,9 @@ import { useForm } from 'react-hook-form';
 var errorMessage: string | number | undefined;
 
 function NewMeetingForm() {
-	const [minTime, setMinTime] = useState<string>();
+	const [refTime, setRefTime] = useState<string>();
 	const [isTimeInvalid, setIsTimeInvalid] = useState<boolean>();
+	const [refDay, setRefDay] = useState<number>();
 
 	const {
 		register,
@@ -25,9 +27,10 @@ function NewMeetingForm() {
 		const newMeetingData = {
 			datetime: data.date + 'T' + data.time + ':00',
 			duration: +data.duration,
-			participants: +data.participants,
+			maxParticipants: +data.participants,
+			description: data.description,
 		};
-
+		console.log(newMeetingData);
 		const apiUrl = API_MEETINGS_URL;
 
 		const { success, error } = await submitFormData(
@@ -49,39 +52,31 @@ function NewMeetingForm() {
 	const setMinTimeReference = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedDate: string = e.target.value;
 		const selectedDay: number = parseInt(selectedDate.slice(8, 10));
-		const currentDay: number = currentDateTime.getDate();
+		setRefDay(selectedDay);
 
-		const timeCheck: string =
-			selectedDay === currentDay
-				? `${currentDateTime.toTimeString().slice(0, 5)}`
-				: '00:00';
-		setMinTime(timeCheck);
+		const timeCheck: string = calculateMinTime(
+			selectedDate,
+			currentDateTime,
+		);
+
+		setRefTime(timeCheck);
 	};
 
 	const validateTime = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedTime: string = e.target.value;
-		console.log(selectedTime);
-		const [selectedHour, selectedMinutes] = selectedTime
-			.split(':')
-			.map(Number);
-		const [currentHour, currentMinutes] = currentDateTime
-			.toTimeString()
-			.slice(0, 5)
-			.split(':')
-			.map(Number);
+		const isTimeInvalid = validateDayTime(
+			selectedTime,
+			currentDateTime,
+			refDay,
+		);
 
-		if (
-			new Date(0, 0, 0, selectedHour, selectedMinutes) <=
-			new Date(0, 0, 0, currentHour, currentMinutes)
-		) {
-			setIsTimeInvalid(true);
-		} else {
-			setIsTimeInvalid(false);
-		}
+		setIsTimeInvalid(isTimeInvalid);
 	};
 	const timeErr: string = `You need to choose time not earlier than ${currentDateTime
 		.toTimeString()
 		.slice(0, 5)}`;
+
+	console.log(isTimeInvalid);
 
 	return (
 		<form
@@ -110,7 +105,7 @@ function NewMeetingForm() {
 					{...register('time')}
 					type='time'
 					id='time'
-					min={minTime}
+					min={refTime}
 					onChange={validateTime}
 				/>
 				{errors.time && (
@@ -152,6 +147,20 @@ function NewMeetingForm() {
 				{errors.participants && (
 					<span className='form-element__validation-prompt'>
 						{errors.participants.message}
+					</span>
+				)}
+			</div>
+			<div className='form-element'>
+				<label className='form-element__label'>Description:</label>
+				<input
+					className='form-element__input'
+					type='text'
+					id='description'
+					{...register('description')}
+				/>
+				{errors.description && (
+					<span className='form-element__validation-prompt'>
+						{errors.description.message}
 					</span>
 				)}
 			</div>
