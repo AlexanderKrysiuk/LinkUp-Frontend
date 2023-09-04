@@ -27,7 +27,6 @@ function NewMeetingForm() {
 			datetime: data.date + 'T' + data.time + ':00',
 			duration: +data.duration,
 			participants: +data.participants,
-			description: data.description,
 		};
 
 		const apiUrl = API_MEETINGS_URL;
@@ -158,21 +157,6 @@ function NewMeetingForm() {
 					</span>
 				)}
 			</div>
-			<div className='form-element'>
-				<label className='form-element__label'>Description:</label>
-				<input
-					className='form-element__input'
-					type='text'
-					id='description'
-					{...register('description')}
-				/>
-				{errors.description && (
-					<span className='form-element__validation-prompt'>
-						{errors.description.message}
-					</span>
-				)}
-			</div>
-
 			<button
 				className='action-button'
 				type='submit'>

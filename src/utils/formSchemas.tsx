@@ -57,6 +57,5 @@ export const newMeetingSchema: ZodType<NewMeetingData> = z
 		time: z.string(),
 		duration: z.string(),
 		participants: z.string(),
-		description: z.string().nullable(),
 	})
 	.required();

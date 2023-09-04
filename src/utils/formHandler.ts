@@ -1,7 +1,7 @@
 import apiHandler from '@utils/fetchApi';
 import { useNavigate } from 'react-router-dom';
 
-export async function submitUserData(url: string, payload: any) {
+export async function submitUserForm(url: string, payload: any) {
 	const navigate = useNavigate();
 	try {
 		const response = await apiHandler.apiOptions(url, payload);
