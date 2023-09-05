@@ -20,21 +20,30 @@ export default function LoginForm() {
 		resolver: zodResolver(userSchema),
 	});
 
-	const login = async (data: LoginData) => {
+	const login = async (formData: LoginData) => {
 		const userLoginData = {
-			email: data.email,
-			password: data.password,
+			email: formData.email,
+			password: formData.password,
 		};
 
 		const apiUrl = API_LOGIN_URL;
 
-		const { success, error } = await submitFormData(
+		const { success, error, data } = await submitFormData(
 			apiUrl,
 			userLoginData,
 			'options',
 		);
 
 		if (success) {
+			if (data) {
+				if ('token' in data) {
+					const responseData = data as { token: string };
+					const token = responseData.token;
+					localStorage.setItem('token', token);
+				} else {
+					//no token :<
+				}
+			}
 			navigate('/', { replace: true });
 		} else {
 			// Obsługa błędów
