@@ -19,10 +19,10 @@ export async function createMeeting(payload: any, token: any) {
 
 export async function getUserRole(token: any) {
 	const headers = { Authorization: `Bearer ${token}` };
-	return await apiGet(headers);
+	return await apiGet('URL_TO_SET', headers); //add API_USER, +links.ts
 }
 
-async function apiOptions(url: string, payload: any) {
+async function apiOptions(url: string, payload: any): Promise<Response> {
 	const response = await fetch(url, {
 		method: 'OPTIONS',
 		headers: { 'Content-Type': 'application/json' },
@@ -36,7 +36,7 @@ async function apiPost(
 	url: string,
 	payload: any,
 	headers?: Record<string, string>,
-) {
+): Promise<Response> {
 	const requestHeaders = {
 		...(headers || {}),
 		'Content-Type': 'application/json',
@@ -49,10 +49,12 @@ async function apiPost(
 	return response;
 }
 
-async function apiGet(headers?: Record<string, string>) {
+async function apiGet(
+	url: string,
+	headers?: Record<string, string>,
+): Promise<Response> {
 	const requestHeaders = { ...(headers || {}) };
-	const response = await fetch('API_USER', {
-		//add API_USER, +links.ts
+	const response = await fetch(url, {
 		method: 'GET',
 		headers: requestHeaders,
 	});
