@@ -3,10 +3,11 @@ import '@layouts/FormLayout.css';
 import { RegistrationData } from '@utils/formData';
 import { submitFormData } from '@utils/formHandler';
 import { newUserSchema } from '@utils/formSchemas';
-import { API_REGISTER_URL } from '@utils/links';
+//import { API_REGISTER_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+//import { loginUser } from '@utils/apiHandler';
 
 var errorMessage: string | number | undefined;
 
@@ -29,15 +30,14 @@ export default function RegistrationForm() {
 			role: data.userType,
 		};
 
-		const apiUrl = API_REGISTER_URL;
-
 		const { success, error } = await submitFormData(
-			apiUrl,
 			userToRegister,
 			'options',
+			'register',
 		);
 
 		if (success) {
+			//ZALOGUJ OD RAZU: loginUser({email: data.email, password: data.password}) ??
 			navigate('/', { replace: true });
 		} else {
 			// Obsługa błędów

@@ -1,22 +1,30 @@
 //import errorHandler from '@utils/errorHandler';
-import apiHandler from '@utils/fetchApi';
+import { createMeeting, createUser, loginUser } from '@utils/apiHandler';
 
 export async function submitFormData(
-	url: string,
 	payload: any,
 	method: string,
+	action: string,
+	token?: any,
 ) {
+	var response = null;
 	try {
-		const response =
-			method === 'options'
-				? await apiHandler.apiOptions(url, payload)
-				: await apiHandler.apiPost(url, payload);
-		if (response.ok) {
+		if (method === 'options' && action === 'login') {
+			response = await loginUser(payload);
+		} else if (method === 'options' && action === 'register') {
+			response = await createUser(payload);
+		} else if (method === 'post' && action === 'addMeeting') {
+			response = await createMeeting(payload, token);
+		} else if (method === 'put' && action === 'updateMeeting') {
+			//response = await updateMeetingDetails(payload, token);
+		}
+
+		if (response && response.ok) {
 			return { success: true, data: response };
 		} else {
 			return {
 				success: false,
-				error: response.status,
+				error: response?.status,
 			};
 		}
 	} catch (error) {

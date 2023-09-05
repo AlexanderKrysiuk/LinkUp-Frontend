@@ -4,7 +4,6 @@ import { NewMeetingData } from '@utils/formData';
 import { submitFormData } from '@utils/formHandler';
 import { calculateMinTime, validateDayTime } from '@utils/formHelperFunctions';
 import { newMeetingSchema } from '@utils/formSchemas';
-import { API_MEETINGS_URL } from '@utils/links';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -30,13 +29,11 @@ function NewMeetingForm() {
 			maxParticipants: +data.participants,
 			description: data.description,
 		};
-		console.log(newMeetingData);
-		const apiUrl = API_MEETINGS_URL;
 
 		const { success, error } = await submitFormData(
-			apiUrl,
 			newMeetingData,
 			'post',
+			'addMeeting',
 		);
 
 		if (success) {
@@ -69,7 +66,6 @@ function NewMeetingForm() {
 			currentDateTime,
 			refDay,
 		);
-
 		setIsTimeInvalid(isTimeInvalid);
 	};
 	const timeErr: string = `You need to choose time not earlier than ${currentDateTime
