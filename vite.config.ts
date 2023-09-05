@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 // import { defineConfig } from "vitest/config";
 import react from '@vitejs/plugin-react';
 
-import mkcert from 'vite-plugin-mkcert';
+//import mkcert from 'vite-plugin-mkcert';
 
 import { resolve } from 'path';
 
@@ -13,8 +13,8 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	server: { https: true },
-	plugins: [svgr(), react(), mkcert()],
+	//server: { https: true },
+	plugins: [svgr(), react()], // mkcert()],
 	test: {
 		globals: true,
 		environment: 'jsdom',
