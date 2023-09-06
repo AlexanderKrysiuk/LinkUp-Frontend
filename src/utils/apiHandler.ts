@@ -3,6 +3,7 @@ import {
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
 } from '@utils/links';
+import { getAuthHeader } from './auth';
 
 export async function createUser(payload: any) {
 	return await apiOptions(API_REGISTER_URL, payload);
@@ -13,12 +14,12 @@ export async function loginUser(payload: any) {
 }
 
 export async function createMeeting(payload: any, token: any) {
-	const headers = { Authorization: `Bearer ${token}` };
+	const headers = getAuthHeader(token);
 	return await apiPost(API_MEETINGS_URL, payload, headers);
 }
 
 export async function getUserRole(token: any) {
-	const headers = { Authorization: `Bearer ${token}` };
+	const headers = getAuthHeader(token);
 	return await apiGet('URL_TO_SET', headers); //add API_USER, +links.ts
 }
 
