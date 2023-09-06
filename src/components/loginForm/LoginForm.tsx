@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setTokenToLocalStorage } from '@utils/auth';
 import { LoginData } from '@utils/formData';
 import { submitFormData } from '@utils/formHandler';
 import { userSchema } from '@utils/formSchemas';
@@ -25,29 +26,14 @@ export default function LoginForm() {
 			password: formData.password,
 		};
 
-		const { success, error, data } = await submitFormData(
-			userLoginData,
-			'options',
-			'login',
-		);
+		const {
+			success,
+			error,
+			data: responseData,
+		} = await submitFormData(userLoginData, 'options', 'login');
 
-		if (success) {
-			if (data) {
-				try {
-					const responseData = await data.json();
-					if ('token' in responseData) {
-						const responseToken = responseData.token;
-						localStorage.setItem('token', responseToken);
-					} else {
-						console.error('You are not authorized!');
-					}
-				} catch (error) {
-					console.error(
-						'There has been an issue while processing JSON: ',
-						error,
-					);
-				}
-			}
+		if (success && responseData) {
+			setTokenToLocalStorage(responseData);
 			navigate('/', { replace: true });
 		} else {
 			// Obsługa błędów
