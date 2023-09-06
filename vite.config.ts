@@ -72,6 +72,10 @@ export default defineConfig({
 				find: '@contexts',
 				replacement: resolve(__dirname, './src/contexts/'),
 			},
+			{
+				find: '@router',
+				replacement: resolve(__dirname, './src/router/'),
+			},
 		],
 	},
 });

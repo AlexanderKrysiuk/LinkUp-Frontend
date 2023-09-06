@@ -55,6 +55,9 @@
 			"@contexts/*": [
 				"./src/contexts/*"
 			],
+			"@router/*": [
+				"./src/router/*"
+			],
 		},
 		/* Bundler mode */
 		"moduleResolution": "node",
