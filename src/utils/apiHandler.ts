@@ -2,6 +2,7 @@ import {
 	API_LOGIN_URL,
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
+	API_USER_ROLE,
 } from '@utils/links';
 import { getAuthHeader } from './auth';
 
@@ -20,7 +21,7 @@ export async function createMeeting(payload: any, token: any) {
 
 export async function getUserRole(token: any) {
 	const headers = getAuthHeader(token);
-	return await apiGet('URL_TO_SET', headers); //add API_USER, +links.ts
+	return await apiGet(API_USER_ROLE, headers);
 }
 
 async function apiOptions(url: string, payload: any): Promise<Response> {
