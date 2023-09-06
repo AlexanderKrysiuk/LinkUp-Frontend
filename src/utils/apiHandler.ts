@@ -14,12 +14,12 @@ export async function loginUser(payload: any) {
 	return await apiOptions(API_LOGIN_URL, payload);
 }
 
-export async function createMeeting(payload: any, token: any) {
+export async function createMeeting(payload: any, token: string) {
 	const headers = getAuthHeader(token);
 	return await apiPost(API_MEETINGS_URL, payload, headers);
 }
 
-export async function getUserRole(token: any) {
+export async function getUserRole(token: string) {
 	const headers = getAuthHeader(token);
 	return await apiGet(API_USER_ROLE, headers);
 }
