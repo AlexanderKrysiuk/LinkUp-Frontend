@@ -3,7 +3,7 @@ import NewMeetingForm from '@components/utils/NewMeetingForm';
 import Button from '@components/utils/buttons/Button';
 import React, { useEffect, useState } from 'react';
 
-const MockPageComponent = () => {
+const MockPageComponent = (): JSX.Element => {
 	const [isFormVisible, setIsFormVisible] = useState(false);
 
 	//const [isLogged, setIsLogged] = useState(false);
