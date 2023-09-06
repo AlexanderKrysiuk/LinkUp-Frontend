@@ -26,6 +26,10 @@
   justify-content: flex-end;
   align-items: center;
 }
+.navbar__menu > .active li {
+  background-color: pink;
+  color: white;
+}
 .navbar__menu-button {
   display: flex;
   flex-direction: column;

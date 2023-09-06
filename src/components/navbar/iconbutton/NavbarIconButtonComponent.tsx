@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { NavMenuItem } from '../Types.ts';
 
@@ -9,7 +9,7 @@ import { NavMenuItem } from '../Types.ts';
  * This component displays an icon button in the navigation menu. It receives a navigation
  * menu item as a prop, which includes the route name, icon, and action associated with the
  * button. The component conditionally renders the icon button based on the route name, and
- * handles navigation using React Router's Link component.
+ * handles navigation using React Router's NavLink component.
  *
  * @component
  * @param {Object} props - The props object containing the navigation menu item.
@@ -33,12 +33,12 @@ const NavbarIconButtonComponent = ({
 }): JSX.Element => {
 	if (item.routeName === 'profile') {
 		return (
-			<Link to={`${item.routeName}/overview`}>
+			<NavLink to={item.routeName}>
 				<li className='navbar__menu-button'>
 					<item.routeIcon />
 					<span>{`${item.routeName}`}</span>
 				</li>
-			</Link>
+			</NavLink>
 		);
 	} else if (
 		item.routeName !== 'login' &&
@@ -46,21 +46,22 @@ const NavbarIconButtonComponent = ({
 		item.routeName !== 'logout'
 	) {
 		return (
-			<Link to={item.routeName === 'home' ? '/' : `/${item.routeName}`}>
+			<NavLink
+				to={item.routeName === 'home' ? '/' : `/${item.routeName}`}>
 				<li className='navbar__menu-button'>
 					<item.routeIcon />
 					<span>{item.routeName}</span>
 				</li>
-			</Link>
+			</NavLink>
 		);
 	} else {
 		return (
-			<Link to={item.routeName}>
+			<NavLink to={item.routeName}>
 				<li className='navbar__menu-button'>
 					<item.routeIcon />
 					<span>{item.routeName}</span>
 				</li>
-			</Link>
+			</NavLink>
 		);
 	}
 };

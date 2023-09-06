@@ -1,5 +1,5 @@
+import routes from '@router/NavMenuItems.ts';
 import React from 'react';
-import routes from '../NavMenuItems.ts';
 
 import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.tsx';
 
