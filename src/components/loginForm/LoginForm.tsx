@@ -33,12 +33,21 @@ export default function LoginForm() {
 
 		if (success) {
 			if (data) {
-				if ('token' in data) {
-					const responseData = data as { token: string };
-					const token = responseData.token;
-					localStorage.setItem('token', token);
-				} else {
-					//no token :<
+				try {
+					const responseData = await data.json();
+					console.log(responseData);
+					if ('token' in responseData) {
+						const responseToken = responseData.token;
+						localStorage.setItem('token', responseToken);
+						console.log('Success! ', responseToken);
+					} else {
+						console.error('You are not authorized!');
+					}
+				} catch (error) {
+					console.error(
+						'There has been an issue while processing JSON: ',
+						error,
+					);
 				}
 			}
 			navigate('/', { replace: true });
