@@ -38,6 +38,28 @@ export default function RegistrationForm() {
 
 		if (success) {
 			//ZALOGUJ OD RAZU: loginUser({email: data.email, password: data.password}) ??
+			const loginResult = await submitFormData(
+				{ email: data.email, password: data.password },
+				'options',
+				'login',
+			);
+			if (loginResult.success && loginResult.data) {
+				try {
+					const responseData = await loginResult.data.json();
+					if ('token' in responseData) {
+						const responseToken = responseData.token;
+						localStorage.setItem('token', responseToken);
+					} else {
+						console.error('You are not authorized!');
+					}
+				} catch (error) {
+					console.error(
+						'There has been an issue while processing JSON: ',
+						error,
+					);
+				}
+			}
+
 			navigate('/', { replace: true });
 		} else {
 			// Obsługa błędów

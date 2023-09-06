@@ -35,11 +35,9 @@ export default function LoginForm() {
 			if (data) {
 				try {
 					const responseData = await data.json();
-					console.log(responseData);
 					if ('token' in responseData) {
 						const responseToken = responseData.token;
 						localStorage.setItem('token', responseToken);
-						console.log('Success! ', responseToken);
 					} else {
 						console.error('You are not authorized!');
 					}
