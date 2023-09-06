@@ -13,7 +13,12 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	server: { https: true },
+	server: {
+		https: true,
+		host: true,
+		port: 5173,
+		strictPort: true,
+	},
 	plugins: [svgr(), react(), mkcert()],
 	test: {
 		globals: true,
