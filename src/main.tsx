@@ -10,9 +10,13 @@
 
 import { BackdropProvider } from '@contexts/BackdropContext.tsx';
 import * as React from 'react';
+
 import * as ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { App } from './App.tsx';
+
+import router from '@router/Router.tsx';
+import { RouterProvider } from 'react-router-dom';
+import './App.css';
+
 import './index.css';
 
 /**
@@ -39,12 +43,10 @@ export function initializeApp(rootContainer: HTMLElement): void {
 	ReactDOM.createRoot(rootContainer).render(
 		<React.StrictMode>
 			{/* Enable routing and context management */}
-			<BrowserRouter>
-				<BackdropProvider>
-					{/* Render the root component */}
-					<App />
-				</BackdropProvider>
-			</BrowserRouter>
+			<BackdropProvider>
+				{/* Render the root component */}
+				<RouterProvider router={router} />
+			</BackdropProvider>
 		</React.StrictMode>,
 	);
 }

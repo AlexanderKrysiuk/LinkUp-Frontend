@@ -1,19 +1,11 @@
 // ContentComponent.tsx
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-interface ContentComponentProps {
-	selectedHeaderCategory: string;
-	selectedSidebarSubcategory: string;
-}
-
-const ContentComponent: React.FC<ContentComponentProps> = ({
-	selectedHeaderCategory,
-	selectedSidebarSubcategory,
-}) => {
+const ContentComponent = (): JSX.Element => {
 	return (
 		<div className='profile__content'>
-			{/* Render content based on selected category and subcategory */}
-			{/* ... */}
+			<Outlet />
 		</div>
 	);
 };

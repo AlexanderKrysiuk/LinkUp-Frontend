@@ -1,35 +1,30 @@
 import PillComponent from '@components/utils/buttons/PillComponent.tsx';
+import { ProfileMenuItem, SubmenuItem } from '@router/ProfileMenuItems.ts';
+
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-interface SubcategoriesProps {
-	subRoutes: submenuItem[];
-	selectedCategory: string;
-	selectedSubcategory: string;
-	onSubcategoryClick: (selectedSubcategory: string) => void;
+interface SubcategoriesComponentProps {
+	selectedCategory: ProfileMenuItem;
+	clickHandler: (text: string) => void;
 }
-
-type submenuItem = {
-	routeName: string;
-};
 
 const SubcategoriesComponent = ({
 	selectedCategory,
-	subRoutes,
-	onSubcategoryClick,
-}: SubcategoriesProps): JSX.Element => {
+	clickHandler,
+}: SubcategoriesComponentProps): JSX.Element => {
 	return (
 		<ul>
-			{subRoutes.map((subItem) => (
+			{selectedCategory.subMenu.map((subItem: SubmenuItem) => (
 				<li key={subItem.routeName}>
-					<Link
-						to={`/profile/${selectedCategory}/${subItem.routeName}`}>
+					<NavLink
+						to={`/profile/${selectedCategory.routeName}/${subItem.routeName}`}>
 						<PillComponent
-							text={subItem.routeName}
-							onClick={onSubcategoryClick}
+							item={subItem.routeName}
+							onClick={clickHandler}
 						/>
-					</Link>
+					</NavLink>
 				</li>
 			))}
 		</ul>

@@ -3,80 +3,55 @@ import HeaderComponent from '@components/profile/header/HeaderComponent.tsx';
 
 import SidebarComponent from '@components/profile/sidebar/SidebarComponent.tsx';
 
-import routes, {
-	SubmenuItem,
-} from '@components/profile/header/ProfileMenuItems.ts';
+import routes, { ProfileMenuItem } from '@router/ProfileMenuItems.ts';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import './ProfilePageLayout.css';
+
+const errorRoute: ProfileMenuItem = {
+	routeName: 'error',
+	component: () => <div>Error</div>,
+	subMenu: [{ routeName: 'error', component: () => <div>Error</div> }],
+};
+
+const defaultCategory: ProfileMenuItem = routes[0] ? routes[0] : errorRoute;
+const defaultSubcategory: string =
+	defaultCategory && defaultCategory.subMenu && defaultCategory.subMenu[0]
+		? defaultCategory.subMenu[0].routeName
+		: 'error';
 
 const ProfilePageLayout = (): JSX.Element => {
-	const [selectedHeaderCategory, setSelectedHeaderCategory] = useState('');
-	const [selectedSidebarSubcategory, setSelectedSidebarSubcategory] =
-		useState('');
-
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		// Set the initial selected category and subcategory
-		const initialCategory = routes[0]?.routeName || '';
-		const initialSubcategory = routes[0]?.subMenu[0]?.routeName || '';
-
-		setSelectedHeaderCategory(initialCategory);
-		setSelectedSidebarSubcategory(initialSubcategory);
-
-		// Navigate to the initial URL
-		navigate(`/Profile/${initialCategory}/${initialSubcategory}`);
-	}, [navigate]);
-
-	const handleHeaderCategoryClick = (category: string) => {
-		setSelectedHeaderCategory(category);
-		setSelectedSidebarSubcategory('');
-		navigate(`/Profile/${category}`);
+		navigate('/profile/overview');
+	}, []);
+	const defaultCategoryRef = useRef(defaultCategory);
+	const [selectedCategory, setSelectedCategory] = useState(
+		defaultCategoryRef.current,
+	);
+	const [selectedSubcategory, setSelectedSubcategory] = useState(
+		() => defaultSubcategory,
+	);
+	const handleSelectedCategory = (category: ProfileMenuItem) => {
+		setSelectedCategory(category);
 	};
 
-	const handleSidebarSubcategoryClick = (subcategory: string) => {
-		const category = selectedHeaderCategory;
-		setSelectedSidebarSubcategory(subcategory);
-		navigate(`/Profile/${category}/${subcategory}`);
+	const handleSelectedSubcategory = (subcategory: string) => {
+		console.log('subcategory', subcategory);
+		setSelectedSubcategory(subcategory);
 	};
-	``;
-	const findSubRoutes = (categoryName: string = selectedHeaderCategory) => {
-		let subRoutes: SubmenuItem[] | undefined = routes.find(
-			(category) => category.routeName === categoryName,
-		);
-		if (!subRoutes) {
-			subRoutes = [];
-		}
-		return subRoutes;
-	};
-
 	return (
 		<div className='profile'>
-			<HeaderComponent
-				selectedCategory={selectedHeaderCategory}
-				onCategoryClick={handleHeaderCategoryClick}
-			/>
+			<HeaderComponent clickHandler={handleSelectedCategory} />
 			<SidebarComponent
-				selectedCategory={selectedHeaderCategory}
-				selectedSubcategory={selectedSidebarSubcategory}
-				subRoutes={findSubRoutes}
-				onSubcategoryClick={handleSidebarSubcategoryClick}
+				selectedCategory={selectedCategory}
+				clickHandler={handleSelectedSubcategory}
 			/>
-
-			<ContentComponent
-				selectedHeaderCategory={selectedHeaderCategory}
-				selectedSidebarSubcategory={selectedSidebarSubcategory}>
-				<Routes>
-					{routes.map((item) => (
-						<Route
-							key={item.routeName}
-							path={`/Profile/${item.routeName}`}
-						/>
-					))}
-				</Routes>
-			</ContentComponent>
+			<ContentComponent />
 		</div>
 	);
 };

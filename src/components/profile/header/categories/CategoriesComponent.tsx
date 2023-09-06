@@ -1,23 +1,30 @@
 import PillComponent from '@components/utils/buttons/PillComponent.tsx';
 import React from 'react';
 
-import routes from '../ProfileMenuItems.ts';
+import { NavLink } from 'react-router-dom';
 
-interface CategoriesProps {
-	selectedCategory: string; // Add this line
-	onCategoryClick: (category: string) => void;
+import routes, { ProfileMenuItem } from '@router/ProfileMenuItems.ts';
+
+interface CategoriesComponentProps {
+	clickHandler: (category: ProfileMenuItem) => void;
 }
 
-const CategoriesComponent = ({ onCategoryClick }: CategoriesProps) => {
+const CategoriesComponent = ({
+	clickHandler,
+}: CategoriesComponentProps): JSX.Element => {
 	return (
 		<ul className='profile__header_categories'>
 			<li>
 				{routes.map((item, index) => (
-					<PillComponent
-						key={index}
-						onClick={() => onCategoryClick(item.routeName)}
-						text={item.routeName}
-					/>
+					<NavLink
+						to={item.routeName}
+						key={index}>
+						<PillComponent
+							key={index}
+							item={item}
+							onClick={clickHandler}
+						/>
+					</NavLink>
 				))}
 			</li>
 		</ul>

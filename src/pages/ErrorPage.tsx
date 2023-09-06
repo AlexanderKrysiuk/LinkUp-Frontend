@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouteError } from 'react-router-dom';
+import { Route, useRouteError } from 'react-router-dom';
 
 /**
  * Page component for displaying error messages.

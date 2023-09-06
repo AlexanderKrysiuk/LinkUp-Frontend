@@ -1,33 +1,22 @@
 import React from 'react';
 import SubcategoriesComponent from './subcategories/SubcategoriesComponent.tsx';
 
+import { ProfileMenuItem } from '@router/ProfileMenuItems.ts';
+
 interface SidebarComponentProps {
-	subRoutes: submenuItem[];
-	selectedCategory: string;
-	selectedSubcategory: string;
-	onSubcategoryClick: (selectedSubcategory: string) => void;
+	selectedCategory: ProfileMenuItem;
+	clickHandler: (text: string) => void;
 }
-
-type submenuItem = {
-	routeName: string;
-};
-
 const SidebarComponent = ({
 	selectedCategory,
-	selectedSubcategory,
-	subRoutes,
-	onSubcategoryClick,
+	clickHandler,
 }: SidebarComponentProps): JSX.Element => {
 	return (
 		<div className='profile__sidebar'>
-			{selectedCategory && (
-				<SubcategoriesComponent
-					selectedCategory={selectedCategory} // Pass the routeName prop here
-					selectedSubcategory={selectedSubcategory}
-					subRoutes={subRoutes}
-					onSubcategoryClick={onSubcategoryClick}
-				/>
-			)}
+			<SubcategoriesComponent
+				clickHandler={clickHandler}
+				selectedCategory={selectedCategory}
+			/>
 		</div>
 	);
 };

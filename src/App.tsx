@@ -21,23 +21,7 @@ import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
 
-import ContactPage from '@pages/ContactPage.tsx';
-
-import ErrorPage from '@pages/ErrorPage.tsx';
-
-import HomePage from '@pages/HomePage.tsx';
-
-import ProfilePage from '@pages/ProfilePage.tsx';
-
-import { Route, Routes } from 'react-router-dom';
-
-import './App.css';
-
-import Login from '@pages/Login';
-
-import MockPage from '@pages/MockPage.tsx';
-
-import Register from '@pages/Register.tsx';
+import { Outlet } from 'react-router-dom';
 
 /**
  * The root component of the application.
@@ -57,44 +41,11 @@ export function App(): JSX.Element {
 			{/* <RegistrationComponent /> */}
 			{/* <LoginComponent /> */}
 
-			{/* Display the backdrop */}
 			<Backdrop />
 
-			{/* Display the navigation bar */}
 			<NavbarLayout />
 			<main className='main'>
-				<Routes>
-					<Route
-						path='/'
-						element={<HomePage />}
-					/>
-					<Route
-						path='/contact'
-						element={<ContactPage />}
-					/>
-					<Route
-						path='/profile/overview/*'
-						element={<ProfilePage />}
-					/>
-					<Route
-						path='*'
-						element={<ErrorPage />}
-					/>
-					<Route
-						path='/mock'
-						element={<MockPage />}
-					/>
-					{/* Route for registration */}
-					<Route
-						path='/register'
-						element={<Register />}
-					/>
-					{/* Route for login */}
-					<Route
-						path='/login'
-						element={<Login />}
-					/>
-				</Routes>
+				<Outlet />
 			</main>
 			<FooterLayout />
 		</>

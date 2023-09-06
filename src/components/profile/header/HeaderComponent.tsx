@@ -1,27 +1,19 @@
 import React from 'react';
 import CategoriesComponent from './categories/CategoriesComponent.tsx';
 
+import { ProfileMenuItem } from '@router/ProfileMenuItems.ts';
 import UserDetailsComponent from './userdetails/UserDetailsComponent.tsx';
 
 interface HeaderComponentProps {
-	selectedCategory: string;
-	onCategoryClick: (category: string) => void;
+	clickHandler: (category: ProfileMenuItem) => void;
 }
-
 const HeaderComponent = ({
-	selectedCategory,
-	onCategoryClick,
+	clickHandler,
 }: HeaderComponentProps): JSX.Element => {
 	return (
 		<div className='profile__header'>
-			{/* User details component */}
 			<UserDetailsComponent />
-
-			{/* Categories navigation */}
-			<CategoriesComponent
-				selectedCategory={selectedCategory}
-				onCategoryClick={onCategoryClick}
-			/>
+			<CategoriesComponent clickHandler={clickHandler} />
 		</div>
 	);
 };
