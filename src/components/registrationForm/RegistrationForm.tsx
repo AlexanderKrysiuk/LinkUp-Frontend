@@ -1,13 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
+import { loginUser } from '@utils/apiHandler';
+import { setTokenToLocalStorage } from '@utils/auth';
 import { RegistrationData } from '@utils/formData';
 import { submitFormData } from '@utils/formHandler';
 import { newUserSchema } from '@utils/formSchemas';
-//import { API_REGISTER_URL } from '@utils/links';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-//import { loginUser } from '@utils/apiHandler';
 
 var errorMessage: string | number | undefined;
 
@@ -22,12 +22,12 @@ export default function RegistrationForm() {
 		resolver: zodResolver(newUserSchema),
 	});
 
-	const submitForm = async (data: RegistrationData) => {
+	const submitForm = async (formData: RegistrationData) => {
 		const userToRegister = {
-			username: `${data.firstName} ${data.lastName}`,
-			email: data.email,
-			password: data.password,
-			role: data.userType,
+			username: `${formData.firstName} ${formData.lastName}`,
+			email: formData.email,
+			password: formData.password,
+			role: formData.userType,
 		};
 
 		const { success, error } = await submitFormData(
@@ -37,30 +37,17 @@ export default function RegistrationForm() {
 		);
 
 		if (success) {
-			//ZALOGUJ OD RAZU: loginUser({email: data.email, password: data.password}) ??
-			const loginResult = await submitFormData(
-				{ email: data.email, password: data.password },
-				'options',
-				'login',
-			);
-			if (loginResult.success && loginResult.data) {
-				try {
-					const responseData = await loginResult.data.json();
-					if ('token' in responseData) {
-						const responseToken = responseData.token;
-						localStorage.setItem('token', responseToken);
-					} else {
-						console.error('You are not authorized!');
-					}
-				} catch (error) {
-					console.error(
-						'There has been an issue while processing JSON: ',
-						error,
-					);
-				}
-			}
+			//ZALOGUJ OD RAZU
+			const userToLogin = {
+				email: formData.email,
+				password: formData.password,
+			};
+			const loginResult = await loginUser(userToLogin);
 
-			navigate('/', { replace: true });
+			if (loginResult.ok) {
+				setTokenToLocalStorage(loginResult);
+				navigate('/', { replace: true });
+			}
 		} else {
 			// Obsługa błędów
 			errorMessage = error;
