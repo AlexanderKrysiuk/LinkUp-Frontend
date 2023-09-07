@@ -33,6 +33,10 @@ export async function getUserMeetings() {
 	return await apiGet(API_MEETINGS_URL);
 }
 
+export async function deleteUserMeeting(id: string) {
+	return await apiDelete(`${API_MEETINGS_URL}/${id}`, id);
+}
+
 async function apiOptions(url: string, payload: any): Promise<Response> {
 	const response = await fetch(url, {
 		method: 'OPTIONS',
@@ -69,6 +73,14 @@ async function apiGet(
 	const response = await fetch(url, {
 		method: 'GET',
 		headers: requestHeaders,
+	});
+	return response;
+}
+
+async function apiDelete(url: string, payload: any): Promise<Response> {
+	const response = await fetch(url, {
+		method: 'DELETE',
+		body: JSON.stringify(payload),
 	});
 	return response;
 }

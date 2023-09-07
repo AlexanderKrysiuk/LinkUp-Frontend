@@ -1,5 +1,6 @@
 import { getRole } from '@utils/auth';
 import React, { useEffect, useState } from 'react';
+import { deleteMeeting } from './meetingsHandler';
 
 interface MockMeetingProps {
 	meetingId: string;
@@ -37,7 +38,9 @@ const MockMeetingComponent: React.FC<MockMeetingProps> = ({
 				<p className='meeting__desc'>Subject: {description}</p>
 			) : null}
 			{userRole === 'Contractor' || userRole === 'Admin' ? (
-				<button>Delete meeting</button>
+				<button onClick={() => deleteMeeting(meetingId)}>
+					Delete meeting
+				</button>
 			) : null}
 		</div>
 	);
