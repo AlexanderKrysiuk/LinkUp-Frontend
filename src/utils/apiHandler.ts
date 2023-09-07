@@ -24,6 +24,15 @@ export async function getUserRole(token: string) {
 	return await apiGet(API_USER_ROLE, headers);
 }
 
+// export async function getUserMeetings(token: string) {
+// 	const headers = getAuthHeader(token);
+// 	return await apiGet(API_MEETINGS_URL, headers);
+// }
+
+export async function getUserMeetings() {
+	return await apiGet(API_MEETINGS_URL);
+}
+
 async function apiOptions(url: string, payload: any): Promise<Response> {
 	const response = await fetch(url, {
 		method: 'OPTIONS',
