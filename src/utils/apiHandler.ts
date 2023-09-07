@@ -48,6 +48,7 @@ async function apiPost(
 		headers: requestHeaders,
 		body: JSON.stringify(payload),
 	});
+	console.log(response, response.status, response.statusText);
 	return response;
 }
 
