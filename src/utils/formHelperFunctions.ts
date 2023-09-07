@@ -38,15 +38,7 @@ export function calculateMinTime(
 		: '00:00';
 }
 
-export function convertToDateTime(date: string, time: string): string {
-	const dateTime: Date = new Date(date + 'T' + time + ':00');
-	const utcDate = new Date(
-		dateTime.getUTCFullYear(),
-		dateTime.getUTCMonth(),
-		dateTime.getUTCDate(),
-		dateTime.getUTCHours(),
-		dateTime.getUTCMinutes(),
-		dateTime.getUTCSeconds(),
-	);
+export function convertToUTCDateTime(date: string, time: string): string {
+	const utcDate: Date = new Date(date + 'T' + time + ':00');
 	return utcDate.toISOString();
 }

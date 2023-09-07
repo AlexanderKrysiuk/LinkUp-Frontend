@@ -2,7 +2,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
 import { NewMeetingData } from '@utils/formData';
 import { submitFormData } from '@utils/formHandler';
-import { calculateMinTime, validateDayTime } from '@utils/formHelperFunctions';
+import {
+	calculateMinTime,
+	convertToUTCDateTime,
+	validateDayTime,
+} from '@utils/formHelperFunctions';
 import { newMeetingSchema } from '@utils/formSchemas';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -23,23 +27,28 @@ function NewMeetingForm() {
 	});
 
 	const addMeeting = async (data: NewMeetingData) => {
+		const dateTime = convertToUTCDateTime(data.date, data.time);
 		const newMeetingData = {
-			datetime: data.date + 'T' + data.time + ':00',
+			datetime: dateTime,
 			duration: +data.duration,
 			maxParticipants: +data.participants,
 			description: data.description,
 		};
 
+		const token = localStorage.getItem('token');
+
 		const { success, error } = await submitFormData(
 			newMeetingData,
 			'post',
 			'addMeeting',
+			token,
 		);
 
 		if (success) {
-			// TODO: what's next?
+			console.log('success!'); //no success :<
 		} else {
 			// Obsługa błędów
+			console.error(error, 'This is madness!');
 			errorMessage = error;
 		}
 	};
@@ -71,8 +80,6 @@ function NewMeetingForm() {
 	const timeErr: string = `You need to choose time not earlier than ${currentDateTime
 		.toTimeString()
 		.slice(0, 5)}`;
-
-	console.log(isTimeInvalid);
 
 	return (
 		<form
