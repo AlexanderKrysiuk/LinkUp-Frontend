@@ -37,3 +37,16 @@ export function calculateMinTime(
 		? `${currentDateTime.toTimeString().slice(0, 5)}`
 		: '00:00';
 }
+
+export function convertToDateTime(date: string, time: string): string {
+	const dateTime: Date = new Date(date + 'T' + time + ':00');
+	const utcDate = new Date(
+		dateTime.getUTCFullYear(),
+		dateTime.getUTCMonth(),
+		dateTime.getUTCDate(),
+		dateTime.getUTCHours(),
+		dateTime.getUTCMinutes(),
+		dateTime.getUTCSeconds(),
+	);
+	return utcDate.toISOString();
+}
