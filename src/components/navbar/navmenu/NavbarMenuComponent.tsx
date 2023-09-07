@@ -1,17 +1,22 @@
+/**
+ * @module NavbarMenuComponent
+ * @description Module containing the navigation menu component for the navigation bar.
+ */
+
 import routes from '@router/NavMenuItems.ts';
 import React from 'react';
 
 import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.tsx';
 
 /**
- * Component for rendering the navigation menu.
+ * Component for rendering the navigation menu in the navigation bar.
  *
- * This component displays the navigation menu, which includes a list of navigation items.
- * It maps over the `routes` array to render each navigation item as an icon button using
- * the `NavbarIconButtonComponent` component.
+ * This component generates a list of navigation menu items based on the routes defined
+ * in the `NavMenuItems.ts` file. It maps over each item and renders the
+ * `NavbarIconButtonComponent` for each route.
  *
  * @component
- * @returns {JSX.Element} - The rendered navigation menu.
+ * @returns {JSX.Element} - The rendered navigation menu component.
  * @example
  * ```tsx
  * <NavbarMenuComponent />

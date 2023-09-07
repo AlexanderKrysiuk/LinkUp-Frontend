@@ -1,7 +1,26 @@
+/**
+ * @module NavbarIconButtonComponent
+ * @description Module containing the navigation menu icon button component.
+ */
+
+import { NavMenuItem } from '@router/NavMenuItems.ts';
 import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 
-import { NavMenuItem } from '../Types.ts';
+/**
+ * Props for the `NavbarIconButtonComponent` component.
+ *
+ * @internal
+ * @typedef {Object} NavbarIconButtonComponentProps
+ * @property {NavMenuItem} item - The navigation menu item object.
+ */
+type NavbarIconButtonComponentProps = {
+	/**
+	 * The navigation menu item object.
+	 */
+	item: NavMenuItem;
+};
 
 /**
  * Component for rendering an icon button in the navigation menu.
@@ -12,7 +31,7 @@ import { NavMenuItem } from '../Types.ts';
  * handles navigation using React Router's NavLink component.
  *
  * @component
- * @param {Object} props - The props object containing the navigation menu item.
+ * @param {NavbarIconButtonComponentProps} props - The component props.
  * @param {NavMenuItem} props.item - The navigation menu item object.
  * @returns {JSX.Element} - The rendered icon button component.
  * @example
@@ -28,9 +47,7 @@ import { NavMenuItem } from '../Types.ts';
  */
 const NavbarIconButtonComponent = ({
 	item,
-}: {
-	item: NavMenuItem;
-}): JSX.Element => {
+}: NavbarIconButtonComponentProps): JSX.Element => {
 	if (item.routeName === 'profile') {
 		return (
 			<NavLink to={item.routeName}>

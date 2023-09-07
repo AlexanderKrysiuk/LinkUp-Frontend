@@ -1,3 +1,8 @@
+/**
+ * @module HomePage
+ * @description Page component for the home page.
+ */
+
 import ButtonComponent from '@components/button/ButtonComponent.tsx';
 
 import { useBackdropToggle } from '@hooks/BackdropHooks';
@@ -24,7 +29,7 @@ const HomePage = (): JSX.Element => {
 		<>
 			<h1 className='h1'>Home</h1>
 			<button onClick={toggleBackdrop}>
-				<ButtonComponent text='toggle Backdrop' />
+				<ButtonComponent text='Toggle Backdrop' />
 			</button>
 		</>
 	);

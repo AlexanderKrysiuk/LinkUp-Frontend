@@ -1,13 +1,46 @@
+/**
+ * @module FormRedirect
+ * @description Module containing a component for rendering a form redirect statement.
+ */
+
+import { LOCAL_URI } from '@utils/links';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LOCAL_URI } from '@utils/links';
 
-type TextProp = {
+/**
+ * Props for the `FormRedirect` component.
+ */
+interface FormRedirectProps {
+	/**
+	 * The statement text to display.
+	 */
 	statement: string;
+	/**
+	 * The text for the link to the destination page.
+	 */
 	linkText: string;
-};
+}
 
-const FormRedirect: React.FC<TextProp> = ({ statement, linkText }) => {
+/**
+ * Component for rendering a form redirect statement.
+ *
+ * This component renders a statement along with a link to a destination page.
+ *
+ * @component
+ * @param {FormRedirectProps} props - The component props.
+ * @param {string} props.statement - The statement text to display.
+ * @param {string} props.linkText - The text for the link to the destination page.
+ * @returns {JSX.Element} - The rendered form redirect component.
+ * @example
+ * ```tsx
+ * // Render a form redirect statement with a link
+ * <FormRedirect statement="Already have an account?" linkText="Log in" />
+ * ```
+ */
+const FormRedirect = ({
+	statement,
+	linkText,
+}: FormRedirectProps): JSX.Element => {
 	var path = linkText === 'Sign up' ? 'register' : 'login';
 	return (
 		<div className='form-redirect'>
@@ -16,4 +49,5 @@ const FormRedirect: React.FC<TextProp> = ({ statement, linkText }) => {
 		</div>
 	);
 };
+
 export default FormRedirect;

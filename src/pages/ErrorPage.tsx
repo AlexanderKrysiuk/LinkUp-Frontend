@@ -1,5 +1,10 @@
+/**
+ * @module ErrorPage
+ * @description Page component for displaying error messages.
+ */
+
 import React from 'react';
-import { Route, useRouteError } from 'react-router-dom';
+import { useRouteError } from 'react-router-dom';
 
 /**
  * Page component for displaying error messages.

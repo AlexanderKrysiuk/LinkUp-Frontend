@@ -26,8 +26,9 @@ import { Outlet } from 'react-router-dom';
 /**
  * The root component of the application.
  *
- * This component represents the overall structure of the application. It includes the backdrop,
- * navigation bar, routing for different pages, and the footer.
+ * This component defines the main structure of the application, including the navigation bar,
+ * content sections for different pages, and the footer. It utilizes React Router for routing
+ * between different pages.
  *
  * @component
  * @example
@@ -45,6 +46,7 @@ export function App(): JSX.Element {
 
 			<NavbarLayout />
 			<main className='main'>
+				{/* The Outlet component renders the content of the current route */}
 				<Outlet />
 			</main>
 			<FooterLayout />

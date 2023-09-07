@@ -1,6 +1,11 @@
 import { LoginData, NewMeetingData, RegistrationData } from '@utils/formData';
 import { ZodType, z } from 'zod';
 
+/**
+ * Schema for validating user registration data.
+ *
+ * @type {ZodType<RegistrationData>}
+ */
 export const newUserSchema: ZodType<RegistrationData> = z
 	.object({
 		userType: z.string(),
@@ -35,6 +40,11 @@ export const newUserSchema: ZodType<RegistrationData> = z
 		path: ['confirmedPassword'],
 	});
 
+/**
+ * Schema for validating user login data.
+ *
+ * @type {ZodType<LoginData>}
+ */
 export const userSchema: ZodType<LoginData> = z
 	.object({
 		email: z
@@ -51,6 +61,11 @@ export const userSchema: ZodType<LoginData> = z
 	})
 	.required();
 
+/**
+ * Schema for validating new meeting data.
+ *
+ * @type {ZodType<NewMeetingData>}
+ */
 export const newMeetingSchema: ZodType<NewMeetingData> = z
 	.object({
 		date: z.string(),

@@ -1,3 +1,8 @@
+/**
+ * @module ModalComponent
+ * @description A reusable modal component.
+ */
+
 import React from 'react';
 
 /**

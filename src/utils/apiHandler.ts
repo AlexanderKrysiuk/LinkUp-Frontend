@@ -1,27 +1,67 @@
+/**
+ * @module apiHandler
+ * @description Module for handling API requests and interactions.
+ */
+
 import {
 	API_LOGIN_URL,
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
 } from '@utils/links';
 
-export async function createUser(payload: any) {
+/**
+ * Create a new user using the provided payload.
+ *
+ * @param {object} payload - User registration data.
+ * @returns {Promise<Response>} - A Promise that resolves to the API response.
+ */
+export async function createUser(payload: any): Promise<Response> {
 	return await apiOptions(API_REGISTER_URL, payload);
 }
 
-export async function loginUser(payload: any) {
+/**
+ * Log in a user using the provided payload.
+ *
+ * @param {object} payload - User login data.
+ * @returns {Promise<Response>} - A Promise that resolves to the API response.
+ */
+export async function loginUser(payload: any): Promise<Response> {
 	return await apiOptions(API_LOGIN_URL, payload);
 }
 
-export async function createMeeting(payload: any, token: any) {
+/**
+ * Create a new meeting using the provided payload and authentication token.
+ *
+ * @param {object} payload - Meeting data.
+ * @param {string} token - User authentication token.
+ * @returns {Promise<Response>} - A Promise that resolves to the API response.
+ */
+export async function createMeeting(
+	payload: any,
+	token: string,
+): Promise<Response> {
 	const headers = { Authorization: `Bearer ${token}` };
 	return await apiPost(API_MEETINGS_URL, payload, headers);
 }
 
-export async function getUserRole(token: any) {
+/**
+ * Get the user role using the provided authentication token.
+ *
+ * @param {string} token - User authentication token.
+ * @returns {Promise<Response>} - A Promise that resolves to the API response.
+ */
+export async function getUserRole(token: string): Promise<Response> {
 	const headers = { Authorization: `Bearer ${token}` };
-	return await apiGet('URL_TO_SET', headers); //add API_USER, +links.ts
+	return await apiGet('URL_TO_SET', headers); // Replace 'URL_TO_SET' with the appropriate URL
 }
 
+/**
+ * Send an OPTIONS request to the specified URL with the provided payload.
+ *
+ * @param {string} url - The API endpoint URL.
+ * @param {object} payload - The data to send in the request.
+ * @returns {Promise<Response>} - A Promise that resolves to the API response.
+ */
 async function apiOptions(url: string, payload: any): Promise<Response> {
 	const response = await fetch(url, {
 		method: 'OPTIONS',
@@ -32,6 +72,14 @@ async function apiOptions(url: string, payload: any): Promise<Response> {
 	return response;
 }
 
+/**
+ * Send a POST request to the specified URL with the provided payload and headers.
+ *
+ * @param {string} url - The API endpoint URL.
+ * @param {object} payload - The data to send in the request.
+ * @param {object} headers - Additional headers for the request.
+ * @returns {Promise<Response>} - A Promise that resolves to the API response.
+ */
 async function apiPost(
 	url: string,
 	payload: any,
@@ -49,6 +97,13 @@ async function apiPost(
 	return response;
 }
 
+/**
+ * Send a GET request to the specified URL with the provided headers.
+ *
+ * @param {string} url - The API endpoint URL.
+ * @param {object} headers - Additional headers for the request.
+ * @returns {Promise<Response>} - A Promise that resolves to the API response.
+ */
 async function apiGet(
 	url: string,
 	headers?: Record<string, string>,

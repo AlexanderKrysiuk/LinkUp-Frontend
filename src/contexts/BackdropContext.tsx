@@ -1,6 +1,6 @@
 /**
- * @module Backdrop
- * @preferred
+ * @module BackdropContext
+ * @description Module for managing the backdrop context and providing hooks to control backdrop visibility.
  */
 
 import BackdropComponent from '@components/BackdropComponent';
@@ -11,23 +11,19 @@ import { AnimatePresence } from 'framer-motion';
 import React, { createContext, useState } from 'react';
 
 /**
- * Defines the structure of the backdrop context value.
+ * Internal context value for managing the backdrop's visibility state.
  *
- * @interface BackdropContextValue
- * @property {boolean} isBackdropOpen - Indicates whether the backdrop is currently open.
+ * @internal
+ * @typedef BackdropContextValue
+ * @type {object}
+ * @property {boolean} isBackdropOpen - Whether the backdrop is open or not.
  */
-
 interface BackdropContextValue {
 	isBackdropOpen: boolean;
 }
 
 /**
- * Context for managing the backdrop state.
- *
- * This context provides access to the backdrop state which indicates whether
- * the backdrop is currently open or not.
- *
- * @type {React.Context<BackdropContextValue>}
+ * Context for managing the backdrop's visibility state.
  */
 export const BackdropContext: React.Context<BackdropContextValue> =
 	createContext<BackdropContextValue>({
@@ -35,23 +31,19 @@ export const BackdropContext: React.Context<BackdropContextValue> =
 	});
 
 /**
- * Defines the structure of the backdrop toggle context value.
+ * Internal context value for managing the backdrop toggle function.
  *
- * @interface BackdropToggleContextValue
- * @property {() => void} toggleBackdrop - Function to toggle the backdrop's visibility.
+ * @internal
+ * @typedef BackdropToggleContextValue
+ * @type {object}
+ * @property {() => void} toggleBackdrop - Function to toggle the backdrop's visibility state.
  */
-
 interface BackdropToggleContextValue {
 	toggleBackdrop: () => void;
 }
 
 /**
- * Context for providing the backdrop toggle function.
- *
- * This context exposes the `toggleBackdrop` function that allows components to
- * control the visibility of the backdrop.
- *
- * @type {React.Context<BackdropToggleContextValue>}
+ * Context for managing the backdrop toggle function.
  */
 export const BackdropToggleContext: React.Context<BackdropToggleContextValue> =
 	createContext<BackdropToggleContextValue>({
@@ -59,34 +51,34 @@ export const BackdropToggleContext: React.Context<BackdropToggleContextValue> =
 	});
 
 /**
- * Provider component for managing the backdrop state and toggle function.
+ * Props for the `BackdropProvider` component.
  *
- * This provider wraps the application components to provide access to the backdrop
- * state and the function to toggle the backdrop's visibility.
+ * @internal
+ * @typedef BackdropProviderProps
+ * @type {object}
+ * @property {React.ReactNode} children - The child components that will have access to the backdrop context.
+ */
+interface BackdropProviderProps {
+	children: React.ReactNode;
+}
+
+/**
+ * Provider component for managing the backdrop context.
+ *
+ * This component provides a context for managing the visibility state of the backdrop and a function to toggle its visibility.
  *
  * @component
- * @param {Object} props - Component props.
- * @param {React.ReactNode} props.children - The child components to be wrapped by the provider.
- * @returns {JSX.Element} - The wrapped child components with backdrop state and toggle.
- * @example
- * ```tsx
- * <BackdropProvider>
- *   { Child components }
- * </BackdropProvider>
- * ```
+ * @param {Object} props - The props object.
+ * @param {React.ReactNode} props.children - The child components that will have access to the backdrop context.
+ * @returns {JSX.Element} - The backdrop context provider component.
  */
-export const BackdropProvider: React.FC<{ children: React.ReactNode }> = ({
+export const BackdropProvider = ({
 	children,
-}: {
-	children: React.ReactNode;
-}): JSX.Element => {
-	/**
-	 * State indicating whether the backdrop is open.
-	 */
+}: BackdropProviderProps): JSX.Element => {
 	const [isBackdropOpen, setIsBackdropOpen] = useState<boolean>(false);
 
 	/**
-	 * Toggles the backdrop state.
+	 * Function to toggle the backdrop's visibility state.
 	 */
 	const toggleBackdrop = () => {
 		setIsBackdropOpen((prevIsBackdropOpen) => !prevIsBackdropOpen);
@@ -104,24 +96,19 @@ export const BackdropProvider: React.FC<{ children: React.ReactNode }> = ({
 /**
  * Component for rendering the backdrop.
  *
- * This component uses the `useIsBackdropOpen` hook to determine if the backdrop should be rendered.
+ * This component uses the `useIsBackdropOpen` hook to determine if the backdrop should be displayed.
  *
  * @component
- * @returns {JSX.Element | null} - The rendered backdrop element or null if not open.
+ * @returns {JSX.Element | null} - The backdrop component or `null` if it's not visible.
  * @example
- * ```tsx
+ * // Render the Backdrop component within your application.
  * <Backdrop />
- * ```
  */
-export const Backdrop: React.FC = (): JSX.Element | null => {
-	/**
-	 * Retrieve the backdrop open state using the `useIsBackdropOpen` hook.
-	 */
+export const Backdrop = (): JSX.Element | null => {
 	const { isBackdropOpen } = useIsBackdropOpen();
 
 	return (
 		<AnimatePresence>
-			{/* Render the backdrop component if open */}
 			{isBackdropOpen ? <BackdropComponent isVisible={true} /> : null}
 		</AnimatePresence>
 	);
