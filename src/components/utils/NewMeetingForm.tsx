@@ -10,6 +10,7 @@ import {
 import { newMeetingSchema } from '@utils/formSchemas';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 
 var errorMessage: string | number | undefined;
 
@@ -17,6 +18,8 @@ function NewMeetingForm() {
 	const [refTime, setRefTime] = useState<string>();
 	const [isTimeInvalid, setIsTimeInvalid] = useState<boolean>();
 	const [refDay, setRefDay] = useState<number>();
+
+	const navigate = useNavigate();
 
 	const {
 		register,
@@ -45,7 +48,7 @@ function NewMeetingForm() {
 		);
 
 		if (success) {
-			console.log('success!'); //no success :<
+			navigate('/', { replace: true });
 		} else {
 			// Obsługa błędów
 			console.error(error, 'This is madness!');
