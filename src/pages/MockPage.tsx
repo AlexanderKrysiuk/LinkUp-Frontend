@@ -58,7 +58,7 @@ const MockPageComponent = (): JSX.Element => {
 			{/* end if logged */}
 
 			{/* if authorized : allow to add meeting */}
-			{userRole === 'Contractor' ? (
+			{userRole === 'Contractor' || userRole === 'Admin' ? (
 				<Button
 					text='+ Add new meeting'
 					onClick={toggleForm}
@@ -68,7 +68,9 @@ const MockPageComponent = (): JSX.Element => {
 			{/* end if authorized */}
 
 			{/* if created/booked meetings : get and see meetings */}
-			{userMeetings ? <MockMeetings meetings={userMeetings} /> : null}
+			{token && userMeetings ? (
+				<MockMeetings meetings={userMeetings} />
+			) : null}
 			{/* end if created/booked meetings */}
 		</div>
 	);
