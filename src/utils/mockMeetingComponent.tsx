@@ -1,4 +1,5 @@
-import React from 'react';
+import { getRole } from '@utils/auth';
+import React, { useEffect, useState } from 'react';
 
 interface MockMeetingProps {
 	meetingId: string;
@@ -11,8 +12,19 @@ const MockMeetingComponent: React.FC<MockMeetingProps> = ({
 	meetingId,
 	description,
 }: MockMeetingProps) => {
+	const [userRole, setUserRole] = useState<string>();
+
+	useEffect(() => {
+		const fetchUserRole = async () => {
+			const roleToSet: any = await getRole();
+			setUserRole(roleToSet);
+		};
+		fetchUserRole();
+	}, [userRole]);
+
 	const date = datetime.split('T')[0];
 	const time = datetime.split('T')[1]?.slice(0, 5);
+
 	return (
 		<div className='meeting'>
 			<h4
@@ -24,8 +36,13 @@ const MockMeetingComponent: React.FC<MockMeetingProps> = ({
 			{description ? (
 				<p className='meeting__desc'>Subject: {description}</p>
 			) : null}
+			{userRole === 'Contractor' || userRole === 'Admin' ? (
+				<button>Delete meeting</button>
+			) : null}
 		</div>
 	);
 };
 
 export default MockMeetingComponent;
+
+//onClick={deleteMeeting}
