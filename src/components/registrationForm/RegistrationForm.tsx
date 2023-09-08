@@ -1,47 +1,56 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-//import errorHandler from '@utils/errorHandler';
-import apiHandler from '@utils/fetchApi';
+import { loginUser } from '@utils/apiHandler';
+import { setTokenToLocalStorage } from '@utils/auth';
 import { RegistrationData } from '@utils/formData';
-import { newUser } from '@utils/formSchemas';
+import { submitFormData } from '@utils/formHandler';
+import { newUserSchema } from '@utils/formSchemas';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-var errorMessage = '';
+var errorMessage: string | number | undefined;
 
 export default function RegistrationForm() {
+	const navigate = useNavigate();
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<RegistrationData>({
-		resolver: zodResolver(newUser),
+		resolver: zodResolver(newUserSchema),
 	});
 
-	const submitForm = async (data: RegistrationData) => {
+	const submitForm = async (formData: RegistrationData) => {
 		const userToRegister = {
-			name: `${data.firstName} ${data.lastName}`,
-			email: data.email,
-			password: data.password,
-			userType: +data.userType,
+			username: `${formData.firstName} ${formData.lastName}`,
+			email: formData.email,
+			password: formData.password,
+			role: formData.userType,
 		};
 
-		const apiUrl = 'https://localhost:7099/api/Users';
+		const { success, error } = await submitFormData(
+			userToRegister,
+			'options',
+			'register',
+		);
 
-		try {
-			const response = await apiHandler.apiPost(apiUrl, userToRegister);
-			if (response.ok) {
-				//TODO => redirect to home/profile
-				console.log(response);
-			} else {
-				//return response.json();
-				//console.log(`Error ${response.status}: ${response.statusText}`);
-				errorMessage = `Error ${response.status}: ${response.statusText}`;
-				console.error(errorMessage);
+		if (success) {
+			//ZALOGUJ OD RAZU
+			const userToLogin = {
+				email: formData.email,
+				password: formData.password,
+			};
+			const loginResult = await loginUser(userToLogin);
+
+			if (loginResult.ok) {
+				setTokenToLocalStorage(loginResult);
+				navigate('/', { replace: true });
 			}
-		} catch (error) {
-			console.error('Error submitting form:', error);
-			//errorMessage = errorHandler.handleFetchError(error);
+		} else {
+			// Obsługa błędów
+			errorMessage = error;
 		}
 	};
 
@@ -61,12 +70,12 @@ export default function RegistrationForm() {
 						{...register('userType')}>
 						<option
 							className='form-element__select-option'
-							value={0}>
+							value='Client'>
 							Client
 						</option>
 						<option
 							className='form-element__select-option'
-							value={1}>
+							value='Contractor'>
 							Contractor
 						</option>
 					</select>

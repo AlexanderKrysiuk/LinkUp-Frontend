@@ -11,3 +11,11 @@ export type LoginData = {
 	email: string;
 	password: string;
 };
+
+export interface NewMeetingData {
+	date: string;
+	time: string;
+	duration: string;
+	participants: string;
+	description: string | null;
+}

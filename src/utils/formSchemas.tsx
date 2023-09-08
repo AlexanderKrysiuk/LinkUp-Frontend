@@ -1,7 +1,7 @@
-import { LoginData, RegistrationData } from '@utils/formData';
+import { LoginData, NewMeetingData, RegistrationData } from '@utils/formData';
 import { ZodType, z } from 'zod';
 
-export const newUser: ZodType<RegistrationData> = z
+export const newUserSchema: ZodType<RegistrationData> = z
 	.object({
 		userType: z.string(),
 		firstName: z
@@ -35,7 +35,7 @@ export const newUser: ZodType<RegistrationData> = z
 		path: ['confirmedPassword'],
 	});
 
-export const user: ZodType<LoginData> = z
+export const userSchema: ZodType<LoginData> = z
 	.object({
 		email: z
 			.string()
@@ -48,5 +48,15 @@ export const user: ZodType<LoginData> = z
 			message:
 				'Password must be at least 8 characters long and contain at least one uppercase letter, one special character, and one digit.',
 		}),
+	})
+	.required();
+
+export const newMeetingSchema: ZodType<NewMeetingData> = z
+	.object({
+		date: z.string(),
+		time: z.string(),
+		duration: z.string(),
+		participants: z.string(),
+		description: z.string().nullable(),
 	})
 	.required();

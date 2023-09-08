@@ -8,7 +8,7 @@
 } */
 
 .form-component {
-	border: 1px solid darkblue;
+	border: 0.2rem solid #006400;
 	border-radius: 5px;
 	padding: 15px 30px;
 	display: flex;
@@ -17,7 +17,8 @@
 	justify-content: center;
 	align-items: center;
 	height: auto;
-	margin: 0;
+	margin: auto;
+	width: min-content;
 }
 
 .form {
@@ -52,7 +53,7 @@
 .form__error-message,
 .form-element__validation-prompt {
 	float: left;
-	color: grey;
+	color: black;
 	font-size: 10px;
 	margin-top: 5px;
 	font-style: italic;

@@ -18,16 +18,25 @@ import '@layouts/FormLayout.css';
 //import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
+
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
+
 import ContactPage from '@pages/ContactPage.tsx';
+
 import ErrorPage from '@pages/ErrorPage.tsx';
+
 import HomePage from '@pages/HomePage.tsx';
+
 import ProfilePage from '@pages/ProfilePage.tsx';
+
 import { Route, Routes } from 'react-router-dom';
+
 import './App.css';
 
 import Login from '@pages/Login';
+
 import MockPage from '@pages/MockPage.tsx';
+
 import Register from '@pages/Register.tsx';
 
 /**
@@ -42,7 +51,7 @@ import Register from '@pages/Register.tsx';
  * <App />
  * ```
  */
-export function App() {
+export function App(): JSX.Element {
 	return (
 		<>
 			{/* <RegistrationComponent /> */}
@@ -53,48 +62,40 @@ export function App() {
 
 			{/* Display the navigation bar */}
 			<NavbarLayout />
-
-			{/* Set up routing for different pages */}
-			<Routes>
-				{/* Route for the Home page */}
-				<Route
-					path='/'
-					element={<HomePage />}
-				/>
-
-				{/* Route for the Contact page */}
-				<Route
-					path='/Contact'
-					element={<ContactPage />}
-				/>
-
-				{/* Route for the Profile page */}
-				<Route
-					path='/Profile'
-					element={<ProfilePage />}
-				/>
-
-				{/* Route for handling unknown paths */}
-				<Route
-					path='*'
-					element={<ErrorPage />}
-				/>
-				<Route
-					path='/Mock'
-					element={<MockPage />}
-				/>
-				{/* Route for registration */}
-				<Route
-					path='/Register'
-					element={<Register />}
-				/>
-				<Route
-					path='/Login'
-					element={<Login />}
-				/>
-			</Routes>
-
-			{/* Display the footer */}
+			<main className='main'>
+				<Routes>
+					<Route
+						path='/'
+						element={<HomePage />}
+					/>
+					<Route
+						path='/contact'
+						element={<ContactPage />}
+					/>
+					<Route
+						path='/profile/overview/*'
+						element={<ProfilePage />}
+					/>
+					<Route
+						path='*'
+						element={<ErrorPage />}
+					/>
+					<Route
+						path='/mock'
+						element={<MockPage />}
+					/>
+					{/* Route for registration */}
+					<Route
+						path='/register'
+						element={<Register />}
+					/>
+					{/* Route for login */}
+					<Route
+						path='/login'
+						element={<Login />}
+					/>
+				</Routes>
+			</main>
 			<FooterLayout />
 		</>
 	);

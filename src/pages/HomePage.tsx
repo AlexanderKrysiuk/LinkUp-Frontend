@@ -1,5 +1,4 @@
 import ButtonComponent from '@components/button/ButtonComponent.tsx';
-import MainLayout from '@layouts/main/MainLayout';
 
 import { useBackdropToggle } from '@hooks/BackdropHooks';
 import React from 'react';
@@ -23,11 +22,10 @@ const HomePage = (): JSX.Element => {
 
 	return (
 		<>
-			<h1>Home</h1>
+			<h1 className='h1'>Home</h1>
 			<button onClick={toggleBackdrop}>
 				<ButtonComponent text='toggle Backdrop' />
 			</button>
-			<MainLayout />
 		</>
 	);
 };

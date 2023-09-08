@@ -1,0 +1,15 @@
+.action-button {
+	background: #006400;
+	border: 0.1rem solid #006400;
+	border-radius: 0.3rem;
+	width: fit-content;
+	color: whitesmoke;
+	padding: 0.2rem 0.2rem;
+	margin: 0.2rem;
+	//display: flex;
+	//position: inherit;
+}
+
+.action-button:hover {
+	background: #4c8d4c;
+}

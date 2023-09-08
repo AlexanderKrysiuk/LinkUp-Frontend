@@ -1,3 +1,4 @@
+import ProfilePageLayout from '@layouts/profile/ProfilePageLayout.tsx';
 import React from 'react';
 
 /**
@@ -16,7 +17,7 @@ import React from 'react';
 const ProfilePage = (): JSX.Element => {
 	return (
 		<>
-			<h1>Profile</h1>
+			<ProfilePageLayout />
 		</>
 	);
 };

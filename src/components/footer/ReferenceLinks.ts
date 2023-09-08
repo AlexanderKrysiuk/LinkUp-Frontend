@@ -27,8 +27,8 @@ export const ReferenceLinks: ReferenceItem[] = [
 	{
 		groupName: 'Connect',
 		references: [
-			{ title: 'Sign up', path: '/Mock' },
-			{ title: 'Contact us', path: '/Mock' },
+			{ title: 'Sign up', path: '/Register' },
+			{ title: 'Contact us', path: '/Contact' },
 		],
 	},
 ];

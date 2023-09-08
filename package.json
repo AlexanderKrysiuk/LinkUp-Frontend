@@ -4,7 +4,7 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --host",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"test": "vitest --coverage",
@@ -38,7 +38,7 @@
 		"sort-by": "^0.0.2",
 		"style-loader": "^3.3.3",
 		"swiper": "^10.0.4",
-    "uuid": "^9.0.0",
+		"uuid": "^9.0.0",
 		"vite-plugin-svgr": "^3.2.0",
 		"zod": "^3.22.1"
 	},
@@ -89,6 +89,7 @@
 		"typedoc-theme-hierarchy": "^4.1.0",
 		"typescript": "^5.1.6",
 		"vite": "^4.4.0",
+		"vite-plugin-mkcert": "^1.16.0",
 		"vitest": "^0.33.0"
 	}
 }

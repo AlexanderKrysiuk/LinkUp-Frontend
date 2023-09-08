@@ -1,42 +1,43 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import errorHandler from '@utils/errorHandler';
-import apiHandler from '@utils/fetchApi';
+import { setTokenToLocalStorage } from '@utils/auth';
 import { LoginData } from '@utils/formData';
-import { user } from '@utils/formSchemas';
+import { submitFormData } from '@utils/formHandler';
+import { userSchema } from '@utils/formSchemas';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-var errorMessage = '';
+var errorMessage: string | number | undefined;
 
 export default function LoginForm() {
+	const navigate = useNavigate();
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<LoginData>({
-		resolver: zodResolver(user),
+		resolver: zodResolver(userSchema),
 	});
 
-	const submitForm = async (data: LoginData) => {
+	const login = async (formData: LoginData) => {
 		const userLoginData = {
-			email: data.email,
-			password: data.password,
+			email: formData.email,
+			password: formData.password,
 		};
 
-		const apiUrl = 'http://localhost:5223/api/login';
+		const {
+			success,
+			error,
+			data: responseData,
+		} = await submitFormData(userLoginData, 'options', 'login');
 
-		try {
-			const response = await apiHandler.apiPost(apiUrl, userLoginData);
-			if (response.ok) {
-				//TODO => redirect to home/profile
-			} else {
-				//return response.json();
-				//console.log(`Error ${response.status}: ${response.statusText}`);
-				errorMessage = `Error ${response.status}: ${response.statusText}`;
-			}
-		} catch (error) {
-			console.error('Error submitting form:', error);
-			errorMessage = errorHandler.handleFetchError(error);
+		if (success && responseData) {
+			setTokenToLocalStorage(responseData);
+			navigate('/', { replace: true });
+		} else {
+			// Obsługa błędów
+			errorMessage = error;
 		}
 	};
 
@@ -44,7 +45,7 @@ export default function LoginForm() {
 		<>
 			<form
 				className='form'
-				onSubmit={handleSubmit(submitForm)}>
+				onSubmit={handleSubmit(login)}>
 				{errorMessage && (
 					<span className='form__error-message'>{errorMessage}</span>
 				)}

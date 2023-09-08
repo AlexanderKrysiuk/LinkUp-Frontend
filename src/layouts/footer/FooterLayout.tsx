@@ -15,11 +15,13 @@ import './FooterLayoutCss.css';
  * ```
  */
 const FooterLayout = (): JSX.Element => {
-	return <footer
-	id='footer'
-	className='footer'>
-	<FooterComponent />
-</footer>;
+	return (
+		<footer
+			id='footer'
+			className='footer'>
+			<FooterComponent />
+		</footer>
+	);
 };
 
 export default FooterLayout;
