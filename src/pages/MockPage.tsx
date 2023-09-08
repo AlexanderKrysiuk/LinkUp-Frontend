@@ -9,8 +9,8 @@ import React, { useEffect, useState } from 'react';
 
 const MockPageComponent = (): JSX.Element => {
 	const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
-	const [token, setToken] = useState<string>();
-	const [userRole, setUserRole] = useState<string>();
+	const [token, setToken] = useState<string | undefined>(undefined);
+	const [userRole, setUserRole] = useState<string | undefined>(undefined);
 
 	//state to see meetings
 	const [userMeetings, setUserMeetings] = useState<Meetings>([]);
@@ -20,7 +20,7 @@ const MockPageComponent = (): JSX.Element => {
 		if (storedToken) {
 			setToken(storedToken);
 		}
-	}, [token]);
+	}, []);
 
 	useEffect(() => {
 		const fetchUserRole = async () => {
@@ -28,8 +28,10 @@ const MockPageComponent = (): JSX.Element => {
 			setUserRole(roleToSet);
 		};
 
-		fetchUserRole();
-	}, [userRole]);
+		if (token) {
+			fetchUserRole();
+		}
+	}, [token]);
 
 	const toggleForm = () => {
 		setIsFormVisible(!isFormVisible);
@@ -37,14 +39,16 @@ const MockPageComponent = (): JSX.Element => {
 
 	//get meetings from DB and save as state prop => so far all, no filter
 	useEffect(() => {
-		getMeetings()
-			.then((data) => {
-				setUserMeetings(data);
-			})
-			.catch((error) =>
-				console.error("Couldn't fetch data from DB.", error),
-			);
-	}, []);
+		if (token) {
+			getMeetings(token)
+				.then((data) => {
+					setUserMeetings(data);
+				})
+				.catch((error) =>
+					console.error("Couldn't fetch data from DB.", error),
+				);
+		}
+	}, [token]);
 
 	return (
 		<div>
