@@ -66,6 +66,11 @@ export default function RegistrationForm() {
 						{...register('userType')}>
 						<option
 							className='form-element__select-option'
+							value='Admin'>
+							Admin
+						</option>
+						<option
+							className='form-element__select-option'
 							value='Client'>
 							Client
 						</option>
