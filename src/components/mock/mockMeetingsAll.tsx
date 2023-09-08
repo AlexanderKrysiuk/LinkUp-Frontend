@@ -1,4 +1,4 @@
-import { MeetingData, Meetings } from '@data/dataTypes';
+import { MeetingData, Meetings } from 'const/dataTypes';
 import React from 'react';
 import MockMeetingComponent from './mockMeetingComponent';
 

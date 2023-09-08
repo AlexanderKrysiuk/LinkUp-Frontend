@@ -1,11 +1,11 @@
-import { LoginData } from '@data/formData';
-import { userSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { setTokenToLocalStorage } from '@middleware/authHandler';
 import { submitFormData } from '@middleware/formHandler';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { LoginData } from '../../data/formData';
+import { userSchema } from '../../data/formSchemas';
 
 var errorMessage: string | number | undefined;
 

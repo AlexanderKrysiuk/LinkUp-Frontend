@@ -1,5 +1,3 @@
-import { RegistrationData } from '@data/formData';
-import { newUserSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
 import { loginUser } from '@middleware/apiHandler';
@@ -8,6 +6,8 @@ import { submitFormData } from '@middleware/formHandler';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { RegistrationData } from '../../data/formData';
+import { newUserSchema } from '../../data/formSchemas';
 
 var errorMessage: string | number | undefined;
 

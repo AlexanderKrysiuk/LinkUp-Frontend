@@ -2,9 +2,9 @@
 import MockMeetings from '@components/mock/mockMeetingsAll';
 import NewMeetingForm from '@components/utils/NewMeetingForm';
 import Button from '@components/utils/buttons/Button';
-import { Meetings } from '@data/dataTypes';
 import { getRole } from '@middleware/authHandler';
 import { getMeetings } from '@middleware/meetingsHandler';
+import { Meetings } from 'data/dataTypes';
 import React, { useEffect, useState } from 'react';
 
 const MockPageComponent = (): JSX.Element => {

@@ -3,7 +3,7 @@ import {
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
 	API_USER_ROLE,
-} from '@data/links';
+} from '../data/links';
 import { getAuthHeader } from './authHandler';
 
 export async function createUser(payload: any) {

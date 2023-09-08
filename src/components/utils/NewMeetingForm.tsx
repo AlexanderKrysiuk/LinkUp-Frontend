@@ -1,5 +1,3 @@
-import { NewMeetingData } from '@data/formData';
-import { newMeetingSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
 import { submitFormData } from '@middleware/formHandler';
@@ -11,6 +9,8 @@ import {
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
+import { NewMeetingData } from '../../data/formData';
+import { newMeetingSchema } from '../../data/formSchemas';
 
 var errorMessage: string | number | undefined;
 
