@@ -1,9 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
 import { submitFormData } from '@middleware/formHandler';
+import { convertToMeetingData } from '@middleware/helpers/dataConverter';
 import {
 	calculateMinTime,
-	convertToUTCDateTime,
 	validateDayTime,
 } from '@middleware/helpers/dateTimeHelper';
 import React, { useState } from 'react';
@@ -30,13 +30,7 @@ function NewMeetingForm() {
 	});
 
 	const addMeeting = async (data: NewMeetingData) => {
-		const dateTime = convertToUTCDateTime(data.date, data.time);
-		const newMeetingData = {
-			datetime: dateTime,
-			duration: +data.duration,
-			maxParticipants: +data.participants,
-			description: data.description,
-		};
+		const newMeetingData = convertToMeetingData(data);
 
 		const token = localStorage.getItem('token');
 
