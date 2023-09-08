@@ -4,7 +4,6 @@ import { ReactComponent as AddressCard } from '@icons/address-card-regular.svg';
 import { ReactComponent as House } from '@icons/house-solid.svg';
 import { ReactComponent as User } from '@icons/user-secret-solid.svg';
 import { NavMenuItem } from './Types.ts';
-
 /**
  * Array of navigation menu items.
  *

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { removeTokenFromLocalStorage } from '@utils/auth.ts';
+import { useNavigate } from 'react-router-dom';
 import { NavMenuItem } from '../Types.ts';
 
 /**
@@ -31,6 +33,8 @@ const NavbarIconButtonComponent = ({
 }: {
 	item: NavMenuItem;
 }): JSX.Element => {
+	const navigate = useNavigate();
+
 	if (item.routeName === 'profile') {
 		return (
 			<Link to={`${item.routeName}/overview`}>
@@ -39,6 +43,15 @@ const NavbarIconButtonComponent = ({
 					<span>{`${item.routeName}`}</span>
 				</li>
 			</Link>
+		);
+	} else if (item.routeName == 'logout') {
+		return (
+			<li
+				className='navbar__menu-button'
+				onClick={() => removeTokenFromLocalStorage(navigate)}>
+				<item.routeIcon />
+				<span>{item.routeName}</span>
+			</li>
 		);
 	} else if (
 		item.routeName !== 'login' &&

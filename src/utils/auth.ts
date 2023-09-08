@@ -1,4 +1,5 @@
 import { getUserRole } from '@utils/apiHandler';
+import { NavigateFunction } from 'react-router-dom';
 
 export const getAuthHeader = (token: string) => {
 	return { Authorization: `Bearer ${token}` };
@@ -32,4 +33,9 @@ export const getRole = async () => {
 		//throw new Error('You are not authorized!');
 		console.error('You are not authorized!');
 	}
+};
+
+export const removeTokenFromLocalStorage = (navigate: NavigateFunction) => {
+	localStorage.removeItem('token');
+	navigate('/', { replace: true });
 };
