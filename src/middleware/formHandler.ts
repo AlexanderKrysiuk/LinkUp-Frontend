@@ -1,5 +1,5 @@
 //import errorHandler from '@utils/errorHandler';
-import { createMeeting, createUser, loginUser } from '@utils/apiHandler';
+import { createMeeting, createUser, loginUser } from './apiHandler';
 
 export async function submitFormData(
 	payload: any,

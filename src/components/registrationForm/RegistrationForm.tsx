@@ -1,10 +1,10 @@
+import { RegistrationData } from '@data/formData';
+import { newUserSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-import { loginUser } from '@utils/apiHandler';
-import { setTokenToLocalStorage } from '@utils/auth';
-import { RegistrationData } from '@utils/formData';
-import { submitFormData } from '@utils/formHandler';
-import { newUserSchema } from '@utils/formSchemas';
+import { loginUser } from '@middleware/apiHandler';
+import { setTokenToLocalStorage } from '@middleware/authHandler';
+import { submitFormData } from '@middleware/formHandler';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';

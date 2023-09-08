@@ -3,8 +3,8 @@ import {
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
 	API_USER_ROLE,
-} from '@utils/links';
-import { getAuthHeader } from './auth';
+} from '@data/links';
+import { getAuthHeader } from './authHandler';
 
 export async function createUser(payload: any) {
 	return await apiOptions(API_REGISTER_URL, payload);

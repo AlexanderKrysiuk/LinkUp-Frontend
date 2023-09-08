@@ -1,6 +1,6 @@
-import { getRole } from '@utils/auth';
+import { getRole } from '@middleware/authHandler';
+import { deleteMeeting } from '@middleware/meetingsHandler';
 import React, { useEffect, useState } from 'react';
-import { deleteMeeting } from './meetingsHandler';
 
 interface MockMeetingProps {
 	meetingId: string;
