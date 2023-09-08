@@ -3,14 +3,62 @@
 
 :root {
 	font-family: 'Montserrat', 'Raleway', Helvetica, Arial, sans-serif;
-
-	--console-font: 'Inconsolata', monospace;
-	--handwriting-font: 'Caveat', cursive;
-	--styled-font: 'Lobster', cursive;
-	--fancy-3d-font: 'Nabla', cursive;
 	text-align: center;
 	font-size: 16px;
+
+	/* fonts */
+	/* font faces */
+	--font-console: 'Inconsolata', monospace;
+	--font-handwriting: 'Caveat', cursive;
+	--font-styled: 'Lobster', cursive;
+	--font-fancy-3d: 'Nabla', cursive;
+
+	/* font weights */
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-bold: 700;
+
+	/* light mode */
+	/* color scheme */
+	--color-call-to-action: #f5aa37;
+	--color-background: #e3e1c5;
+	--color-text: #2b2217;
+	--color-primary: #a4c7e0;
+	--color-secondary: #609fbe;
+	--color-heading: #273f68;
+
+	/* functional colors */
+	--color-success1: #6eb26e;
+	--color-success2: #00a651;
+	--color-warning1: #dc143c;
+	--color-warning2: #ff6b6b;
+
+	/* dark mode - subject to change, not tested */
+	/* color scheme */
+	--color-call-to-action-dark: #f5aa37;
+	--color-background-dark: #121212;
+	--color-text-dark: #f0f0f0;
+	--color-primary-dark: #8eb9d2;
+	--color-secondary-dark: #45689d;
+	--color-heading-dark: #a8c1e3;
+
+	/* functional colors */
+	--color-success1-dark: #7fb17f;
+	--color-success2-dark: #00a651;
+	--color-warning1-dark: #e45050;
+	--color-warning2-dark: #ff6b6b;
 }
+
+/*
+#68B468
+#6EB26E
+#00A651
+#00C853
+#DC143C
+#FF0033
+#FF6B6B
+#FF8A80
+*/
 
 /*
   Josh's Custom CSS Reset
