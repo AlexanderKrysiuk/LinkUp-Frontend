@@ -15,6 +15,14 @@ const MockPageComponent = (): JSX.Element => {
 	//state to see meetings
 	const [userMeetings, setUserMeetings] = useState<Meetings>([]);
 
+	/**
+	 * useEffect hook to check if a user is authenticated.
+	 *
+	 * This hook retrieves the user's authentication token from local storage.
+	 * If a token is found, it sets the `token` state to indicate that the user is authenticated.
+	 *
+	 * @listens token
+	 */
 	useEffect(() => {
 		const storedToken = localStorage.getItem('token');
 		if (storedToken) {
@@ -33,6 +41,9 @@ const MockPageComponent = (): JSX.Element => {
 		}
 	}, [token]);
 
+	/**
+	 * Toggles the visibility of the new meeting form.
+	 */
 	const toggleForm = () => {
 		setIsFormVisible(!isFormVisible);
 	};

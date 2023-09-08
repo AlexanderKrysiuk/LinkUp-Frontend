@@ -13,8 +13,13 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	//server: { https: true },
-	plugins: [svgr(), react()], // mkcert()],
+	server: {
+		https: true,
+		host: true,
+		port: 5173,
+		strictPort: true,
+	},
+	plugins: [svgr(), react(), mkcert()],
 	test: {
 		globals: true,
 		environment: 'jsdom',
@@ -71,6 +76,10 @@ export default defineConfig({
 			{
 				find: '@contexts',
 				replacement: resolve(__dirname, './src/contexts/'),
+			},
+			{
+				find: '@router',
+				replacement: resolve(__dirname, './src/router/'),
 			},
 		],
 	},

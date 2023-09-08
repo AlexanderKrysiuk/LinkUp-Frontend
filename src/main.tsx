@@ -9,10 +9,11 @@
  */
 
 import { BackdropProvider } from '@contexts/BackdropContext.tsx';
+import router from '@router/Router.tsx';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { App } from './App.tsx';
+import { RouterProvider } from 'react-router-dom';
+import './App.css';
 import './index.css';
 
 /**
@@ -29,6 +30,7 @@ import './index.css';
  * instance and renders the application within it. The root component is wrapped with
  * StrictMode for enhanced development warnings. The BrowserRouter is used to enable
  * routing capabilities, and the BackdropProvider ensures proper context-based state management.
+ *
  * @example
  * // Get the root container element by its ID ('root') and call initializeApp function
  * const rootContainer = document.getElementById('root')!;
@@ -39,12 +41,10 @@ export function initializeApp(rootContainer: HTMLElement): void {
 	ReactDOM.createRoot(rootContainer).render(
 		<React.StrictMode>
 			{/* Enable routing and context management */}
-			<BrowserRouter>
-				<BackdropProvider>
-					{/* Render the root component */}
-					<App />
-				</BackdropProvider>
-			</BrowserRouter>
+			<BackdropProvider>
+				{/* Render the root component */}
+				<RouterProvider router={router} />
+			</BackdropProvider>
 		</React.StrictMode>,
 	);
 }

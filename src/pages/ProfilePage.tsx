@@ -1,3 +1,8 @@
+/**
+ * @module ProfilePage
+ * @description Page component for the profile page.
+ */
+
 import ProfilePageLayout from '@layouts/profile/ProfilePageLayout.tsx';
 import React from 'react';
 

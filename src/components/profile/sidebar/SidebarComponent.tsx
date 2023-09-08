@@ -1,33 +1,73 @@
+/**
+ * @module SidebarComponent
+ * @description Module containing the component for rendering a profile sidebar.
+ */
+
 import React from 'react';
 import SubcategoriesComponent from './subcategories/SubcategoriesComponent.tsx';
 
+import { ProfileMenuItem } from '@router/ProfileMenuItems.ts';
+
+/**
+ * Props for the SidebarComponent.
+ */
 interface SidebarComponentProps {
-	subRoutes: submenuItem[];
-	selectedCategory: string;
-	selectedSubcategory: string;
-	onSubcategoryClick: (selectedSubcategory: string) => void;
+	/**
+	 * The currently selected category.
+	 */
+	selectedCategory: ProfileMenuItem;
+
+	/**
+	 * A function to handle subcategory item clicks.
+	 *
+	 * @param {string} text - The text of the clicked subcategory item.
+	 */
+	clickHandler: (text: string) => void;
 }
 
-type submenuItem = {
-	routeName: string;
-};
-
+/**
+ * Component for rendering a profile sidebar.
+ *
+ * This component displays a sidebar for a profile page, including a list of subcategories
+ * within the currently selected category. Users can click on a subcategory to trigger the
+ * provided click handler function.
+ *
+ * @component
+ * @param {SidebarComponentProps} props - The props for the SidebarComponent.
+ * @param {ProfileMenuItem} props.selectedCategory - The currently selected category.
+ * @param {Function} props.clickHandler - A function to handle subcategory item clicks.
+ * @returns {JSX.Element} - The rendered SidebarComponent.
+ * @example
+ * ```tsx
+ * // Example of using SidebarComponent:
+ * const handleSubcategoryClick = (text) => {
+ *   // Handle subcategory click logic
+ * };
+ *
+ * const selectedCategory = {
+ *   routeName: 'category1',
+ *   subMenu: [
+ *     { routeName: 'subcategory1' },
+ *     { routeName: 'subcategory2' },
+ *   ],
+ * };
+ *
+ * <SidebarComponent
+ *   selectedCategory={selectedCategory}
+ *   clickHandler={handleSubcategoryClick}
+ * />
+ * ```
+ */
 const SidebarComponent = ({
 	selectedCategory,
-	selectedSubcategory,
-	subRoutes,
-	onSubcategoryClick,
+	clickHandler,
 }: SidebarComponentProps): JSX.Element => {
 	return (
 		<div className='profile__sidebar'>
-			{selectedCategory && (
-				<SubcategoriesComponent
-					selectedCategory={selectedCategory} // Pass the routeName prop here
-					selectedSubcategory={selectedSubcategory}
-					subRoutes={subRoutes}
-					onSubcategoryClick={onSubcategoryClick}
-				/>
-			)}
+			<SubcategoriesComponent
+				clickHandler={clickHandler}
+				selectedCategory={selectedCategory}
+			/>
 		</div>
 	);
 };

@@ -1,57 +1,69 @@
+/**
+ * @module BackdropHooks
+ * @description Custom React hooks for interacting with the backdrop context.
+ */
+
+import { useContext } from 'react';
+
 import {
 	BackdropContext,
 	BackdropToggleContext,
 } from '@contexts/BackdropContext';
 
-import { useContext } from 'react';
+/**
+ * Interface defining the structure of the result returned by the `useBackdropToggle` hook.
+ *
+ * @typedef UseBackdropToggleResult
+ * @property {() => void} toggleBackdrop - Function to toggle the backdrop's visibility.
+ */
+interface UseBackdropToggleResult {
+	toggleBackdrop: () => void;
+}
 
 /**
- * Hook for accessing the backdrop toggle function.
+ * Interface defining the structure of the result returned by the `useIsBackdropOpen` hook.
  *
- * This hook provides access to the `toggleBackdrop` function, allowing components
- * to control the visibility of the backdrop.
- *
- * @returns {object} - An object containing the `toggleBackdrop` function.
- * @example
- * ```tsx
- * const { toggleBackdrop } = useBackdropToggle();
- * toggleBackdrop(); // Toggles the backdrop visibility
- * ```
+ * @typedef UseIsBackdropOpenResult
+ * @property {boolean} isBackdropOpen - Boolean representing whether the backdrop is open.
  */
-export const useBackdropToggle = (): { toggleBackdrop: () => void } => {
-	/**
-	 * Retrieves the `toggleBackdrop` function from the `BackdropToggleContext`.
-	 *
-	 * This function allows components to access the `toggleBackdrop` function
-	 * provided by the `BackdropToggleContext` to control the visibility of the backdrop.
-	 */
-	const { toggleBackdrop } = useContext(BackdropToggleContext);
+interface UseIsBackdropOpenResult {
+	isBackdropOpen: boolean;
+}
 
+/**
+ * Hook for toggling the backdrop's visibility.
+ *
+ * This hook provides access to the `toggleBackdrop` function from the `BackdropToggleContext`.
+ *
+ * @returns {UseBackdropToggleResult} An object containing the `toggleBackdrop` function.
+ * @example
+ * // Import and use the hook
+ * import { useBackdropToggle } from '@hooks/BackdropHooks';
+ * const { toggleBackdrop } = useBackdropToggle();
+ * // Call the function to toggle the backdrop
+ * toggleBackdrop();
+ */
+export const useBackdropToggle = (): UseBackdropToggleResult => {
+	const { toggleBackdrop } = useContext(BackdropToggleContext);
 	return { toggleBackdrop };
 };
 
 /**
- * Hook for accessing the backdrop state.
+ * Hook for checking the backdrop's visibility state.
  *
- * This hook provides access to the current backdrop state, allowing components
- * to determine whether the backdrop is currently open.
+ * This hook provides access to the `isBackdropOpen` state from the `BackdropContext`.
  *
- * @returns {object} - An object containing the backdrop state.
+ * @returns {UseIsBackdropOpenResult} An object containing the `isBackdropOpen` state.
  * @example
- * ```tsx
+ * // Import and use the hook
+ * import { useIsBackdropOpen } from '@hooks/BackdropHooks';
  * const { isBackdropOpen } = useIsBackdropOpen();
+ * // Check the backdrop's visibility state
  * if (isBackdropOpen) {
- *   // Perform actions based on the backdrop state
+ *   // Perform an action when the backdrop is open
  * }
- * ```
  */
-export const useIsBackdropOpen = (): { isBackdropOpen: boolean } => {
-	/**
-	 * Retrieves the `isBackdropOpen` state from the `BackdropContext`.
-	 *
-	 * This state indicates whether the backdrop is currently open or not.
-	 */
+export const useIsBackdropOpen = (): UseIsBackdropOpenResult => {
 	const { isBackdropOpen } = useContext(BackdropContext);
-
 	return { isBackdropOpen };
 };

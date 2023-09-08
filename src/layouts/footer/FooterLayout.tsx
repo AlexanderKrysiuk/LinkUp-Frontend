@@ -1,3 +1,8 @@
+/**
+ * @module FooterLayout
+ * @description Module containing the footer layout component.
+ */
+
 import FooterComponent from '@components/footer/FooterComponent.tsx';
 import React from 'react';
 import './FooterLayoutCss.css';

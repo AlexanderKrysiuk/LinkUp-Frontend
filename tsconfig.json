@@ -2,7 +2,11 @@
 	"compilerOptions": {
 		"target": "ESNext",
 		"useDefineForClassFields": true,
-		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"lib": [
+			"ESNext",
+			"DOM",
+			"DOM.Iterable"
+		],
 		"module": "ESNext",
 		"rootDir": ".",
 		"skipLibCheck": true,
@@ -17,17 +21,43 @@
 			"jest"
 		],
 		"paths": {
-			"*": ["./node_modules/*", "./src/*"],
-			"@components/*": ["./src/components/*"],
-			"@hooks/*": ["./src/hooks/*"],
-			"@layouts/*": ["./src/layouts/*"],
-			"@middleware/*": ["./src/middleware/*"],
-			"@pages/*": ["./src/pages/*"],
-			"@data/*": ["./src/data/*"],
-			"@assets/*": ["./src/assets/*"],
-			"@scripts/*": ["./src/scripts/*"],
-			"@icons/*": ["./src/assets/icons/*"],
-			"@contexts/*": ["./src/contexts/*"]
+			"*": [
+				"./node_modules/*",
+				"./src/*"
+			],
+			"@components/*": [
+				"./src/components/*"
+			],
+			"@hooks/*": [
+				"./src/hooks/*"
+			],
+			"@layouts/*": [
+				"./src/layouts/*"
+			],
+			"@middleware/*": [
+				"./src/middleware/*"
+			],
+			"@pages/*": [
+				"./src/pages/*"
+			],
+			"@utils/*": [
+				"./src/utils/*"
+			],
+			"@assets/*": [
+				"./src/assets/*"
+			],
+			"@scripts/*": [
+				"./src/scripts/*"
+			],
+			"@icons/*": [
+				"./src/assets/icons/*"
+			],
+			"@contexts/*": [
+				"./src/contexts/*"
+			],
+			"@router/*": [
+				"./src/router/*"
+			],
 		},
 		/* Bundler mode */
 		"moduleResolution": "node",
@@ -48,8 +78,13 @@
 		"allowSyntheticDefaultImports": true,
 		"allowImportingTsExtensions": true
 	},
-	"include": ["./src/**/*", "src/scripts/**/*"],
-	"exclude": ["node_modules"],
+	"include": [
+		"./src/**/*",
+		"src/scripts/**/*"
+	],
+	"exclude": [
+		"node_modules"
+	],
 	"references": [
 		{
 			"path": "./tsconfig.node.json"

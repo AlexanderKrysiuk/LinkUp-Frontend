@@ -1,3 +1,8 @@
+/**
+ * @module ContactPage
+ * @description Page component for the contact page.
+ */
+
 import React from 'react';
 
 /**

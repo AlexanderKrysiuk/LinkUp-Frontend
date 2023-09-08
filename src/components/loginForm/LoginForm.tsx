@@ -1,3 +1,8 @@
+/**
+ * @module LoginForm
+ * @description Module containing the login form component.
+ */
+
 import { LoginData } from '@data/formData';
 import { userSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,9 +13,21 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-var errorMessage: string | number | undefined;
-
-export default function LoginForm() {
+/**
+ * Component for rendering the login form.
+ *
+ * This component renders a login form that includes email and password fields. It utilizes
+ * React Hook Form for form management and validation and communicates with the server to
+ * perform user authentication.
+ *
+ * @returns {JSX.Element} - The rendered login form component.
+ * @example
+ * ```tsx
+ * // Render the login form
+ * <LoginForm />
+ * ```
+ */
+export default function LoginForm(): JSX.Element {
 	const navigate = useNavigate();
 
 	const {
@@ -20,6 +37,8 @@ export default function LoginForm() {
 	} = useForm<LoginData>({
 		resolver: zodResolver(userSchema),
 	});
+
+	var errorMessage: string | number | undefined;
 
 	const login = async (formData: LoginData) => {
 		const userLoginData = convertToLoginData(formData);
@@ -34,7 +53,7 @@ export default function LoginForm() {
 			setTokenToLocalStorage(responseData);
 			navigate('/', { replace: true });
 		} else {
-			// Obsługa błędów
+			// Handle errors
 			errorMessage = error;
 		}
 	};

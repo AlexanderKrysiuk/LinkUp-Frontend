@@ -1,3 +1,15 @@
+/**
+ * @module formHelperFunctions
+ * @description Module containing utility functions for form validation.
+ */
+
+/**
+ * Checks if the selected date is the same as the current day.
+ *
+ * @param {string} selectedDate - The selected date in string format (YYYY-MM-DD).
+ * @param {Date} currentDateTime - The current date and time as a JavaScript Date object.
+ * @returns {boolean} - Returns true if the selected date is the same as the current day, otherwise false.
+ */
 export function isSameDay(
 	selectedDate: string,
 	currentDateTime: Date,
@@ -7,10 +19,18 @@ export function isSameDay(
 	return selectedDay === currentDay;
 }
 
+/**
+ * Validates if the selected time is not earlier than the current time on the same day.
+ *
+ * @param {string} selectedTime - The selected time in string format (HH:MM).
+ * @param {Date} currentDateTime - The current date and time as a JavaScript Date object.
+ * @param {number} referenceDay - The reference day (day of the month) for comparison.
+ * @returns {boolean} - Returns true if the selected time is valid, otherwise false.
+ */
 export function validateDayTime(
 	selectedTime: string,
 	currentDateTime: Date,
-	referenceDay: any,
+	referenceDay: number,
 ): boolean {
 	const [selectedHour, selectedMinutes] = selectedTime.split(':').map(Number);
 	const [currentHour, currentMinutes] = currentDateTime
@@ -22,18 +42,25 @@ export function validateDayTime(
 		currentDateTime.toISOString().slice(8, 10),
 	);
 
-	return referenceDay === currentDay &&
+	return (
+		referenceDay === currentDay &&
 		new Date(0, 0, 0, selectedHour, selectedMinutes) <=
 			new Date(0, 0, 0, currentHour, currentMinutes)
-		? true
-		: false;
+	);
 }
 
+/**
+ * Calculates the minimum valid time for the selected date.
+ *
+ * @param {string} selectedDate - The selected date in string format (YYYY-MM-DD).
+ * @param {Date} currentDateTime - The current date and time as a JavaScript Date object.
+ * @returns {string} - The minimum valid time in string format (HH:MM).
+ */
 export function calculateMinTime(
 	selectedDate: string,
 	currentDateTime: Date,
 ): string {
-	return isSameDay(selectedDate, currentDateTime) == true
+	return isSameDay(selectedDate, currentDateTime)
 		? `${currentDateTime.toTimeString().slice(0, 5)}`
 		: '00:00';
 }

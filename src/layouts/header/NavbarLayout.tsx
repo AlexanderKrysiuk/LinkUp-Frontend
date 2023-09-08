@@ -1,3 +1,8 @@
+/**
+ * @module NavbarLayout
+ * @description Module containing the navbar layout component.
+ */
+
 import NavbarComponent from '@components/navbar/NavbarComponent.tsx';
 import React from 'react';
 import './NavbarLayoutCss.css';
