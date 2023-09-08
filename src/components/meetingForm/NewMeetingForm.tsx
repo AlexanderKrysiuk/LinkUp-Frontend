@@ -1,80 +1,57 @@
-/**
- * @module NewMeetingForm
- * @description Module containing a form for adding new meetings.
- */
-
+import { NewMeetingData } from '@data/formData';
+import { newMeetingSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-
-import { NewMeetingData } from '@utils/formData';
-
-import { submitFormData } from '@utils/formHandler';
-
-import { calculateMinTime, validateDayTime } from '@utils/formHelperFunctions';
-
-import { newMeetingSchema } from '@utils/formSchemas';
-
+import { submitFormData } from '@middleware/formHandler';
+import { convertToMeetingData } from '@middleware/helpers/dataConverter';
+import {
+	calculateMinTime,
+	validateDayTime,
+} from '@middleware/helpers/dateTimeHelper';
 import React, { useState } from 'react';
-
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 
-/**
- * A component for creating and submitting new meeting data.
- *
- * This component provides a form for creating and submitting new meeting data, including date, time,
- * duration, max participants, and description. It performs validation using Zod schema and handles
- * form submission by sending the data to the server.
- *
- * @component
- * @returns {JSX.Element} - The rendered NewMeetingForm component.
- * @example
- * ```tsx
- * <NewMeetingForm />
- * ```
- */
-// var errorMessage: string | number | undefined;
+var errorMessage: string | number | undefined;
 
-function NewMeetingForm(): JSX.Element {
-	// State for referencing minimum time and handling time validation
+function NewMeetingForm() {
 	const [refTime, setRefTime] = useState<string>();
 	const [isTimeInvalid, setIsTimeInvalid] = useState<boolean>();
 	const [refDay, setRefDay] = useState<number>();
+
+	const navigate = useNavigate();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<NewMeetingData>({
-		// Using Zod schema for form data validation
 		resolver: zodResolver(newMeetingSchema),
 	});
 
-	// Function to add a new meeting to the system
 	const addMeeting = async (data: NewMeetingData) => {
-		const newMeetingData = {
-			datetime: data.date + 'T' + data.time + ':00',
-			duration: +data.duration,
-			maxParticipants: +data.participants,
-			description: data.description,
-		};
+		const newMeetingData = convertToMeetingData(data);
+
+		const token = localStorage.getItem('token');
 
 		const { success, error } = await submitFormData(
 			newMeetingData,
 			'post',
 			'addMeeting',
+			token,
 		);
 
 		if (success) {
-			// TODO: What's next after a successful meeting addition?
+			navigate('/', { replace: true });
 		} else {
-			// Error handling
-			error;
+			// Obsługa błędów
+			console.error(error, 'This is madness!');
+			errorMessage = error;
 		}
 	};
 
 	const currentDateTime: Date = new Date();
 
-	// Function to set the minimum time reference based on the selected date
 	const setMinTimeReference = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedDate: string = e.target.value;
 		const selectedDay: number = parseInt(selectedDate.slice(8, 10));
@@ -88,25 +65,18 @@ function NewMeetingForm(): JSX.Element {
 		setRefTime(timeCheck);
 	};
 
-	// Function to validate selected time
 	const validateTime = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedTime: string = e.target.value;
-		// Ensure that refDay is defined before using it
-		if (refDay !== undefined) {
-			const isTimeInvalid = validateDayTime(
-				selectedTime,
-				currentDateTime,
-				refDay,
-			);
-			setIsTimeInvalid(isTimeInvalid);
-		}
+		const isTimeInvalid = validateDayTime(
+			selectedTime,
+			currentDateTime,
+			refDay,
+		);
+		setIsTimeInvalid(isTimeInvalid);
 	};
-
-	const timeErr: string = `You need to choose a time not earlier than ${currentDateTime
+	const timeErr: string = `You need to choose time not earlier than ${currentDateTime
 		.toTimeString()
 		.slice(0, 5)}`;
-
-	console.log(isTimeInvalid);
 
 	return (
 		<form
@@ -125,6 +95,11 @@ function NewMeetingForm(): JSX.Element {
 				{errors.date && (
 					<span className='form-element__validation-prompt'>
 						{errors.date.message}
+					</span>
+				)}
+				{errorMessage && (
+					<span className='form-element__validation-prompt'>
+						{errorMessage}
 					</span>
 				)}
 			</div>

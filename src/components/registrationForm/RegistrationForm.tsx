@@ -3,23 +3,22 @@
  * @description Module containing the component for rendering the registration form.
  */
 
+import { RegistrationData } from '@data/formData';
+import { newUserSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-
-import { RegistrationData } from '@utils/formData';
-
-import { submitFormData } from '@utils/formHandler';
-
-import { newUserSchema } from '@utils/formSchemas';
-
-//import { API_REGISTER_URL } from '@utils/links';
+import { loginUser } from '@middleware/apiHandler';
+import { setTokenToLocalStorage } from '@middleware/authHandler';
+import { submitFormData } from '@middleware/formHandler';
+import {
+	convertToLoginData,
+	convertToRegistrationData,
+} from '@middleware/helpers/dataConverter';
 import React from 'react';
 
 import { useForm } from 'react-hook-form';
 
 import { useNavigate } from 'react-router-dom';
-
-//import { loginUser } from '@utils/apiHandler';
 
 var errorMessage: string | number | undefined;
 
@@ -58,14 +57,9 @@ export default function RegistrationForm() {
 	 *
 	 * @param {RegistrationData} data - The registration data submitted by the user.
 	 */
-	const submitForm = async (data: RegistrationData) => {
+	const submitForm = async (formData: RegistrationData) => {
 		// Prepare the user data to be sent to the server
-		const userToRegister = {
-			username: `${data.firstName} ${data.lastName}`,
-			email: data.email,
-			password: data.password,
-			role: data.userType,
-		};
+		const userToRegister = convertToRegistrationData(formData);
 
 		// Submit the user data to the server using a utility function (submitFormData)
 		// This function should handle the API request to register the user
@@ -77,10 +71,13 @@ export default function RegistrationForm() {
 
 		// If the registration is successful, redirect the user to the homepage
 		if (success) {
-			// Possible outcomes:
-			// - User is registered successfully
-			// - Redirects to the homepage
-			navigate('/', { replace: true });
+			const userToLogin = convertToLoginData(formData);
+			const loginResult = await loginUser(userToLogin);
+
+			if (loginResult.ok) {
+				setTokenToLocalStorage(loginResult);
+				navigate('/', { replace: true });
+			}
 		} else {
 			// If there is an error during registration, display an error message
 			errorMessage = error;
@@ -105,6 +102,11 @@ export default function RegistrationForm() {
 						className='form-element__input'
 						id='userType'
 						{...register('userType')}>
+						<option
+							className='form-element__select-option'
+							value='Admin'>
+							Admin
+						</option>
 						<option
 							className='form-element__select-option'
 							value='Client'>

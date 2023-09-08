@@ -1,36 +1,19 @@
-/**
- * @module MockPageComponent
- * @description MockPageComponent is a React component representing a mock page in your web application.
- */
+//import Button from '@components/utils/Button';
+import NewMeetingForm from '@components/meetingForm/NewMeetingForm';
+import MockMeetings from '@components/mock/mockMeetingsAll';
+import Button from '@components/utils/buttons/Button';
+import { getRole } from '@middleware/authHandler';
+import { getMeetings } from '@middleware/meetingsHandler';
+import { Meetings } from 'data/dataTypes';
 import React, { useEffect, useState } from 'react';
 
-import Button from '@components/utils/buttons/Button';
-
-import NewMeetingForm from '@components/utils/NewMeetingForm';
-
-/**
- * This component manages the visibility of a new meeting form based on the user's authentication state.
- * If the user is authenticated, it displays a welcome message and a button to add a new meeting.
- * Clicking the button toggles the visibility of the new meeting form.
- *
- * @returns {JSX.Element} - The rendered MockPageComponent.
- * @example
- * // Import and use MockPageComponent in your application
- * import MockPageComponent from '@components/pages/MockPageComponent';
- *
- * const App = () => {
- *   return (
- *     <div>
- *       <MockPageComponent />
- *     </div>
- *   );
- * };
- *
- * export default App;
- */
 const MockPageComponent = (): JSX.Element => {
-	const [isFormVisible, setIsFormVisible] = useState(false);
-	const [token, setToken] = useState('');
+	const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
+	const [token, setToken] = useState<string | undefined>(undefined);
+	const [userRole, setUserRole] = useState<string | undefined>(undefined);
+
+	//state to see meetings
+	const [userMeetings, setUserMeetings] = useState<Meetings>([]);
 
 	/**
 	 * useEffect hook to check if a user is authenticated.
@@ -45,6 +28,17 @@ const MockPageComponent = (): JSX.Element => {
 		if (storedToken) {
 			setToken(storedToken);
 		}
+	}, []);
+
+	useEffect(() => {
+		const fetchUserRole = async () => {
+			const roleToSet: any = await getRole();
+			setUserRole(roleToSet);
+		};
+
+		if (token) {
+			fetchUserRole();
+		}
 	}, [token]);
 
 	/**
@@ -54,14 +48,45 @@ const MockPageComponent = (): JSX.Element => {
 		setIsFormVisible(!isFormVisible);
 	};
 
+	//get meetings from DB and save as state prop => so far all, no filter
+	useEffect(() => {
+		if (token) {
+			getMeetings(token)
+				.then((data) => {
+					setUserMeetings(data);
+				})
+				.catch((error) =>
+					console.error("Couldn't fetch data from DB.", error),
+				);
+		}
+	}, [token]);
+
 	return (
 		<div>
-			{token ? <h1>You are logged in, dawg!</h1> : null}
-			<Button
-				text='+ Add new meeting'
-				onClick={toggleForm}
-			/>
+			{/* if logged : display his role and button to add meetings */}
+			{token ? (
+				<div>
+					{/* <h1> You are logged in, dawg!</h1> */}
+					Hey, {userRole}.
+				</div>
+			) : null}
+			{/* end if logged */}
+
+			{/* if authorized : allow to add meeting */}
+			{userRole === 'Contractor' || userRole === 'Admin' ? (
+				<Button
+					text='+ Add new meeting'
+					onClick={toggleForm}
+				/>
+			) : null}
 			{isFormVisible && <NewMeetingForm />}
+			{/* end if authorized */}
+
+			{/* if created/booked meetings : get and see meetings */}
+			{token && userMeetings ? (
+				<MockMeetings meetings={userMeetings} />
+			) : null}
+			{/* end if created/booked meetings */}
 		</div>
 	);
 };

@@ -3,10 +3,12 @@
  * @description Module containing the login form component.
  */
 
+import { LoginData } from '@data/formData';
+import { userSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LoginData } from '@utils/formData';
-import { submitFormData } from '@utils/formHandler';
-import { userSchema } from '@utils/formSchemas';
+import { setTokenToLocalStorage } from '@middleware/authHandler';
+import { submitFormData } from '@middleware/formHandler';
+import { convertToLoginData } from '@middleware/helpers/dataConverter';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -39,27 +41,16 @@ export default function LoginForm(): JSX.Element {
 	var errorMessage: string | number | undefined;
 
 	const login = async (formData: LoginData) => {
-		const userLoginData = {
-			email: formData.email,
-			password: formData.password,
-		};
+		const userLoginData = convertToLoginData(formData);
 
-		const { success, error, data } = await submitFormData(
-			userLoginData,
-			'options',
-			'login',
-		);
+		const {
+			success,
+			error,
+			data: responseData,
+		} = await submitFormData(userLoginData, 'options', 'login');
 
-		if (success) {
-			if (data) {
-				if ('token' in data) {
-					const responseData = data as { token: string };
-					const token = responseData.token;
-					localStorage.setItem('token', token);
-				} else {
-					// Handle no token
-				}
-			}
+		if (success && responseData) {
+			setTokenToLocalStorage(responseData);
 			navigate('/', { replace: true });
 		} else {
 			// Handle errors

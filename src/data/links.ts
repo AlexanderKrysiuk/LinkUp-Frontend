@@ -17,8 +17,11 @@ export const API_REGISTER_URL = `${API_URI}/register`;
  * The URL for user login in the API.
  */
 export const API_LOGIN_URL = `${API_URI}/login`;
+export const API_USER_ROLE = `${API_URI}/user-role`;
 
 /**
  * The URL for meetings-related API endpoints.
  */
 export const API_MEETINGS_URL = `${API_URI}/Meetings`;
+
+export const API_MEETINGS_BY_USER = `${API_MEETINGS_URL}/organizator/my-meetings`;

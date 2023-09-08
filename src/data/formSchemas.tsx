@@ -1,5 +1,5 @@
-import { LoginData, NewMeetingData, RegistrationData } from '@utils/formData';
 import { ZodType, z } from 'zod';
+import { LoginData, NewMeetingData, RegistrationData } from './formData';
 
 /**
  * Schema for validating user registration data.
