@@ -1,3 +1,5 @@
+import { RegistrationData } from '@data/formData';
+import { newUserSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
 import { loginUser } from '@middleware/apiHandler';
@@ -10,8 +12,6 @@ import {
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { RegistrationData } from '../../data/formData';
-import { newUserSchema } from '../../data/formSchemas';
 
 var errorMessage: string | number | undefined;
 
@@ -36,7 +36,6 @@ export default function RegistrationForm() {
 		);
 
 		if (success) {
-			//ZALOGUJ OD RAZU
 			const userToLogin = convertToLoginData(formData);
 			const loginResult = await loginUser(userToLogin);
 

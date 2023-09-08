@@ -1,5 +1,5 @@
+import { MeetingData, Meetings } from '@data/dataTypes';
 import React from 'react';
-import { MeetingData, Meetings } from '../../data/dataTypes';
 import MockMeetingComponent from './mockMeetingComponent';
 
 const MockMeetings = ({ meetings }: { meetings: Meetings }): JSX.Element => {

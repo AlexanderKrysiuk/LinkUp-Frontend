@@ -1,8 +1,4 @@
-import {
-	LoginData,
-	NewMeetingData,
-	RegistrationData,
-} from '../../data/formData';
+import { LoginData, NewMeetingData, RegistrationData } from '@data/formData';
 import { convertToUTCDateTime } from './dateTimeHelper';
 
 export function convertToMeetingData(data: NewMeetingData) {

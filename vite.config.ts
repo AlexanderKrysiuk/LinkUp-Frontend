@@ -57,8 +57,8 @@ export default defineConfig({
 				replacement: resolve(__dirname, './src/pages/'),
 			},
 			{
-				find: '@utils',
-				replacement: resolve(__dirname, './src/utils/'),
+				find: '@data',
+				replacement: resolve(__dirname, './src/data/'),
 			},
 			{
 				find: '@scripts',
