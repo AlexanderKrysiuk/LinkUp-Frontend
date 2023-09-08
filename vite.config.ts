@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 // import { defineConfig } from "vitest/config";
 import react from '@vitejs/plugin-react';
 
-//import mkcert from 'vite-plugin-mkcert';
+import mkcert from 'vite-plugin-mkcert';
 
 import { resolve } from 'path';
 
@@ -64,6 +64,10 @@ export default defineConfig({
 			{
 				find: '@data',
 				replacement: resolve(__dirname, './src/data/'),
+			},
+			{
+				find: '@utils',
+				replacement: resolve(__dirname, './src/utils/'),
 			},
 			{
 				find: '@scripts',

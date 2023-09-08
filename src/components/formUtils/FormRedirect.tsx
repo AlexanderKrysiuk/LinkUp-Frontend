@@ -3,7 +3,7 @@
  * @description Module containing a component for rendering a form redirect statement.
  */
 
-import { LOCAL_URI } from '@utils/links';
+import { LOCAL_URI } from '@data/links';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
