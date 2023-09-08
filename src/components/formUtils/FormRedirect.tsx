@@ -1,6 +1,6 @@
+import { LOCAL_URI } from '@data/links';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LOCAL_URI } from '@utils/links';
 
 type TextProp = {
 	statement: string;

@@ -1,10 +1,14 @@
+import { RegistrationData } from '@data/formData';
+import { newUserSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-import { loginUser } from '@utils/apiHandler';
-import { setTokenToLocalStorage } from '@utils/auth';
-import { RegistrationData } from '@utils/formData';
-import { submitFormData } from '@utils/formHandler';
-import { newUserSchema } from '@utils/formSchemas';
+import { loginUser } from '@middleware/apiHandler';
+import { setTokenToLocalStorage } from '@middleware/authHandler';
+import { submitFormData } from '@middleware/formHandler';
+import {
+	convertToLoginData,
+	convertToRegistrationData,
+} from '@middleware/helpers/dataConverter';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -23,12 +27,7 @@ export default function RegistrationForm() {
 	});
 
 	const submitForm = async (formData: RegistrationData) => {
-		const userToRegister = {
-			username: `${formData.firstName} ${formData.lastName}`,
-			email: formData.email,
-			password: formData.password,
-			role: formData.userType,
-		};
+		const userToRegister = convertToRegistrationData(formData);
 
 		const { success, error } = await submitFormData(
 			userToRegister,
@@ -37,11 +36,7 @@ export default function RegistrationForm() {
 		);
 
 		if (success) {
-			//ZALOGUJ OD RAZU
-			const userToLogin = {
-				email: formData.email,
-				password: formData.password,
-			};
+			const userToLogin = convertToLoginData(formData);
 			const loginResult = await loginUser(userToLogin);
 
 			if (loginResult.ok) {
@@ -68,6 +63,11 @@ export default function RegistrationForm() {
 						className='form-element__input'
 						id='userType'
 						{...register('userType')}>
+						<option
+							className='form-element__select-option'
+							value='Admin'>
+							Admin
+						</option>
 						<option
 							className='form-element__select-option'
 							value='Client'>

@@ -1,20 +1,26 @@
 //import Button from '@components/utils/Button';
-import NewMeetingForm from '@components/utils/NewMeetingForm';
+import NewMeetingForm from '@components/meetingForm/NewMeetingForm';
+import MockMeetings from '@components/mock/mockMeetingsAll';
 import Button from '@components/utils/buttons/Button';
-import { getRole } from '@utils/auth';
+import { getRole } from '@middleware/authHandler';
+import { getMeetings } from '@middleware/meetingsHandler';
+import { Meetings } from 'data/dataTypes';
 import React, { useEffect, useState } from 'react';
 
 const MockPageComponent = (): JSX.Element => {
 	const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
-	const [token, setToken] = useState<string>();
-	const [userRole, setUserRole] = useState<string>();
+	const [token, setToken] = useState<string | undefined>(undefined);
+	const [userRole, setUserRole] = useState<string | undefined>(undefined);
+
+	//state to see meetings
+	const [userMeetings, setUserMeetings] = useState<Meetings>([]);
 
 	useEffect(() => {
 		const storedToken = localStorage.getItem('token');
 		if (storedToken) {
 			setToken(storedToken);
 		}
-	}, [token]);
+	}, []);
 
 	useEffect(() => {
 		const fetchUserRole = async () => {
@@ -22,27 +28,54 @@ const MockPageComponent = (): JSX.Element => {
 			setUserRole(roleToSet);
 		};
 
-		fetchUserRole();
-	}, [userRole]);
+		if (token) {
+			fetchUserRole();
+		}
+	}, [token]);
 
 	const toggleForm = () => {
 		setIsFormVisible(!isFormVisible);
 	};
+
+	//get meetings from DB and save as state prop => so far all, no filter
+	useEffect(() => {
+		if (token) {
+			getMeetings(token)
+				.then((data) => {
+					setUserMeetings(data);
+				})
+				.catch((error) =>
+					console.error("Couldn't fetch data from DB.", error),
+				);
+		}
+	}, [token]);
+
 	return (
 		<div>
+			{/* if logged : display his role and button to add meetings */}
 			{token ? (
 				<div>
-					<h1> You are logged in, dawg!</h1>
-					<p>Hey, {userRole}.</p>
+					{/* <h1> You are logged in, dawg!</h1> */}
+					Hey, {userRole}.
 				</div>
 			) : null}
-			{userRole === 'Contractor' ? (
+			{/* end if logged */}
+
+			{/* if authorized : allow to add meeting */}
+			{userRole === 'Contractor' || userRole === 'Admin' ? (
 				<Button
 					text='+ Add new meeting'
 					onClick={toggleForm}
 				/>
 			) : null}
 			{isFormVisible && <NewMeetingForm />}
+			{/* end if authorized */}
+
+			{/* if created/booked meetings : get and see meetings */}
+			{token && userMeetings ? (
+				<MockMeetings meetings={userMeetings} />
+			) : null}
+			{/* end if created/booked meetings */}
 		</div>
 	);
 };

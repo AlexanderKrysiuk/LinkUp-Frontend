@@ -1,10 +1,11 @@
 import {
 	API_LOGIN_URL,
+	API_MEETINGS_BY_USER,
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
 	API_USER_ROLE,
-} from '@utils/links';
-import { getAuthHeader } from './auth';
+} from '@data/links';
+import { getAuthHeader } from './authHandler';
 
 export async function createUser(payload: any) {
 	return await apiOptions(API_REGISTER_URL, payload);
@@ -22,6 +23,19 @@ export async function createMeeting(payload: any, token: string) {
 export async function getUserRole(token: string) {
 	const headers = getAuthHeader(token);
 	return await apiGet(API_USER_ROLE, headers);
+}
+
+export async function getUserMeetings(token: string) {
+	const headers = getAuthHeader(token);
+	return await apiGet(API_MEETINGS_BY_USER, headers);
+}
+
+// export async function getUserMeetings() {
+// 	return await apiGet(API_MEETINGS_BY_USER);
+// }
+
+export async function deleteUserMeeting(id: string) {
+	return await apiDelete(`${API_MEETINGS_URL}/${id}`, id);
 }
 
 async function apiOptions(url: string, payload: any): Promise<Response> {
@@ -60,6 +74,14 @@ async function apiGet(
 	const response = await fetch(url, {
 		method: 'GET',
 		headers: requestHeaders,
+	});
+	return response;
+}
+
+async function apiDelete(url: string, payload: any): Promise<Response> {
+	const response = await fetch(url, {
+		method: 'DELETE',
+		body: JSON.stringify(payload),
 	});
 	return response;
 }

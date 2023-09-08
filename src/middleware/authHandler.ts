@@ -1,4 +1,4 @@
-import { getUserRole } from '@utils/apiHandler';
+import { getUserRole } from './apiHandler';
 
 export const getAuthHeader = (token: string) => {
 	return { Authorization: `Bearer ${token}` };

@@ -1,13 +1,13 @@
+import { NewMeetingData } from '@data/formData';
+import { newMeetingSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '@layouts/FormLayout.css';
-import { NewMeetingData } from '@utils/formData';
-import { submitFormData } from '@utils/formHandler';
+import { submitFormData } from '@middleware/formHandler';
+import { convertToMeetingData } from '@middleware/helpers/dataConverter';
 import {
 	calculateMinTime,
-	convertToUTCDateTime,
 	validateDayTime,
-} from '@utils/formHelperFunctions';
-import { newMeetingSchema } from '@utils/formSchemas';
+} from '@middleware/helpers/dateTimeHelper';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
@@ -30,13 +30,7 @@ function NewMeetingForm() {
 	});
 
 	const addMeeting = async (data: NewMeetingData) => {
-		const dateTime = convertToUTCDateTime(data.date, data.time);
-		const newMeetingData = {
-			datetime: dateTime,
-			duration: +data.duration,
-			maxParticipants: +data.participants,
-			description: data.description,
-		};
+		const newMeetingData = convertToMeetingData(data);
 
 		const token = localStorage.getItem('token');
 
@@ -101,6 +95,11 @@ function NewMeetingForm() {
 				{errors.date && (
 					<span className='form-element__validation-prompt'>
 						{errors.date.message}
+					</span>
+				)}
+				{errorMessage && (
+					<span className='form-element__validation-prompt'>
+						{errorMessage}
 					</span>
 				)}
 			</div>

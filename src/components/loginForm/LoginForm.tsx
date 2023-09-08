@@ -1,8 +1,9 @@
+import { LoginData } from '@data/formData';
+import { userSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { setTokenToLocalStorage } from '@utils/auth';
-import { LoginData } from '@utils/formData';
-import { submitFormData } from '@utils/formHandler';
-import { userSchema } from '@utils/formSchemas';
+import { setTokenToLocalStorage } from '@middleware/authHandler';
+import { submitFormData } from '@middleware/formHandler';
+import { convertToLoginData } from '@middleware/helpers/dataConverter';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -21,10 +22,7 @@ export default function LoginForm() {
 	});
 
 	const login = async (formData: LoginData) => {
-		const userLoginData = {
-			email: formData.email,
-			password: formData.password,
-		};
+		const userLoginData = convertToLoginData(formData);
 
 		const {
 			success,
