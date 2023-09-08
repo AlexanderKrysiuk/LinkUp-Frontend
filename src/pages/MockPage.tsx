@@ -1,6 +1,6 @@
 //import Button from '@components/utils/Button';
+import NewMeetingForm from '@components/meetingForm/NewMeetingForm';
 import MockMeetings from '@components/mock/mockMeetingsAll';
-import NewMeetingForm from '@components/utils/NewMeetingForm';
 import Button from '@components/utils/buttons/Button';
 import { getRole } from '@middleware/authHandler';
 import { getMeetings } from '@middleware/meetingsHandler';
