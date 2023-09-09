@@ -47,21 +47,23 @@ const CategoriesComponent = ({
 	clickHandler,
 }: CategoriesComponentProps): JSX.Element => {
 	return (
-		<ul className='profile__header_categories'>
-			<li>
-				{routes.map((item, index) => (
-					<NavLink
-						to={item.routeName}
-						key={index}>
-						<PillComponent
-							key={index}
-							item={item}
-							onClick={clickHandler}
-						/>
-					</NavLink>
-				))}
-			</li>
-		</ul>
+		<div className='profile__header_categories'>
+			<ul>
+				<li>
+					{routes.map((item, index) => (
+						<NavLink
+							to={item.routeName}
+							key={index}>
+							<PillComponent
+								key={index}
+								item={item}
+								onClick={clickHandler}
+							/>
+						</NavLink>
+					))}
+				</li>
+			</ul>
+		</div>
 	);
 };
 

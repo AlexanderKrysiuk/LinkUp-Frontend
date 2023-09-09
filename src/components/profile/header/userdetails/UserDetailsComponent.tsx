@@ -18,7 +18,31 @@ import React from 'react';
  */
 const UserDetailsComponent = (): JSX.Element => {
 	return (
-		<div className='profile__header_user-details'>UserDetailsComponent</div>
+		<div className='profile__header_user-details'>
+			<div className='profile__header_user-details-photo'></div>
+			<div className='profile__header_user-details-user'>
+				<div className='profile__header_user-details-name'>
+					<p className='label'>Name:</p>
+					<p className='field'> John Doe</p>
+				</div>
+				<div className='profile__header_user-details-email'>
+					<p className='label'>e-mail:</p>
+					<p className='field'> johndoe@example.com</p>
+				</div>
+			</div>
+			<div className='profile__header_user-details-about'>
+				<p className='label'>About me:</p>
+				<p className='field'>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Rerum quae modi recusandae assumenda sunt neque atque ipsum
+					nostrum nesciunt corporis quidem aut blanditiis, sed ad at
+					dolorem aliquid error voluptatem omnis illo eius. Ratione
+					maiores cupiditate error voluptatibus, iste magnam, expedita
+					fuga culpa ea possimus placeat eaque praesentium dolore.
+					Doloremque.
+				</p>
+			</div>
+		</div>
 	);
 };
 
