@@ -1,0 +1,25 @@
+.hamburger-sidebar {
+  display: block;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -250;
+  background-color: var(--color-secondary); /* Choose your background color */
+  overflow-x: hidden;
+  z-index: 1000;
+}
+.hamburger-sidebar__container__menu {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.hamburger-sidebar__container__menu-link {
+  color: #818181;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
+.hamburger-sidebar__container__menu-link:hover {
+  color: #f1f1f1;
+}/*# sourceMappingURL=HamburgerSidebarCss.css.map */
