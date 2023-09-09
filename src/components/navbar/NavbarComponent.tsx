@@ -5,6 +5,8 @@
 
 import React from 'react';
 import NavbarLogoComponent from './logo/NavbarLogoComponent.tsx';
+
+import HamburgerIconComponent from './hamburger-icon/HamburgerIconComponent.tsx';
 import NavbarMenuComponent from './navmenu/NavbarMenuComponent.tsx';
 
 /**
@@ -27,6 +29,7 @@ const NavbarComponent = (): JSX.Element => {
 		<nav className='navbar__container'>
 			<NavbarLogoComponent />
 			<NavbarMenuComponent />
+			<HamburgerIconComponent />
 		</nav>
 	);
 };
