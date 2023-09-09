@@ -25,12 +25,12 @@ interface BackdropProps {
 /**
  * The duration of the fade animation when the backdrop appears or disappears (in seconds).
  */
-export const FADE_TIME: number = 1;
+export const FADE_TIME: number = 0.25;
 
 /**
  * The delay before the backdrop animation starts (in seconds).
  */
-export const OFFSET_TIME: number = 0.1;
+export const OFFSET_TIME: number = 0;
 
 /**
  * A component that provides a backdrop for modal displays.
