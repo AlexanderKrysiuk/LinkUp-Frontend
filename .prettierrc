@@ -13,8 +13,7 @@
 	"bracketSameLine": true,
 	"trailingComma": "all",
 	"plugins": [
-		"prettier-plugin-organize-imports",
-		"prettier-plugin-tailwindcss"
+		"prettier-plugin-organize-imports"
 	],
 	"pluginSearchDirs": false,
 	"overrides": [
