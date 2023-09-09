@@ -43,6 +43,9 @@
 			"@utils/*": [
 				"./src/utils/*"
 			],
+			"@data/*": [
+				"./src/data/*"
+			],
 			"@assets/*": [
 				"./src/assets/*"
 			],
