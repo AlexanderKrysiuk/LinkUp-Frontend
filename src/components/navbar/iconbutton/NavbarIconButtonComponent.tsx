@@ -8,6 +8,8 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+import { removeTokenFromLocalStorage } from '@middleware/authHandler';
+import { useNavigate } from 'react-router-dom';
 /**
  * Props for the `NavbarIconButtonComponent` component.
  *
@@ -48,6 +50,8 @@ type NavbarIconButtonComponentProps = {
 const NavbarIconButtonComponent = ({
 	item,
 }: NavbarIconButtonComponentProps): JSX.Element => {
+	const navigate = useNavigate();
+
 	if (item.routeName === 'profile') {
 		return (
 			<NavLink to={item.routeName}>
@@ -56,6 +60,24 @@ const NavbarIconButtonComponent = ({
 					<span>{`${item.routeName}`}</span>
 				</li>
 			</NavLink>
+		);
+	} else if (item.routeName == 'logout') {
+		return (
+			<li
+				className='navbar__menu-button'
+				onClick={() => removeTokenFromLocalStorage(navigate)}>
+				<item.routeIcon />
+				<span>{item.routeName}</span>
+			</li>
+		);
+	} else if (item.routeName == 'logout') {
+		return (
+			<li
+				className='navbar__menu-button'
+				onClick={() => removeTokenFromLocalStorage(navigate)}>
+				<item.routeIcon />
+				<span>{item.routeName}</span>
+			</li>
 		);
 	} else if (
 		item.routeName !== 'login' &&
