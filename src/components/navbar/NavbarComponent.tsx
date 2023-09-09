@@ -6,7 +6,7 @@
 import React from 'react';
 import NavbarLogoComponent from './logo/NavbarLogoComponent.tsx';
 
-import HamburgerIconComponent from './hamburger-icon/HamburgerIconComponent.tsx';
+import HamburgerIconComponent from './hamburger/HamburgerIconComponent.tsx';
 import NavbarMenuComponent from './navmenu/NavbarMenuComponent.tsx';
 
 /**

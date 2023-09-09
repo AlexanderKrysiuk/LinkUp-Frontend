@@ -78,9 +78,7 @@ export const HamburgerSidebar = (): JSX.Element | null => {
 	return (
 		<AnimatePresence>
 			{isHamburgerSidebarOpen ? (
-				<div
-					ref={sidebarRef}
-					className={'hamburger-sidebar-container'}>
+				<div ref={sidebarRef}>
 					<HamburgerSidebarComponent isVisible={true} />
 				</div>
 			) : null}

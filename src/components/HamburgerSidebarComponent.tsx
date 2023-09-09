@@ -1,4 +1,4 @@
-import HamburgerMenuComponent from '@components/HamburgerMenuComponent.tsx';
+import HamburgerMenuComponent from '@components/hamburger/HamburgerMenuComponent';
 
 import { motion } from 'framer-motion';
 

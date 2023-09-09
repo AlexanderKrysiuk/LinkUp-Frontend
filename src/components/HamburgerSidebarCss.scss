@@ -7,20 +7,29 @@
 	left: -250;
 	background-color: var(--color-secondary); /* Choose your background color */
 	overflow-x: hidden;
-	z-index: 1000;
-	&__container {
-		&__menu {
-			padding: 20px;
-			display: flex;
-			flex-direction: column;
-			&-link {
-				color: #818181;
-				text-decoration: none;
-				display: block;
-				transition: 0.3s;
-				&:hover {
-					color: #f1f1f1;
-				}
+	z-index: 101;
+
+	&__menu {
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		& > .active li {
+			background-color: var(--color-primary);
+			color: var(--color-text);
+		}
+		&-link {
+			color: var(--color-text);
+			text-decoration: none;
+			font-size: 1.5rem;
+			font-weight: var(--font-weight-normal);
+			display: block;
+			margin: 0.4rem;
+			padding: 0.25rem 0.5rem;
+			border-radius: 0.5rem;
+			transition: 0.3s;
+			cursor: pointer;
+			&:hover {
+				background-color: var(--color-primary);
 			}
 		}
 	}
