@@ -13,6 +13,7 @@ import { Backdrop } from '@contexts/BackdropContext';
 import React from 'react';
 
 import '@layouts/FormLayout.css';
+import './App.css';
 
 // import LoginComponent from '@components/loginForm/LoginComponent';
 //import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
@@ -20,6 +21,8 @@ import '@layouts/FormLayout.css';
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
+
+import { HamburgerSidebar } from '@contexts/HamburgerSidebarContext.tsx';
 
 import { Outlet } from 'react-router-dom';
 
@@ -41,9 +44,8 @@ export function App(): JSX.Element {
 		<>
 			{/* <RegistrationComponent /> */}
 			{/* <LoginComponent /> */}
-
+			<HamburgerSidebar />
 			<Backdrop />
-
 			<NavbarLayout />
 			<main className='main'>
 				{/* The Outlet component renders the content of the current route */}

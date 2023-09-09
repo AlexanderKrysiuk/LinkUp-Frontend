@@ -49,18 +49,6 @@
 	--color-warning1-dark: #e45050;
 	--color-warning2-dark: #ff6b6b;
 }
-
-/*
-#68B468
-#6EB26E
-#00A651
-#00C853
-#DC143C
-#FF0033
-#FF6B6B
-#FF8A80
-*/
-
 /*
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
@@ -74,7 +62,7 @@
 	margin: 0;
 }
 body {
-	height: 100svh;
+	height: 100vh;
 	width: 100svw;
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
