@@ -5,7 +5,7 @@
 
 /// <reference types="vite-plugin-svgr/client" />
 
-import { ReactComponent as Logo } from '@icons/temporary-logo.svg';
+import { ReactComponent as Logo } from '@assets/logo_idea-02.svg';
 import React from 'react';
 
 /**
