@@ -4,10 +4,11 @@
  */
 
 import { NavMenuItem } from '@router/NavMenuItems.ts';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+import { UserContext } from '@contexts/AuthContext';
 import { removeTokenFromLocalStorage } from '@middleware/authHandler';
 import { useNavigate } from 'react-router-dom';
 /**
@@ -49,36 +50,41 @@ type NavbarIconButtonComponentProps = {
  */
 const NavbarIconButtonComponent = ({
 	item,
-}: NavbarIconButtonComponentProps): JSX.Element => {
+}: NavbarIconButtonComponentProps): JSX.Element | null => {
 	const navigate = useNavigate();
+	const isLogged = useContext(UserContext);
 
 	if (item.routeName === 'profile') {
-		return (
-			<NavLink to={item.routeName}>
-				<li className='navbar__menu-button'>
+		if (isLogged) {
+			return (
+				<NavLink to={item.routeName}>
+					<li className='navbar__menu-button'>
+						<item.routeIcon />
+						<span>{`${item.routeName}`}</span>
+					</li>
+				</NavLink>
+			);
+		} else {
+			return null;
+		}
+	} else if (item.routeName === 'logout') {
+		if (isLogged) {
+			return (
+				<li
+					className='navbar__menu-button'
+					onClick={() => removeTokenFromLocalStorage(navigate)}>
 					<item.routeIcon />
-					<span>{`${item.routeName}`}</span>
+					<span>{item.routeName}</span>
 				</li>
-			</NavLink>
-		);
-	} else if (item.routeName == 'logout') {
-		return (
-			<li
-				className='navbar__menu-button'
-				onClick={() => removeTokenFromLocalStorage(navigate)}>
-				<item.routeIcon />
-				<span>{item.routeName}</span>
-			</li>
-		);
-	} else if (item.routeName == 'logout') {
-		return (
-			<li
-				className='navbar__menu-button'
-				onClick={() => removeTokenFromLocalStorage(navigate)}>
-				<item.routeIcon />
-				<span>{item.routeName}</span>
-			</li>
-		);
+			);
+		} else {
+			return null;
+		}
+	} else if (
+		(item.routeName === 'login' || item.routeName === 'register') &&
+		isLogged
+	) {
+		return null;
 	} else if (
 		item.routeName !== 'login' &&
 		item.routeName !== 'register' &&
