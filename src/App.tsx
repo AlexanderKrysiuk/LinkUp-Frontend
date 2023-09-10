@@ -10,17 +10,15 @@
 
 import { Backdrop } from '@contexts/BackdropContext';
 
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import '@layouts/FormLayout.css';
-
-// import LoginComponent from '@components/loginForm/LoginComponent';
-//import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
 
+import { UserContext } from '@contexts/AuthContext';
 import { Outlet } from 'react-router-dom';
 
 /**
@@ -37,19 +35,27 @@ import { Outlet } from 'react-router-dom';
  * ```
  */
 export function App(): JSX.Element {
+	const { isLogged, setIsLogged } = useContext(UserContext);
+	
+	useEffect(() => {
+		const token = localStorage.getItem('token');
+		if (token && !isLogged) { 
+			setIsLogged(true); 
+		} else if (!token && isLogged) { 
+			setIsLogged(false); 
+		} });
+
 	return (
-		<>
-			{/* <RegistrationComponent /> */}
-			{/* <LoginComponent /> */}
-
-			<Backdrop />
-
-			<NavbarLayout />
-			<main className='main'>
-				{/* The Outlet component renders the content of the current route */}
-				<Outlet />
-			</main>
-			<FooterLayout />
-		</>
+		<UserContext.Provider value={{ isLogged, setIsLogged }}>
+			<>
+				<Backdrop />
+				<NavbarLayout />
+				<main className='main'>
+					{/* The Outlet component renders the content of the current route */}
+					<Outlet />
+				</main>
+				<FooterLayout />
+			</>
+		</UserContext.Provider>
 	);
 }

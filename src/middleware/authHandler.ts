@@ -1,3 +1,5 @@
+import { UserContext } from '@contexts/AuthContext';
+import { useContext, useEffect, useState } from 'react';
 import { NavigateFunction } from 'react-router-dom';
 import { getUserRole } from './apiHandler';
 

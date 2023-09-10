@@ -52,39 +52,29 @@ const NavbarIconButtonComponent = ({
 	item,
 }: NavbarIconButtonComponentProps): JSX.Element | null => {
 	const navigate = useNavigate();
-	const isLogged = useContext(UserContext);
+	//const { setIsLogged } = useContext(UserContext);
 
 	if (item.routeName === 'profile') {
-		if (isLogged) {
-			return (
-				<NavLink to={item.routeName}>
-					<li className='navbar__menu-button'>
-						<item.routeIcon />
-						<span>{`${item.routeName}`}</span>
-					</li>
-				</NavLink>
-			);
-		} else {
-			return null;
-		}
-	} else if (item.routeName === 'logout') {
-		if (isLogged) {
-			return (
-				<li
-					className='navbar__menu-button'
-					onClick={() => removeTokenFromLocalStorage(navigate)}>
+		return (
+			<NavLink to={item.routeName}>
+				<li className='navbar__menu-button'>
 					<item.routeIcon />
-					<span>{item.routeName}</span>
+					<span>{`${item.routeName}`}</span>
 				</li>
-			);
-		} else {
-			return null;
-		}
-	} else if (
-		(item.routeName === 'login' || item.routeName === 'register') &&
-		isLogged
-	) {
-		return null;
+			</NavLink>
+		);
+	} else if (item.routeName === 'logout') {
+		return (
+			<li
+				className='navbar__menu-button'
+				onClick={() => {
+					removeTokenFromLocalStorage(navigate);
+					// setIsLogged(false);
+				}}>
+				<item.routeIcon />
+				<span>{item.routeName}</span>
+			</li>
+		);
 	} else if (
 		item.routeName !== 'login' &&
 		item.routeName !== 'register' &&

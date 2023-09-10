@@ -3,13 +3,14 @@
  * @description Module containing the login form component.
  */
 
+import { UserContext } from '@contexts/AuthContext';
 import { LoginData } from '@data/formData';
 import { userSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { setTokenToLocalStorage } from '@middleware/authHandler';
 import { submitFormData } from '@middleware/formHandler';
 import { convertToLoginData } from '@middleware/helpers/dataConverter';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 

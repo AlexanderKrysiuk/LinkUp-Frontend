@@ -2,7 +2,7 @@
  * @module RegistrationForm
  * @description Module containing the component for rendering the registration form.
  */
-
+import { UserContext } from '@contexts/AuthContext';
 import { RegistrationData } from '@data/formData';
 import { newUserSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,7 +14,7 @@ import {
 	convertToLoginData,
 	convertToRegistrationData,
 } from '@middleware/helpers/dataConverter';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { useForm } from 'react-hook-form';
 

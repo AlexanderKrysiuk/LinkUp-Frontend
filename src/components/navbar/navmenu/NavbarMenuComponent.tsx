@@ -3,8 +3,9 @@
  * @description Module containing the navigation menu component for the navigation bar.
  */
 
+import { UserContext } from '@contexts/AuthContext.ts';
 import routes from '@router/NavMenuItems.ts';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.tsx';
 
@@ -23,15 +24,34 @@ import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.t
  * ```
  */
 const NavbarMenuComponent = (): JSX.Element => {
+	//const { isLogged } = useContext(UserContext);
+	const [user, setUser] = useState<boolean | undefined>(undefined);
+
+	useEffect(() => {
+			const storedToken = localStorage.getItem('token');
+			if (storedToken) {
+				setUser(true);
+			}
+			else{setUser(false);}
+		});
+	
+	const allowedRoutes = user
+		? ['home', 'contact', 'profile', 'logout']
+		: ['home', 'contact', 'register', 'login'];
+
 	return (
 		<ul className='navbar__menu'>
 			{routes.map((item, index) => {
-				return (
-					<NavbarIconButtonComponent
-						key={index}
-						item={item}
-					/>
-				);
+				if (allowedRoutes.includes(item.routeName)) {
+					return (
+						<NavbarIconButtonComponent
+							key={index}
+							item={item}
+						/>
+					);
+				} else {
+					return null;
+				}
 			})}
 		</ul>
 	);
