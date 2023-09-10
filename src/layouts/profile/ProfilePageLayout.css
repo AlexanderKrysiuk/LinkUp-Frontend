@@ -2,8 +2,14 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   height: 100%;
   overflow: hidden;
+  border-radius: 1rem;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-call-to-action);
 }
 .profile__bottom-container {
   display: flex;
@@ -15,30 +21,26 @@
 }
 .profile__header, .profile__sidebar, .profile__content {
   display: flex;
-  overflow: hidden;
   width: 100%;
 }
 .profile__header {
-  display: flex;
   position: relative;
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
+  height: -moz-fit-content;
+  height: fit-content;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  background-color: pink;
-  padding-bottom: 1rem;
+  padding-top: 1rem;
+  border-bottom: 2px solid var(--color-call-to-action);
 }
 .profile__header_user-details {
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem;
   width: 100%;
   height: 100%;
-  padding: 1rem;
-  margin-top: 1rem;
-  background-color: orange;
 }
 .profile__header_user-details-photo {
   aspect-ratio: 3/4;
@@ -109,28 +111,42 @@
   overflow: scroll;
 }
 .profile__header_categories {
+  display: flex;
   position: relative;
   width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
-  background-color: yellow;
-  margin: auto;
   padding: 0.5rem;
-  text-align: left;
+  text-align: center;
+  border-top: 2px solid var(--color-call-to-action);
 }
 .profile__sidebar {
   flex-direction: column;
   width: 10%;
+  width: 10%;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  padding: 1rem;
   justify-content: flex-start;
-  background-color: greenyellow;
-  border-bottom-left-radius: 1.5rem;
+  border-right: 2px solid var(--color-call-to-action);
+}
+.profile__sidebar .pill-button {
+  width: 100%;
 }
 .profile__content {
   justify-content: center;
-  background-color: aqua;
   height: 100%;
   width: 100%;
-  border-bottom-right-radius: 1.5rem;
+  padding: 2rem;
+}
+.profile .pill-button {
+  border: none;
+  background-color: transparent;
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s;
+}
+.profile .pill-button:hover {
+  background-color: var(--color-primary);
 }
 
 @media (max-width: 768px) {
@@ -138,14 +154,20 @@
     display: flex;
     flex-direction: column;
   }
+  .profile__header, .profile__header-categories, .profile__sidebar, .profile__content {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
   .profile__bottom-container {
     display: flex;
     flex-direction: column;
-  }
-  .profile__content {
-    border-bottom-left-radius: 1.5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    height: fit-content;
   }
   .profile__sidebar {
     border-bottom-left-radius: 0;
+    width: 100%;
+    width: 100%;
   }
 }/*# sourceMappingURL=ProfilePageLayout.css.map */
