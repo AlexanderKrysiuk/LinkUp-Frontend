@@ -1,99 +1,90 @@
-$primary-color: #fff;
-$link-color: white;
-$link-hover-color: red;
-
 .footer {
-	background-color: #006400;
+	background-color: var(--color-secondary);
 	display: flex;
-	color: $primary-color;
+	color: var(--color-text);
 	padding-bottom: 0.5rem;
+	font-size: 14px;
 	text-align: center;
 	position: relative;
 	width: 100%;
 
 	&__container {
 		height: fit-content;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
 		margin: auto;
 	}
 	&__reference-section,
 	&__policy {
 		display: flex;
-		margin-top: 1rem;
 	}
 	&__link {
-		font-weight: 300;
-		font-size: 0.85rem;
-		color: $link-color;
+		font-weight: var(--font-weight-light);
+		font-size: 0.85em;
+		color: var(--color-text);
 		text-decoration: none;
 		margin-bottom: 0.4rem;
 		cursor: pointer;
 
 		&:hover {
 			text-decoration: none;
-			color: $link-hover-color;
+			color: var(--color-call-to-action);
 		}
 	}
 
 	&__reference {
 		&-section {
-			margin-top: 0.5rem;
+			margin-top: 0.5em;
 			text-align: left;
 		}
 		&-category {
-			flex: 1;
 			float: left;
 			position: relative;
 			margin: 0 0.5rem;
 			&-title {
-				font-weight: bold;
-				margin-bottom: 0.25rem;
-				&_split-line {
-					max-width: 90%;
-					position: relative;
-					border: none;
-					border-top: 1px solid $primary-color;
-				}
+				font-weight: var(--font-weight-bold);
 			}
 		}
 	}
 
 	&__policy {
 		display: flex;
-		// margin-top: 0.8rem;
 
 		.footer__link {
-			font-size: 0.85rem;
-			color: $link-color;
+			font-size: 0.85em;
+			color: var(--color-text);
 			text-decoration: none;
-			margin: auto 0.7rem;
+			margin: auto 0.4em;
 			cursor: pointer;
 
 			&:hover {
 				text-decoration: none;
-				color: $link-hover-color;
+				color: var(--color-call-to-action);
 			}
 		}
 	}
 
 	&__copyright-notice {
 		display: flex;
+		justify-content: center;
 		align-items: center;
-		margin-top: 0.5rem;
+		width: 100%;
 
 		&_text {
-			flex: auto;
-			align-items: center;
-			// margin: 0 1rem;
+			margin: 0 1rem;
 			font-style: italic;
 			font-size: 0.7rem;
 		}
 
 		&_split-line {
-			max-width: 90%;
-			width: 30%;
+			// max-width: 90%;
+			width: 20%;
 			position: relative;
 			border: none;
-			border-top: 1px solid $primary-color;
+			border-top: 1px solid var(--color-text);
 		}
 	}
 }

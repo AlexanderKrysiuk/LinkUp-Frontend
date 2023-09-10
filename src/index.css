@@ -2,16 +2,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Lobster&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nabla&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-	font-family: 'Montserrat', 'Raleway', Helvetica, Arial, sans-serif;
-
-	--console-font: 'Inconsolata', monospace;
-	--handwriting-font: 'Caveat', cursive;
-	--styled-font: 'Lobster', cursive;
-	--fancy-3d-font: 'Nabla', cursive;
+	font-family: var(--font-general);
 	text-align: center;
-	font-size: 16px;
-}
+	font-size: clamp(12px, 2svw, 16px);
 
+	/* fonts */
+	/* font faces */
+	--font-general: 'Montserrat', 'Raleway', Helvetica, Arial, sans-serif;
+	--font-console: 'Inconsolata', monospace;
+	--font-handwriting: 'Caveat', cursive;
+	--font-styled: 'Lobster', cursive;
+	--font-fancy-3d: 'Nabla', cursive;
+
+	/* font weights */
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-bold: 700;
+
+	/* light mode */
+	/* color scheme */
+	--color-call-to-action: #f5aa37;
+	--color-background: #e3e1c5;
+	--color-text: #2b2217;
+	--color-primary: #a4c7e0;
+	--color-secondary: #609fbe;
+	--color-heading: #273f68;
+
+	/* functional colors */
+	--color-success1: #6eb26e;
+	--color-success2: #00a651;
+	--color-warning1: #dc143c;
+	--color-warning2: #ff6b6b;
+
+	/* dark mode - subject to change, not tested */
+	/* color scheme */
+	--color-call-to-action-dark: #f5aa37;
+	--color-background-dark: #121212;
+	--color-text-dark: #f0f0f0;
+	--color-primary-dark: #8eb9d2;
+	--color-secondary-dark: #45689d;
+	--color-heading-dark: #a8c1e3;
+
+	/* functional colors */
+	--color-success1-dark: #7fb17f;
+	--color-success2-dark: #00a651;
+	--color-warning1-dark: #e45050;
+	--color-warning2-dark: #ff6b6b;
+}
 /*
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
@@ -25,7 +62,7 @@
 	margin: 0;
 }
 body {
-	height: 100svh;
+	height: 100vh;
 	width: 100svw;
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;

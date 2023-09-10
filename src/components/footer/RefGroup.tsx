@@ -36,7 +36,6 @@ const RefGroup = ({ item }: ReferenceLinks): JSX.Element => {
 		<div className='footer__reference-category'>
 			<div className='footer__reference-category-title'>
 				<h4>{item.groupName}</h4>
-				<hr className='footer__reference-category-title_split-line' />
 			</div>
 			{item.references.map((reference, index) => {
 				return (

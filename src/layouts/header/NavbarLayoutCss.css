@@ -6,16 +6,18 @@
   height: fit-content;
 }
 .navbar__logo {
-  width: 100px;
-  height: 100px;
-  fill: white;
+  width: clamp(60px, 11svw, 100px);
+  min-width: 60px;
+  height: auto;
+  margin-right: 10rem;
 }
 .navbar__container {
   display: flex;
-  justify-content: space-between;
-  height: 100%;
-  background-color: darkgreen;
-  color: white;
+  justify-content: flex-end;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: var(--color-secondary);
+  color: var(--color-text);
   padding: 1rem 2rem;
   text-align: center;
 }
@@ -27,23 +29,66 @@
   align-items: center;
 }
 .navbar__menu > .active li {
-  background-color: pink;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-text);
 }
 .navbar__menu-button {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
   cursor: pointer;
-  fill: white;
+  fill: var(--color-heading);
   padding: 0.25rem 0.5rem;
-  border: 1px solid black;
   border-radius: 0.5rem;
 }
 .navbar__menu-button:hover {
-  background-color: pink;
+  background-color: var(--color-primary);
 }
 .navbar__menu-button svg {
-  height: 2rem;
+  height: 1rem;
   width: auto;
+}
+.navbar__hamburger-menu {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  width: 40px;
+  height: 100%;
+  margin: auto 0;
+  cursor: pointer;
+}
+.navbar__hamburger-menu-icon {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+}
+.navbar__hamburger-menu-icon-bar {
+  width: 100%;
+  height: 5px;
+  border-radius: 0.5rem;
+  margin: 0.25rem 0;
+  background-color: var(--color-heading);
+}
+.navbar__hamburger-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+.navbar__hamburger-menu-list.open {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .navbar__container {
+    justify-content: space-between;
+  }
+  .navbar__menu {
+    display: none;
+  }
+  .navbar__hamburger-menu {
+    display: flex;
+  }
 }/*# sourceMappingURL=NavbarLayoutCss.css.map */

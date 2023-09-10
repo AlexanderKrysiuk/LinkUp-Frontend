@@ -1,0 +1,35 @@
+.hamburger-sidebar {
+  display: block;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -250;
+  background-color: var(--color-secondary); /* Choose your background color */
+  overflow-x: hidden;
+  z-index: 101;
+}
+.hamburger-sidebar__menu {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.hamburger-sidebar__menu > .active li {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+.hamburger-sidebar__menu-link {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-normal);
+  display: block;
+  margin: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.hamburger-sidebar__menu-link:hover {
+  background-color: var(--color-primary);
+}/*# sourceMappingURL=HamburgerSidebarCss.css.map */
