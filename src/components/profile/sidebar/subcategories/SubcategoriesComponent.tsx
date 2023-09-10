@@ -64,7 +64,7 @@ const SubcategoriesComponent = ({
 	clickHandler,
 }: SubcategoriesComponentProps): JSX.Element => {
 	return (
-		<ul>
+		<>
 			{selectedCategory.subMenu.map((subItem: SubmenuItem) => (
 				<li key={subItem.routeName}>
 					<NavLink
@@ -76,7 +76,7 @@ const SubcategoriesComponent = ({
 					</NavLink>
 				</li>
 			))}
-		</ul>
+		</>
 	);
 };
 
