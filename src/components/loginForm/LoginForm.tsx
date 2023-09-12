@@ -3,7 +3,7 @@
  * @description Module containing the login form component.
  */
 
-import { UserContext } from '@contexts/AuthContext';
+import { AuthContext } from '@contexts/AuthContext';
 import { LoginData } from '@data/formData';
 import { userSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';

@@ -8,7 +8,7 @@ import React, { useContext } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import { UserContext } from '@contexts/AuthContext';
+import { AuthContext } from '@contexts/AuthContext';
 import { removeTokenFromLocalStorage } from '@middleware/authHandler';
 import { useNavigate } from 'react-router-dom';
 /**
@@ -52,7 +52,7 @@ const NavbarIconButtonComponent = ({
 	item,
 }: NavbarIconButtonComponentProps): JSX.Element | null => {
 	const navigate = useNavigate();
-	//const { setIsLogged } = useContext(UserContext);
+	const { isLogged, setIsLogged } = useContext(AuthContext);
 
 	if (item.routeName === 'profile') {
 		return (
@@ -69,7 +69,7 @@ const NavbarIconButtonComponent = ({
 				className='navbar__menu-button'
 				onClick={() => {
 					removeTokenFromLocalStorage(navigate);
-					// setIsLogged(false);
+					setIsLogged(false);
 				}}>
 				<item.routeIcon />
 				<span>{item.routeName}</span>

@@ -10,7 +10,7 @@
 
 import { Backdrop } from '@contexts/BackdropContext';
 
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 
 import '@layouts/FormLayout.css';
 
@@ -18,7 +18,7 @@ import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
 
-import { UserContext } from '@contexts/AuthContext';
+import { AuthProvider } from '@contexts/AuthContext';
 import { Outlet } from 'react-router-dom';
 
 /**
@@ -35,18 +35,8 @@ import { Outlet } from 'react-router-dom';
  * ```
  */
 export function App(): JSX.Element {
-	const { isLogged, setIsLogged } = useContext(UserContext);
-	
-	useEffect(() => {
-		const token = localStorage.getItem('token');
-		if (token && !isLogged) { 
-			setIsLogged(true); 
-		} else if (!token && isLogged) { 
-			setIsLogged(false); 
-		} });
-
 	return (
-		<UserContext.Provider value={{ isLogged, setIsLogged }}>
+		<AuthProvider>
 			<>
 				<Backdrop />
 				<NavbarLayout />
@@ -56,6 +46,6 @@ export function App(): JSX.Element {
 				</main>
 				<FooterLayout />
 			</>
-		</UserContext.Provider>
+		</AuthProvider>
 	);
 }
