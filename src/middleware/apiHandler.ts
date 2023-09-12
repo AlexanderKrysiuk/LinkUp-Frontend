@@ -3,6 +3,7 @@ import {
 	API_MEETINGS_BY_USER,
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
+	API_USER_DETAILS,
 	API_USER_ROLE,
 } from '@data/links';
 import { getAuthHeader } from './authHandler';
@@ -25,14 +26,15 @@ export async function getUserRole(token: string) {
 	return await apiGet(API_USER_ROLE, headers);
 }
 
+export async function getUser(token: string) {
+	const headers = getAuthHeader(token);
+	return await apiGet(API_USER_DETAILS, headers);
+}
+
 export async function getUserMeetings(token: string) {
 	const headers = getAuthHeader(token);
 	return await apiGet(API_MEETINGS_BY_USER, headers);
 }
-
-// export async function getUserMeetings() {
-// 	return await apiGet(API_MEETINGS_BY_USER);
-// }
 
 export async function deleteUserMeeting(id: string) {
 	return await apiDelete(`${API_MEETINGS_URL}/${id}`, id);
