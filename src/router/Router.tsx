@@ -57,7 +57,7 @@ const router = createBrowserRouter(
 			<Route
 				path='/profile'
 				element={
-					<SecuredRoute requiredRole='client'>
+					<SecuredRoute requiredRole='Client'>
 						<ProfilePage />
 					</SecuredRoute>
 				}>
