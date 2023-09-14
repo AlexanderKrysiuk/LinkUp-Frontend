@@ -44,16 +44,18 @@ const SecuredRoute = ({
 	useEffect(() => {
 		if (!user) {
 			navigate(redirectPath, { replace: true });
+			return;
 		} else if (
 			authRole &&
 			userRole &&
 			!checkAuthorization(userRole, authRole)
 		) {
 			navigate(redirectPath, { replace: true });
+			return;
 		}
 	}, [user, authRole, userRole, navigate, redirectPath]);
 
-	return children;
+	return userRole >= authRole ? children : null;
 };
 
 const checkAuthorization = (
