@@ -1,50 +1,71 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 
-enum roleEnum {
+enum RoleEnum {
+	'visitor',
 	'client',
 	'contractor',
 	'admin',
 }
-
-interface user {
+type RoleTypes = 'visitor' | 'client' | 'contractor' | 'admin';
+export interface User {
 	name: string;
 	email: string;
-	role: string;
+	role: RoleTypes;
 }
 
 interface SecuredRouteProps {
-	user: user | null;
-	children: React.ReactNode;
-	requiredRole?: string | null;
+	children: React.ReactElement;
+	user?: User;
+	requiredRole?: RoleTypes;
 	redirectPath?: string;
 }
-
-const checkRole = (user: roleEnum, requiredRole: roleEnum): boolean => {
-	return user >= requiredRole;
-};
 
 const SecuredRoute = ({
 	user,
 	children,
-	requiredRole = null,
+	requiredRole = 'visitor',
 	redirectPath = '/login',
 }: SecuredRouteProps): React.ReactNode => {
 	const navigate = useNavigate();
-	const userRole: roleEnum | null = user
-		? roleEnum[user.role as keyof typeof roleEnum]
-		: null;
-	const authRole: roleEnum | null = requiredRole
-		? roleEnum[requiredRole as keyof typeof roleEnum]
-		: null;
 
-	if (!user) {
-		navigate(redirectPath, { replace: true });
+	let userRole: RoleEnum;
+	let authRole: RoleEnum;
+
+	if (user) {
+		userRole = convertRole(user.role);
+		authRole = convertRole(requiredRole);
+	} else {
+		userRole = RoleEnum.visitor;
+		authRole = RoleEnum.visitor;
 	}
-	if (authRole && userRole && checkRole(userRole, authRole)) {
-		navigate(redirectPath, { replace: true });
-	}
+
+	useEffect(() => {
+		if (!user) {
+			navigate(redirectPath, { replace: true });
+		} else if (
+			authRole &&
+			userRole &&
+			!checkAuthorization(userRole, authRole)
+		) {
+			navigate(redirectPath, { replace: true });
+		}
+	}, [user, authRole, userRole, navigate, redirectPath]);
 
 	return children;
 };
+
+const checkAuthorization = (
+	user: RoleEnum,
+	requiredRole: RoleEnum,
+): boolean => {
+	return user >= requiredRole;
+};
+
+const convertRole = (role: string): RoleEnum => {
+	const convertedRole = RoleEnum[role as keyof typeof RoleEnum];
+	return convertedRole;
+};
+
 export default SecuredRoute;
