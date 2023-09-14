@@ -1,61 +1,72 @@
-import React, { useEffect } from 'react';
+import { getRole } from '@middleware/userHandler.ts';
+import React, { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
 enum RoleEnum {
-	'visitor',
-	'client',
-	'contractor',
-	'admin',
+	'Visitor',
+	'Client',
+	'Contractor',
+	'Admin',
 }
-type RoleTypes = 'visitor' | 'client' | 'contractor' | 'admin';
-export interface User {
-	name: string;
-	email: string;
-	role: RoleTypes;
-}
+type RoleTypes = 'Visitor' | 'Client' | 'Contractor' | 'Admin';
 
 interface SecuredRouteProps {
 	children: React.ReactElement;
-	user?: User;
 	requiredRole?: RoleTypes;
 	redirectPath?: string;
 }
 
 const SecuredRoute = ({
-	user,
 	children,
-	requiredRole = 'visitor',
+	requiredRole = 'Visitor',
 	redirectPath = '/login',
 }: SecuredRouteProps): React.ReactNode => {
 	const navigate = useNavigate();
+	const [loading, setLoading] = useState(true);
+	const [userRole, setUserRole] = useState<RoleEnum | null>(null);
+	const user: string = 'Visitor';
 
-	let userRole: RoleEnum;
-	let authRole: RoleEnum;
-
-	if (user) {
-		userRole = convertRole(user.role);
-		authRole = convertRole(requiredRole);
-	} else {
-		userRole = RoleEnum.visitor;
-		authRole = RoleEnum.visitor;
-	}
+	let authRole: RoleEnum = convertRole(requiredRole);
 
 	useEffect(() => {
-		if (!user) {
-			navigate(redirectPath, { replace: true });
-			return;
-		} else if (
-			authRole &&
-			userRole &&
-			!checkAuthorization(userRole, authRole)
-		) {
-			navigate(redirectPath, { replace: true });
-			return;
-		}
-	}, [user, authRole, userRole, navigate, redirectPath]);
+		const fetchUserRole = async () => {
+			try {
+				const roleToSet: string | undefined = await getRole();
 
-	return userRole >= authRole ? children : null;
+				if (typeof roleToSet === 'string') {
+					const convertedUserRole = convertRole(roleToSet);
+
+					setUserRole(convertedUserRole);
+
+					// Verify authorization here and navigate if necessary
+					if (!checkAuthorization(convertedUserRole, authRole)) {
+						navigate(redirectPath, { replace: true });
+					}
+				} else {
+					// If roleToSet is undefined, user is not logged in, navigate to login
+					navigate(redirectPath, { replace: true });
+				}
+
+				setLoading(false);
+			} catch (error) {
+				console.error('Error fetching user role:', error);
+				setLoading(false);
+			}
+		};
+
+		if (user) {
+			fetchUserRole();
+		} else {
+			setLoading(false);
+		}
+	}, [user, authRole, navigate, redirectPath]);
+
+	if (loading) {
+		return null;
+	}
+
+	return userRole !== null && userRole >= authRole ? children : null;
 };
 
 const checkAuthorization = (
