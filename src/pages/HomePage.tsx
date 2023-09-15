@@ -3,6 +3,7 @@
  * @description Page component for the home page.
  */
 
+import ContractorsList from '@components/bookMeeting/ContractorsList';
 import ButtonComponent from '@components/button/ButtonComponent.tsx';
 
 import { useBackdropToggle } from '@hooks/BackdropHooks';
@@ -27,6 +28,8 @@ const HomePage = (): JSX.Element => {
 
 	return (
 		<>
+			<ContractorsList />
+
 			<h1 className='h1'>Home</h1>
 			<button onClick={toggleBackdrop}>
 				<ButtonComponent text='Toggle Backdrop' />
@@ -36,3 +39,4 @@ const HomePage = (): JSX.Element => {
 };
 
 export default HomePage;
+
