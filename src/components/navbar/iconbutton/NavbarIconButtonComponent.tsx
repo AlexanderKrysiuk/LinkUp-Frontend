@@ -52,7 +52,7 @@ const NavbarIconButtonComponent = ({
 	item,
 }: NavbarIconButtonComponentProps): JSX.Element | null => {
 	const navigate = useNavigate();
-	const { isLogged, setIsLogged } = useContext(AuthContext);
+	const { setIsLogged } = useContext(AuthContext);
 
 	if (item.routeName === 'profile') {
 		return (

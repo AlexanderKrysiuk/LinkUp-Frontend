@@ -39,6 +39,7 @@ var errorMessage: string | number | undefined;
 export default function RegistrationForm() {
 	// React Router hook for navigation
 	const navigate = useNavigate();
+	const { setIsLogged } = useContext(AuthContext);
 
 	// React Hook Form hook for managing form state
 	const {
@@ -76,6 +77,7 @@ export default function RegistrationForm() {
 
 			if (loginResult.ok) {
 				setTokenToLocalStorage(loginResult);
+				setIsLogged(true);
 				navigate('/', { replace: true });
 			}
 		} else {

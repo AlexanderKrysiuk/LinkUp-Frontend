@@ -30,6 +30,7 @@ import { useNavigate } from 'react-router-dom';
  */
 export default function LoginForm(): JSX.Element {
 	const navigate = useNavigate();
+	const { setIsLogged } = useContext(AuthContext);
 
 	const {
 		register,
@@ -52,6 +53,7 @@ export default function LoginForm(): JSX.Element {
 
 		if (success && responseData) {
 			setTokenToLocalStorage(responseData);
+			setIsLogged(true);
 			navigate('/', { replace: true });
 		} else {
 			// Handle errors
