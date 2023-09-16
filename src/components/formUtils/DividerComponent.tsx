@@ -35,9 +35,7 @@ interface DividerProps {
 const DividerComponent = ({ message }: DividerProps): JSX.Element => {
 	return (
 		<div className='divider'>
-			<SplitLine />
 			<SplitText message={message} />
-			<SplitLine />
 		</div>
 	);
 };

@@ -61,41 +61,45 @@ export default function LoginForm(): JSX.Element {
 	return (
 		<>
 			<form
-				className='form'
+				className='form__container'
 				onSubmit={handleSubmit(login)}>
 				{errorMessage && (
-					<span className='form__error-message'>{errorMessage}</span>
+					<span className='form__container__error-message'>
+						{errorMessage}
+					</span>
 				)}
-				<div className='form-element'>
+				<div className='form__container-element'>
 					<label className='form-element__label'>Email:</label>
 					<input
-						className='form-element__input'
+						className='form__container-element__input'
 						type='email'
 						id='email'
 						{...register('email')}
 					/>
 					{errors.email && (
-						<span className='form-element__validation-prompt'>
+						<span className='form__container-element__validation-prompt'>
 							{errors.email.message}
 						</span>
 					)}
 				</div>
-				<div className='form-element'>
-					<label className='form-element__label'>Password:</label>
+				<div className='form__container-element'>
+					<label className='form__container-element__label'>
+						Password:
+					</label>
 					<input
-						className='form-element__input'
+						className='form__container-element__input'
 						type='password'
 						id='password'
 						{...register('password')}
 					/>
 					{errors.password && (
-						<span className='form-element__validation-prompt'>
+						<span className='form__container-element__validation-prompt'>
 							{errors.password.message}
 						</span>
 					)}
 				</div>
 				<button
-					className='form__submit-button'
+					className='form__container__submit-button'
 					type='submit'>
 					Submit
 				</button>

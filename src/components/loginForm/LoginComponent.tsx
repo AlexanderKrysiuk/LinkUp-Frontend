@@ -25,7 +25,7 @@ import React from 'react';
  */
 const LoginComponent = (): JSX.Element => {
 	return (
-		<div className='form-component'>
+		<div className='form'>
 			<LoginForm />
 			<DividerComponent message='OR' />
 			<ButtonComponent text='Sign in' />
