@@ -2,8 +2,8 @@
 import NewMeetingForm from '@components/meetingForm/NewMeetingForm';
 import MockMeetings from '@components/mock/mockMeetingsAll';
 import Button from '@components/utils/buttons/Button';
-import { getRole } from '@middleware/authHandler';
 import { getMeetings } from '@middleware/meetingsHandler';
+import { getRole } from '@middleware/userHandler';
 import { Meetings } from 'data/dataTypes';
 import React, { useEffect, useState } from 'react';
 

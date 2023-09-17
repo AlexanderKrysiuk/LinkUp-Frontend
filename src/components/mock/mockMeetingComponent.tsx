@@ -1,5 +1,5 @@
-import { getRole } from '@middleware/authHandler';
 import { deleteMeeting } from '@middleware/meetingsHandler';
+import { getRole } from '@middleware/userHandler';
 import React, { useEffect, useState } from 'react';
 
 interface MockMeetingProps {
@@ -57,5 +57,3 @@ const MockMeetingComponent: React.FC<MockMeetingProps> = ({
 };
 
 export default MockMeetingComponent;
-
-//onClick={deleteMeeting}
