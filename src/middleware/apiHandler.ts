@@ -1,4 +1,5 @@
 import {
+	API_CONTRACTORS,
 	API_LOGIN_URL,
 	API_MEETINGS_BY_USER,
 	API_MEETINGS_URL,
@@ -35,6 +36,14 @@ export async function getUserMeetings(token: string) {
 	const headers = getAuthHeader(token);
 	return await apiGet(API_MEETINGS_BY_USER, headers);
 }
+
+export async function getContractors() {
+	return await apiGet(API_CONTRACTORS);
+}
+
+// export async function getUserMeetings() {
+// 	return await apiGet(API_MEETINGS_BY_USER);
+// }
 
 export async function deleteUserMeeting(id: string) {
 	return await apiDelete(`${API_MEETINGS_URL}/${id}`, id);
@@ -87,3 +96,4 @@ async function apiDelete(url: string, payload: any): Promise<Response> {
 	});
 	return response;
 }
+

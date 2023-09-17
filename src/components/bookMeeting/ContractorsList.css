@@ -1,0 +1,17 @@
+.contractors-list {
+	display: flex;
+	flex-wrap: nowrap; /* Zapobiega przejściu do nowego wiersza */
+	overflow-x: auto; /* Dodaje poziomą przewijalność, jeśli kontraktorów jest więcej niż pomieści ekran */
+	padding: 16px;
+	background-color: #f0f0f0; /* Tło całej listy */
+
+	/* Ustawia wewnętrzne marginesy dla elementów wewnątrz listy */
+	& > * {
+		margin-right: 8px;
+	}
+
+	/* Ukrywa poziomy pasek przewijania, jeśli nie jest potrzebny */
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
