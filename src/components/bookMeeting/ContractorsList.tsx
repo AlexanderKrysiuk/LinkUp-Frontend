@@ -1,3 +1,4 @@
+import { getContractors } from '@middleware/apiHandler';
 import React, { useEffect, useState } from 'react';
 import ContractorCard from './ContractorCard'; // Importuj komponent ContractorCard
 import './ContractorsList.css'; // Dodaj stylizację dla listy kontraktorów
@@ -7,7 +8,8 @@ const ContractorsList = () => {
 
 	useEffect(() => {
 		// Pobierz dane kontraktorów z endpointu GET
-		fetch('http://localhost:5142/api/contractors')
+		//fetch(API_CONTRACTORS)
+		getContractors()
 			.then((response) => {
 				// Sprawdź, czy odpowiedź jest udana (status 200)
 				if (!response.ok) {
