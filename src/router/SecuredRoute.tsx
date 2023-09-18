@@ -1,6 +1,6 @@
 import { checkRoleAuthorization } from '@middleware/authHandler.ts';
+import { convertRoleStringToRoleEnum } from '@middleware/helpers/dataConverter.ts';
 import { getRole } from '@middleware/userHandler.ts';
-import { convertRoleStringToRoleEnum } from 'middleware/helpers/dataConverter.ts';
 import React, { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
