@@ -1,0 +1,33 @@
+.meeting {
+	border: 0.1rem solid #609fbe;
+	border-radius: 0.625rem;
+	padding: 0.625rem;
+	background-color: #fff;
+	width: 100%;
+	margin: 0.625rem;
+
+	.meeting__datetime {
+		font-weight: bold;
+		font-size: 1.125rem;
+		margin-bottom: 0.3125rem;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	.meeting__desc {
+		font-style: italic;
+	}
+
+	.delete-icon {
+		cursor: pointer;
+		color: black;
+		font-size: 1.25rem;
+		margin-top: 0.625rem;
+	}
+
+	.delete-icon:hover {
+		color: #609fbe;
+	}
+}
