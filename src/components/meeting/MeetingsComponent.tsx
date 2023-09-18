@@ -26,11 +26,7 @@ const MeetingsComponent = (): JSX.Element => {
 		}
 	}, [token]);
 
-	return (
-		// {token && userMeetings ? (
-		<MeetingsListComponent meetings={userMeetings} />
-		// ) : null}}
-	);
+	return <MeetingsListComponent meetings={userMeetings} />;
 };
 
 export default MeetingsComponent;
