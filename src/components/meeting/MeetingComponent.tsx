@@ -34,8 +34,10 @@ const MeetingComponent: React.FC<MeetingProps> = ({
 	}
 
 	const handleDelete = (meetingId: string) => {
-		deleteMeeting(meetingId);
-		setIsDeleted(true);
+		if (confirm('Are you sure you want to delete this meeting?')) {
+			deleteMeeting(meetingId);
+			setIsDeleted(true);
+		}
 	};
 
 	return (
@@ -50,9 +52,6 @@ const MeetingComponent: React.FC<MeetingProps> = ({
 				<p className='meeting__desc'>Subject: {description}</p>
 			) : null}
 			{userRole === 'Contractor' || userRole === 'Admin' ? (
-				// <button onClick={() => handleDelete(meetingId)}>
-				// 	Delete meeting
-				// </button>
 				<FontAwesomeIcon
 					icon={faTrash}
 					className='delete-icon'
