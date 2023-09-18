@@ -1,7 +1,7 @@
 import { AuthContext } from '@contexts/AuthContext';
 import { useContext, useEffect, useState } from 'react';
+import { RoleEnum } from '@router/SecuredRoute';
 import { NavigateFunction } from 'react-router-dom';
-import { getUserRole } from './apiHandler';
 
 export const getAuthHeader = (token: string) => {
 	return { Authorization: `Bearer ${token}` };
@@ -21,23 +21,16 @@ export const setTokenToLocalStorage = async (data: Response) => {
 	}
 };
 
-export const getRole = async () => {
-	const token = localStorage.getItem('token');
-	if (token) {
-		const response = await getUserRole(token);
-		if (response && response.ok) {
-			return await response.text();
-		} else {
-			//throw new Error("Couldn't access user's role.");
-			console.error("Couldn't access user's role.");
-		}
-	} else {
-		//throw new Error('You are not authorized!');
-		console.error('You are not authorized!');
-	}
-};
-
 export const removeTokenFromLocalStorage = (navigate: NavigateFunction) => {
 	localStorage.removeItem('token');
 	navigate('/', { replace: true });
+
 };
+
+export const checkRoleAuthorization = (
+	user: RoleEnum,
+	requiredRole: RoleEnum,
+): boolean => {
+	return user >= requiredRole;
+};
+

@@ -9,12 +9,12 @@
  */
 
 import { BackdropProvider } from '@contexts/BackdropContext.tsx';
+import { HamburgerSidebarProvider } from '@contexts/HamburgerSidebarContext.tsx';
 
 import router from '@router/Router.tsx';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import './App.css';
 import './index.css';
 
 /**
@@ -42,10 +42,12 @@ export function initializeApp(rootContainer: HTMLElement): void {
 	ReactDOM.createRoot(rootContainer).render(
 		<React.StrictMode>
 			{/* Enable routing and context management */}
-			<BackdropProvider>
-				{/* Render the root component */}
-				<RouterProvider router={router} />
-			</BackdropProvider>
+			<HamburgerSidebarProvider>
+				<BackdropProvider>
+					{/* Render the root component */}
+					<RouterProvider router={router} />
+				</BackdropProvider>
+			</HamburgerSidebarProvider>
 		</React.StrictMode>,
 	);
 }

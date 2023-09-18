@@ -13,12 +13,15 @@ import { Backdrop } from '@contexts/BackdropContext';
 import React from 'react';
 
 import '@layouts/FormLayout.css';
+import './App.css';
 
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
 
+
 import { AuthProvider } from '@contexts/AuthContext';
+import { HamburgerSidebar } from '@contexts/HamburgerSidebarContext.tsx';
 import { Outlet } from 'react-router-dom';
 
 /**
@@ -37,15 +40,16 @@ import { Outlet } from 'react-router-dom';
 export function App(): JSX.Element {
 	return (
 		<AuthProvider>
-			<>
-				<Backdrop />
-				<NavbarLayout />
-				<main className='main'>
-					{/* The Outlet component renders the content of the current route */}
-					<Outlet />
-				</main>
-				<FooterLayout />
-			</>
+			{/* <RegistrationComponent /> */}
+			{/* <LoginComponent /> */}
+			<HamburgerSidebar />
+			<Backdrop />
+			<NavbarLayout />
+			<main className='main'>
+				{/* The Outlet component renders the content of the current route */}
+				<Outlet />
+			</main>
+			<FooterLayout />
 		</AuthProvider>
 	);
 }

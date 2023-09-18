@@ -5,10 +5,15 @@
 
 import ContentComponent from '@components/profile/content/ContentComponent.tsx';
 import HeaderComponent from '@components/profile/header/HeaderComponent.tsx';
+
 import SidebarComponent from '@components/profile/sidebar/SidebarComponent.tsx';
+
 import routes, { ProfileMenuItem } from '@router/ProfileMenuItems.ts';
+
 import React, { useEffect, useRef, useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
+
 import './ProfilePageLayout.css';
 
 // Define a default error route for handling errors.
@@ -78,12 +83,14 @@ const ProfilePageLayout = (): JSX.Element => {
 			{/* Render the header component with category selection handler */}
 			<HeaderComponent clickHandler={handleSelectedCategory} />
 			{/* Render the sidebar component with subcategory selection handler */}
-			<SidebarComponent
-				selectedCategory={selectedCategory}
-				clickHandler={handleSelectedSubcategory}
-			/>
-			{/* Render the content component */}
-			<ContentComponent />
+			<div className='profile__bottom-container'>
+				<SidebarComponent
+					selectedCategory={selectedCategory}
+					clickHandler={handleSelectedSubcategory}
+				/>
+				{/* Render the content component */}
+				<ContentComponent />
+			</div>
 		</div>
 	);
 };

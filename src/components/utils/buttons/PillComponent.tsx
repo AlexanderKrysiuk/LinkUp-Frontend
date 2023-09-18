@@ -6,7 +6,7 @@
 import { ProfileMenuItem } from '@router/ProfileMenuItems.ts';
 import React from 'react';
 
-import './PillComponent.css';
+// import './PillComponent.css';
 
 /**
  * Type for the props of the PillComponent.

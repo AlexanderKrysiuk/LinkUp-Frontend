@@ -1,8 +1,10 @@
 import {
+	API_CONTRACTORS,
 	API_LOGIN_URL,
 	API_MEETINGS_BY_USER,
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
+	API_USER_DETAILS,
 	API_USER_ROLE,
 } from '@data/links';
 import { getAuthHeader } from './authHandler';
@@ -25,9 +27,18 @@ export async function getUserRole(token: string) {
 	return await apiGet(API_USER_ROLE, headers);
 }
 
+export async function getUser(token: string) {
+	const headers = getAuthHeader(token);
+	return await apiGet(API_USER_DETAILS, headers);
+}
+
 export async function getUserMeetings(token: string) {
 	const headers = getAuthHeader(token);
 	return await apiGet(API_MEETINGS_BY_USER, headers);
+}
+
+export async function getContractors() {
+	return await apiGet(API_CONTRACTORS);
 }
 
 // export async function getUserMeetings() {
@@ -85,3 +96,4 @@ async function apiDelete(url: string, payload: any): Promise<Response> {
 	});
 	return response;
 }
+

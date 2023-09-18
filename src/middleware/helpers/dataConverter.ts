@@ -1,4 +1,5 @@
 import { LoginData, NewMeetingData, RegistrationData } from '@data/formData';
+import { RoleEnum } from '@router/SecuredRoute.tsx';
 import { convertToUTCDateTime } from './dateTimeHelper';
 
 export function convertToMeetingData(data: NewMeetingData) {
@@ -26,3 +27,8 @@ export function convertToLoginData(data: LoginData) {
 		password: data.password,
 	};
 }
+
+export const convertRoleStringToRoleEnum = (role: string): RoleEnum => {
+	const convertedRole = RoleEnum[role as keyof typeof RoleEnum];
+	return convertedRole;
+};

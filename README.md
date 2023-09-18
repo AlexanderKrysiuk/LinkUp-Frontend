@@ -25,7 +25,8 @@ The LinkUp Frontend utilizes various libraries to enhance its functionality and 
   - [jest-dom](https://github.com/testing-library/jest-dom#readme)
   - [react testing library](https://github.com/testing-library/react-testing-library#readme)
   - [vitest](https://vitest.dev/)
-- [postcss](https://postcss.org/): A CSS tool that transforms styles with JavaScript plugins.
+- [postcss](https://postcss.org/): Automatically adds vendor prefixes to CSS to ensure compatibility with different browsers.
+- [SASS](https://sass-lang.com/): CSS preprocessor that enhances the capabilities of CSS, making it easier to write and maintain stylesheets.
 - [react-hook-form](https://react-hook-form.com/): A library for simplifying form handling in React applications.
 - [zod](https://zod.dev/): A type validation library for safer and more reliable code.
 - [vite-plugin-svgr](https://github.com/underfin/vite-plugin-svgr): A Vite plugin that allows importing SVG files as React components.
