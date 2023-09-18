@@ -35,10 +35,10 @@ const routes: ProfileMenuItem[] = [
 		component: MockPageComponent,
 	},
 	{
-		routeName: 'basdsad2',
+		routeName: 'My meetings',
 		subMenu: [
-			{ routeName: 'asd2', component: MockPageComponent },
-			{ routeName: 'qwe2', component: MockPageComponent },
+			{ routeName: 'Upcoming', component: MockPageComponent },
+			{ routeName: 'Archived', component: MockPageComponent },
 		],
 		component: MockPageComponent,
 	},
