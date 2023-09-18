@@ -1,15 +1,17 @@
+import { checkRoleAuthorization } from '@middleware/authHandler.ts';
 import { getRole } from '@middleware/userHandler.ts';
+import { convertRoleStringToRoleEnum } from 'middleware/helpers/dataConverter.ts';
 import React, { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-enum RoleEnum {
+export enum RoleEnum {
 	'Visitor',
 	'Client',
 	'Contractor',
 	'Admin',
 }
-type RoleTypes = 'Visitor' | 'Client' | 'Contractor' | 'Admin';
+export type RoleTypes = 'Visitor' | 'Client' | 'Contractor' | 'Admin';
 
 interface SecuredRouteProps {
 	children: React.ReactElement;
@@ -27,7 +29,7 @@ const SecuredRoute = ({
 	const [userRole, setUserRole] = useState<RoleEnum | null>(null);
 	const user: string = 'Visitor';
 
-	let authRole: RoleEnum = convertRole(requiredRole);
+	let authRole: RoleEnum = convertRoleStringToRoleEnum(requiredRole);
 
 	useEffect(() => {
 		const fetchUserRole = async () => {
@@ -35,12 +37,13 @@ const SecuredRoute = ({
 				const roleToSet: string | undefined = await getRole();
 
 				if (typeof roleToSet === 'string') {
-					const convertedUserRole = convertRole(roleToSet);
+					const convertedUserRole =
+						convertRoleStringToRoleEnum(roleToSet);
 
 					setUserRole(convertedUserRole);
 
 					// Verify authorization here and navigate if necessary
-					if (!checkAuthorization(convertedUserRole, authRole)) {
+					if (!checkRoleAuthorization(convertedUserRole, authRole)) {
 						navigate(redirectPath, { replace: true });
 					}
 				} else {
@@ -67,18 +70,6 @@ const SecuredRoute = ({
 	}
 
 	return userRole !== null && userRole >= authRole ? children : null;
-};
-
-const checkAuthorization = (
-	user: RoleEnum,
-	requiredRole: RoleEnum,
-): boolean => {
-	return user >= requiredRole;
-};
-
-const convertRole = (role: string): RoleEnum => {
-	const convertedRole = RoleEnum[role as keyof typeof RoleEnum];
-	return convertedRole;
 };
 
 export default SecuredRoute;
