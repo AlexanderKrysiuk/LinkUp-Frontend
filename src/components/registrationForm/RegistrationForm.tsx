@@ -2,7 +2,7 @@
  * @module RegistrationForm
  * @description Module containing the component for rendering the registration form.
  */
-
+import { AuthContext } from '@contexts/AuthContext';
 import { RegistrationData } from '@data/formData';
 import { newUserSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,7 +14,7 @@ import {
 	convertToLoginData,
 	convertToRegistrationData,
 } from '@middleware/helpers/dataConverter';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { useForm } from 'react-hook-form';
 
@@ -39,6 +39,7 @@ var errorMessage: string | number | undefined;
 export default function RegistrationForm() {
 	// React Router hook for navigation
 	const navigate = useNavigate();
+	const { setIsLogged } = useContext(AuthContext);
 
 	// React Hook Form hook for managing form state
 	const {
@@ -76,6 +77,7 @@ export default function RegistrationForm() {
 
 			if (loginResult.ok) {
 				setTokenToLocalStorage(loginResult);
+				setIsLogged(true);
 				navigate('/', { replace: true });
 			}
 		} else {

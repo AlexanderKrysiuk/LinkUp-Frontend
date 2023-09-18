@@ -10,6 +10,7 @@
 
 import { BackdropProvider } from '@contexts/BackdropContext.tsx';
 import { HamburgerSidebarProvider } from '@contexts/HamburgerSidebarContext.tsx';
+
 import router from '@router/Router.tsx';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';

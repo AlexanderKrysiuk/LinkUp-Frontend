@@ -4,10 +4,11 @@
  */
 
 import { NavMenuItem } from '@router/NavMenuItems.ts';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+import { AuthContext } from '@contexts/AuthContext';
 import { removeTokenFromLocalStorage } from '@middleware/authHandler';
 import { useNavigate } from 'react-router-dom';
 /**
@@ -49,8 +50,9 @@ type NavbarIconButtonComponentProps = {
  */
 const NavbarIconButtonComponent = ({
 	item,
-}: NavbarIconButtonComponentProps): JSX.Element => {
+}: NavbarIconButtonComponentProps): JSX.Element | null => {
 	const navigate = useNavigate();
+	const { setIsLogged } = useContext(AuthContext);
 
 	if (item.routeName === 'profile') {
 		return (
@@ -61,20 +63,14 @@ const NavbarIconButtonComponent = ({
 				</li>
 			</NavLink>
 		);
-	} else if (item.routeName == 'logout') {
+	} else if (item.routeName === 'logout') {
 		return (
 			<li
 				className='navbar__menu-button'
-				onClick={() => removeTokenFromLocalStorage(navigate)}>
-				<item.routeIcon />
-				<span>{item.routeName}</span>
-			</li>
-		);
-	} else if (item.routeName == 'logout') {
-		return (
-			<li
-				className='navbar__menu-button'
-				onClick={() => removeTokenFromLocalStorage(navigate)}>
+				onClick={() => {
+					removeTokenFromLocalStorage(navigate);
+					setIsLogged(false);
+				}}>
 				<item.routeIcon />
 				<span>{item.routeName}</span>
 			</li>

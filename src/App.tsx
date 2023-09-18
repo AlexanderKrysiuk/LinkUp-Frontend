@@ -15,15 +15,13 @@ import React from 'react';
 import '@layouts/FormLayout.css';
 import './App.css';
 
-// import LoginComponent from '@components/loginForm/LoginComponent';
-//import RegistrationComponent from '@components/registrationForm/RegistrationComponent';
-
 import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
 
-import { HamburgerSidebar } from '@contexts/HamburgerSidebarContext.tsx';
 
+import { AuthProvider } from '@contexts/AuthContext';
+import { HamburgerSidebar } from '@contexts/HamburgerSidebarContext.tsx';
 import { Outlet } from 'react-router-dom';
 
 /**
@@ -41,7 +39,7 @@ import { Outlet } from 'react-router-dom';
  */
 export function App(): JSX.Element {
 	return (
-		<>
+		<AuthProvider>
 			{/* <RegistrationComponent /> */}
 			{/* <LoginComponent /> */}
 			<HamburgerSidebar />
@@ -52,6 +50,6 @@ export function App(): JSX.Element {
 				<Outlet />
 			</main>
 			<FooterLayout />
-		</>
+		</AuthProvider>
 	);
 }
