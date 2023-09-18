@@ -1,3 +1,4 @@
+import { RoleEnum } from '@router/SecuredRoute';
 import { NavigateFunction } from 'react-router-dom';
 
 export const getAuthHeader = (token: string) => {
@@ -21,4 +22,11 @@ export const setTokenToLocalStorage = async (data: Response) => {
 export const removeTokenFromLocalStorage = (navigate: NavigateFunction) => {
 	localStorage.removeItem('token');
 	navigate('/', { replace: true });
+};
+
+export const checkRoleAuthorization = (
+	user: RoleEnum,
+	requiredRole: RoleEnum,
+): boolean => {
+	return user >= requiredRole;
 };
