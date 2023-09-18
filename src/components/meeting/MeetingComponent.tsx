@@ -1,3 +1,5 @@
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { deleteMeeting } from '@middleware/meetingsHandler';
 import { getRole } from '@middleware/userHandler';
 import React, { useEffect, useState } from 'react';
@@ -48,9 +50,14 @@ const MeetingComponent: React.FC<MeetingProps> = ({
 				<p className='meeting__desc'>Subject: {description}</p>
 			) : null}
 			{userRole === 'Contractor' || userRole === 'Admin' ? (
-				<button onClick={() => handleDelete(meetingId)}>
-					Delete meeting
-				</button>
+				// <button onClick={() => handleDelete(meetingId)}>
+				// 	Delete meeting
+				// </button>
+				<FontAwesomeIcon
+					icon={faTrash}
+					className='delete-icon'
+					onClick={() => handleDelete(meetingId)}
+				/>
 			) : null}
 		</div>
 	);
