@@ -3,6 +3,7 @@
  * @description Module containing the profile menu items and routing configuration.
  */
 
+import MeetingsComponent from '@components/meeting/MeetingsComponent';
 import MockPageComponent from '@pages/MockPage.tsx';
 
 /**
@@ -35,12 +36,12 @@ const routes: ProfileMenuItem[] = [
 		component: MockPageComponent,
 	},
 	{
-		routeName: 'basdsad2',
+		routeName: 'My meetings',
 		subMenu: [
-			{ routeName: 'asd2', component: MockPageComponent },
-			{ routeName: 'qwe2', component: MockPageComponent },
+			{ routeName: 'Upcoming', component: MockPageComponent },
+			{ routeName: 'Archived', component: MeetingsComponent },
 		],
-		component: MockPageComponent,
+		component: MeetingsComponent,
 	},
 	{
 		routeName: 'basdsad3',
