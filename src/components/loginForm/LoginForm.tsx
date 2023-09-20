@@ -69,7 +69,9 @@ export default function LoginForm(): JSX.Element {
 					</span>
 				)}
 				<div className='form__container-element'>
-					<label className='form-element__label'>Email:</label>
+					<label className='form__container-element__label'>
+						Email:
+					</label>
 					<input
 						className='form__container-element__input'
 						type='email'

@@ -26,7 +26,7 @@ import React from 'react';
  */
 export default function RegistrationComponent(): JSX.Element {
 	return (
-		<div className='form-component'>
+		<div className='form'>
 			<RegistrationForm />
 			<DividerComponent message='OR' />
 			<ButtonComponent text='Sign up' />
