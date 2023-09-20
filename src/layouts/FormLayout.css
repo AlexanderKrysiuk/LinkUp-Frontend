@@ -1,11 +1,3 @@
-/* body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-} */
 .form {
   border: 0.2rem solid #006400;
   border-radius: 5px;
@@ -39,7 +31,7 @@
   color: darkblue;
 }
 .form__container-element__input {
-  padding: 0.25rem 0;
+  padding: 0.25rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   width: 100%;
@@ -47,10 +39,10 @@
 .form__container__error-message, .form__container-element__validation-prompt {
   float: left;
   color: black;
-  font-size: 10px;
-  margin-top: 5px;
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
   font-style: italic;
-  margin: 2px 0px 2px 0px;
+  margin: 0.25rem;
 }
 .form-redirect {
   width: 100%;

@@ -19,6 +19,9 @@
 	--font-weight-normal: 400;
 	--font-weight-bold: 700;
 
+	/* standard border curvature (radius) */
+	--border-rounded: 0.25rem;
+
 	/* light mode */
 	/* color scheme */
 	--color-call-to-action: #f5aa37;
