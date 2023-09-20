@@ -1,9 +1,11 @@
 import {
+	API_ARCHIVED_MEETINGS,
 	API_CONTRACTORS,
 	API_LOGIN_URL,
 	API_MEETINGS_BY_USER,
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
+	API_UPCOMING_MEETINGS,
 	API_USER_DETAILS,
 	API_USER_ROLE,
 } from '@data/links';
@@ -35,6 +37,16 @@ export async function getUser(token: string) {
 export async function getUserMeetings(token: string) {
 	const headers = getAuthHeader(token);
 	return await apiGet(API_MEETINGS_BY_USER, headers);
+}
+
+export async function getUpcomingMeetings(token: string) {
+	const headers = getAuthHeader(token);
+	return await apiGet(API_UPCOMING_MEETINGS, headers);
+}
+
+export async function getArchivedMeetings(token: string) {
+	const headers = getAuthHeader(token);
+	return await apiGet(API_ARCHIVED_MEETINGS, headers);
 }
 
 export async function getContractors() {
@@ -96,4 +108,3 @@ async function apiDelete(url: string, payload: any): Promise<Response> {
 	});
 	return response;
 }
-
