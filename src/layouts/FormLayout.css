@@ -1,7 +1,15 @@
+/* font weights */
+/* standard border curvature (radius) */
+/* light mode */
+/* color scheme */
+/* functional colors */
+/* dark mode - subject to change, not tested */
+/* color scheme */
+/* functional colors */
 .form {
   border: 0.2rem solid #006400;
-  border-radius: 5px;
-  padding: 15px 30px;
+  border-radius: 0.25rem;
+  padding: 1rem;
   display: flex;
   position: relative;
   flex-direction: column;

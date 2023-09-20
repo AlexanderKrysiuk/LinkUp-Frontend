@@ -1,6 +1,7 @@
+@use '../styles/variables' as vars;
 .form {
 	border: 0.2rem solid #006400;
-	border-radius: var(--border-rounded);
+	border-radius: vars.$border-rounded;
 	padding: 1rem;
 	display: flex;
 	position: relative;
