@@ -23,6 +23,7 @@ export const API_LOGIN_URL = `${API_URI}/login`;
  */
 export const API_USER_ROLE = `${API_URI}/user-role`;
 export const API_USER_DETAILS = `${API_URI}/user-details`;
+export const API_USER_PHOTO = `${API_URI}/user-photo`;
 
 /**
  * The URL for meetings-related API endpoints.
@@ -35,4 +36,3 @@ export const API_MEETINGS_URL = `${API_URI}/Meetings`;
 export const API_CONTRACTORS = `${API_URI}/contractors`;
 
 export const API_MEETINGS_BY_USER = `${API_MEETINGS_URL}/organizator/my-meetings`;
-
