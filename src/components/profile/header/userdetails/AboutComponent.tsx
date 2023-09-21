@@ -9,7 +9,7 @@ const AboutComponent: React.FC = () => {
 		if (storedDescription) {
 			setDescription(storedDescription);
 		} else {
-			setDescription('Tell others about yourself');
+			setDescription('Max. 100 characters.');
 		}
 	}, []);
 
@@ -39,6 +39,7 @@ const AboutComponent: React.FC = () => {
 			{isEditing ? (
 				<input
 					type='text'
+					maxLength={100}
 					value={description}
 					onChange={handleInputChange}
 					onBlur={handleInputBlur}
