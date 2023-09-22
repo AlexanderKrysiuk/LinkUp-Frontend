@@ -1,4 +1,4 @@
-import { getUser, getUserRole, postPhoto } from './apiHandler';
+import { getPhoto, getUser, getUserRole, postPhoto } from './apiHandler';
 
 export const getUserDetails = async () => {
 	const token = localStorage.getItem('token');
@@ -41,6 +41,26 @@ export const uploadPhoto = async (file: FormData) => {
 				return response.status;
 			}
 			return response.status;
+		} catch (err) {
+			//handle error -> errorHandler.ts ?
+			console.error(err);
+		}
+	}
+};
+
+export const getUserPhoto = async () => {
+	const token = localStorage.getItem('token');
+	if (token) {
+		try {
+			const response = await getPhoto(token);
+			if (response && response.ok) {
+				const blob = await response.blob();
+				return new File([blob], 'profilePicture', {
+					type: 'image/jpeg',
+				});
+			} else {
+				console.error("Couldn't get user's picture.");
+			}
 		} catch (err) {
 			//handle error -> errorHandler.ts ?
 			console.error(err);

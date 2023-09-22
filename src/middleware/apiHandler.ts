@@ -47,6 +47,11 @@ export async function postPhoto(payload: FormData, token: string) {
 	return await apiPostFile(API_USER_PHOTO, payload, headers);
 }
 
+export async function getPhoto(token: string) {
+	const headers = getAuthHeader(token);
+	return await apiGet(API_USER_PHOTO, headers);
+}
+
 export async function deleteUserMeeting(id: string) {
 	return await apiDelete(`${API_MEETINGS_URL}/${id}`, id);
 }
