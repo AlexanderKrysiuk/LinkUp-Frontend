@@ -9,21 +9,19 @@ const ContractorCard = ({
 	contractor,
 	setContractorEmail,
 }: contractorCardProps) => {
+	const handleCardClick = () => {
+		setContractorEmail(contractor.email);
+	};
 	return (
-		<div className='contractor-card'>
+		<div
+			className='contractor-card'
+			onClick={handleCardClick}>
 			<img
 				src={contractor.imageUrl} // Dodaj pole imageUrl do danych kontraktora
 				alt={`Avatar użytkownika ${contractor.userName}`}
 				className='avatar'
 			/>
 			<div className='username'>{contractor.userName}</div>
-			<button
-				onClick={() => {
-					setContractorEmail(contractor.email);
-					console.log(contractor);
-				}}>
-				Change Email
-			</button>
 		</div>
 	);
 };
