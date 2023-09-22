@@ -37,7 +37,9 @@ export const uploadPhoto = async (file: FormData) => {
 	if (token) {
 		try {
 			const response = await postPhoto(file, token);
-			if (response) console.log(response.status, response.statusText);
+			if (!response.ok) {
+				return response.status;
+			}
 			return response.status;
 		} catch (err) {
 			//handle error -> errorHandler.ts ?
