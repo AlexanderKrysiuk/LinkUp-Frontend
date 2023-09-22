@@ -1,12 +1,12 @@
-import Meeting from 'components/utils/Meeting';
+import { API_MEETINGS_FROM_ORGANIZATOR } from '@data/links';
 import React, { useEffect, useState } from 'react';
+import './ContractorMeetingsList.css';
+import MeetingCard from './MeetingCard';
 const ContractorMeetingsList = ({ contractorEmail }: any) => {
 	const [meetings, setMeetings] = useState([]);
 
 	useEffect(() => {
-		fetch(
-			`https://localhost:5142/api/Meetings/organizator/${contractorEmail}`,
-		)
+		fetch(`${API_MEETINGS_FROM_ORGANIZATOR}${contractorEmail}`)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error('Network response was not OK');
@@ -22,15 +22,15 @@ const ContractorMeetingsList = ({ contractorEmail }: any) => {
 	}, [contractorEmail]);
 	return (
 		<div>
-			<h2>Spotkania dla {contractorEmail}</h2>
-			<ul>
+			<div className='contractor-meetings-list'>
+				<h2>Spotkania dla {contractorEmail}</h2>
 				{meetings.map((meeting: any) => (
-					<li key={meeting.id}>
-						ID: {meeting.id}, Data i Godzina: {meeting.dateTime},
-						Opis: {meeting.description}
-					</li>
+					<MeetingCard
+						key={meeting.id}
+						meeting={meeting}
+					/>
 				))}
-			</ul>
+			</div>
 		</div>
 	);
 };
