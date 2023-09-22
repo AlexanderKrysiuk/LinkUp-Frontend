@@ -1,4 +1,6 @@
 import { API_MEETINGS_FROM_ORGANIZATOR } from '@data/links';
+import { getMeetingsFromOrganizator } from '@middleware/apiHandler';
+
 import React, { useEffect, useState } from 'react';
 import './ContractorMeetingsList.css';
 import MeetingCard from './MeetingCard';
@@ -6,7 +8,8 @@ const ContractorMeetingsList = ({ contractorEmail }: any) => {
 	const [meetings, setMeetings] = useState([]);
 
 	useEffect(() => {
-		fetch(`${API_MEETINGS_FROM_ORGANIZATOR}${contractorEmail}`)
+		console.log(getMeetingsFromOrganizator(contractorEmail));
+		getMeetingsFromOrganizator(contractorEmail)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error('Network response was not OK');
