@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './ContractorCard.css'; // Dodaj stylizację
+interface contractorCardProps {
+	setContractorEmail: Dispatch<SetStateAction<string>>;
+	contractor: any;
+}
 
-const ContractorCard = ({ contractor }) => {
+const ContractorCard = ({
+	contractor,
+	setContractorEmail,
+}: contractorCardProps) => {
 	return (
 		<div className='contractor-card'>
 			<img
@@ -10,6 +17,13 @@ const ContractorCard = ({ contractor }) => {
 				className='avatar'
 			/>
 			<div className='username'>{contractor.userName}</div>
+			<button
+				onClick={() => {
+					setContractorEmail(contractor.email);
+					console.log(contractor);
+				}}>
+				Change Email
+			</button>
 		</div>
 	);
 };
