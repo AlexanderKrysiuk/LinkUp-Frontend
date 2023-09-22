@@ -32,16 +32,18 @@ const PhotoUploaderComponent: React.FC<UploaderProps> = ({
 	};
 
 	return (
-		<>
-			<div>
-				<input
-					type='file'
-					onChange={handlePictureChange}
-				/>
-				<button onClick={handleUpload}>Upload picture</button>
-				{error ? <span>{error}</span> : null}
-			</div>
-		</>
+		<div className='profile__header_user-details-photo-uploader'>
+			<input
+				type='file'
+				onChange={handlePictureChange}
+			/>
+			<button
+				className='pill-button'
+				onClick={handleUpload}>
+				Save as new profile picture
+			</button>
+			{error ? <span>{error}</span> : null}
+		</div>
 	);
 };
 
