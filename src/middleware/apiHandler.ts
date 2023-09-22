@@ -42,7 +42,7 @@ export async function getContractors() {
 	return await apiGet(API_CONTRACTORS);
 }
 
-export async function postPhoto(payload: File, token: string) {
+export async function postPhoto(payload: FormData, token: string) {
 	const headers = getAuthHeader(token);
 	return await apiPostFile(API_USER_PHOTO, payload, headers);
 }
@@ -100,12 +100,11 @@ async function apiDelete(url: string, payload: any): Promise<Response> {
 
 async function apiPostFile(
 	url: string,
-	file: File,
+	file: FormData,
 	headers?: Record<string, string>,
 ): Promise<Response> {
 	const requestHeaders = {
 		...(headers || {}),
-		'Content-Type': 'image/jpeg',
 	};
 	const response = await fetch(url, {
 		method: 'POST',

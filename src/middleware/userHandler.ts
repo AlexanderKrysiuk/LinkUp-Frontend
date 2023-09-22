@@ -32,26 +32,16 @@ export const getRole = async () => {
 	}
 };
 
-export const uploadPhoto = async (file: File) => {
+export const uploadPhoto = async (file: FormData) => {
 	const token = localStorage.getItem('token');
 	if (token) {
 		try {
 			const response = await postPhoto(file, token);
-
-			if (response && response.ok) {
-				return { success: true, data: response };
-			} else {
-				return {
-					success: false,
-					error: response?.status,
-				};
-			}
-		} catch (error) {
+			if (response) console.log(response.status, response.statusText);
+			return response.status;
+		} catch (err) {
 			//handle error -> errorHandler.ts ?
-			return {
-				success: false,
-				error: 'An error occurred while uploading file.',
-			};
+			console.error(err);
 		}
 	}
 };
