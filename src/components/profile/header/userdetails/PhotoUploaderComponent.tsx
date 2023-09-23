@@ -1,4 +1,5 @@
 import { uploadPhoto } from '@middleware/userHandler';
+import 'filepond/dist/filepond.min.css';
 import React, { useState } from 'react';
 
 interface UploaderProps {
@@ -11,12 +12,18 @@ const PhotoUploaderComponent: React.FC<UploaderProps> = ({
 	setProfilePhoto,
 }: UploaderProps) => {
 	const [error, setError] = useState('');
+	const [isButtonVisible, setIsButtonVisible] = useState(false);
+
+	const toggleVisibility = () => {
+		setIsButtonVisible(!isButtonVisible);
+	};
 
 	const handlePictureChange = (
 		event: React.ChangeEvent<HTMLInputElement>,
 	) => {
 		if (event.target.files && event.target.files[0]) {
 			setProfilePhoto(event.target.files[0]);
+			toggleVisibility();
 		}
 	};
 
@@ -29,6 +36,7 @@ const PhotoUploaderComponent: React.FC<UploaderProps> = ({
 		if (!isUploaded) {
 			setError('Picture upload failed. Change its size or format.');
 		}
+		toggleVisibility();
 	};
 
 	return (
@@ -37,11 +45,13 @@ const PhotoUploaderComponent: React.FC<UploaderProps> = ({
 				type='file'
 				onChange={handlePictureChange}
 			/>
-			<button
-				className='pill-button'
-				onClick={handleUpload}>
-				Save as new profile picture
-			</button>
+			{isButtonVisible ? (
+				<button
+					className='pill-button'
+					onClick={handleUpload}>
+					Save as new profile picture
+				</button>
+			) : null}
 			{error ? <span>{error}</span> : null}
 		</div>
 	);

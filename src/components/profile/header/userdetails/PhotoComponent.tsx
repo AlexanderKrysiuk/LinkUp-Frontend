@@ -1,6 +1,6 @@
 import { getUserPhoto } from '@middleware/userHandler';
 import React, { useEffect, useState } from 'react';
-import PhotoUploaderComponent from './PhotoUploaderCOmponent';
+import PhotoUploaderComponent from './PhotoUploaderComponent';
 
 const PhotoComponent: React.FC = () => {
 	const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
