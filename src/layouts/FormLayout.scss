@@ -1,7 +1,7 @@
-@use '../styles/variables' as vars;
+@use '../styles/variables' as *;
 .form {
-	border: 0.2rem solid #006400;
-	border-radius: vars.$border-rounded;
+	background-color: $color-background;
+	@include border-important;
 	padding: 1rem;
 	display: flex;
 	position: relative;
@@ -15,7 +15,6 @@
 		display: flex;
 		flex-direction: column;
 		min-width: 300px;
-		/* padding: 0.5rem; */
 		text-align: left;
 		margin: 0 0.5rem 0 0.5rem;
 		&-element {
@@ -25,14 +24,13 @@
 			width: 100%;
 			margin-bottom: 0.25rem;
 			&__label {
-				font-weight: 500;
-				color: darkblue;
+				font-weight: $font-weight-bold;
+				color: $color-heading;
 			}
 
 			&__input {
 				padding: 0.25rem;
-				border: 1px solid #ccc;
-				border-radius: 0.5rem;
+				@include border-important;
 				width: 100%;
 			}
 		}
@@ -40,7 +38,7 @@
 		&__error-message,
 		&-element__validation-prompt {
 			float: left;
-			color: black;
+			color: $color-warning1;
 			font-size: 0.7rem;
 			margin-top: 0.25rem;
 			font-style: italic;
@@ -55,7 +53,7 @@
 
 		a {
 			font-size: 1.1rem;
-			font-weight: 700;
+			font-weight: $font-weight-bold;
 			text-decoration: underline;
 
 			&::after {
@@ -74,10 +72,9 @@
 .form__container__submit-button {
 	padding: 0.25rem 0.5rem;
 	margin-top: 1rem;
-	color: darkblue;
-	font-weight: 700;
-	border: darkblue solid 2px;
-	border-radius: 0.5rem;
+	color: $color-text;
+	font-weight: $font-weight-bold;
+	@include border-important;
 	cursor: pointer;
 	width: fit-content;
 	align-self: center;
@@ -86,10 +83,9 @@
 .google-button {
 	padding: 0.25rem 0.5rem;
 	margin-top: 0.5rem;
-	color: darkblue;
-	font-weight: 700;
-	border: darkblue solid 2px;
-	border-radius: 0.5rem;
+	color: $color-text;
+	font-weight: $font-weight-bold;
+	@include border-important;
 	cursor: pointer;
 	width: fit-content;
 	align-self: center;
@@ -97,7 +93,6 @@
 }
 .form__container__submit-button:hover,
 .google-button:hover {
-	background-color: #0056b3;
-	color: whitesmoke;
+	background-color: $color-primary;
 	border: transparent solid 2px;
 }

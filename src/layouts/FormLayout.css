@@ -7,8 +7,9 @@
 /* color scheme */
 /* functional colors */
 .form {
-  border: 0.2rem solid #006400;
-  border-radius: 0.25rem;
+  background-color: #fffff0;
+  border: #f5aa37 solid 2px;
+  border-radius: 0.5rem;
   padding: 1rem;
   display: flex;
   position: relative;
@@ -23,7 +24,6 @@
   display: flex;
   flex-direction: column;
   min-width: 300px;
-  /* padding: 0.5rem; */
   text-align: left;
   margin: 0 0.5rem 0 0.5rem;
 }
@@ -35,18 +35,18 @@
   margin-bottom: 0.25rem;
 }
 .form__container-element__label {
-  font-weight: 500;
-  color: darkblue;
+  font-weight: 700;
+  color: #273f68;
 }
 .form__container-element__input {
   padding: 0.25rem;
-  border: 1px solid #ccc;
+  border: #f5aa37 solid 2px;
   border-radius: 0.5rem;
   width: 100%;
 }
 .form__container__error-message, .form__container-element__validation-prompt {
   float: left;
-  color: black;
+  color: #dc143c;
   font-size: 0.7rem;
   margin-top: 0.25rem;
   font-style: italic;
@@ -78,9 +78,9 @@
 .form__container__submit-button {
   padding: 0.25rem 0.5rem;
   margin-top: 1rem;
-  color: darkblue;
+  color: #2b2217;
   font-weight: 700;
-  border: darkblue solid 2px;
+  border: #f5aa37 solid 2px;
   border-radius: 0.5rem;
   cursor: pointer;
   width: -moz-fit-content;
@@ -92,9 +92,9 @@
 .google-button {
   padding: 0.25rem 0.5rem;
   margin-top: 0.5rem;
-  color: darkblue;
+  color: #2b2217;
   font-weight: 700;
-  border: darkblue solid 2px;
+  border: #f5aa37 solid 2px;
   border-radius: 0.5rem;
   cursor: pointer;
   width: -moz-fit-content;
@@ -105,7 +105,6 @@
 
 .form__container__submit-button:hover,
 .google-button:hover {
-  background-color: #0056b3;
-  color: whitesmoke;
+  background-color: #a4c7e0;
   border: transparent solid 2px;
 }/*# sourceMappingURL=FormLayout.css.map */

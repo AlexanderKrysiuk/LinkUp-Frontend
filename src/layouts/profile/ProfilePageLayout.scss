@@ -12,7 +12,7 @@
 	backdrop-filter: blur(2px);
 	&:before {
 		content: '';
-		background-color: white !important;
+		background-color: var(--color-background) !important;
 		position: absolute;
 		top: 0;
 		left: 0;
