@@ -2,17 +2,33 @@ import React, { useEffect, useState } from 'react';
 
 import './CalendarComponent.css';
 
+import {
+	calculateDaysToFill,
+	getLocaleDayNames,
+	getLocaleMonthName,
+} from '@utils/Calendar.ts';
+
 import CalendarFieldComponent from './CalendarField/CalendarFieldComponent.tsx';
 
-const CalendarComponent = () => {
+type CalendarComponentProps = {
+	month?: number;
+	year?: number;
+};
+
+const CalendarComponent = ({
+	month = new Date().getMonth(),
+	year = new Date().getFullYear(),
+}: CalendarComponentProps) => {
 	const [dayNumbers, setDayNumbers] = useState<number[]>([]);
 
 	useEffect(() => {
-		setDayNumbers(Array.from({ length: 28 }, (_, i) => i + 1));
+		const days = calculateDaysToFill(year, month);
+		setDayNumbers(days);
 	}, []);
 
-	const monthName = 'January';
-	const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+	const monthName = getLocaleMonthName(month);
+
+	const dayNames = getLocaleDayNames();
 
 	return (
 		<div className='calendar'>
