@@ -6,7 +6,7 @@
 .main {
 	position: relative;
 	padding: 1rem 2rem;
-	height: 100svh;
+	height: clamp(100svh, 100vh, 100%);
 	width: 100svw;
 	background:
 		radial-gradient(
