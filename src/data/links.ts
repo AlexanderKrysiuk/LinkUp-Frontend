@@ -29,6 +29,8 @@ export const API_USER_PHOTO = `${API_URI}/user-photo`;
  * The URL for meetings-related API endpoints.
  */
 export const API_MEETINGS_URL = `${API_URI}/Meetings`;
+export const API_UPCOMING_MEETINGS = `${API_MEETINGS_URL}/upcoming`;
+export const API_ARCHIVED_MEETINGS = `${API_MEETINGS_URL}/archived`;
 
 /**
  * The URL for recieving all contractors

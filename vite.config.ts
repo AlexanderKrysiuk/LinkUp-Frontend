@@ -85,6 +85,10 @@ export default defineConfig({
 				find: '@router',
 				replacement: resolve(__dirname, './src/router/'),
 			},
+			{
+				find: '@styles',
+				replacement: resolve(__dirname, './src/styles/'),
+			},
 		],
 	},
 });

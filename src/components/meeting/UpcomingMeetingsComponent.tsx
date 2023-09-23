@@ -3,7 +3,7 @@ import { getMeetings } from '@middleware/meetingsHandler';
 import React, { useEffect, useState } from 'react';
 import MeetingsListComponent from './MeetingsListComponent';
 
-const MeetingsComponent = (): JSX.Element => {
+const UpcomingMeetingsComponent = (): JSX.Element => {
 	const [userMeetings, setUserMeetings] = useState<Meetings>([]);
 	const [token, setToken] = useState<string | undefined>(undefined);
 
@@ -16,7 +16,7 @@ const MeetingsComponent = (): JSX.Element => {
 
 	useEffect(() => {
 		if (token) {
-			getMeetings(token)
+			getMeetings(token, 'upcoming')
 				.then((data) => {
 					setUserMeetings(data);
 				})
@@ -29,4 +29,4 @@ const MeetingsComponent = (): JSX.Element => {
 	return <MeetingsListComponent meetings={userMeetings} />;
 };
 
-export default MeetingsComponent;
+export default UpcomingMeetingsComponent;
