@@ -7,6 +7,7 @@ import {
 	API_REGISTER_URL,
 	API_UPCOMING_MEETINGS,
 	API_USER_DETAILS,
+	API_USER_PHOTO,
 	API_USER_ROLE,
 } from '@data/links';
 import { getAuthHeader } from './authHandler';
@@ -53,9 +54,15 @@ export async function getContractors() {
 	return await apiGet(API_CONTRACTORS);
 }
 
-// export async function getUserMeetings() {
-// 	return await apiGet(API_MEETINGS_BY_USER);
-// }
+export async function postPhoto(payload: FormData, token: string) {
+	const headers = getAuthHeader(token);
+	return await apiPostFile(API_USER_PHOTO, payload, headers);
+}
+
+export async function getPhoto(token: string) {
+	const headers = getAuthHeader(token);
+	return await apiGet(API_USER_PHOTO, headers);
+}
 
 export async function deleteUserMeeting(id: string) {
 	return await apiDelete(`${API_MEETINGS_URL}/${id}`, id);
@@ -85,7 +92,6 @@ async function apiPost(
 		headers: requestHeaders,
 		body: JSON.stringify(payload),
 	});
-	console.log(response, response.status, response.statusText);
 	return response;
 }
 
@@ -105,6 +111,22 @@ async function apiDelete(url: string, payload: any): Promise<Response> {
 	const response = await fetch(url, {
 		method: 'DELETE',
 		body: JSON.stringify(payload),
+	});
+	return response;
+}
+
+async function apiPostFile(
+	url: string,
+	file: FormData,
+	headers?: Record<string, string>,
+): Promise<Response> {
+	const requestHeaders = {
+		...(headers || {}),
+	};
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: requestHeaders,
+		body: file,
 	});
 	return response;
 }

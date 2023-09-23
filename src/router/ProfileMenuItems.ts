@@ -12,7 +12,6 @@ import MockPageComponent from '@pages/MockPage.tsx';
  */
 export type ProfileMenuItem = {
 	routeName: string; // The name of the route.
-	component: () => JSX.Element; // The component to render for this route.
 	subMenu: SubmenuItem[]; // An array of sub-menu items for this route.
 };
 
@@ -34,7 +33,6 @@ const routes: ProfileMenuItem[] = [
 			{ routeName: 'asd1', component: MockPageComponent },
 			{ routeName: 'qwe1', component: MockPageComponent },
 		],
-		component: MockPageComponent,
 	},
 	{
 		routeName: 'My meetings',
@@ -42,7 +40,6 @@ const routes: ProfileMenuItem[] = [
 			{ routeName: 'Upcoming', component: UpcomingMeetingsComponent },
 			{ routeName: 'Archived', component: ArchivedMeetingsComponent },
 		],
-		component: UpcomingMeetingsComponent, //gunwa trza usunąć
 	},
 	{
 		routeName: 'Archived meetings',
@@ -50,7 +47,6 @@ const routes: ProfileMenuItem[] = [
 			{ routeName: 'asd3', component: MockPageComponent },
 			{ routeName: 'qwe3', component: MockPageComponent },
 		],
-		component: ArchivedMeetingsComponent,
 	},
 	{
 		routeName: 'basdsad4',
@@ -58,7 +54,6 @@ const routes: ProfileMenuItem[] = [
 			{ routeName: 'asd4', component: MockPageComponent },
 			{ routeName: 'qwe4', component: MockPageComponent },
 		],
-		component: MockPageComponent,
 	},
 	{
 		routeName: 'basdsad5',
@@ -66,7 +61,6 @@ const routes: ProfileMenuItem[] = [
 			{ routeName: 'asd5', component: MockPageComponent },
 			{ routeName: 'qwe5', component: MockPageComponent },
 		],
-		component: MockPageComponent,
 	},
 	{
 		routeName: 'basdsad6',
@@ -74,7 +68,6 @@ const routes: ProfileMenuItem[] = [
 			{ routeName: 'asd6', component: MockPageComponent },
 			{ routeName: 'qwe6', component: MockPageComponent },
 		],
-		component: MockPageComponent,
 	},
 	{
 		routeName: 'basdsad7',
@@ -82,7 +75,6 @@ const routes: ProfileMenuItem[] = [
 			{ routeName: 'asd7', component: MockPageComponent },
 			{ routeName: 'qwe7', component: MockPageComponent },
 		],
-		component: MockPageComponent,
 	},
 	{
 		routeName: 'basdsad8',
@@ -90,7 +82,6 @@ const routes: ProfileMenuItem[] = [
 			{ routeName: 'asd8', component: MockPageComponent },
 			{ routeName: 'qwe8', component: MockPageComponent },
 		],
-		component: MockPageComponent,
 	},
 ];
 
