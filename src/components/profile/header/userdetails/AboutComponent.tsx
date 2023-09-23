@@ -43,12 +43,12 @@ const AboutComponent: React.FC = () => {
 					value={description}
 					onChange={handleInputChange}
 					onBlur={handleInputBlur}
+					onMouseLeave={handleMouseLeave}
 				/>
 			) : (
 				<div
 					className='field'
-					onMouseEnter={handleMouseEnter}
-					onMouseLeave={handleMouseLeave}>
+					onMouseEnter={handleMouseEnter}>
 					{description}
 				</div>
 			)}
