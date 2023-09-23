@@ -90,32 +90,36 @@ export default function RegistrationForm() {
 		<>
 			{/* Registration form */}
 			<form
-				className='form'
+				className='form__container'
 				onSubmit={handleSubmit(submitForm)}>
 				{/* Display an error message if there is an error */}
 				{errorMessage && (
-					<span className='form__error-message'>{errorMessage}</span>
+					<span className='form__container__error-message'>
+						{errorMessage}
+					</span>
 				)}
 
 				{/* Account type dropdown */}
-				<div className='form-element'>
-					<label className='form-element__label'>Account:</label>
+				<div className='form__container-element'>
+					<label className='form__container-element__label'>
+						Account:
+					</label>
 					<select
-						className='form-element__input'
+						className='form__container-element__input'
 						id='userType'
 						{...register('userType')}>
 						<option
-							className='form-element__select-option'
+							className='form__container-element__select-option'
 							value='Admin'>
 							Admin
 						</option>
 						<option
-							className='form-element__select-option'
+							className='form__container-element__select-option'
 							value='Client'>
 							Client
 						</option>
 						<option
-							className='form-element__select-option'
+							className='form__container-element__select-option'
 							value='Contractor'>
 							Contractor
 						</option>
@@ -123,17 +127,19 @@ export default function RegistrationForm() {
 
 					{/* Display a validation prompt if there is an error */}
 					{errors.userType && (
-						<span className='form-element__validation-prompt'>
+						<span className='form__container-element__validation-prompt'>
 							{errors.userType.message}
 						</span>
 					)}
 				</div>
 
 				{/* First name field */}
-				<div className='form-element'>
-					<label className='form-element__label'>First name:</label>
+				<div className='form__container-element'>
+					<label className='form__container-element__label'>
+						First name:
+					</label>
 					<input
-						className='form-element__input'
+						className='form__container-element__input'
 						type='text'
 						id='firstName'
 						{...register('firstName')}
@@ -141,17 +147,19 @@ export default function RegistrationForm() {
 
 					{/* Display a validation prompt if there is an error */}
 					{errors.firstName && (
-						<span className='form-element__validation-prompt'>
+						<span className='form__container-element__validation-prompt'>
 							{errors.firstName.message}
 						</span>
 					)}
 				</div>
 
 				{/* Last name field */}
-				<div className='form-element'>
-					<label className='form-element__label'>Last name:</label>
+				<div className='form__container-element'>
+					<label className='form__container-element__label'>
+						Last name:
+					</label>
 					<input
-						className='form-element__input'
+						className='form__container-element__input'
 						type='text'
 						id='lastName'
 						{...register('lastName')}
@@ -159,17 +167,19 @@ export default function RegistrationForm() {
 
 					{/* Display a validation prompt if there is an error */}
 					{errors.lastName && (
-						<span className='form-element__validation-prompt'>
+						<span className='form__container-element__validation-prompt'>
 							{errors.lastName.message}
 						</span>
 					)}
 				</div>
 
 				{/* Email field */}
-				<div className='form-element'>
-					<label className='form-element__label'>Email:</label>
+				<div className='form__container-element'>
+					<label className='form__container-element__label'>
+						Email:
+					</label>
 					<input
-						className='form-element__input'
+						className='form__container-element__input'
 						type='email'
 						id='email'
 						{...register('email')}
@@ -177,17 +187,19 @@ export default function RegistrationForm() {
 
 					{/* Display a validation prompt if there is an error */}
 					{errors.email && (
-						<span className='form-element__validation-prompt'>
+						<span className='form__container-element__validation-prompt'>
 							{errors.email.message}
 						</span>
 					)}
 				</div>
 
 				{/* Password field */}
-				<div className='form-element'>
-					<label className='form-element__label'>Password:</label>
+				<div className='form__container-element'>
+					<label className='form__container-element__label'>
+						Password:
+					</label>
 					<input
-						className='form-element__input'
+						className='form__container-element__input'
 						type='password'
 						id='password'
 						{...register('password')}
@@ -195,19 +207,19 @@ export default function RegistrationForm() {
 
 					{/* Display a validation prompt if there is an error */}
 					{errors.password && (
-						<span className='form-element__validation-prompt'>
+						<span className='form__container-element__validation-prompt'>
 							{errors.password.message}
 						</span>
 					)}
 				</div>
 
 				{/* Confirm Password field */}
-				<div className='form-element'>
-					<label className='form-element__label'>
+				<div className='form__container-element'>
+					<label className='form__container-element__label'>
 						Confirm Password:
 					</label>
 					<input
-						className='form-element__input'
+						className='form__container-element__input'
 						type='password'
 						id='confirmedPassword'
 						{...register('confirmedPassword')}
@@ -215,7 +227,7 @@ export default function RegistrationForm() {
 
 					{/* Display a validation prompt if there is an error */}
 					{errors.confirmedPassword && (
-						<span className='form-element__validation-prompt'>
+						<span className='form__container-element__validation-prompt'>
 							{errors.confirmedPassword.message}
 						</span>
 					)}
@@ -223,7 +235,7 @@ export default function RegistrationForm() {
 
 				{/* Submit button */}
 				<button
-					className='form__submit-button'
+					className='form__container__submit-button'
 					type='submit'>
 					Submit
 				</button>

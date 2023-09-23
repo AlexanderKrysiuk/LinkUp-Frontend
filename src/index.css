@@ -19,10 +19,13 @@
 	--font-weight-normal: 400;
 	--font-weight-bold: 700;
 
+	/* standard border curvature (radius) */
+	--border-rounded: 0.25rem;
+
 	/* light mode */
 	/* color scheme */
 	--color-call-to-action: #f5aa37;
-	--color-background: #e3e1c5;
+	--color-background: #fffff0;
 	--color-text: #2b2217;
 	--color-primary: #a4c7e0;
 	--color-secondary: #609fbe;
