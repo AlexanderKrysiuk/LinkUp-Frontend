@@ -1,26 +1,9 @@
 {
-	"cSpell.ignoreWords": [
-		"basdsad",
-		"callees",
-		"clientapp",
-		"clsx",
-		"gffe",
-		"iconbutton",
-		"linebreak",
-		"mjsx",
-		"mtsx",
-		"navmenu",
-		"necolas",
-		"serviceworker"
-	],
 	"typescript.tsdk": "node_modules\\typescript\\lib",
-	"cSpell.words": [
-		"classname",
-		"FOUC"
-	],
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
-	"cSpell.enableFiletypes": [
-		"!json"
-	]
+	"vite.port": 5173,
+	"vite.https": true,
+	"vite.devCommand": "npm run dev",
+	"vite.showTerminal": true,
 }

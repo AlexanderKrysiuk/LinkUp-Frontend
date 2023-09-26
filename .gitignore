@@ -419,3 +419,6 @@ $RECYCLE.BIN/
 *_REMOTE_*.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/react,visualstudiocode,windows,macos,intellij+all,node,jetbrains+all,git
+.vscode/launch.json
+html
+docs

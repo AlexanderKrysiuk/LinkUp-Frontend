@@ -24,7 +24,8 @@ export default defineConfig({
 		globals: true,
 		environment: 'jsdom',
 		css: true,
-		setupFiles: './test/setup.ts',
+		setupFiles: './tests/setup.ts',
+		exclude: ['**/node_modules/**'],
 	},
 	build: {
 		rollupOptions: {
