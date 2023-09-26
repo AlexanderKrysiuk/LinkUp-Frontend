@@ -4,7 +4,7 @@ import {
 	getUpcomingMeetings,
 } from './apiHandler';
 
-export const getMeetings = async (token: string, type: string) => {
+export const getMeetings = async (token: string, type: string = 'upcoming') => {
 	const response =
 		type === 'upcoming'
 			? await getUpcomingMeetings(token)
