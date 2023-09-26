@@ -1,18 +1,10 @@
-const CURRENT_YEAR = new Date().getFullYear();
-const CURRENT_MONTH = new Date().getMonth();
-const NUMBER_OF_MONTHS = 12;
-
-const getDaysInMonth = (year: number, month: number) =>
-	new Date(year, month + 1, 0).getDate();
-const getDaysInPrevMonth = (year: number, month: number) =>
-	new Date(year, month, 0).getDate();
-const getDayOfWeek = (date: Date) => date.getDay();
-
-const convertMonth = (month: number) => {
-	const requestedMonth =
-		month === CURRENT_MONTH ? month : (month - 1) % NUMBER_OF_MONTHS;
-	return requestedMonth;
-};
+import { CURRENT_MONTH, CURRENT_YEAR } from './CalendarHelpers/constants';
+import {
+	convertMonth,
+	getDayOfWeek,
+	getDaysInMonth,
+	getDaysInPrevMonth,
+} from './CalendarHelpers/functions';
 
 export const calculateDaysToFill = (
 	year: number = CURRENT_YEAR,
@@ -60,7 +52,7 @@ export const getLocaleDayNames = () =>
 	});
 
 export const getLocaleMonthName = (month: number = CURRENT_MONTH) => {
-	const requestedMonth = convertMonth(month);
+	const requestedMonth: number = convertMonth(month);
 	return new Date(2022, requestedMonth, 1).toLocaleString(
 		navigator.language,
 		{
