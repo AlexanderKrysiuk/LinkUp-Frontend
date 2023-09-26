@@ -38,3 +38,5 @@ export const API_ARCHIVED_MEETINGS = `${API_MEETINGS_URL}/archived`;
 export const API_CONTRACTORS = `${API_URI}/contractors`;
 
 export const API_MEETINGS_BY_USER = `${API_MEETINGS_URL}/organizator/my-meetings`;
+
+export const API_MEETINGS_FROM_ORGANIZATOR = `${API_MEETINGS_URL}/organizator`;

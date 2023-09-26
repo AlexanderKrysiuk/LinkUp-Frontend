@@ -1,9 +1,12 @@
 import { getContractors } from '@middleware/apiHandler';
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import ContractorCard from './ContractorCard'; // Importuj komponent ContractorCard
 import './ContractorsList.css'; // Dodaj stylizację dla listy kontraktorów
+interface contractorListProps {
+	setContractorEmail: Dispatch<SetStateAction<string>>;
+}
 
-const ContractorsList = () => {
+const ContractorsList = ({ setContractorEmail }: contractorListProps) => {
 	const [contractors, setContractors] = useState([]);
 
 	useEffect(() => {
@@ -31,6 +34,7 @@ const ContractorsList = () => {
 		<div className='contractors-list'>
 			{contractors.map((contractor, index) => (
 				<ContractorCard
+					setContractorEmail={setContractorEmail}
 					key={index}
 					contractor={contractor}
 				/>

@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './ContractorCard.css'; // Dodaj stylizację
+interface contractorCardProps {
+	setContractorEmail: Dispatch<SetStateAction<string>>;
+	contractor: any;
+}
 
-const ContractorCard = ({ contractor }) => {
+const ContractorCard = ({
+	contractor,
+	setContractorEmail,
+}: contractorCardProps) => {
+	const handleCardClick = () => {
+		setContractorEmail(contractor.email);
+	};
 	return (
-		<div className='contractor-card'>
+		<div
+			className='contractor-card'
+			onClick={handleCardClick}>
 			<img
 				src={contractor.imageUrl} // Dodaj pole imageUrl do danych kontraktora
 				alt={`Avatar użytkownika ${contractor.userName}`}

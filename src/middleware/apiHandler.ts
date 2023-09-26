@@ -3,6 +3,7 @@ import {
 	API_CONTRACTORS,
 	API_LOGIN_URL,
 	API_MEETINGS_BY_USER,
+	API_MEETINGS_FROM_ORGANIZATOR,
 	API_MEETINGS_URL,
 	API_REGISTER_URL,
 	API_UPCOMING_MEETINGS,
@@ -18,6 +19,10 @@ export async function createUser(payload: any) {
 
 export async function loginUser(payload: any) {
 	return await apiOptions(API_LOGIN_URL, payload);
+}
+
+export async function getMeetingsFromOrganizator(contractorEmail: any) {
+	return await apiGet(`${API_MEETINGS_FROM_ORGANIZATOR}/${contractorEmail}`);
 }
 
 export async function createMeeting(payload: any, token: string) {
