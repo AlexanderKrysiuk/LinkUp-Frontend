@@ -5,6 +5,8 @@
 
 import { getUserDetails } from '@middleware/userHandler';
 import React, { useEffect, useState } from 'react';
+import AboutComponent from './AboutComponent';
+import PhotoComponent from './PhotoComponent';
 
 /**
  * A React component for displaying user details in a profile header.
@@ -35,7 +37,7 @@ const UserDetailsComponent = (): JSX.Element => {
 
 	return (
 		<div className='profile__header_user-details'>
-			<div className='profile__header_user-details-photo'></div>
+			<PhotoComponent />
 			<div className='profile__header_user-details-user'>
 				<div className='profile__header_user-details-name'>
 					<p className='label'>Name:</p>
@@ -52,15 +54,7 @@ const UserDetailsComponent = (): JSX.Element => {
 			</div>
 			<div className='profile__header_user-details-about'>
 				<p className='label'>About me:</p>
-				<p className='field'>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Rerum quae modi recusandae assumenda sunt neque atque ipsum
-					nostrum nesciunt corporis quidem aut blanditiis, sed ad at
-					dolorem aliquid error voluptatem omnis illo eius. Ratione
-					maiores cupiditate error voluptatibus, iste magnam, expedita
-					fuga culpa ea possimus placeat eaque praesentium dolore.
-					Doloremque.
-				</p>
+				<AboutComponent />
 			</div>
 		</div>
 	);

@@ -1,7 +1,14 @@
-import { deleteUserMeeting, getUserMeetings } from './apiHandler';
+import {
+	deleteUserMeeting,
+	getArchivedMeetings,
+	getUpcomingMeetings,
+} from './apiHandler';
 
-export const getMeetings = async (token: string) => {
-	const response = await getUserMeetings(token);
+export const getMeetings = async (token: string, type: string) => {
+	const response =
+		type === 'upcoming'
+			? await getUpcomingMeetings(token)
+			: await getArchivedMeetings(token);
 	if (response && response.ok) {
 		return await response.json();
 	} else {
