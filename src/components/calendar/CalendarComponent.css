@@ -5,6 +5,7 @@
   justify-content: center;
   width: 700px;
   margin: 2rem auto;
+  outline: 5px solid red;
 }
 .calendar__header, .calendar__body {
   display: flex;
@@ -19,14 +20,28 @@
 .calendar__header-month {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   height: 3rem;
   font-size: 2rem;
+  text-transform: capitalize;
   border: 1px solid var(--color-call-to-action);
   background-color: var(--color-primary);
   color: var(--color-text);
   font-weight: bold;
+}
+.calendar__header-month__arrow-left, .calendar__header-month__arrow-right {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+.calendar__header-month__arrow-left > button, .calendar__header-month__arrow-right > button {
+  padding: 0.25rem;
+  border: none;
+  background-color: transparent;
+}
+.calendar__header-month__text {
+  width: 100%;
+  text-align: center;
 }
 .calendar__header-days {
   display: flex;
@@ -54,7 +69,7 @@
   padding: 0.5rem;
   width: 100px;
   height: 100px;
-  border: 1px solid var(--color-call-to-action);
+  border: 1px solid var(--color-heading);
 }
 .calendar__field:nth-of-type(odd) {
   background-color: bisque;

@@ -1,12 +1,15 @@
 .container {
 	height: 100vh;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .main {
 	position: relative;
 	padding: 1rem 2rem;
-	height: clamp(100svh, 100vh, 100%);
+	flex: 1;
+	min-height: 100svh;
 	width: 100svw;
 	background:
 		radial-gradient(
