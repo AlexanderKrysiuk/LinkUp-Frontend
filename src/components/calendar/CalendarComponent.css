@@ -66,8 +66,9 @@
 }
 .calendar__field {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0.5rem;
   width: 100px;
   height: 100px;
@@ -75,12 +76,14 @@
 }
 .calendar__field.today {
   background-color: var(--color-call-to-action) !important;
-  color: var(--color-text);
   font-weight: var(--font-weight-bold);
 }
 .calendar__field:nth-of-type(odd) {
   background-color: bisque;
 }
 .calendar__field:nth-of-type(even) {
-  background-color: blue;
+  background-color: beige;
+}
+.calendar__field_meetings_count {
+  margin-left: 0.5rem;
 }/*# sourceMappingURL=CalendarComponent.css.map */

@@ -2,41 +2,69 @@ import React, { useEffect, useState } from 'react';
 
 import './CalendarComponent.css';
 
-import {
-	CURRENT_DAY,
-	CURRENT_MONTH,
-	CURRENT_YEAR,
-} from '@utils/CalendarHelpers/calendarConstants';
-
 import { calculateDaysToFill } from '@utils/calendarUtils';
 
 import CalendarFieldComponent from './CalendarField/CalendarFieldComponent';
 
 import CalendarDayNamesComponent from './CalendarHeader/CalendarDayNamesComponent.tsx';
+
+import { getMeetings } from '@middleware/meetingsHandler.ts';
+
 import CalendarHeaderComponent from './CalendarHeader/CalendarHeaderComponent.tsx';
 
-const CalendarComponent = () => {
-	const [selectedDate, setSelectedDate] = useState<Date>(
-		new Date(CURRENT_YEAR, CURRENT_MONTH, CURRENT_DAY),
-	);
+type Meeting = {
+	id: string;
+	dateTime: string;
+	maxParticipants: number;
+	duration: number;
+	description: string;
+};
 
-	const [dayNumbers, setDayNumbers] = useState<number[]>([]);
+const CalendarComponent = () => {
+	const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+	const [dateDays, setDateDays] = useState<Date[]>([]);
+	const [meetingsByDate, setMeetingsByDate] = useState<
+		Record<string, Meeting[]>
+	>({});
 
 	const selectedYear = selectedDate.getFullYear();
 	const selectedMonth = selectedDate.getMonth();
 
-	const updateDayNumbers = () => {
+	const updateDateDays = () => {
 		const days = calculateDaysToFill(selectedYear, selectedMonth);
-		setDayNumbers(days);
+		setDateDays(days);
 	};
 
-	const isCurrentDay = (dayNumber: number) =>
-		dayNumber === CURRENT_DAY &&
-		selectedMonth === CURRENT_MONTH &&
-		selectedYear === CURRENT_YEAR;
+	const isCurrentDay = (dayToCheck: Date) => {
+		const today = new Date();
+		return (
+			dayToCheck.getFullYear() === today.getFullYear() &&
+			dayToCheck.getMonth() === today.getMonth() &&
+			dayToCheck.getDate() === today.getDate()
+		);
+	};
 
 	useEffect(() => {
-		updateDayNumbers();
+		updateDateDays();
+
+		const token = localStorage.getItem('token');
+
+		getMeetings(token!).then((res: Meeting[]) => {
+			const meetingsMapping: Record<string, Meeting[]> = {};
+
+			res.forEach((meeting: Meeting) => {
+				const dateParts = meeting.dateTime.split('T');
+				const dateKey = (
+					dateParts.length > 0 ? dateParts[0] : 'invalid-date'
+				) as string;
+				if (!(dateKey in meetingsMapping)) {
+					meetingsMapping[dateKey] = [];
+				}
+				(meetingsMapping[dateKey] as Meeting[]).push(meeting);
+			});
+
+			setMeetingsByDate(meetingsMapping);
+		});
 	}, [selectedDate]);
 
 	return (
@@ -51,10 +79,14 @@ const CalendarComponent = () => {
 				</div>
 			</div>
 			<div className='calendar__body'>
-				{dayNumbers.map((dayNumber, index) => (
+				{dateDays.map((day, index) => (
 					<CalendarFieldComponent
-						today={isCurrentDay(dayNumber)}
-						dayNumber={dayNumber}
+						today={isCurrentDay(day)}
+						dayNumber={day.getDate()}
+						meetings={
+							meetingsByDate[day.toISOString().split('T')[0]!] ||
+							[]
+						}
 						key={index}
 					/>
 				))}

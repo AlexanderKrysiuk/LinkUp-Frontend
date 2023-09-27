@@ -32,23 +32,24 @@ export const calculateDaysToFill = (
 		nextMonthDays += 7;
 	}
 
-	const daysFromPrevMonth = Array.from(
-		{ length: firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1 },
-		(_, i) => prevMonthDays + i + 1,
-	);
-	const daysFromCurrentMonth = Array.from(
-		{ length: daysInMonth },
-		(_, i) => i + 1,
-	);
-	const daysFromNextMonth = Array.from(
-		{
-			length: nextMonthDays,
-		},
-		(_, i) => i + 1,
-	);
-	return [
-		...daysFromPrevMonth,
-		...daysFromCurrentMonth,
-		...daysFromNextMonth,
-	];
+	const daysArray: Date[] = [];
+
+	// Days from the previous month
+	for (let i = 0; i < (firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1); i++) {
+		const day = new Date(year, month - 1, prevMonthDays + i + 1);
+		daysArray.push(day);
+	}
+
+	// Days from the current month
+	for (let i = 0; i < daysInMonth; i++) {
+		const day = new Date(year, month, i + 1);
+		daysArray.push(day);
+	}
+
+	// Days from the next month
+	for (let i = 0; i < nextMonthDays; i++) {
+		const day = new Date(year, month + 1, i + 1);
+		daysArray.push(day);
+	}
+	return daysArray;
 };
