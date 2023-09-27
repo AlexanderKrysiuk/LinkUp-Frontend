@@ -1,0 +1,98 @@
+@use '../styles/variables' as *;
+.form {
+	background-color: $color-background;
+	@include border-important;
+	padding: 1rem;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	width: min-content;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		min-width: 300px;
+		text-align: left;
+		margin: 0 0.5rem 0 0.5rem;
+		&-element {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			width: 100%;
+			margin-bottom: 0.25rem;
+			&__label {
+				font-weight: $font-weight-bold;
+				color: $color-heading;
+			}
+
+			&__input {
+				padding: 0.25rem;
+				@include border-important;
+				width: 100%;
+			}
+		}
+
+		&__error-message,
+		&-element__validation-prompt {
+			float: left;
+			color: $color-warning1;
+			font-size: 0.7rem;
+			margin-top: 0.25rem;
+			font-style: italic;
+			margin: 0.25rem;
+		}
+	}
+	&-redirect {
+		width: 100%;
+		justify-content: space-around;
+		align-items: center;
+		margin-top: 0.5rem;
+
+		a {
+			font-size: 1.1rem;
+			font-weight: $font-weight-bold;
+			text-decoration: underline;
+
+			&::after {
+				content: '!';
+			}
+		}
+	}
+}
+.divider {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0.5rem 0 0.25rem 0;
+}
+.form__container__submit-button {
+	padding: 0.25rem 0.5rem;
+	margin-top: 1rem;
+	color: $color-text;
+	font-weight: $font-weight-bold;
+	@include border-important;
+	cursor: pointer;
+	width: fit-content;
+	align-self: center;
+	transition: all 0.3s;
+}
+.google-button {
+	padding: 0.25rem 0.5rem;
+	margin-top: 0.5rem;
+	color: $color-text;
+	font-weight: $font-weight-bold;
+	@include border-important;
+	cursor: pointer;
+	width: fit-content;
+	align-self: center;
+	transition: all 0.3s;
+}
+.form__container__submit-button:hover,
+.google-button:hover {
+	background-color: $color-primary;
+	border: transparent solid 2px;
+}

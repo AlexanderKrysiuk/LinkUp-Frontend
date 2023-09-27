@@ -14,7 +14,7 @@
 }
 .profile:before {
   content: "";
-  background-color: white !important;
+  background-color: var(--color-background) !important;
   position: absolute;
   top: 0;
   left: 0;
@@ -229,3 +229,4 @@ a.active .pill-button {
     width: fit-content;
   }
 }/*# sourceMappingURL=ProfilePageLayout.css.map */
+

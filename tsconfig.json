@@ -61,6 +61,9 @@
 			"@router/*": [
 				"./src/router/*"
 			],
+			"@styles/*": [
+				"./src/styles/*"
+			],
 		},
 		/* Bundler mode */
 		"moduleResolution": "node",

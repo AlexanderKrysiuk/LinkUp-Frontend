@@ -3,11 +3,13 @@
  * @description Page component for the home page.
  */
 
+import ContractorMeetingsList from '@components/bookMeeting/ContractorMeetingsList';
 import ContractorsList from '@components/bookMeeting/ContractorsList';
 import ButtonComponent from '@components/button/ButtonComponent.tsx';
 
+import { BookMeetingContext } from '@contexts/BookMeetingContext';
 import { useBackdropToggle } from '@hooks/BackdropHooks';
-import React from 'react';
+import React, { useState } from 'react';
 
 /**
  * Page component for the home page.
@@ -25,11 +27,12 @@ import React from 'react';
  */
 const HomePage = (): JSX.Element => {
 	const { toggleBackdrop } = useBackdropToggle();
+	const [contractorEmail, setContractorEmail] = useState('');
 
 	return (
 		<>
-			<ContractorsList />
-
+			<ContractorsList setContractorEmail={setContractorEmail} />
+			<ContractorMeetingsList contractorEmail={contractorEmail} />
 			<h1 className='h1'>Home</h1>
 			<button onClick={toggleBackdrop}>
 				<ButtonComponent text='Toggle Backdrop' />
