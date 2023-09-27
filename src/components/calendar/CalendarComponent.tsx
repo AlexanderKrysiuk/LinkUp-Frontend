@@ -3,71 +3,57 @@ import React, { useEffect, useState } from 'react';
 import './CalendarComponent.css';
 
 import {
-	calculateDaysToFill,
-	getLocaleDayNames,
-	getLocaleMonthName,
-} from '@utils/calendarUtils';
+	CURRENT_DAY,
+	CURRENT_MONTH,
+	CURRENT_YEAR,
+} from '@utils/CalendarHelpers/calendarConstants';
 
-import { CURRENT_MONTH, CURRENT_YEAR } from '@utils/CalendarHelpers/constants';
+import { calculateDaysToFill } from '@utils/calendarUtils';
 
 import CalendarFieldComponent from './CalendarField/CalendarFieldComponent';
-import CalendarMonthButtonComponent from './CalendarMonthButton/CalendarMonthButtonComponent';
 
-const ARROW = { left: '<', right: '>' };
+import CalendarDayNamesComponent from './CalendarHeader/CalendarDayNamesComponent.tsx';
+import CalendarHeaderComponent from './CalendarHeader/CalendarHeaderComponent.tsx';
 
-type CalendarComponentProps = {
-	month?: number;
-	year?: number;
-};
+const CalendarComponent = () => {
+	const [selectedDate, setSelectedDate] = useState<Date>(
+		new Date(CURRENT_YEAR, CURRENT_MONTH, CURRENT_DAY),
+	);
 
-const CalendarComponent = ({
-	month = CURRENT_MONTH,
-	year = CURRENT_YEAR,
-}: CalendarComponentProps) => {
 	const [dayNumbers, setDayNumbers] = useState<number[]>([]);
 
-	useEffect(() => {
-		const days = calculateDaysToFill(year, month);
+	const selectedYear = selectedDate.getFullYear();
+	const selectedMonth = selectedDate.getMonth();
+
+	const updateDayNumbers = () => {
+		const days = calculateDaysToFill(selectedYear, selectedMonth);
 		setDayNumbers(days);
-	}, []);
+	};
 
-	const monthName = getLocaleMonthName(month);
+	const isCurrentDay = (dayNumber: number) =>
+		dayNumber === CURRENT_DAY &&
+		selectedMonth === CURRENT_MONTH &&
+		selectedYear === CURRENT_YEAR;
 
-	const dayNames = getLocaleDayNames();
+	useEffect(() => {
+		updateDayNumbers();
+	}, [selectedDate]);
 
 	return (
 		<div className='calendar'>
 			<div className='calendar__header'>
-				<div className='calendar__header-month'>
-					<div className='calendar__header-month__arrow-left'>
-						<CalendarMonthButtonComponent
-							arrow={ARROW.left}
-							direction='previous'
-						/>
-					</div>
-					<div className='calendar__header-month__text'>
-						{monthName} {year === CURRENT_YEAR ? null : year}
-					</div>
-					<div className='calendar__header-month__arrow-right'>
-						<CalendarMonthButtonComponent
-							arrow={ARROW.right}
-							direction='next'
-						/>
-					</div>
-				</div>
+				<CalendarHeaderComponent
+					prevDate={selectedDate}
+					setDate={setSelectedDate}
+				/>
 				<div className='calendar__header-days'>
-					{dayNames.map((dayName, index) => (
-						<div
-							className='calendar__header-day'
-							key={index}>
-							{dayName}
-						</div>
-					))}
+					<CalendarDayNamesComponent />
 				</div>
 			</div>
 			<div className='calendar__body'>
 				{dayNumbers.map((dayNumber, index) => (
 					<CalendarFieldComponent
+						today={isCurrentDay(dayNumber)}
 						dayNumber={dayNumber}
 						key={index}
 					/>

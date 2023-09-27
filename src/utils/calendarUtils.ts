@@ -1,62 +1,54 @@
-import { CURRENT_MONTH, CURRENT_YEAR } from './CalendarHelpers/constants';
 import {
-	convertMonth,
+	CURRENT_MONTH,
+	CURRENT_YEAR,
+} from './CalendarHelpers/calendarConstants';
+
+import {
 	getDayOfWeek,
 	getDaysInMonth,
 	getDaysInPrevMonth,
-} from './CalendarHelpers/functions';
+} from './CalendarHelpers/calendarFunctions';
 
 export const calculateDaysToFill = (
 	year: number = CURRENT_YEAR,
 	month: number = CURRENT_MONTH,
 ) => {
-	const requestedMonth = convertMonth(month);
+	const firstDayOfMonth = new Date(year, month, 1);
+	const lastDayOfMonth = new Date(year, month + 1, 0);
 
-	const firstDayOfMonth = new Date(year, requestedMonth, 1);
-	const lastDayOfMonth = new Date(year, requestedMonth + 1, 0);
-
-	const firstDayOfWeek = getDayOfWeek(firstDayOfMonth);
+	const firstDayOfWeek = getDayOfWeek(firstDayOfMonth) + 1;
 	const lastDayOfWeek = getDayOfWeek(lastDayOfMonth);
 
-	const daysInMonth = getDaysInMonth(year, requestedMonth);
+	const daysInMonth = getDaysInMonth(year, month);
 	const prevMonthDays =
-		getDaysInPrevMonth(year, requestedMonth) - firstDayOfWeek + 2;
-	const nextMonthDays = 7 - lastDayOfWeek;
+		firstDayOfWeek === 0
+			? 0
+			: getDaysInPrevMonth(year, month) - firstDayOfWeek + 1;
+	let nextMonthDays = lastDayOfWeek === 6 ? 0 : 6 - lastDayOfWeek;
+
+	if (daysInMonth + firstDayOfWeek + nextMonthDays <= 35) {
+		nextMonthDays += 14;
+	} else if (daysInMonth + firstDayOfWeek + nextMonthDays <= 42) {
+		nextMonthDays += 7;
+	}
 
 	const daysFromPrevMonth = Array.from(
-		{ length: firstDayOfWeek - 1 },
-		(_, i) => prevMonthDays + i,
+		{ length: firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1 },
+		(_, i) => prevMonthDays + i + 1,
 	);
 	const daysFromCurrentMonth = Array.from(
 		{ length: daysInMonth },
 		(_, i) => i + 1,
 	);
 	const daysFromNextMonth = Array.from(
-		{ length: nextMonthDays },
+		{
+			length: nextMonthDays,
+		},
 		(_, i) => i + 1,
 	);
-
 	return [
 		...daysFromPrevMonth,
 		...daysFromCurrentMonth,
 		...daysFromNextMonth,
 	];
-};
-
-export const getLocaleDayNames = () =>
-	new Array(7).fill(0).map((_, index) => {
-		const dayIndex = (index + 3) % 7;
-		return new Date(2022, 0, dayIndex).toLocaleString(navigator.language, {
-			weekday: 'short',
-		});
-	});
-
-export const getLocaleMonthName = (month: number = CURRENT_MONTH) => {
-	const requestedMonth: number = convertMonth(month);
-	return new Date(2022, requestedMonth, 1).toLocaleString(
-		navigator.language,
-		{
-			month: 'long',
-		},
-	);
 };

@@ -31,13 +31,15 @@
   font-weight: bold;
 }
 .calendar__header-month__arrow-left, .calendar__header-month__arrow-right {
-  font-size: 1rem;
   padding: 0.5rem;
 }
-.calendar__header-month__arrow-left > button, .calendar__header-month__arrow-right > button {
-  padding: 0.25rem;
-  border: none;
-  background-color: transparent;
+.calendar__header-month__arrow-left > svg > path, .calendar__header-month__arrow-right > svg > path {
+  transition: all 0.3s ease-in-out;
+  stroke: black;
+  stroke-width: 2rem;
+}
+.calendar__header-month__arrow-left > svg > path:hover, .calendar__header-month__arrow-right > svg > path:hover {
+  fill: white;
 }
 .calendar__header-month__text {
   width: 100%;
@@ -71,9 +73,14 @@
   height: 100px;
   border: 1px solid var(--color-heading);
 }
+.calendar__field.today {
+  background-color: var(--color-call-to-action) !important;
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+}
 .calendar__field:nth-of-type(odd) {
   background-color: bisque;
 }
 .calendar__field:nth-of-type(even) {
-  background-color: darkorange;
+  background-color: blue;
 }/*# sourceMappingURL=CalendarComponent.css.map */
