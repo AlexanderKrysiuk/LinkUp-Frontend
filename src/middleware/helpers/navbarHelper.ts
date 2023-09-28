@@ -1,5 +1,7 @@
-export const setNavbarItems = (isLogged: boolean) => {
-	return isLogged
-		? ['home', 'new meeting', 'profile', 'logout']
-		: ['home', 'register', 'login'];
+export const setNavbarItems = (userRole: any) => {
+	if (userRole === 'Client') {
+		return ['home', 'profile', 'logout'];
+	} else {
+		return ['home', 'new meeting', 'profile', 'logout'];
+	}
 };

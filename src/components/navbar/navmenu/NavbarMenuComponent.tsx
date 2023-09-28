@@ -4,10 +4,10 @@
  */
 
 import { AuthContext } from '@contexts/AuthContext.tsx';
-import routes from '@router/NavMenuItems.ts';
-import React, { useContext } from 'react';
-
 import { setNavbarItems } from '@middleware/helpers/navbarHelper.ts';
+import { getRole } from '@middleware/userHandler';
+import routes from '@router/NavMenuItems.ts';
+import React, { useContext, useEffect, useState } from 'react';
 import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.tsx';
 
 /**
@@ -26,12 +26,20 @@ import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.t
  */
 const NavbarMenuComponent = (): JSX.Element => {
 	const { isLogged } = useContext(AuthContext);
+	const [userRole, setUserRole] = useState<string | null>(null);
 
-	// const allowedRoutes = isLogged
-	// 	? ['home', 'new meeting', 'profile', 'logout']
-	// 	: ['home', 'register', 'login'];
+	useEffect(() => {
+		const fetchUserRole = async () => {
+			const roleToSet: any = await getRole();
+			setUserRole(roleToSet);
+		};
 
-	const allowedRoutes = setNavbarItems(isLogged);
+		fetchUserRole();
+	}, [isLogged]);
+
+	const allowedRoutes = isLogged
+		? setNavbarItems(userRole)
+		: ['home', 'register', 'login'];
 
 	return (
 		<ul className='navbar__menu'>

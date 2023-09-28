@@ -49,6 +49,17 @@ const HamburgerLinkComponent = ({
 				</li>
 			</NavLink>
 		);
+	} else if (item.routeName === 'new meeting') {
+		return (
+			<li
+				className='hamburger-sidebar__menu-link'
+				onClick={() => {
+					//window.prompt('OK'); //modal
+					toggleBackdrop();
+				}}>
+				<span>{item.routeName}</span>
+			</li>
+		);
 	} else {
 		return (
 			<NavLink

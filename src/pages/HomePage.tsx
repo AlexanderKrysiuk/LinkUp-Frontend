@@ -5,10 +5,10 @@
 
 import ContractorMeetingsList from '@components/bookMeeting/ContractorMeetingsList';
 import ContractorsList from '@components/bookMeeting/ContractorsList';
-import ButtonComponent from '@components/button/ButtonComponent.tsx';
+// import ButtonComponent from '@components/button/ButtonComponent.tsx';
 
-import { BookMeetingContext } from '@contexts/BookMeetingContext';
-import { useBackdropToggle } from '@hooks/BackdropHooks';
+// import { BookMeetingContext } from '@contexts/BookMeetingContext';
+// import { useBackdropToggle } from '@hooks/BackdropHooks';
 import React, { useState } from 'react';
 
 /**
@@ -26,20 +26,19 @@ import React, { useState } from 'react';
  * ```
  */
 const HomePage = (): JSX.Element => {
-	const { toggleBackdrop } = useBackdropToggle();
+	//const { toggleBackdrop } = useBackdropToggle();
 	const [contractorEmail, setContractorEmail] = useState('');
 
 	return (
 		<>
 			<ContractorsList setContractorEmail={setContractorEmail} />
 			<ContractorMeetingsList contractorEmail={contractorEmail} />
-			<h1 className='h1'>Home</h1>
+			{/* <h1 className='h1'>Home</h1>
 			<button onClick={toggleBackdrop}>
 				<ButtonComponent text='Toggle Backdrop' />
-			</button>
+			</button> */}
 		</>
 	);
 };
 
 export default HomePage;
-
