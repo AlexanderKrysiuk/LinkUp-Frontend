@@ -1,7 +1,6 @@
 import { NewMeetingData } from '@data/formData';
 import { newMeetingSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import '@layouts/FormLayout.css';
 import { submitFormData } from '@middleware/formHandler';
 import { convertToMeetingData } from '@middleware/helpers/dataConverter';
 import {
@@ -44,8 +43,6 @@ function NewMeetingForm() {
 		if (success) {
 			navigate('/', { replace: true });
 		} else {
-			// Obsługa błędów
-			console.error(error, 'This is madness!');
 			errorMessage = error;
 		}
 	};
@@ -80,12 +77,12 @@ function NewMeetingForm() {
 
 	return (
 		<form
-			className='form-component'
+			className='form__container'
 			onSubmit={handleSubmit(addMeeting)}>
-			<div className='form-element'>
-				<label className='form-element__label'>Date:</label>
+			<div className='form__container-element'>
+				<label className='form__container-element__label'>Date:</label>
 				<input
-					className='form-element__input'
+					className='form__container-element__input'
 					{...register('date')}
 					type='date'
 					id='date'
@@ -93,20 +90,20 @@ function NewMeetingForm() {
 					onChange={setMinTimeReference}
 				/>
 				{errors.date && (
-					<span className='form-element__validation-prompt'>
+					<span className='form__container-element__validation-prompt'>
 						{errors.date.message}
 					</span>
 				)}
 				{errorMessage && (
-					<span className='form-element__validation-prompt'>
+					<span className='form__container-element__validation-prompt'>
 						{errorMessage}
 					</span>
 				)}
 			</div>
-			<div className='form-element'>
-				<label className='form-element__label'>Time:</label>
+			<div className='form__container-element'>
+				<label className='form__container-element__label'>Time:</label>
 				<input
-					className='form-element__input'
+					className='form__container-element__input'
 					{...register('time')}
 					type='time'
 					id='time'
@@ -114,20 +111,22 @@ function NewMeetingForm() {
 					onChange={validateTime}
 				/>
 				{errors.time && (
-					<span className='form-element__validation-prompt'>
+					<span className='form__container-element__validation-prompt'>
 						{errors.time.message}
 					</span>
 				)}
 				{isTimeInvalid && (
-					<span className='form-element__validation-prompt'>
+					<span className='form__container-element__validation-prompt'>
 						{timeErr}
 					</span>
 				)}
 			</div>
-			<div className='form-element'>
-				<label className='form-element__label'>Duration (min):</label>
+			<div className='form__container-element'>
+				<label className='form__container-element__label'>
+					Duration (min):
+				</label>
 				<input
-					className='form-element__input'
+					className='form__container-element__input'
 					type='number'
 					id='duration'
 					step='30'
@@ -135,42 +134,46 @@ function NewMeetingForm() {
 					{...register('duration')}
 				/>
 				{errors.duration && (
-					<span className='form-element__validation-prompt'>
+					<span className='form__container-element__validation-prompt'>
 						{errors.duration.message}
 					</span>
 				)}
 			</div>
-			<div className='form-element'>
-				<label className='form-element__label'>Max participants:</label>
+			<div className='form__container-element'>
+				<label className='form__container-element__label'>
+					Max participants:
+				</label>
 				<input
-					className='form-element__input'
+					className='form__container-element__input'
 					type='number'
 					id='participants'
 					min='1'
 					{...register('participants')}
 				/>
 				{errors.participants && (
-					<span className='form-element__validation-prompt'>
+					<span className='form__container-element__validation-prompt'>
 						{errors.participants.message}
 					</span>
 				)}
 			</div>
-			<div className='form-element'>
-				<label className='form-element__label'>Description:</label>
+			<div className='form__container-element'>
+				<label className='form__container-element__label'>
+					Description:
+				</label>
 				<input
-					className='form-element__input'
+					className='form__container-element__input'
 					type='text'
 					id='description'
 					{...register('description')}
 				/>
 				{errors.description && (
-					<span className='form-element__validation-prompt'>
+					<span className='form__container-element__validation-prompt'>
 						{errors.description.message}
 					</span>
 				)}
 			</div>
 			<button
-				className='action-button'
+				className='form__container__submit-button'
 				type='submit'>
 				OK
 			</button>
