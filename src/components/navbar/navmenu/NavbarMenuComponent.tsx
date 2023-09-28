@@ -7,6 +7,7 @@ import { AuthContext } from '@contexts/AuthContext.tsx';
 import routes from '@router/NavMenuItems.ts';
 import React, { useContext } from 'react';
 
+import { setNavbarItems } from '@middleware/helpers/navbarHelper.ts';
 import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.tsx';
 
 /**
@@ -26,9 +27,11 @@ import NavbarIconButtonComponent from '../iconbutton/NavbarIconButtonComponent.t
 const NavbarMenuComponent = (): JSX.Element => {
 	const { isLogged } = useContext(AuthContext);
 
-	const allowedRoutes = isLogged
-		? ['home', 'contact', 'profile', 'logout']
-		: ['home', 'contact', 'register', 'login'];
+	// const allowedRoutes = isLogged
+	// 	? ['home', 'new meeting', 'profile', 'logout']
+	// 	: ['home', 'register', 'login'];
+
+	const allowedRoutes = setNavbarItems(isLogged);
 
 	return (
 		<ul className='navbar__menu'>
