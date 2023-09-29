@@ -11,7 +11,6 @@ const HomePage = (): JSX.Element => {
 	const [contractorEmail, setContractorEmail] = useState('');
 
 	const handleToggle = () => {
-		console.log('button clicked');
 		setModal(<NewMeetingForm />);
 		toggleBackdrop();
 	};
