@@ -1,0 +1,18 @@
+@use '../styles/variables.scss' as *;
+
+.modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-width: 300px;
+	width: max-content;
+	min-height: 200px;
+	background-color: $color-background;
+	color: $color-text;
+	@include border-important;
+	& > .calendar__meetings {
+		width: fit-content;
+		@include border-important;
+	}
+}

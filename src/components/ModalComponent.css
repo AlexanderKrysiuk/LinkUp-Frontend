@@ -1,0 +1,28 @@
+/* font weights */
+/* standard border curvature (radius) */
+/* light mode */
+/* color scheme */
+/* functional colors */
+/* dark mode - subject to change, not tested */
+/* color scheme */
+/* functional colors */
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  width: -moz-max-content;
+  width: max-content;
+  min-height: 200px;
+  background-color: #fffff0;
+  color: #2b2217;
+  border: #f5aa37 solid 2px;
+  border-radius: 0.5rem;
+}
+.modal > .calendar__meetings {
+  width: -moz-fit-content;
+  width: fit-content;
+  border: #f5aa37 solid 2px;
+  border-radius: 0.5rem;
+}/*# sourceMappingURL=ModalComponent.css.map */
