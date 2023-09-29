@@ -1,3 +1,11 @@
+/* font weights */
+/* standard border curvature (radius) */
+/* light mode */
+/* color scheme */
+/* functional colors */
+/* dark mode - subject to change, not tested */
+/* color scheme */
+/* functional colors */
 .calendar {
   display: flex;
   flex-wrap: wrap;
@@ -86,4 +94,33 @@
 }
 .calendar__field_meetings_count {
   margin-left: 0.5rem;
+}
+.calendar__meetings {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  margin: auto;
+  border: #f5aa37 solid 2px;
+  border-radius: 0.5rem;
+}
+.calendar__meetings__header {
+  color: #273f68;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.calendar__meetings:last-child {
+  border-bottom: none;
+}
+.calendar__meeting {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  background-color: #a4c7e0;
+  border-top: 1px solid #f5aa37;
+  border-bottom: 1px solid #f5aa37;
+  border-radius: 0.5rem;
+}
+.calendar__meeting-time, .calendar__meeting-description, .calendar__meeting-max-participants {
+  display: flex;
+  justify-content: space-between;
 }/*# sourceMappingURL=CalendarComponent.css.map */
