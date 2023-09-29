@@ -1,4 +1,4 @@
-import { useBackdropToggle } from '@hooks/BackdropHooks.tsx';
+import { useBackdrop } from '@hooks/BackdropHooks.tsx';
 import { useHamburgerSidebarToggle } from '@hooks/HamburgerSidebarHooks.tsx';
 import { NavMenuItem } from '@router/NavMenuItems.ts';
 import React from 'react';
@@ -13,7 +13,7 @@ const HamburgerLinkComponent = ({
 	item,
 }: HamburgerLinkComponentProps): JSX.Element => {
 	const { toggleHamburgerSidebar } = useHamburgerSidebarToggle();
-	const { toggleBackdrop } = useBackdropToggle();
+	const { toggleBackdrop } = useBackdrop();
 
 	const clickHandler = (): void => {
 		toggleHamburgerSidebar();

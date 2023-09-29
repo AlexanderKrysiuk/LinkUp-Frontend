@@ -1,6 +1,6 @@
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useBackdropToggle } from '@hooks/BackdropHooks.tsx';
+import { useBackdrop } from '@hooks/BackdropHooks.tsx';
 
 import React from 'react';
 
@@ -23,7 +23,7 @@ const CalendarFieldComponent = ({
 	today,
 	meetings,
 }: CalendarFieldComponentProps) => {
-	const { toggleBackdrop } = useBackdropToggle();
+	const { toggleBackdrop } = useBackdrop();
 	return (
 		<div
 			className={`calendar__field ${today ? 'today' : null}`}
