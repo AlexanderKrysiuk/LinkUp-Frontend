@@ -1,8 +1,9 @@
 import BackdropComponent from '@components/BackdropComponent';
 import { useModal } from '@hooks/ModalHooks.tsx';
+
 import { AnimatePresence } from 'framer-motion';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface BackdropContextValue {
 	isBackdropOpen: boolean;
@@ -27,12 +28,15 @@ export const BackdropProvider = ({
 
 	const toggleBackdrop = () => {
 		setIsBackdropOpen((prevIsBackdropOpen) => {
-			if (prevIsBackdropOpen) {
-				setModal(null);
-			}
 			return !prevIsBackdropOpen;
 		});
 	};
+
+	useEffect(() => {
+		if (!isBackdropOpen) {
+			setModal(null);
+		}
+	}, [isBackdropOpen]);
 
 	return (
 		<BackdropContext.Provider value={{ isBackdropOpen, toggleBackdrop }}>
