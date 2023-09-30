@@ -100,21 +100,18 @@
   height: fit-content;
   width: 100%;
   margin: auto;
-  border: #f5aa37 solid 2px;
-  border-radius: 0.5rem;
 }
 .calendar__meetings__header {
   color: #273f68;
   font-weight: 700;
   font-size: 1rem;
-}
-.calendar__meetings:last-child {
-  border-bottom: none;
+  margin-bottom: 1rem;
 }
 .calendar__meeting {
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
+  margin: 0.2rem 0;
   background-color: #a4c7e0;
   border-top: 1px solid #f5aa37;
   border-bottom: 1px solid #f5aa37;
@@ -123,4 +120,7 @@
 .calendar__meeting-time, .calendar__meeting-description, .calendar__meeting-max-participants {
   display: flex;
   justify-content: space-between;
+}
+.calendar__meeting-time span:first-of-type, .calendar__meeting-description span:first-of-type, .calendar__meeting-max-participants span:first-of-type {
+  font-weight: 700;
 }/*# sourceMappingURL=CalendarComponent.css.map */

@@ -102,20 +102,18 @@ $children-per-row: 7;
 		height: fit-content;
 		width: 100%;
 		margin: auto;
-		@include border-important;
 		&__header {
 			color: $color-heading;
 			font-weight: $font-weight-bold;
 			font-size: 1rem;
-		}
-		&:last-child {
-			border-bottom: none;
+			margin-bottom: 1rem;
 		}
 	}
 	&__meeting {
 		display: flex;
 		flex-direction: column;
 		padding: 0.5rem;
+		margin: 0.2rem 0;
 		background-color: $color-primary;
 		border-top: 1px solid $color-call-to-action;
 		border-bottom: 1px solid $color-call-to-action;
@@ -125,6 +123,9 @@ $children-per-row: 7;
 		&-max-participants {
 			display: flex;
 			justify-content: space-between;
+			& span:first-of-type {
+				font-weight: $font-weight-bold;
+			}
 		}
 	}
 }
