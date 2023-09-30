@@ -44,29 +44,41 @@ const CalendarComponent = () => {
 		);
 	};
 
+	const convertToLocaleTimezone = (date: string) => {
+		const localeOffset = new Date().getTimezoneOffset();
+		const meetingDate = new Date(date);
+		const offsetHours = meetingDate.getHours() + (localeOffset * -1) / 60;
+		meetingDate.setHours(offsetHours);
+		return meetingDate;
+	};
+
 	useEffect(() => {
 		updateDateDays();
 
 		const token = localStorage.getItem('token');
+		if (token) {
+			getMeetings(token).then((res: Meeting[]) => {
+				const meetingsMapping: Record<string, Meeting[]> = {};
+				res.forEach((meeting: Meeting) => {
+					const offsetMeeting = convertToLocaleTimezone(
+						meeting.dateTime,
+					);
+					const dateParts = offsetMeeting.toISOString().split('T');
+					const dateKey = (
+						dateParts.length > 0 ? dateParts[0] : 'invalid-date'
+					) as string;
+					if (!(dateKey in meetingsMapping)) {
+						meetingsMapping[dateKey] = [];
+					}
+					(meetingsMapping[dateKey] as Meeting[]).push(meeting);
+				});
 
-		getMeetings(token!).then((res: Meeting[]) => {
-			const meetingsMapping: Record<string, Meeting[]> = {};
-
-			res.forEach((meeting: Meeting) => {
-				const dateParts = meeting.dateTime.split('T');
-				const dateKey = (
-					dateParts.length > 0 ? dateParts[0] : 'invalid-date'
-				) as string;
-				if (!(dateKey in meetingsMapping)) {
-					meetingsMapping[dateKey] = [];
-				}
-				(meetingsMapping[dateKey] as Meeting[]).push(meeting);
+				setMeetingsByDate(meetingsMapping);
 			});
-
-			setMeetingsByDate(meetingsMapping);
-		});
+		} else {
+			throw new Error('Missing token - no user');
+		}
 	}, [selectedDate]);
-
 	return (
 		<div className='calendar'>
 			<div className='calendar__header'>
