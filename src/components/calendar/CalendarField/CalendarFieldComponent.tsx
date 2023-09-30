@@ -1,8 +1,11 @@
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useBackdropToggle } from '@hooks/BackdropHooks.tsx';
+
+import { useBackdrop } from '@hooks/BackdropHooks.tsx';
+import { useModal } from '@hooks/ModalHooks.tsx';
 
 import React from 'react';
+import CalendarMeetingsComponent from './CalendarMeetingsComponent.tsx';
 
 type Meeting = {
 	id: string;
@@ -23,11 +26,18 @@ const CalendarFieldComponent = ({
 	today,
 	meetings,
 }: CalendarFieldComponentProps) => {
-	const { toggleBackdrop } = useBackdropToggle();
+	const { toggleBackdrop } = useBackdrop();
+	const { setModal } = useModal();
+
+	const handleToggle = () => {
+		setModal(<CalendarMeetingsComponent meetings={meetings} />);
+		toggleBackdrop();
+	};
+
 	return (
 		<div
 			className={`calendar__field ${today ? 'today' : null}`}
-			onClick={meetings.length > 0 ? toggleBackdrop : undefined}>
+			onClick={meetings.length > 0 ? handleToggle : undefined}>
 			<p className='calendar__field_day-number'>{dayNumber}</p>
 			<p className='calendar__field_meetings'>
 				{meetings.length! > 0 && (

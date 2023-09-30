@@ -1,24 +1,11 @@
-/**
- * @module ModalComponent
- * @description A reusable modal component.
- */
-
+import { useModal } from '@hooks/ModalHooks.tsx';
 import React from 'react';
+import './ModalComponent.css';
 
-/**
- * A reusable modal component.
- *
- * This component represents a modal that can be displayed on top of other content.
- *
- * @component
- * @returns {JSX.Element} - The rendered modal element.
- * @example
- * ```tsx
- * <ModalComponent />
- * ```
- */
-const ModalComponent = (): JSX.Element => {
-	return <div>Modal Component</div>;
+const ModalComponent = (): JSX.Element | null => {
+	const { modalContent } = useModal();
+
+	return <div className='modal'>{modalContent}</div>;
 };
 
 export default ModalComponent;

@@ -1,4 +1,4 @@
-import { useBackdropToggle } from '@hooks/BackdropHooks.tsx';
+import { useBackdrop } from '@hooks/BackdropHooks.tsx';
 import {
 	useHamburgerSidebarToggle,
 	useIsHamburgerSidebarOpen,
@@ -8,7 +8,7 @@ import React from 'react';
 const HamburgerIconComponent = ({}): JSX.Element => {
 	const { toggleHamburgerSidebar } = useHamburgerSidebarToggle();
 	const { isHamburgerSidebarOpen } = useIsHamburgerSidebarOpen();
-	const { toggleBackdrop } = useBackdropToggle();
+	const { toggleBackdrop } = useBackdrop();
 
 	const handleButtonClick = () => {
 		if (!isHamburgerSidebarOpen) {
