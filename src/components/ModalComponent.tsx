@@ -5,7 +5,13 @@ import './ModalComponent.css';
 const ModalComponent = (): JSX.Element | null => {
 	const { modalContent } = useModal();
 
-	return <div className='modal'>{modalContent}</div>;
+	return (
+		<div
+			className='modal'
+			onClick={(e) => e.stopPropagation()}>
+			{modalContent}
+		</div>
+	);
 };
 
 export default ModalComponent;
