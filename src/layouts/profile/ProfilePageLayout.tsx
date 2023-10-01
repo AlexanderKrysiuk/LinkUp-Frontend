@@ -49,7 +49,9 @@ const ProfilePageLayout = (): JSX.Element => {
 
 	// Use an effect to set the default route to '/profile/overview'.
 	useEffect(() => {
-		navigate('/profile/overview');
+		navigate(
+			`/profile/${routes[0]?.routeName}/${routes[0]?.subMenu[0]?.routeName}`,
+		);
 	}, []);
 
 	// Use a ref to store the default category.

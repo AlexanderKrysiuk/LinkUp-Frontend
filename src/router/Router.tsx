@@ -65,7 +65,7 @@ const router = createBrowserRouter(
 				{profileRoutes.map((item: ProfileMenuItem, index) => (
 					<Route
 						key={index}
-						path={item.routeName}>
+						path={`${item.routeName}/${item.subMenu[0]?.routeName}`}>
 						{/* Mapping over sub-menu items */}
 						{item.subMenu.map((item: SubmenuItem, index) => (
 							<Route

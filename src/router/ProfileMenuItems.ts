@@ -12,6 +12,7 @@ import MockPageComponent from '@pages/MockPage.tsx';
  */
 export type ProfileMenuItem = {
 	routeName: string; // The name of the route.
+	component?: JSX.Element | null;
 	subMenu: SubmenuItem[]; // An array of sub-menu items for this route.
 };
 
