@@ -1,9 +1,10 @@
-import React from 'react';
+import { API_MEETINGS_URL } from '@data/links';
+import React, { useState } from 'react';
 import './MeetingCard.css';
 
-const joinMeeting = (id: any) => {
+const joinMeeting = async (id: string) => {
 	const token = localStorage.getItem('token');
-	const apiUrl = 'https://localhost:5142/api/Meetings/' + id + '/join';
+	const apiUrl = API_MEETINGS_URL + '/' + id + '/join';
 
 	fetch(apiUrl, {
 		method: 'POST',
@@ -12,10 +13,14 @@ const joinMeeting = (id: any) => {
 		},
 	}).then((response) => {
 		if (!response.ok) {
-			console.log(response.json());
 			throw new Error('Network response was not ok');
 		}
 	});
+	showAlert();
+};
+
+const showAlert = () => {
+	alert('You joined the meeting :)');
 };
 
 const MeetingCard = ({ meeting }: any) => {
