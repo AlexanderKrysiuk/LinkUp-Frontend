@@ -1,10 +1,16 @@
 //import Button from '@components/utils/Button';
 import NewMeetingForm from '@components/meetingForm/NewMeetingForm';
 import MockMeetings from '@components/mock/mockMeetingsAll';
+
+import CalendarComponent from '@components/calendar/CalendarComponent';
 import Button from '@components/utils/buttons/Button';
+
 import { getMeetings } from '@middleware/meetingsHandler';
+
 import { getRole } from '@middleware/userHandler';
+
 import { Meetings } from 'data/dataTypes';
+
 import React, { useEffect, useState } from 'react';
 
 const MockPageComponent = (): JSX.Element => {
@@ -62,32 +68,37 @@ const MockPageComponent = (): JSX.Element => {
 	}, [token]);
 
 	return (
-		<div>
-			{/* if logged : display his role and button to add meetings */}
-			{token ? (
-				<div>
-					{/* <h1> You are logged in, dawg!</h1> */}
-					Hey, {userRole}.
-				</div>
-			) : null}
-			{/* end if logged */}
+		<>
+			<div className='calendar-container'>
+				<CalendarComponent />
+			</div>
+			<div className='meetings-container'>
+				{/* if logged : display his role and button to add meetings */}
+				{token ? (
+					<div>
+						{/* <h1> You are logged in, dawg!</h1> */}
+						Hey, {userRole}.
+					</div>
+				) : null}
+				{/* end if logged */}
 
-			{/* if authorized : allow to add meeting */}
-			{userRole === 'Contractor' || userRole === 'Admin' ? (
-				<Button
-					text='+ Add new meeting'
-					onClick={toggleForm}
-				/>
-			) : null}
-			{isFormVisible && <NewMeetingForm />}
-			{/* end if authorized */}
+				{/* if authorized : allow to add meeting */}
+				{userRole === 'Contractor' || userRole === 'Admin' ? (
+					<Button
+						text='+ Add new meeting'
+						onClick={toggleForm}
+					/>
+				) : null}
+				{isFormVisible && <NewMeetingForm />}
+				{/* end if authorized */}
 
-			{/* if created/booked meetings : get and see meetings */}
-			{token && userMeetings ? (
-				<MockMeetings meetings={userMeetings} />
-			) : null}
-			{/* end if created/booked meetings */}
-		</div>
+				{/* if created/booked meetings : get and see meetings */}
+				{token && userMeetings ? (
+					<MockMeetings meetings={userMeetings} />
+				) : null}
+				{/* end if created/booked meetings */}
+			</div>
+		</>
 	);
 };
 
