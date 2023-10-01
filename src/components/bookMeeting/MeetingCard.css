@@ -7,3 +7,21 @@
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Shade */
 }
 
+.button {
+	background-color: #4caf50; /* Kolor tła przycisku */
+	color: white; /* Kolor tekstu przycisku */
+	border: none; /* Usunięcie obramowania przycisku */
+	padding: 10px 20px; /* Wielkość wewnętrznych marginesów przycisku */
+	text-align: center; /* Wyśrodkowanie tekstu w przycisku */
+	text-decoration: none; /* Usunięcie podkreślenia */
+	display: inline-block; /* Pozycjonowanie przycisku jako elementu inline-block */
+	font-size: 16px; /* Rozmiar tekstu przycisku */
+	margin: 4px 2px; /* Mniejsze marginesy poziome i pionowe */
+	cursor: pointer; /* Zmień kursor na wskaźnik po najechaniu na przycisk */
+	border-radius: 8px; /* Zaokrąglenie rogów przycisku */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Cień przycisku */
+}
+
+.button:hover {
+	background-color: #45a049; /* Kolor tła przycisku po najechaniu na niego myszą */
+}
