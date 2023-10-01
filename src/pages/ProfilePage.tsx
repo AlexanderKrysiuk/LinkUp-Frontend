@@ -4,7 +4,9 @@
  */
 
 import ProfilePageLayout from '@layouts/profile/ProfilePageLayout.tsx';
-import React from 'react';
+import routes from '@router/ProfileMenuItems.ts';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Page component for the profile page.
@@ -20,6 +22,14 @@ import React from 'react';
  * ```
  */
 const ProfilePage = (): JSX.Element => {
+	const navigate = useNavigate();
+
+	// Use an effect to set the default route to '/profile/overview'.
+	useEffect(() => {
+		navigate(
+			`/profile/${routes[0]?.routeName}/${routes[0]?.subMenu[0]?.routeName}`,
+		);
+	}, []);
 	return (
 		<>
 			<ProfilePageLayout />
