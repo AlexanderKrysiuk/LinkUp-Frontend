@@ -1,3 +1,8 @@
+/**
+ * @module NewMeetingForm
+ * @description Module rendering the new meeting form component.
+ */
+
 import { NewMeetingData } from '@data/formData';
 import { newMeetingSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,10 +19,28 @@ import { useNavigate } from 'react-router';
 
 var errorMessage: string | number | undefined;
 
-function NewMeetingForm() {
+/**
+ * NewMeetingForm - Component for creating a new meeting.
+ *
+ * This component is responsible for rendering a form to create a new meeting.
+ * Users can input the date, time, duration, maximum participants, and a description
+ * for the meeting. The form is validated using the provided schema, and the data
+ * is submitted to create a new meeting. Errors are displayed if validation fails.
+ *
+ * @component
+ * @returns {JSX.Element} - Returns a component for creating a new meeting.
+ * @example
+ * // Importing the component
+ * import NewMeetingForm from './NewMeetingForm';
+ *
+ * // Using the component within another component
+ * <NewMeetingForm />
+ */
+
+function NewMeetingForm(): JSX.Element {
 	const [refTime, setRefTime] = useState<string>();
 	const [isTimeInvalid, setIsTimeInvalid] = useState<boolean>();
-	const [refDay, setRefDay] = useState<number>();
+	const [refDay, setRefDay] = useState<number>(0);
 
 	const navigate = useNavigate();
 
@@ -42,10 +65,9 @@ function NewMeetingForm() {
 		);
 
 		if (success) {
-			navigate('/', { replace: true });
+			navigate(-1); //'/', { replace: true });
 		} else {
-			// Obsługa błędów
-			console.error(error, 'This is madness!');
+			// TODO: error handling
 			errorMessage = error;
 		}
 	};
