@@ -3,7 +3,6 @@
  * @description Module containing a component for rendering a divider with a message.
  */
 
-import SplitLine from '@components/formUtils/SplitLine';
 import SplitText from '@components/formUtils/SplitText';
 import React from 'react';
 
