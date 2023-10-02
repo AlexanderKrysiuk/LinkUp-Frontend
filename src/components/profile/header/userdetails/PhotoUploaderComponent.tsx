@@ -1,16 +1,56 @@
+/**
+ * @module PhotoUploaderComponent
+ * @description Module rendering component with user picture loader.
+ */
+
 import { uploadPhoto } from '@middleware/userHandler';
 import 'filepond/dist/filepond.min.css';
 import React, { useState } from 'react';
 
+/**
+ * Props for the PhotoUploaderComponent.
+ */
 interface UploaderProps {
+	/**
+	 * The currently displayed picture.
+	 */
 	profilePhoto: File | null;
+	/**
+	 * A function to set current picture.
+	 *
+	 * @param {File} file - The file to upload as profile picture.
+	 */
 	setProfilePhoto: (file: File) => void;
 }
 
-const PhotoUploaderComponent: React.FC<UploaderProps> = ({
+/**
+ * PhotoUploaderComponent - Component for uploading and managing user profile photos.
+ *
+ * This component is responsible for enabling users to upload and manage their profile photos.
+ * It provides a file input field for selecting a profile photo, an upload button to save the selected
+ * photo as a new profile picture, and error handling for failed uploads. The selected photo is passed
+ * to this component as a `profilePhoto` prop, and the new photo can be set using the `setProfilePhoto` prop.
+ *
+ * @component
+ * @param {object} props - Props for the PhotoUploaderComponent.
+ * @param {File | null} props.profilePhoto - The currently selected profile photo.
+ * @param {(file: File) => void} props.setProfilePhoto - A function to set the new profile photo.
+ * @returns {JSX.Element} - Returns a component for uploading and managing user profile photos.
+ * @example
+ * // Importing the component
+ * import PhotoUploaderComponent from './PhotoUploaderComponent';
+ *
+ * // Using the component within another component
+ * <PhotoUploaderComponent
+ *   profilePhoto={currentProfilePhoto}
+ *   setProfilePhoto={handleSetProfilePhoto}
+ * />
+ */
+
+const PhotoUploaderComponent = ({
 	profilePhoto,
 	setProfilePhoto,
-}: UploaderProps) => {
+}: UploaderProps): JSX.Element => {
 	const [error, setError] = useState('');
 	const [isButtonVisible, setIsButtonVisible] = useState(false);
 
