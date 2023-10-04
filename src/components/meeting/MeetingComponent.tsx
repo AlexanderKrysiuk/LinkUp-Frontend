@@ -1,14 +1,47 @@
+/**
+ * @module MeetingComponent
+ * @description Module containing meeting component.
+ */
+
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { deleteMeeting } from '@middleware/meetingsHandler';
 import { getRole } from '@middleware/userHandler';
 import React, { useEffect, useState } from 'react';
 
+/**
+ * Props for the `MeetingComponent` component.
+ */
 interface MeetingProps {
+	/**
+	 * The meeting data to pass.
+	 */
 	meetingId: string;
 	datetime: string;
 	description?: string | null;
 }
+
+/**
+ * MeetingComponent - Component for displaying individual meeting details.
+ *
+ * This component is responsible for rendering the details of an individual meeting,
+ * including its date, time, and description (if available). It also allows users
+ * with the 'Contractor' or 'Admin' role to delete the meeting. It uses state to manage
+ * the user's role and whether the meeting has been marked as deleted.
+ *
+ * @component
+ * @param {object} props - Props for the MeetingComponent.
+ * @param {string} props.meetingId - The unique identifier of the meeting.
+ * @param {string} props.datetime - The date and time of the meeting.
+ * @param {string | null | undefined} props.description - The optional description of the meeting.
+ * @returns {JSX.Element} - Returns a component displaying individual meeting details.
+ * @example
+ * // Importing the component
+ * import MeetingComponent from './MeetingComponent';
+ *
+ * // Using the component within another component
+ * <MeetingComponent meetingId="1" datetime="2023-10-02T15:30:00" description="Project Meeting" />
+ */
 
 const MeetingComponent: React.FC<MeetingProps> = ({
 	datetime,
@@ -19,6 +52,7 @@ const MeetingComponent: React.FC<MeetingProps> = ({
 	const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
 	useEffect(() => {
+		// Fetch and set the user's role
 		const fetchUserRole = async () => {
 			const roleToSet: any = await getRole();
 			setUserRole(roleToSet);
@@ -34,6 +68,7 @@ const MeetingComponent: React.FC<MeetingProps> = ({
 	}
 
 	const handleDelete = (meetingId: string) => {
+		// Prompt user for confirmation before deleting the meeting
 		if (confirm('Are you sure you want to delete this meeting?')) {
 			deleteMeeting(meetingId);
 			setIsDeleted(true);

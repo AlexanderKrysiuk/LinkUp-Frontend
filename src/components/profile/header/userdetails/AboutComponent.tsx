@@ -1,6 +1,28 @@
+/**
+ * @module AboutComponent
+ * @description Module rendering component with user data.
+ */
+
 import React, { useEffect, useState } from 'react';
 
-const AboutComponent: React.FC = () => {
+/**
+ * AboutComponent - Component for displaying and editing user description.
+ *
+ * This component is responsible for displaying and editing the user's description.
+ * Users can edit their description by hovering over it and clicking on it. The description
+ * is stored in local storage and can be up to 100 characters long.
+ *
+ * @component
+ * @returns {JSX.Element} - Returns a component for displaying and editing the user's description.
+ * @example
+ * // Importing the component
+ * import AboutComponent from './AboutComponent';
+ *
+ * // Using the component within another component
+ * <AboutComponent />
+ */
+
+const AboutComponent = (): JSX.Element => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [description, setDescription] = useState('');
 

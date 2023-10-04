@@ -19,7 +19,6 @@ import FooterLayout from '@layouts/footer/FooterLayout.tsx';
 
 import NavbarLayout from '@layouts/header/NavbarLayout.tsx';
 
-
 import { AuthProvider } from '@contexts/AuthContext';
 import { HamburgerSidebar } from '@contexts/HamburgerSidebarContext.tsx';
 import { Outlet } from 'react-router-dom';
@@ -40,8 +39,6 @@ import { Outlet } from 'react-router-dom';
 export function App(): JSX.Element {
 	return (
 		<AuthProvider>
-			{/* <RegistrationComponent /> */}
-			{/* <LoginComponent /> */}
 			<HamburgerSidebar />
 			<Backdrop />
 			<NavbarLayout />

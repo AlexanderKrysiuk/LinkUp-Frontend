@@ -1,5 +1,20 @@
+/**
+ * userhandler - Module for handling user-related operations and user data retrieval.
+ *
+ * This module provides functions for retrieving user details, user roles, user profile photos,
+ * and for uploading a new user profile photo. It relies on API request functions from the 'apiHandler.ts'
+ * module to interact with the backend and perform these operations.
+ *
+ * @module userhandler
+ */
+
 import { getPhoto, getUser, getUserRole, postPhoto } from './apiHandler';
 
+/**
+ * Retrieve user details based on the user's authentication token.
+ *
+ * @returns {Promise<any>} - A promise that resolves to the user's details if successful.
+ */
 export const getUserDetails = async () => {
 	const token = localStorage.getItem('token');
 	if (token) {
@@ -16,6 +31,11 @@ export const getUserDetails = async () => {
 	}
 };
 
+/**
+ * Retrieve the user's role based on the user's authentication token.
+ *
+ * @returns {Promise<string>} - A promise that resolves to the user's role as a string if successful.
+ */
 export const getRole = async () => {
 	const token = localStorage.getItem('token');
 	if (token) {
@@ -32,6 +52,12 @@ export const getRole = async () => {
 	}
 };
 
+/**
+ * Upload a new user profile photo.
+ *
+ * @param {FormData} file - The file to be uploaded as the user's profile photo.
+ * @returns {Promise<number | undefined>} - A promise that resolves to the HTTP status code if successful, or undefined if an error occurs.
+ */
 export const uploadPhoto = async (file: FormData) => {
 	const token = localStorage.getItem('token');
 	if (token) {
@@ -48,6 +74,11 @@ export const uploadPhoto = async (file: FormData) => {
 	}
 };
 
+/**
+ * Retrieve the user's profile photo as a File object.
+ *
+ * @returns {Promise<File | undefined>} - A promise that resolves to the user's profile photo as a File object if successful, or undefined if an error occurs.
+ */
 export const getUserPhoto = async () => {
 	const token = localStorage.getItem('token');
 	if (token) {

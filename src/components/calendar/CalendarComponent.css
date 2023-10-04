@@ -1,0 +1,126 @@
+/* font weights */
+/* standard border curvature (radius) */
+/* light mode */
+/* color scheme */
+/* functional colors */
+/* dark mode - subject to change, not tested */
+/* color scheme */
+/* functional colors */
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  margin: 2rem auto;
+  outline: 5px solid red;
+}
+.calendar__header, .calendar__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.calendar__header {
+  flex-direction: column;
+}
+.calendar__header-month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 3rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+  border: 1px solid var(--color-call-to-action);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-weight: bold;
+}
+.calendar__header-month__arrow-left, .calendar__header-month__arrow-right {
+  padding: 0.5rem;
+}
+.calendar__header-month__arrow-left > svg > path, .calendar__header-month__arrow-right > svg > path {
+  transition: all 0.3s ease-in-out;
+  stroke: black;
+  stroke-width: 2rem;
+}
+.calendar__header-month__arrow-left > svg > path:hover, .calendar__header-month__arrow-right > svg > path:hover {
+  fill: white;
+}
+.calendar__header-month__text {
+  width: 100%;
+  text-align: center;
+}
+.calendar__header-days {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid var(--color-call-to-action);
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  font-weight: bold;
+}
+.calendar__header-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  border: 1px solid var(--color-call-to-action);
+  color: var(--color-text);
+  font-weight: bold;
+}
+.calendar__field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.5rem;
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--color-heading);
+}
+.calendar__field.today {
+  background-color: var(--color-call-to-action) !important;
+  font-weight: var(--font-weight-bold);
+}
+.calendar__field:nth-of-type(odd) {
+  background-color: bisque;
+}
+.calendar__field:nth-of-type(even) {
+  background-color: beige;
+}
+.calendar__field_meetings_count {
+  margin-left: 0.5rem;
+}
+.calendar__meetings {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  margin: auto;
+}
+.calendar__meetings__header {
+  color: #273f68;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.calendar__meeting {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  margin: 0.2rem 0;
+  background-color: #a4c7e0;
+  border-top: 1px solid #f5aa37;
+  border-bottom: 1px solid #f5aa37;
+  border-radius: 0.5rem;
+}
+.calendar__meeting-time, .calendar__meeting-description, .calendar__meeting-max-participants {
+  display: flex;
+  justify-content: space-between;
+}
+.calendar__meeting-time span:first-of-type, .calendar__meeting-description span:first-of-type, .calendar__meeting-max-participants span:first-of-type {
+  font-weight: 700;
+}/*# sourceMappingURL=CalendarComponent.css.map */
