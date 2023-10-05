@@ -49,12 +49,12 @@ export function initializeApp(rootContainer: HTMLElement): void {
 		<React.StrictMode>
 			{/* Enable routing and context management */}
 			<ModalProvider>
-				<HamburgerSidebarProvider>
-					<BackdropProvider>
+				<BackdropProvider>
+					<HamburgerSidebarProvider>
 						{/* Render the root component */}
 						<RouterProvider router={router} />
-					</BackdropProvider>
-				</HamburgerSidebarProvider>
+					</HamburgerSidebarProvider>
+				</BackdropProvider>
 			</ModalProvider>
 		</React.StrictMode>,
 	);
