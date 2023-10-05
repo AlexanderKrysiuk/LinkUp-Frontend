@@ -15,7 +15,6 @@ import {
 } from '@middleware/helpers/dateTimeHelper';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
 
 var errorMessage: string | number | undefined;
 
@@ -43,8 +42,6 @@ function NewMeetingForm(): JSX.Element {
 	const [refDay, setRefDay] = useState<number>(0);
 	const { toggleBackdrop } = useBackdrop();
 
-	const navigate = useNavigate();
-
 	const {
 		register,
 		handleSubmit,
@@ -67,7 +64,6 @@ function NewMeetingForm(): JSX.Element {
 
 		if (success) {
 			toggleBackdrop();
-			navigate(-1); //'/', { replace: true });
 		} else {
 			errorMessage = error;
 		}
