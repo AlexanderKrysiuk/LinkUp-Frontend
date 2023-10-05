@@ -26,7 +26,7 @@ const ContractorMeetingsList = ({ contractorEmail }: any) => {
 	return (
 		<div>
 			<div className='contractor-meetings-list'>
-				<h2>Spotkania dla {contractorEmail}</h2>
+				<h2>Meetings for {contractorEmail}</h2>
 				{meetings.map((meeting: any) => (
 					<MeetingCard
 						key={meeting.id}
@@ -38,4 +38,3 @@ const ContractorMeetingsList = ({ contractorEmail }: any) => {
 	);
 };
 export default ContractorMeetingsList;
-
