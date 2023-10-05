@@ -10,7 +10,7 @@ import CalendarComponent from '@components/calendar/CalendarComponent';
 
 //import { Meetings } from 'data/dataTypes';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const MockPageComponent = (): JSX.Element => {
 	//const [isFormVisible, setIsFormVisible] = useState<boolean>(false);

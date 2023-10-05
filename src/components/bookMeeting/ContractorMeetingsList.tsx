@@ -1,4 +1,3 @@
-import { API_MEETINGS_FROM_ORGANIZATOR } from '@data/links';
 import { getMeetingsFromOrganizator } from '@middleware/apiHandler';
 
 import React, { useEffect, useState } from 'react';
