@@ -1,5 +1,7 @@
+
 import { AuthContext } from '@contexts/AuthContext';
 import { useBackdropToggle } from '@hooks/BackdropHooks.tsx';
+import { useBackdrop } from '@hooks/BackdropHooks.tsx';
 import { useHamburgerSidebarToggle } from '@hooks/HamburgerSidebarHooks.tsx';
 import { removeTokenFromLocalStorage } from '@middleware/authHandler';
 import { NavMenuItem } from '@router/NavMenuItems.ts';
@@ -18,6 +20,8 @@ const HamburgerLinkComponent = ({
 	const { toggleBackdrop } = useBackdropToggle();
 	const { setIsLogged } = useContext(AuthContext);
 	const navigate = useNavigate();
+	const { toggleBackdrop } = useBackdrop();
+
 
 	const clickHandler = (): void => {
 		toggleHamburgerSidebar();

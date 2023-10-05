@@ -86,10 +86,17 @@
 	},
 	"include": [
 		"./src/**/*",
-		"src/scripts/**/*"
+		"./tests/**/*",
 	],
 	"exclude": [
-		"node_modules"
+		"coverage",
+		"dist",
+		"docs",
+		"html",
+		"node_modules",
+		"public",
+		"*config",
+		"*.config.*",
 	],
 	"references": [
 		{

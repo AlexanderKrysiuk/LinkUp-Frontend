@@ -3,7 +3,7 @@
  * @description Module containing the backdrop component for modal displays.
  */
 
-import { useBackdropToggle } from '@hooks/BackdropHooks.tsx';
+import { useBackdrop } from '@hooks/BackdropHooks.tsx';
 import { motion } from 'framer-motion';
 
 import React from 'react';
@@ -50,7 +50,7 @@ export const OFFSET_TIME: number = 0;
 const BackdropComponent = ({
 	isVisible,
 }: BackdropProps): JSX.Element | null => {
-	const { toggleBackdrop } = useBackdropToggle();
+	const { toggleBackdrop } = useBackdrop();
 
 	// If the backdrop is not visible, return null (it won't be rendered)
 	if (!isVisible) {
