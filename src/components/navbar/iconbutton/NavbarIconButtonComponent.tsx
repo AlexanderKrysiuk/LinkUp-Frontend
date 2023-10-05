@@ -8,8 +8,10 @@ import React, { useContext } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+import NewMeetingComponent from '@components/meetingForm/NewMeetingComponent';
 import { AuthContext } from '@contexts/AuthContext';
-import { useBackdropToggle } from '@hooks/BackdropHooks';
+import { useBackdrop } from '@hooks/BackdropHooks';
+import { useModal } from '@hooks/ModalHooks';
 import { removeTokenFromLocalStorage } from '@middleware/authHandler';
 import { useNavigate } from 'react-router-dom';
 
@@ -55,7 +57,13 @@ const NavbarIconButtonComponent = ({
 }: NavbarIconButtonComponentProps): JSX.Element | null => {
 	const navigate = useNavigate();
 	const { setIsLogged } = useContext(AuthContext);
-	const { toggleBackdrop } = useBackdropToggle();
+	const { toggleBackdrop } = useBackdrop();
+	const { setModal } = useModal();
+
+	const handleToggle = () => {
+		setModal(<NewMeetingComponent />);
+		toggleBackdrop();
+	};
 
 	if (item.routeName === 'profile') {
 		return (
@@ -82,10 +90,7 @@ const NavbarIconButtonComponent = ({
 		return (
 			<li
 				className='navbar__menu-button'
-				onClick={() => {
-					//window.prompt('OK'); //modal
-					toggleBackdrop();
-				}}>
+				onClick={handleToggle}>
 				<item.routeIcon />
 				<span>{item.routeName}</span>
 			</li>

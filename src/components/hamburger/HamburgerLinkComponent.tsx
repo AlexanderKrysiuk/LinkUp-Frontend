@@ -1,6 +1,4 @@
-
 import { AuthContext } from '@contexts/AuthContext';
-import { useBackdropToggle } from '@hooks/BackdropHooks.tsx';
 import { useBackdrop } from '@hooks/BackdropHooks.tsx';
 import { useHamburgerSidebarToggle } from '@hooks/HamburgerSidebarHooks.tsx';
 import { removeTokenFromLocalStorage } from '@middleware/authHandler';
@@ -17,11 +15,9 @@ const HamburgerLinkComponent = ({
 	item,
 }: HamburgerLinkComponentProps): JSX.Element => {
 	const { toggleHamburgerSidebar } = useHamburgerSidebarToggle();
-	const { toggleBackdrop } = useBackdropToggle();
 	const { setIsLogged } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const { toggleBackdrop } = useBackdrop();
-
 
 	const clickHandler = (): void => {
 		toggleHamburgerSidebar();
