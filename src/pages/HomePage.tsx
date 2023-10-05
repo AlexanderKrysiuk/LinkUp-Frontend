@@ -25,7 +25,9 @@ const HomePage = (): JSX.Element => {
 	return (
 		<>
 			<ContractorsList setContractorEmail={setContractorEmail} />
-			<ContractorMeetingsList contractorEmail={contractorEmail} />
+			{contractorEmail ? (
+				<ContractorMeetingsList contractorEmail={contractorEmail} />
+			) : null}
 			{/* <h1 className='h1'>Home</h1> */}
 			{/* <button onClick={handleToggle}>Toggle Backdrop</button> */}
 		</>
