@@ -10,16 +10,13 @@ import SidebarComponent from '@components/profile/sidebar/SidebarComponent.tsx';
 
 import routes, { ProfileMenuItem } from '@router/ProfileMenuItems.ts';
 
-import React, { useEffect, useRef, useState } from 'react';
-
-import { useNavigate } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
 
 import './ProfilePageLayout.css';
 
 // Define a default error route for handling errors.
 const errorRoute: ProfileMenuItem = {
 	routeName: 'error',
-	component: () => <div>Error</div>,
 	subMenu: [{ routeName: 'error', component: () => <div>Error</div> }],
 };
 
@@ -44,14 +41,6 @@ const defaultSubcategory: string =
  * ```
  */
 const ProfilePageLayout = (): JSX.Element => {
-	// Initialize React Router's navigation hook.
-	const navigate = useNavigate();
-
-	// Use an effect to set the default route to '/profile/overview'.
-	useEffect(() => {
-		navigate('/profile/overview');
-	}, []);
-
 	// Use a ref to store the default category.
 	const defaultCategoryRef = useRef(defaultCategory);
 

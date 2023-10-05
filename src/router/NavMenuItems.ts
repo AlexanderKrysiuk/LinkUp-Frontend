@@ -48,7 +48,7 @@ const routes: NavMenuItem[] = [
 		routeAction: null,
 	},
 	{
-		routeName: 'contact',
+		routeName: 'new meeting',
 		routeIcon: AddressCard,
 		routeAction: null,
 	},

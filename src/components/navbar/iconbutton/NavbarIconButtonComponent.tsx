@@ -9,8 +9,10 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { AuthContext } from '@contexts/AuthContext';
+import { useBackdropToggle } from '@hooks/BackdropHooks';
 import { removeTokenFromLocalStorage } from '@middleware/authHandler';
 import { useNavigate } from 'react-router-dom';
+
 /**
  * Props for the `NavbarIconButtonComponent` component.
  *
@@ -53,6 +55,7 @@ const NavbarIconButtonComponent = ({
 }: NavbarIconButtonComponentProps): JSX.Element | null => {
 	const navigate = useNavigate();
 	const { setIsLogged } = useContext(AuthContext);
+	const { toggleBackdrop } = useBackdropToggle();
 
 	if (item.routeName === 'profile') {
 		return (
@@ -70,6 +73,18 @@ const NavbarIconButtonComponent = ({
 				onClick={() => {
 					removeTokenFromLocalStorage(navigate);
 					setIsLogged(false);
+				}}>
+				<item.routeIcon />
+				<span>{item.routeName}</span>
+			</li>
+		);
+	} else if (item.routeName === 'new meeting') {
+		return (
+			<li
+				className='navbar__menu-button'
+				onClick={() => {
+					//window.prompt('OK'); //modal
+					toggleBackdrop();
 				}}>
 				<item.routeIcon />
 				<span>{item.routeName}</span>

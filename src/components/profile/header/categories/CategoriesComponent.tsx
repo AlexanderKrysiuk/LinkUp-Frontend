@@ -50,7 +50,7 @@ const CategoriesComponent = ({
 		<div className='profile__header_categories'>
 			{routes.map((item, index) => (
 				<NavLink
-					to={item.routeName}
+					to={item.routeName + `/` + item.subMenu[0]?.routeName}
 					key={index}>
 					<PillComponent
 						key={index}
