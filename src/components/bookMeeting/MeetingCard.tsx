@@ -37,9 +37,9 @@ const MeetingCard = ({ meeting }: any) => {
 
 	return (
 		<div className='meeting-card'>
-			<p>Data: {formattedDate}</p>
-			<p>Godzina: {formattedTime}</p>
-			<p>Czas trwania: {meeting.duration}</p>
+			<p>Date: {formattedDate}</p>
+			<p>Time: {formattedTime}</p>
+			<p>Duration: {meeting.duration}</p>
 			<button
 				className='button'
 				onClick={() => joinMeeting(meeting.id)}>
