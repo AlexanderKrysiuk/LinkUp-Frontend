@@ -7,7 +7,7 @@ const ContractorMeetingsList = ({ contractorEmail }: any) => {
 	const [meetings, setMeetings] = useState([]);
 
 	useEffect(() => {
-		console.log(getMeetingsFromOrganizator(contractorEmail));
+		//console.log(getMeetingsFromOrganizator(contractorEmail));
 		getMeetingsFromOrganizator(contractorEmail)
 			.then((response) => {
 				if (!response.ok) {
@@ -37,3 +37,4 @@ const ContractorMeetingsList = ({ contractorEmail }: any) => {
 	);
 };
 export default ContractorMeetingsList;
+

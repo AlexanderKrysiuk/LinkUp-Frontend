@@ -5,6 +5,7 @@ import './MeetingCard.css';
 const joinMeeting = async (id: string) => {
 	const token = localStorage.getItem('token');
 	const apiUrl = API_MEETINGS_URL + '/' + id + '/join';
+	console.log(apiUrl);
 
 	fetch(apiUrl, {
 		method: 'POST',
@@ -24,11 +25,21 @@ const showAlert = () => {
 };
 
 const MeetingCard = ({ meeting }: any) => {
+	const dateObject = new Date(meeting.dateTime);
+	const year = dateObject.getUTCFullYear();
+	const month = (dateObject.getUTCMonth() + 1).toString().padStart(2, '0');
+	const day = dateObject.getUTCDate().toString().padStart(2, '0');
+	const hours = dateObject.getUTCHours().toString().padStart(2, '0');
+	const minutes = dateObject.getUTCMinutes().toString().padStart(2, '0');
+
+	const formattedDate = `${year}-${month}-${day}`;
+	const formattedTime = `${hours}:${minutes}`;
+
 	return (
 		<div className='meeting-card'>
-			<h3>ID: {meeting.id}</h3>
-			<p>Data i Godzina: {meeting.dateTime}</p>
-			<p>Opis: {meeting.description}</p>
+			<p>Data: {formattedDate}</p>
+			<p>Godzina: {formattedTime}</p>
+			<p>Czas trwania: {meeting.duration}</p>
 			<button
 				className='button'
 				onClick={() => joinMeeting(meeting.id)}>
