@@ -18,7 +18,7 @@ const ContractorCard = ({
 			onClick={handleCardClick}>
 			<img
 				src={contractor.imageUrl} // Dodaj pole imageUrl do danych kontraktora
-				alt={`Avatar użytkownika ${contractor.userName}`}
+				alt={`${contractor.userName}'s avatar`}
 				className='avatar'
 			/>
 			<div className='username'>{contractor.userName}</div>
@@ -27,4 +27,3 @@ const ContractorCard = ({
 };
 
 export default ContractorCard;
-

@@ -6,6 +6,7 @@
 import { NewMeetingData } from '@data/formData';
 import { newMeetingSchema } from '@data/formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useBackdrop } from '@hooks/BackdropHooks';
 import { submitFormData } from '@middleware/formHandler';
 import { convertToMeetingData } from '@middleware/helpers/dataConverter';
 import {
@@ -14,7 +15,6 @@ import {
 } from '@middleware/helpers/dateTimeHelper';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
 
 var errorMessage: string | number | undefined;
 
@@ -40,8 +40,7 @@ function NewMeetingForm(): JSX.Element {
 	const [refTime, setRefTime] = useState<string>();
 	const [isTimeInvalid, setIsTimeInvalid] = useState<boolean>();
 	const [refDay, setRefDay] = useState<number>(0);
-
-	const navigate = useNavigate();
+	const { toggleBackdrop } = useBackdrop();
 
 	const {
 		register,
@@ -64,7 +63,7 @@ function NewMeetingForm(): JSX.Element {
 		);
 
 		if (success) {
-			navigate(-1); //'/', { replace: true });
+			toggleBackdrop();
 		} else {
 			errorMessage = error;
 		}
