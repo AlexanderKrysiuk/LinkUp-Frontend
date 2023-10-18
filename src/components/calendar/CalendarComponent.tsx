@@ -59,7 +59,6 @@ const CalendarComponent = () => {
 
 	useEffect(() => {
 		updateDateDays();
-
 		const token = localStorage.getItem('token');
 		if (token) {
 			getMeetings(token).then((res: Meeting[]) => {
@@ -83,7 +82,7 @@ const CalendarComponent = () => {
 		} else {
 			throw new Error('Missing token - no user');
 		}
-	}, [selectedDate]);
+	}, []);
 	return (
 		<div className='calendar'>
 			<div className='calendar__header'>
