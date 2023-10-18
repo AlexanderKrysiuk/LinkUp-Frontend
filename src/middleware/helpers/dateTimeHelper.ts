@@ -65,14 +65,17 @@ export function calculateMinTime(
 		: '00:00';
 }
 
-export function convertToUTCDateTime(date: string, time: string): string {
-	const utcYear = parseInt(date.slice(0, 4));
-	const utcMonth = parseInt(date.slice(5, 7)) - 1;
-	const utcDay = parseInt(date.slice(8, 10));
-	const utcHour = parseInt(time.slice(0, 2));
-	const utcMinute = parseInt(time.slice(3, 5));
-	const utcDate = new Date(
-		Date.UTC(utcYear, utcMonth, utcDay, utcHour, utcMinute),
-	);
-	return utcDate.toISOString();
+export function convertToDateTime(date: string, time: string): string {
+	const meetingDate = new Date();
+
+	const year = parseInt(date.slice(0, 4));
+	const month = parseInt(date.slice(5, 7)) - 1;
+	const day = parseInt(date.slice(8, 10));
+	const hour = parseInt(time.slice(0, 2));
+	const minute = parseInt(time.slice(3, 5));
+
+	meetingDate.setFullYear(year, month, day);
+	meetingDate.setHours(hour, minute);
+
+	return meetingDate.toISOString();
 }

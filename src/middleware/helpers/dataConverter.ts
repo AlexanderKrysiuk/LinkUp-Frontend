@@ -11,7 +11,7 @@
 
 import { LoginData, NewMeetingData, RegistrationData } from '@data/formData';
 import { RoleEnum } from '@router/SecuredRoute.tsx';
-import { convertToUTCDateTime } from './dateTimeHelper';
+import { convertToDateTime } from './dateTimeHelper';
 
 /**
  * Convert data from a NewMeetingData object to a meeting data object.
@@ -20,7 +20,7 @@ import { convertToUTCDateTime } from './dateTimeHelper';
  * @returns {object} - The converted meeting data object.
  */
 export function convertToMeetingData(data: NewMeetingData) {
-	const dateTime = convertToUTCDateTime(data.date, data.time);
+	const dateTime = convertToDateTime(data.date, data.time);
 	return {
 		datetime: dateTime,
 		duration: +data.duration,
