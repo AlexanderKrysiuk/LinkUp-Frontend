@@ -36,19 +36,19 @@ export const calculateDaysToFill = (
 
 	// Days from the previous month
 	for (let i = 0; i < (firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1); i++) {
-		const day = new Date(year, month - 1, prevMonthDays + i + 1);
+		const day = new Date(year, month - 1, prevMonthDays + i + 1, 12);
 		daysArray.push(day);
 	}
 
 	// Days from the current month
 	for (let i = 0; i < daysInMonth; i++) {
-		const day = new Date(year, month, i + 1);
+		const day = new Date(year, month, i + 1, 12);
 		daysArray.push(day);
 	}
 
 	// Days from the next month
 	for (let i = 0; i < nextMonthDays; i++) {
-		const day = new Date(year, month + 1, i + 1);
+		const day = new Date(year, month + 1, i + 1, 12);
 		daysArray.push(day);
 	}
 	return daysArray;
