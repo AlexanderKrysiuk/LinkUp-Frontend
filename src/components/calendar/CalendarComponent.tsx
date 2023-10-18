@@ -45,10 +45,15 @@ const CalendarComponent = () => {
 	};
 
 	const convertToLocaleTimezone = (date: string) => {
-		const localeOffset = new Date().getTimezoneOffset();
 		const meetingDate = new Date(date);
-		const offsetHours = meetingDate.getHours() + (localeOffset * -1) / 60;
-		meetingDate.setHours(offsetHours);
+		const localeOffset = new Date().getTimezoneOffset();
+		const meetingOffset = meetingDate.getTimezoneOffset();
+		if (localeOffset !== meetingOffset) {
+			const offsetHours =
+				meetingDate.getHours() +
+				((meetingOffset - localeOffset) * -1) / 60;
+			meetingDate.setHours(offsetHours);
+		}
 		return meetingDate;
 	};
 
